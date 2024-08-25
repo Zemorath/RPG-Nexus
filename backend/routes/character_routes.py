@@ -58,3 +58,92 @@ class CharacterDetail(Resource):
         db.session.delete(character)
         db.session.commit()
         return {"message": "Character deleted successfully"}, 200
+
+# Get all characters belonging to specific user
+class UserCharacters(Resource):
+    def get(self, user_id):
+        characters = Character.query.filter_by(user_id=user_id).all()
+        return jsonify([character.to_dict() for character in characters])
+
+# Search for characters
+class SearchCharacters(Resource):
+    def get(self):
+        name = request.args.get('name')
+        level = request.args.get('level')
+        rpg_system_id = request.args.get('rpg_system_id')
+
+        query = Character.query
+        if name:
+            query = query.filter(Character.name.ilike(f'%{name}%'))
+        if level:
+            query = query.filter_by(level=level)
+        if rpg_system_id:
+            query = query.filter_by(rpg_system_id=rpg_system_id)
+
+        characters = query.all()
+        return jsonify([character.to_dict() for character in characters])
+
+# Character level up
+class CharacterLevelUp(Resource):
+    def post(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        character.level += 1
+        # Additional logic for leveling up, such as increasing health, adding abilities, etc.
+        db.session.commit()
+        return character.to_dict(), 200
+
+# Filter by RPG system they belong to
+class CharactersBySystem(Resource):
+    def get(self, rpg_system_id):
+        characters = Character.query.filter_by(rpg_system_id=rpg_system_id).all()
+        return jsonify([character.to_dict() for character in characters])
+    
+# Duplicate character
+class CharacterClone(Resource):
+    def post(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        cloned_character = Character(
+            name=f"{character.name} (Clone)",
+            user_id=character.user_id,
+            rpg_system_id=character.rpg_system_id,
+            level=character.level,
+            health=character.health,
+            experience_points=character.experience_points,
+            alignment=character.alignment,
+            background=character.background,
+            inventory_weight_limit=character.inventory_weight_limit,
+            status_effects=character.status_effects,
+            system_data=character.system_data.copy()
+        )
+        db.session.add(cloned_character)
+        db.session.commit()
+        return cloned_character.to_dict(), 201
+
+# Archive character
+class CharacterArchive(Resource):
+    def post(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        character.archived = True
+        db.session.commit()
+        return {"message": "Character archived"}, 200
+
+    def delete(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        character.archived = False
+        db.session.commit()
+        return {"message": "Character unarchived"}, 200
+
+# Export character
+class CharacterExport(Resource):
+    def get(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        return jsonify(character.to_dict())
+    
+# Import character
+class CharacterImport(Resource):
+    def post(self):
+        data = request.get_json()
+        new_character = Character(**data)
+        db.session.add(new_character)
+        db.session.commit()
+        return new_character.to_dict(), 201

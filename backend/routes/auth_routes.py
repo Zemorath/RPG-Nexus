@@ -43,6 +43,12 @@ class UserLogin(Resource):
         else:
             return {"message": "Invalid credentials"}, 401
 
+# User Logout
+class UserLogout(Resource):
+    def post(self):
+        session.pop('user_id', None)
+        return {"message": "Logout successful"}, 200
+
 
 # Get user info | Delete User
 class UserProfile(Resource):
@@ -72,5 +78,66 @@ class UserProfile(Resource):
         db.session.delete(user)
         db.session.commit()
         return {"message": "User account deleted successfully"}, 200
+
+# User authentication status
+class UserAuthStatus(Resource):
+    def get(self):
+        if 'user_id' in session:
+            user = User.query.get(session['user_id'])
+            return {"logged_in": True, "user": user.to_dict()}
+        else:
+            return {"logged_in": False}, 200
+
+# Password reset request
+class UserPasswordResetRequest(Resource):
+    def post(self):
+        data = request.get_json()
+        email = data.get('email')
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            return {"message": "Email not found"}, 404
+
+        # Logic to send password reset email with token
+        return {"message": "Password reset email sent"}, 200
+
+class UserPasswordReset(Resource):
+    def post(self, token):
+        data = request.get_json()
+        new_password = data.get('password')
+        
+        # Logic to verify token and reset password
+        return {"message": "Password reset successful"}, 200
+    
+# Verification email
+class UserSendVerification(Resource):
+    def post(self):
+        data = request.get_json()
+        email = data.get('email')
+        user = User.query.filter_by(email=email).first()
+
+        if not user:
+            return {"message": "Email not found"}, 404
+
+        # Logic to send verification email
+        return {"message": "Verification email sent"}, 200
+
+class UserVerifyAccount(Resource):
+    def get(self, token):
+        # Logic to verify account using token
+        return {"message": "Account verified successfully"}, 200
+
+# Update user settings
+class UserSettings(Resource):
+    def get(self, user_id):
+        user = User.query.get_or_404(user_id)
+        return user.settings 
+
+    def put(self, user_id):
+        user = User.query.get_or_404(user_id)
+        data = request.get_json()
+        user.settings.update(data)
+        db.session.commit()
+        return {"message": "Settings updated"}, 200
 
 
