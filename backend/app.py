@@ -40,6 +40,8 @@ from routes.rpgsystem_routes import (
     RPGSystemPopular,
     RPGSystemDefaultSettings
 )
+
+# Importing Campaign Routes
 from routes.campaign_routes import (
     CampaignList,
     CampaignDetail,
@@ -64,25 +66,44 @@ from routes.campaign_routes import (
 from routes.monster_routes import (
     MonsterList,
     MonsterDetail,
+    MonsterCreate,
+    MonsterUpdate,
+    MonsterDelete,
     HomebrewMonsterList,
-    HomebrewMonsterDetail,
-    CampaignMonsterLink
+    HomebrewMonsterCreate,
+    HomebrewMonsterUpdate,
+    HomebrewMonsterDelete,
+    MonsterSearch,
+    MonsterBookmark,
+    ListBookmarkedMonsters
 )
 
 # Importing NPC Routes
 from routes.npc_routes import (
     NPCList,
     NPCDetail,
+    NPCCreate,
+    NPCUpdate,
+    NPCDelete,
     HomebrewNPCList,
-    HomebrewNPCDetail,
-    CampaignNPCLink
+    HomebrewNPCCreate,
+    HomebrewNPCUpdate,
+    HomebrewNPCDelete,
+    NPCSearch,
+    NPCBookmark,
+    ListBookmarkedNPCs,
+    NPCImport
 )
 
 # Importing Note Routes
 from routes.note_routes import (
     NoteList,
     NoteDetail,
-    ShareNote
+    NoteCreate,
+    NoteUpdate,
+    NoteDelete,
+    NoteSearch,
+    NoteShare
 )
 
 # Importing Utility Routes
@@ -153,21 +174,41 @@ api.add_resource(CampaignRemoveMonster, '/campaigns/<int:campaign_id>/monsters/<
 # Monster Routes
 api.add_resource(MonsterList, '/monsters')
 api.add_resource(MonsterDetail, '/monsters/<int:monster_id>')
+api.add_resource(MonsterCreate, '/monsters/new')
+api.add_resource(MonsterUpdate, '/monsters/<int:monster_id>/update')
+api.add_resource(MonsterDelete, '/monsters/<int:monster_id>/delete')
+api.add_resource(MonsterSearch, '/monsters/search')
 api.add_resource(HomebrewMonsterList, '/homebrew/monsters')
-api.add_resource(HomebrewMonsterDetail, '/homebrew/monsters/<int:homebrew_monster_id>')
-api.add_resource(CampaignMonsterLink, '/campaigns/<int:campaign_id>/monsters')
+api.add_resource(HomebrewMonsterCreate, '/homebrew/monsters/new')
+api.add_resource(HomebrewMonsterUpdate, '/homebrew/monsters/<int:homebrew_monster_id>/update')
+api.add_resource(HomebrewMonsterDelete, '/homebrew/monsters/<int:homebrew_monster_id>/delete')
+api.add_resource(MonsterBookmark, '/monsters/<int:monster_id>/bookmark')
+api.add_resource(ListBookmarkedMonsters, '/monsters/bookmarks')
+
 
 # NPC Routes
 api.add_resource(NPCList, '/npcs')
 api.add_resource(NPCDetail, '/npcs/<int:npc_id>')
+api.add_resource(NPCCreate, '/npcs/new')
+api.add_resource(NPCUpdate, '/npcs/<int:npc_id>/update')
+api.add_resource(NPCDelete, '/npcs/<int:npc_id>/delete')
+api.add_resource(NPCSearch, '/npcs/search')
 api.add_resource(HomebrewNPCList, '/homebrew/npcs')
-api.add_resource(HomebrewNPCDetail, '/homebrew/npcs/<int:homebrew_npc_id>')
-api.add_resource(CampaignNPCLink, '/campaigns/<int:campaign_id>/npcs')
+api.add_resource(HomebrewNPCCreate, '/homebrew/npcs/new')
+api.add_resource(HomebrewNPCUpdate, '/homebrew/npcs/<int:homebrew_npc_id>/update')
+api.add_resource(HomebrewNPCDelete, '/homebrew/npcs/<int:homebrew_npc_id>/delete')
+api.add_resource(NPCBookmark, '/npcs/<int:npc_id>/bookmark')
+api.add_resource(ListBookmarkedNPCs, '/npcs/bookmarks')
+api.add_resource(NPCImport, '/npcs/import')
 
 # Note Routes
 api.add_resource(NoteList, '/notes')
 api.add_resource(NoteDetail, '/notes/<int:note_id>')
-api.add_resource(ShareNote, '/notes/<int:note_id>/share')
+api.add_resource(NoteCreate, '/notes/new')
+api.add_resource(NoteUpdate, '/notes/<int:note_id>/update')
+api.add_resource(NoteDelete, '/notes/<int:note_id>/delete')
+api.add_resource(NoteSearch, '/notes/search')
+api.add_resource(NoteShare, '/notes/<int:note_id>/share')
 
 # Utility Routes
 api.add_resource(DashboardData, '/dashboard/<int:user_id>/data')
