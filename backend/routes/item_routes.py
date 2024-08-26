@@ -1,7 +1,7 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from models import db, Item, User, HomebrewItem
-from utils.decorators import admin_required
+from backend.models import db, Item, User, HomebrewItem
+from backend.utils.decorators import admin_required
 
 item_bp = Blueprint('item', __name__)
 item_api = Api(item_bp)

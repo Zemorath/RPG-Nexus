@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
-from models import db, Character, CharacterRace, CharacterClass, CharacterSkill, CharacterItem
+from backend.models import db, Character, CharacterRace, CharacterClass, CharacterSkill, CharacterItem
 
 character_bp = Blueprint('character', __name__)
 character_api = Api(character_bp)

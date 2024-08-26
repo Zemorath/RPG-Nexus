@@ -1,7 +1,7 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from models import db, Race, User, Campaign, CharacterRace
-from utils.decorators import admin_required
+from backend.models import db, Race, User, Campaign, CharacterRace
+from backend.utils.decorators import admin_required
 
 race_bp = Blueprint('race', __name__)
 race_api = Api(race_bp)
