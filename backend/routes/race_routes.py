@@ -1,6 +1,7 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, Race, User, Campaign, CharacterRace
+from utils.decorators import admin_required
 
 # List all races
 class RaceList(Resource):
@@ -16,6 +17,7 @@ class RaceDetail(Resource):
 
 # Create new Race
 class RaceCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -36,6 +38,7 @@ class RaceCreate(Resource):
 
 # Update Race
 class RaceUpdate(Resource):
+    @admin_required
     def put(self, race_id):
         race = Race.query.get_or_404(race_id)
         data = request.get_json()
@@ -54,6 +57,7 @@ class RaceUpdate(Resource):
 
 # Delete Race
 class RaceDelete(Resource):
+    @admin_required
     def delete(self, race_id):
         race = Race.query.get_or_404(race_id)
         db.session.delete(race)

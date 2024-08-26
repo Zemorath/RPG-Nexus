@@ -1,6 +1,7 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, Monster, HomebrewMonster, User
+from utils.decorators import admin_required
 
 # Monster list
 class MonsterList(Resource):
@@ -16,6 +17,7 @@ class MonsterDetail(Resource):
 
 # Create new monster
 class MonsterCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -39,6 +41,7 @@ class MonsterCreate(Resource):
 
 # Update a monster
 class MonsterUpdate(Resource):
+    @admin_required
     def put(self, monster_id):
         monster = Monster.query.get_or_404(monster_id)
         data = request.get_json()
@@ -59,6 +62,7 @@ class MonsterUpdate(Resource):
 
 # Delete a monster
 class MonsterDelete(Resource):
+    @admin_required
     def delete(self, monster_id):
         monster = Monster.query.get_or_404(monster_id)
         db.session.delete(monster)

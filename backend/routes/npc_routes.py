@@ -1,6 +1,7 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, NPC, HomebrewNPC, User
+from utils.decorators import admin_required
 
 # List NPCs
 class NPCList(Resource):
@@ -60,6 +61,7 @@ class ListBookmarkedNPCs(Resource):
 
 # Create NPC
 class NPCCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -80,6 +82,7 @@ class NPCCreate(Resource):
 
 # Update NPC
 class NPCUpdate(Resource):
+    @admin_required
     def put(self, npc_id):
         npc = NPC.query.get_or_404(npc_id)
         data = request.get_json()
@@ -97,6 +100,7 @@ class NPCUpdate(Resource):
 
 # Delete NPC
 class NPCDelete(Resource):
+    @admin_required
     def delete(self, npc_id):
         npc = NPC.query.get_or_404(npc_id)
         db.session.delete(npc)

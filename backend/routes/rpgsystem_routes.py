@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from flask_restful import Resource
 from models import db, RPGSystem
+from utils.decorators import admin_required
 
 
 # List of all RPGs
@@ -19,6 +20,7 @@ class RPGSystemDetail(Resource):
 
 # Create new RPG System
 class RPGSystemCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -40,6 +42,7 @@ class RPGSystemCreate(Resource):
 
 # Update existing RPG
 class RPGSystemUpdate(Resource):
+    @admin_required
     def put(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         data = request.get_json()
@@ -58,6 +61,7 @@ class RPGSystemUpdate(Resource):
 
 # Delete RPG
 class RPGSystemDelete(Resource):
+    @admin_required
     def delete(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         db.session.delete(rpg_system)
@@ -92,5 +96,8 @@ class RPGSystemDefaultSettings(Resource):
     def get(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         return jsonify(rpg_system.default_settings)
+
+
+
 
 

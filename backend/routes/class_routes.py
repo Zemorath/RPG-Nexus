@@ -1,6 +1,8 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, Class, CharacterClass, Campaign
+from utils.decorators import admin_required
+
 
 # List all classes
 class ClassList(Resource):
@@ -16,6 +18,7 @@ class ClassDetail(Resource):
 
 # Create new Class
 class ClassCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -37,6 +40,7 @@ class ClassCreate(Resource):
 
 # Update class
 class ClassUpdate(Resource):
+    @admin_required
     def put(self, class_id):
         cls = Class.query.get_or_404(class_id)
         data = request.get_json()
@@ -56,6 +60,7 @@ class ClassUpdate(Resource):
 
 # Delete class
 class ClassDelete(Resource):
+    @admin_required
     def delete(self, class_id):
         cls = Class.query.get_or_404(class_id)
         db.session.delete(cls)

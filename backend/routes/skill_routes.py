@@ -1,10 +1,12 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, NPC, HomebrewNPC, User, Skill, HomebrewSkill
+from utils.decorators import admin_required
 
 
 # Create new skill
 class SkillCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -24,6 +26,7 @@ class SkillCreate(Resource):
 
 # Update skill
 class SkillUpdate(Resource):
+    @admin_required
     def put(self, skill_id):
         skill = Skill.query.get_or_404(skill_id)
         data = request.get_json()
@@ -41,6 +44,7 @@ class SkillUpdate(Resource):
 
 # Delete Skill
 class SkillDelete(Resource):
+    @admin_required
     def delete(self, skill_id):
         skill = Skill.query.get_or_404(skill_id)
         db.session.delete(skill)

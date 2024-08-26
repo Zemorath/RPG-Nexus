@@ -1,6 +1,7 @@
 from flask import request, jsonify, session
 from flask_restful import Resource
 from models import db, Item, User, HomebrewItem
+from utils.decorators import admin_required
 
 # List all items
 class ItemList(Resource):
@@ -16,6 +17,7 @@ class ItemDetail(Resource):
 
 # Create new item
 class ItemCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -39,6 +41,7 @@ class ItemCreate(Resource):
 
 # Update item
 class ItemUpdate(Resource):
+    @admin_required
     def put(self, item_id):
         item = Item.query.get_or_404(item_id)
         data = request.get_json()
@@ -60,6 +63,7 @@ class ItemUpdate(Resource):
 
 # Delete an item
 class ItemDelete(Resource):
+    @admin_required
     def delete(self, item_id):
         item = Item.query.get_or_404(item_id)
         db.session.delete(item)
