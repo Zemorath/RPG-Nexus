@@ -1,8 +1,10 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
 from models import db, Class, CharacterClass, Campaign
 from utils.decorators import admin_required
 
+class_bp = Blueprint('class', __name__)
+class_api = Api(class_bp)
 
 # List all classes
 class ClassList(Resource):
@@ -118,3 +120,16 @@ class ClassByDifficulty(Resource):
     def get(self, difficulty_level):
         classes = Class.query.filter_by(difficulty_level=difficulty_level).all()
         return jsonify([cls.to_dict() for cls in classes])
+
+# Class Management Routes
+class_api.add_resource(ClassList, '/classes')
+class_api.add_resource(ClassDetail, '/classes/<int:class_id>')
+class_api.add_resource(ClassCreate, '/classes/new')
+class_api.add_resource(ClassUpdate, '/classes/<int:class_id>/update')
+class_api.add_resource(ClassDelete, '/classes/<int:class_id>/delete')
+class_api.add_resource(ClassSearch, '/classes/search')
+class_api.add_resource(ClassByRPGSystem, '/classes/rpgsystem/<int:rpg_system_id>')
+class_api.add_resource(ClassByCharacter, '/classes/character/<int:character_id>')
+class_api.add_resource(ClassAbilitiesList, '/classes/abilities')
+class_api.add_resource(SubclassOptions, '/classes/<int:class_id>/subclass_options')
+class_api.add_resource(ClassByDifficulty, '/classes/difficulty/<string:difficulty_level>')

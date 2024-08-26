@@ -1,5 +1,5 @@
-from flask import request, jsonify
-from flask_restful import Resource
+from flask import request, jsonify, Blueprint
+from flask_restful import Resource, Api
 from models import (
     db, 
     Character, 
@@ -11,6 +11,9 @@ from models import (
     Campaign,
     Note
 )
+
+utility_bp = Blueprint('utility', __name__)
+utility_api = Api(utility_bp)
 
 
 class DashboardData(Resource):
@@ -36,3 +39,7 @@ class GlobalSearch(Resource):
             "notes": [note.to_dict() for note in notes]
         })
 
+
+# Utility Routes
+utility_api.add_resource(DashboardData, '/dashboard/<int:user_id>/data')
+utility_api.add_resource(GlobalSearch, '/search')

@@ -1,7 +1,10 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
 from models import db, Item, User, HomebrewItem
 from utils.decorators import admin_required
+
+item_bp = Blueprint('item', __name__)
+item_api = Api(item_bp)
 
 # List all items
 class ItemList(Resource):
@@ -232,3 +235,21 @@ class HomebrewItemImport(Resource):
         db.session.add(imported_item)
         db.session.commit()
         return imported_item.to_dict(), 201
+
+# Item Management Routes
+item_api.add_resource(ItemList, '/items')
+item_api.add_resource(ItemDetail, '/items/<int:item_id>')
+item_api.add_resource(ItemCreate, '/items/new')
+item_api.add_resource(ItemUpdate, '/items/<int:item_id>/update')
+item_api.add_resource(ItemDelete, '/items/<int:item_id>/delete')
+item_api.add_resource(ItemSearch, '/items/search')
+item_api.add_resource(ItemByRPGSystem, '/items/rpgsystem/<int:rpg_system_id>')
+item_api.add_resource(ItemBookmark, '/items/<int:item_id>/bookmark')
+item_api.add_resource(ItemUnbookmark, '/items/<int:item_id>/unbookmark')
+item_api.add_resource(ListBookmarkedItems, '/items/bookmarks')
+item_api.add_resource(HomebrewItemList, '/homebrew/items')
+item_api.add_resource(HomebrewItemCreate, '/homebrew/items/new')
+item_api.add_resource(HomebrewItemUpdate, '/homebrew/items/<int:homebrew_item_id>/update')
+item_api.add_resource(HomebrewItemDelete, '/homebrew/items/<int:homebrew_item_id>/delete')
+item_api.add_resource(HomebrewItemExport, '/homebrew/items/<int:homebrew_item_id>/export')
+item_api.add_resource(HomebrewItemImport, '/homebrew/items/import')

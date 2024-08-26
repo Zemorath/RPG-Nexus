@@ -1,8 +1,10 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
 from models import db, NPC, HomebrewNPC, User, Skill, HomebrewSkill
 from utils.decorators import admin_required
 
+skill_bp = Blueprint('skill', __name__)
+skill_api = Api(skill_bp)
 
 # Create new skill
 class SkillCreate(Resource):
@@ -198,3 +200,19 @@ class HomebrewSkillImport(Resource):
         db.session.add(imported_skill)
         db.session.commit()
         return imported_skill.to_dict(), 201
+
+# Skill Management Routes
+skill_api.add_resource(SkillList, '/skills')
+skill_api.add_resource(SkillDetail, '/skills/<int:skill_id>')
+skill_api.add_resource(SkillCreate, '/skills/new')
+skill_api.add_resource(SkillUpdate, '/skills/<int:skill_id>/update')
+skill_api.add_resource(SkillDelete, '/skills/<int:skill_id>/delete')
+skill_api.add_resource(SkillSearch, '/skills/search')
+skill_api.add_resource(SkillByRPGSystem, '/skills/rpgsystem/<int:rpg_system_id>')
+skill_api.add_resource(BulkImportSkills, '/skills/import')
+skill_api.add_resource(HomebrewSkillList, '/homebrew/skills')
+skill_api.add_resource(HomebrewSkillCreate, '/homebrew/skills/new')
+skill_api.add_resource(HomebrewSkillUpdate, '/homebrew/skills/<int:homebrew_skill_id>/update')
+skill_api.add_resource(HomebrewSkillDelete, '/homebrew/skills/<int:homebrew_skill_id>/delete')
+skill_api.add_resource(HomebrewSkillExport, '/homebrew/skills/<int:homebrew_skill_id>/export')
+skill_api.add_resource(HomebrewSkillImport, '/homebrew/skills/import')

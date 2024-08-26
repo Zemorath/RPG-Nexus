@@ -1,6 +1,9 @@
-from flask import request, jsonify
-from flask_restful import Resource
+from flask import request, jsonify, Blueprint
+from flask_restful import Resource, Api
 from models import db, Character, CharacterRace, CharacterClass, CharacterSkill, CharacterItem
+
+character_bp = Blueprint('character', __name__)
+character_api = Api(character_bp)
 
 class CharacterList(Resource):
     def get(self):
@@ -147,3 +150,15 @@ class CharacterImport(Resource):
         db.session.add(new_character)
         db.session.commit()
         return new_character.to_dict(), 201
+
+# Character Routes
+character_api.add_resource(CharacterList, '/characters')
+character_api.add_resource(CharacterDetail, '/characters/<int:character_id>')
+character_api.add_resource(UserCharacters, '/users/<int:user_id>/characters')
+character_api.add_resource(SearchCharacters, '/characters/search')
+character_api.add_resource(CharacterLevelUp, '/characters/<int:character_id>/level_up')
+character_api.add_resource(CharactersBySystem, '/characters/system/<int:rpg_system_id>')
+character_api.add_resource(CharacterClone, '/characters/<int:character_id>/clone')
+character_api.add_resource(CharacterArchive, '/characters/<int:character_id>/archive')
+character_api.add_resource(CharacterExport, '/characters/<int:character_id>/export')
+character_api.add_resource(CharacterImport, '/characters/import')
