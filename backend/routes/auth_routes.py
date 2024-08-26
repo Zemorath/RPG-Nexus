@@ -1,12 +1,10 @@
-from flask import Blueprint, request, jsonify
-from models import db, User
+from flask import Blueprint, request, jsonify, session
+from flask_restful import Resource, Api
+from backend.models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_bp = Blueprint('auth', __name__)
-
-from flask import request, session
-from flask_restful import Resource
-from models import db, User
+user_api = Api(auth_bp)
 
 # User Registration
 class UserSignup(Resource):
@@ -140,4 +138,14 @@ class UserSettings(Resource):
         db.session.commit()
         return {"message": "Settings updated"}, 200
 
-
+# Auth Routes
+user_api.add_resource(UserSignup, '/auth/register')
+user_api.add_resource(UserLogin, '/auth/login')
+user_api.add_resource(UserProfile, '/auth/profile/<int:user_id>')
+user_api.add_resource(UserLogout, '/auth/logout')
+user_api.add_resource(UserAuthStatus, '/auth/status')
+user_api.add_resource(UserPasswordResetRequest, '/auth/password_reset_request')
+user_api.add_resource(UserPasswordReset, '/auth/password_reset/<string:token>')
+user_api.add_resource(UserSendVerification, '/auth/send_verification')
+user_api.add_resource(UserVerifyAccount, '/auth/verify/<string:token>')
+user_api.add_resource(UserSettings, '/auth/settings/<int:user_id>')

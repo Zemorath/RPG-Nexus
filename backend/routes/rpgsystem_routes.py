@@ -1,7 +1,10 @@
-from flask import request, jsonify
-from flask_restful import Resource
-from models import db, RPGSystem
+from flask import request, jsonify, Blueprint
+from flask_restful import Resource, Api
+from backend.models import db, RPGSystem
+from backend.utils.decorators import admin_required
 
+rpgsystem_bp = Blueprint('rpgsystem', __name__)
+rpgsystem_api = Api(rpgsystem_bp)
 
 # List of all RPGs
 class RPGSystemList(Resource):
@@ -19,6 +22,7 @@ class RPGSystemDetail(Resource):
 
 # Create new RPG System
 class RPGSystemCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -40,6 +44,7 @@ class RPGSystemCreate(Resource):
 
 # Update existing RPG
 class RPGSystemUpdate(Resource):
+    @admin_required
     def put(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         data = request.get_json()
@@ -58,6 +63,7 @@ class RPGSystemUpdate(Resource):
 
 # Delete RPG
 class RPGSystemDelete(Resource):
+    @admin_required
     def delete(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         db.session.delete(rpg_system)
@@ -93,4 +99,12 @@ class RPGSystemDefaultSettings(Resource):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         return jsonify(rpg_system.default_settings)
 
-
+# RPG System Routes
+rpgsystem_api.add_resource(RPGSystemList, '/rpgsystems')
+rpgsystem_api.add_resource(RPGSystemDetail, '/rpgsystems/<int:rpg_system_id>')
+rpgsystem_api.add_resource(RPGSystemCreate, '/rpgsystems/new')
+rpgsystem_api.add_resource(RPGSystemUpdate, '/rpgsystems/<int:rpg_system_id>/update')
+rpgsystem_api.add_resource(RPGSystemDelete, '/rpgsystems/<int:rpg_system_id>/delete')
+rpgsystem_api.add_resource(RPGSystemSearch, '/rpgsystems/search')
+rpgsystem_api.add_resource(RPGSystemPopular, '/rpgsystems/popular')
+rpgsystem_api.add_resource(RPGSystemDefaultSettings, '/rpgsystems/<int:rpg_system_id>/default_settings')

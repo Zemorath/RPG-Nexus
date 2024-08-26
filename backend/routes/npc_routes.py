@@ -1,6 +1,10 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
-from models import db, NPC, HomebrewNPC, User
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
+from backend.models import db, NPC, HomebrewNPC, User
+from backend.utils.decorators import admin_required
+
+npc_bp = Blueprint('npc', __name__)
+npc_api = Api(npc_bp)
 
 # List NPCs
 class NPCList(Resource):
@@ -60,6 +64,7 @@ class ListBookmarkedNPCs(Resource):
 
 # Create NPC
 class NPCCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -80,6 +85,7 @@ class NPCCreate(Resource):
 
 # Update NPC
 class NPCUpdate(Resource):
+    @admin_required
     def put(self, npc_id):
         npc = NPC.query.get_or_404(npc_id)
         data = request.get_json()
@@ -97,6 +103,7 @@ class NPCUpdate(Resource):
 
 # Delete NPC
 class NPCDelete(Resource):
+    @admin_required
     def delete(self, npc_id):
         npc = NPC.query.get_or_404(npc_id)
         db.session.delete(npc)
@@ -182,3 +189,17 @@ class NPCImport(Resource):
         db.session.commit()
         return imported_npc.to_dict(), 201
 
+# NPC Routes
+npc_api.add_resource(NPCList, '/npcs')
+npc_api.add_resource(NPCDetail, '/npcs/<int:npc_id>')
+npc_api.add_resource(NPCCreate, '/npcs/new')
+npc_api.add_resource(NPCUpdate, '/npcs/<int:npc_id>/update')
+npc_api.add_resource(NPCDelete, '/npcs/<int:npc_id>/delete')
+npc_api.add_resource(NPCSearch, '/npcs/search')
+npc_api.add_resource(HomebrewNPCList, '/homebrew/npcs')
+npc_api.add_resource(HomebrewNPCCreate, '/homebrew/npcs/new')
+npc_api.add_resource(HomebrewNPCUpdate, '/homebrew/npcs/<int:homebrew_npc_id>/update')
+npc_api.add_resource(HomebrewNPCDelete, '/homebrew/npcs/<int:homebrew_npc_id>/delete')
+npc_api.add_resource(NPCBookmark, '/npcs/<int:npc_id>/bookmark')
+npc_api.add_resource(ListBookmarkedNPCs, '/npcs/bookmarks')
+npc_api.add_resource(NPCImport, '/npcs/import')

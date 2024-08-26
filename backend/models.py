@@ -1,16 +1,20 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.dialects.postgresql import JSON
+from backend import db
 
-db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
+    is_admin = db.Column(db.Boolean, default=False)
 
     characters = db.relationship('Character', backref='user', lazy=True)
     campaigns = db.relationship('Campaign', backref='user', lazy=True)
+    homebrew_skills = db.relationship('HomebrewSkill', back_populates='user', cascade="all, delete-orphan")
+    homebrew_items = db.relationship('HomebrewItem', back_populates='user', cascade="all, delete-orphan")
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -41,6 +45,8 @@ class Character(db.Model):
     rpg_systems = db.relationship('CharacterRPGSystem', backref='character', lazy=True, cascade="all, delete-orphan")
     races = db.relationship('CharacterRace', backref='character', lazy=True, cascade="all, delete-orphan")
     classes = db.relationship('CharacterClass', backref='character', lazy=True, cascade="all, delete-orphan")
+    character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
+    character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
 
 
 # ---------------------------------------------------------------
@@ -115,6 +121,37 @@ class CharacterSkill(db.Model):
     # System-specific skill attributes
     system_data = db.Column(db.JSON, nullable=True)  # This can include things like proficiency bonuses, effects, etc.
 
+class HomebrewSkill(db.Model):
+    __tablename__ = 'homebrew_skills'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    associated_ability = db.Column(db.String(50), nullable=False)
+    skill_category = db.Column(db.String(50), nullable=True)
+    difficulty_class = db.Column(db.Integer, nullable=True)
+    requires_training = db.Column(db.Boolean, default=False)
+    system_data = db.Column(JSON, nullable=True)  # JSON field for system-specific data
+
+    # Relationships
+    user = db.relationship('User', back_populates='homebrew_skills')
+    character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='homebrew_skill')
+
+
+class CharacterHomebrewSkill(db.Model):
+    __tablename__ = 'character_homebrew_skill'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    homebrew_skill_id = db.Column(db.Integer, db.ForeignKey('homebrew_skills.id'), nullable=False)
+
+    # System-specific skill attributes
+    system_data = db.Column(db.JSON, nullable=True)  # This can include things like proficiency level, etc.
+
+    character = db.relationship('Character', back_populates='character_homebrew_skills')
+    homebrew_skill = db.relationship('HomebrewSkill', back_populates='character_homebrew_skills')
+
 
 # ---------------------------------------------------------------
 # Item Table and the related join table
@@ -141,6 +178,42 @@ class CharacterItem(db.Model):
 
     # System-specific item attributes
     system_data = db.Column(db.JSON, nullable=True)  # This can include things like magical properties, weight, etc.
+
+class HomebrewItem(db.Model):
+    __tablename__ = 'homebrew_items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    weight = db.Column(db.Float, nullable=True)
+    rarity = db.Column(db.String(50), nullable=True)
+    cost = db.Column(db.Integer, nullable=True)
+    damage_type = db.Column(db.String(50), nullable=True)
+    durability = db.Column(db.Integer, nullable=True)
+    enchantment_level = db.Column(db.Integer, nullable=True)
+    material = db.Column(db.String(100), nullable=True)
+    slot_type = db.Column(db.String(50), nullable=True)
+    system_data = db.Column(JSON, nullable=True)  # JSON field for system-specific data
+
+    # Relationships
+    user = db.relationship('User', back_populates='homebrew_items')
+    character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='homebrew_item')
+
+class CharacterHomebrewItem(db.Model):
+    __tablename__ = 'character_homebrew_item'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    homebrew_item_id = db.Column(db.Integer, db.ForeignKey('homebrew_items.id'), nullable=False)
+
+    # System-specific item attributes
+    system_data = db.Column(db.JSON, nullable=True)  # This can include things like magical properties, weight, etc.
+
+    character = db.relationship('Character', back_populates='character_homebrew_items')
+    homebrew_item = db.relationship('HomebrewItem', back_populates='character_homebrew_items')
+
+
 
 # ---------------------------------------------------------------
 # RPG System table and the related join table
@@ -271,6 +344,15 @@ class CampaignNPC(db.Model):
     homebrew_npc_id = db.Column(db.Integer, db.ForeignKey('homebrew_npc.id'), nullable=True)  # Link to homebrew NPC
 
 
-
+__table_args__ = (
+    db.CheckConstraint(
+        'monster_id IS NOT NULL OR homebrew_monster_id IS NOT NULL',
+        name='check_monster_or_homebrew_monster'
+    ),
+    db.CheckConstraint(
+        'npc_id IS NOT NULL OR homebrew_npc_id IS NOT NULL',
+        name='check_npc_or_homebrew_npc'
+    ),
+)
 
 

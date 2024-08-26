@@ -1,6 +1,9 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
-from models import db, Note, User
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
+from backend.models import db, Note, User
+
+note_bp = Blueprint('note', __name__)
+note_api = Api(note_bp)
 
 # Note list
 class NoteList(Resource):
@@ -94,3 +97,11 @@ class NoteShare(Resource):
 
         return {"message": "Note shared successfully"}, 200
 
+# Note Routes
+note_api.add_resource(NoteList, '/notes')
+note_api.add_resource(NoteDetail, '/notes/<int:note_id>')
+note_api.add_resource(NoteCreate, '/notes/new')
+note_api.add_resource(NoteUpdate, '/notes/<int:note_id>/update')
+note_api.add_resource(NoteDelete, '/notes/<int:note_id>/delete')
+note_api.add_resource(NoteSearch, '/notes/search')
+note_api.add_resource(NoteShare, '/notes/<int:note_id>/share')

@@ -5,6 +5,7 @@ __pycache__/
 *.py[cod]
 *.sqlite3
 .env
+config.py
 
 # Flask
 instance/

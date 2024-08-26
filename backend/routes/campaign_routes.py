@@ -1,6 +1,9 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
-from models import db, Campaign, Character, User, NPC, Monster
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
+from backend.models import db, Campaign, Character, User, NPC, Monster
+
+campaign_bp = Blueprint('campaign', __name__)
+campaign_api = Api(campaign_bp)
 
 # Show all campaigns user is a part of
 class CampaignList(Resource):
@@ -221,3 +224,22 @@ class CampaignRemoveMonster(Resource):
         else:
             return {"message": "Monster not found in this campaign"}, 404
 
+
+# Campaign Routes
+campaign_api.add_resource(CampaignList, '/campaigns')
+campaign_api.add_resource(CampaignDetail, '/campaigns/<int:campaign_id>')
+campaign_api.add_resource(CampaignCreate, '/campaigns/new')
+campaign_api.add_resource(CampaignUpdate, '/campaigns/<int:campaign_id>/update')
+campaign_api.add_resource(CampaignDelete, '/campaigns/<int:campaign_id>/delete')
+campaign_api.add_resource(CampaignAddCharacter, '/campaigns/<int:campaign_id>/characters/add')
+campaign_api.add_resource(CampaignRemoveCharacter, '/campaigns/<int:campaign_id>/characters/<int:character_id>/remove')
+campaign_api.add_resource(CampaignSessionLogs, '/campaigns/<int:campaign_id>/logs')
+campaign_api.add_resource(CampaignAddSessionLog, '/campaigns/<int:campaign_id>/logs/add')
+campaign_api.add_resource(CampaignHouseRules, '/campaigns/<int:campaign_id>/house_rules')
+campaign_api.add_resource(CampaignSearch, '/campaigns/search')
+campaign_api.add_resource(CampaignNPCList, '/campaigns/<int:campaign_id>/npcs')
+campaign_api.add_resource(CampaignAddNPC, '/campaigns/<int:campaign_id>/npcs/add')
+campaign_api.add_resource(CampaignRemoveNPC, '/campaigns/<int:campaign_id>/npcs/<int:npc_id>/remove')
+campaign_api.add_resource(CampaignMonsterList, '/campaigns/<int:campaign_id>/monsters')
+campaign_api.add_resource(CampaignAddMonster, '/campaigns/<int:campaign_id>/monsters/add')
+campaign_api.add_resource(CampaignRemoveMonster, '/campaigns/<int:campaign_id>/monsters/<int:monster_id>/remove')

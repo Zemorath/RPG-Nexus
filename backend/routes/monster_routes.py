@@ -1,6 +1,10 @@
-from flask import request, jsonify, session
-from flask_restful import Resource
-from models import db, Monster, HomebrewMonster, User
+from flask import request, jsonify, session, Blueprint
+from flask_restful import Resource, Api
+from backend.models import db, Monster, HomebrewMonster, User
+from backend.utils.decorators import admin_required
+
+monster_bp = Blueprint('monster', __name__)
+monster_api = Api(monster_bp)
 
 # Monster list
 class MonsterList(Resource):
@@ -16,6 +20,7 @@ class MonsterDetail(Resource):
 
 # Create new monster
 class MonsterCreate(Resource):
+    @admin_required
     def post(self):
         data = request.get_json()
 
@@ -39,6 +44,7 @@ class MonsterCreate(Resource):
 
 # Update a monster
 class MonsterUpdate(Resource):
+    @admin_required
     def put(self, monster_id):
         monster = Monster.query.get_or_404(monster_id)
         data = request.get_json()
@@ -59,6 +65,7 @@ class MonsterUpdate(Resource):
 
 # Delete a monster
 class MonsterDelete(Resource):
+    @admin_required
     def delete(self, monster_id):
         monster = Monster.query.get_or_404(monster_id)
         db.session.delete(monster)
@@ -173,3 +180,17 @@ class ListBookmarkedMonsters(Resource):
         user_id = session.get('user_id')
         user = User.query.get_or_404(user_id)
         return jsonify([monster.to_dict() for monster in user.bookmarked_monsters])
+
+# Monster Routes
+monster_api.add_resource(MonsterList, '/monsters')
+monster_api.add_resource(MonsterDetail, '/monsters/<int:monster_id>')
+monster_api.add_resource(MonsterCreate, '/monsters/new')
+monster_api.add_resource(MonsterUpdate, '/monsters/<int:monster_id>/update')
+monster_api.add_resource(MonsterDelete, '/monsters/<int:monster_id>/delete')
+monster_api.add_resource(MonsterSearch, '/monsters/search')
+monster_api.add_resource(HomebrewMonsterList, '/homebrew/monsters')
+monster_api.add_resource(HomebrewMonsterCreate, '/homebrew/monsters/new')
+monster_api.add_resource(HomebrewMonsterUpdate, '/homebrew/monsters/<int:homebrew_monster_id>/update')
+monster_api.add_resource(HomebrewMonsterDelete, '/homebrew/monsters/<int:homebrew_monster_id>/delete')
+monster_api.add_resource(MonsterBookmark, '/monsters/<int:monster_id>/bookmark')
+monster_api.add_resource(ListBookmarkedMonsters, '/monsters/bookmarks')
