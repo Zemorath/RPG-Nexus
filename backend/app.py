@@ -112,6 +112,17 @@ from routes.utility_routes import (
     GlobalSearch
 )
 
+# Importing Skill Routes
+from routes.skill_routes import (
+    SkillList,
+    SkillDetail,
+    SkillCreate,
+    SkillUpdate,
+    SkillDelete,
+    SkillSearch,
+    SkillByRPGSystem
+)
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -213,6 +224,15 @@ api.add_resource(NoteShare, '/notes/<int:note_id>/share')
 # Utility Routes
 api.add_resource(DashboardData, '/dashboard/<int:user_id>/data')
 api.add_resource(GlobalSearch, '/search')
+
+# Skill Management Routes
+api.add_resource(SkillList, '/skills')
+api.add_resource(SkillDetail, '/skills/<int:skill_id>')
+api.add_resource(SkillCreate, '/skills/new')
+api.add_resource(SkillUpdate, '/skills/<int:skill_id>/update')
+api.add_resource(SkillDelete, '/skills/<int:skill_id>/delete')
+api.add_resource(SkillSearch, '/skills/search')
+api.add_resource(SkillByRPGSystem, '/skills/rpgsystem/<int:rpg_system_id>')
 
 
 
