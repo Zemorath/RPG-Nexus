@@ -120,7 +120,63 @@ from routes.skill_routes import (
     SkillUpdate,
     SkillDelete,
     SkillSearch,
-    SkillByRPGSystem
+    SkillByRPGSystem,
+    BulkImportSkills,
+    HomebrewSkillList,
+    HomebrewSkillCreate,
+    HomebrewSkillUpdate,
+    HomebrewSkillDelete,
+    HomebrewSkillExport,
+    HomebrewSkillImport
+)
+
+# Importing Item Routes
+from routes.item_routes import (
+    ItemList,
+    ItemDetail,
+    ItemCreate,
+    ItemUpdate,
+    ItemDelete,
+    ItemSearch,
+    ItemByRPGSystem,
+    ItemBookmark,
+    ItemUnbookmark,
+    ListBookmarkedItems,
+    HomebrewItemList,
+    HomebrewItemCreate,
+    HomebrewItemUpdate,
+    HomebrewItemDelete,
+    HomebrewItemExport,
+    HomebrewItemImport
+)
+
+# Importing Race Routes
+from routes.race_routes import (
+    RaceList,
+    RaceDetail,
+    RaceCreate,
+    RaceUpdate,
+    RaceDelete,
+    RaceSearch,
+    RaceByRPGSystem,
+    RaceByCharacter,
+    RaceByCampaign,
+    RaceTraitsList
+)
+
+# Importing Class Routes
+from routes.class_routes import (
+    ClassList,
+    ClassDetail,
+    ClassCreate,
+    ClassUpdate,
+    ClassDelete,
+    ClassSearch,
+    ClassByRPGSystem,
+    ClassByCharacter,
+    ClassAbilitiesList,
+    SubclassOptions,
+    ClassByDifficulty
 )
 
 app = Flask(__name__)
@@ -233,6 +289,56 @@ api.add_resource(SkillUpdate, '/skills/<int:skill_id>/update')
 api.add_resource(SkillDelete, '/skills/<int:skill_id>/delete')
 api.add_resource(SkillSearch, '/skills/search')
 api.add_resource(SkillByRPGSystem, '/skills/rpgsystem/<int:rpg_system_id>')
+api.add_resource(BulkImportSkills, '/skills/import')
+api.add_resource(HomebrewSkillList, '/homebrew/skills')
+api.add_resource(HomebrewSkillCreate, '/homebrew/skills/new')
+api.add_resource(HomebrewSkillUpdate, '/homebrew/skills/<int:homebrew_skill_id>/update')
+api.add_resource(HomebrewSkillDelete, '/homebrew/skills/<int:homebrew_skill_id>/delete')
+api.add_resource(HomebrewSkillExport, '/homebrew/skills/<int:homebrew_skill_id>/export')
+api.add_resource(HomebrewSkillImport, '/homebrew/skills/import')
+
+# Item Management Routes
+api.add_resource(ItemList, '/items')
+api.add_resource(ItemDetail, '/items/<int:item_id>')
+api.add_resource(ItemCreate, '/items/new')
+api.add_resource(ItemUpdate, '/items/<int:item_id>/update')
+api.add_resource(ItemDelete, '/items/<int:item_id>/delete')
+api.add_resource(ItemSearch, '/items/search')
+api.add_resource(ItemByRPGSystem, '/items/rpgsystem/<int:rpg_system_id>')
+api.add_resource(ItemBookmark, '/items/<int:item_id>/bookmark')
+api.add_resource(ItemUnbookmark, '/items/<int:item_id>/unbookmark')
+api.add_resource(ListBookmarkedItems, '/items/bookmarks')
+api.add_resource(HomebrewItemList, '/homebrew/items')
+api.add_resource(HomebrewItemCreate, '/homebrew/items/new')
+api.add_resource(HomebrewItemUpdate, '/homebrew/items/<int:homebrew_item_id>/update')
+api.add_resource(HomebrewItemDelete, '/homebrew/items/<int:homebrew_item_id>/delete')
+api.add_resource(HomebrewItemExport, '/homebrew/items/<int:homebrew_item_id>/export')
+api.add_resource(HomebrewItemImport, '/homebrew/items/import')
+
+# Race Management Routes
+api.add_resource(RaceList, '/races')
+api.add_resource(RaceDetail, '/races/<int:race_id>')
+api.add_resource(RaceCreate, '/races/new')
+api.add_resource(RaceUpdate, '/races/<int:race_id>/update')
+api.add_resource(RaceDelete, '/races/<int:race_id>/delete')
+api.add_resource(RaceSearch, '/races/search')
+api.add_resource(RaceByRPGSystem, '/races/rpgsystem/<int:rpg_system_id>')
+api.add_resource(RaceByCharacter, '/races/character/<int:character_id>')
+api.add_resource(RaceByCampaign, '/races/campaign/<int:campaign_id>')
+api.add_resource(RaceTraitsList, '/races/traits')
+
+# Class Management Routes
+api.add_resource(ClassList, '/classes')
+api.add_resource(ClassDetail, '/classes/<int:class_id>')
+api.add_resource(ClassCreate, '/classes/new')
+api.add_resource(ClassUpdate, '/classes/<int:class_id>/update')
+api.add_resource(ClassDelete, '/classes/<int:class_id>/delete')
+api.add_resource(ClassSearch, '/classes/search')
+api.add_resource(ClassByRPGSystem, '/classes/rpgsystem/<int:rpg_system_id>')
+api.add_resource(ClassByCharacter, '/classes/character/<int:character_id>')
+api.add_resource(ClassAbilitiesList, '/classes/abilities')
+api.add_resource(SubclassOptions, '/classes/<int:class_id>/subclass_options')
+api.add_resource(ClassByDifficulty, '/classes/difficulty/<string:difficulty_level>')
 
 
 
