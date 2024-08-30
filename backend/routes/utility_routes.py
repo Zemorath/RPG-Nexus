@@ -1,7 +1,6 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
 from backend.models import (
-    db, 
     Character, 
     CharacterRace, 
     CharacterClass, 
