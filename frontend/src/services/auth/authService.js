@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 // Base URL for the API
-const API_URL = '/api/auth/';
+const API_URL = 'http://127.0.0.1:5000/auth/';
 
 // Login user
-const login = async (username, password) => {
+const login = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}login`, {
-      username,
+      email,
       password,
     });
 
@@ -22,41 +22,41 @@ const login = async (username, password) => {
 };
 
 // Logout user
-const logout = () => {
-  localStorage.removeItem('user');
-  return axios.post(`${API_URL}logout`);
+const logout = async () => {
+  try {
+    localStorage.removeItem('user');
+    await axios.post(`${API_URL}logout`);
+  } catch (error) {
+    throw new Error('Logout failed. Please try again.');
+  }
 };
 
 // Register new user
-const register = async (username, email, password) => {
+const register = async (data) => {
   try {
-    const response = await axios.post(`${API_URL}signup`, {
-      username,
-      email,
-      password,
-    });
-
+    const response = await axios.post(`${API_URL}register`, data);
     return response.data;
   } catch (error) {
     throw new Error('Registration failed. Please check your details and try again.');
   }
 };
 
+
 // Get current user profile
 const getProfile = async (userId) => {
   try {
-    const response = await axios.get(`/profile/${userId}`);
+    const response = await axios.get(`${API_URL}profile/${userId}`);
     return response.data;
   } catch (error) {
     throw new Error('Failed to retrieve user profile.');
   }
 };
 
- const authService = {
+const authService = {
   login,
   logout,
   register,
   getProfile,
 };
 
-export default authService
+export default authService;

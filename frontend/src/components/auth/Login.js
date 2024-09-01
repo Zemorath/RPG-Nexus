@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import authService from '../../services/auth/authService';
 
 const Login = () => {
@@ -18,14 +18,16 @@ const Login = () => {
             password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
           })}
           onSubmit={async (values, { setSubmitting }) => {
-            const response = await authService.login(values);
+            const { email, password } = values;
+            const response = await authService.login(email, password);
             if (response.success) {
-              navigate('/dashboard');
+              navigate('/');
             } else {
               alert(response.message);
             }
             setSubmitting(false);
           }}
+          
         >
           {({ isSubmitting }) => (
             <Form>
@@ -63,6 +65,14 @@ const Login = () => {
           Don't have an account?{' '}
           <a href="/signup" className="text-accent hover:text-secondary">Sign up here</a>
         </p>
+        <div className="mt-6 text-center">
+          <Link
+            to="/"
+            className="bg-secondary text-text font-bold py-2 px-4 rounded hover:bg-accent hover:text-background transition duration-300"
+          >
+            Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   );

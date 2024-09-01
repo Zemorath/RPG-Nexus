@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from .config import Config
+from flask_cors import CORS
 
 
 
@@ -19,6 +20,8 @@ def create_app(config_class=Config):
         static_folder='../client/build',
         template_folder='../client/build'
     )
+
+    CORS(app)
     app.config.from_object(config_class)
 
     

@@ -8,10 +8,13 @@ user_api = Api(auth_bp)
 
 # User Registration
 class UserSignup(Resource):
-    
     def post(self):
         data = request.get_json()
-
+        password = data.get('password')
+        print(data.get('username'))
+        if not password:
+            return {"message": "Password is required and cannot be empty."}, 400
+        
         if data.get('username') is not None:
             new_user = User(
                 username=data.get('username'),
@@ -20,7 +23,7 @@ class UserSignup(Resource):
                 age=data.get('age'),
                 email=data.get('email'),
             )
-            new_user._password_hash = data.get('password')
+            new_user.set_password(password)  # Use the already retrieved password
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id
@@ -28,9 +31,9 @@ class UserSignup(Resource):
         else:
             return {"message": "Entry could not be processed"}, 422
 
+
 # User Login
 class UserLogin(Resource):
-    
     def post(self):
         data = request.get_json()
         user = User.query.filter_by(email=data.get('email')).first()
@@ -47,10 +50,8 @@ class UserLogout(Resource):
         session.pop('user_id', None)
         return {"message": "Logout successful"}, 200
 
-
 # Get user info | Delete User
 class UserProfile(Resource):
-    
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
         return user.to_dict()
@@ -58,15 +59,15 @@ class UserProfile(Resource):
     def put(self, user_id):
         user = User.query.get_or_404(user_id)
         data = request.get_json()
-        
+
         user.username = data.get('username', user.username)
         user.first_name = data.get('first_name', user.first_name)
         user.last_name = data.get('last_name', user.last_name)
         user.age = data.get('age', user.age)
         user.email = data.get('email', user.email)
-        
+
         if 'password' in data:
-            user._password_hash = data['password']
+            user.set_password(data['password'])
 
         db.session.commit()
         return user.to_dict(), 200
@@ -103,10 +104,10 @@ class UserPasswordReset(Resource):
     def post(self, token):
         data = request.get_json()
         new_password = data.get('password')
-        
+
         # Logic to verify token and reset password
         return {"message": "Password reset successful"}, 200
-    
+
 # Verification email
 class UserSendVerification(Resource):
     def post(self):
@@ -129,7 +130,7 @@ class UserVerifyAccount(Resource):
 class UserSettings(Resource):
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
-        return user.settings 
+        return user.settings
 
     def put(self, user_id):
         user = User.query.get_or_404(user_id)
