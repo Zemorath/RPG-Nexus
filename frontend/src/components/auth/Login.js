@@ -18,16 +18,22 @@ const Login = () => {
             password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
           })}
           onSubmit={async (values, { setSubmitting }) => {
-            const { email, password } = values;
-            const response = await authService.login(email, password);
-            if (response.success) {
-              navigate('/');
-            } else {
-              alert(response.message);
+            try {
+              const response = await authService.login(values.email, values.password);
+              console.log(response);
+          
+              if (response.success) {
+                navigate('/dashboard');
+                window.location.reload(); // Force a reload to reset the state
+              } else {
+                alert(response.message || 'Login failed');
+              }
+            } catch (error) {
+              console.error(error);
+              alert('An error occurred during login.');
             }
             setSubmitting(false);
           }}
-          
         >
           {({ isSubmitting }) => (
             <Form>

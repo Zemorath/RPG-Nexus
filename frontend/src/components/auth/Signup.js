@@ -37,7 +37,7 @@ const Signup = () => {
             console.log(data);
             const response = await authService.register(data);
             if (response.success) {
-              navigate('/login');
+              navigate('/dashboard');
             } else {
               alert(response.message);
             }

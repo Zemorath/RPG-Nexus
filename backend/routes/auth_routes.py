@@ -11,9 +11,8 @@ class UserSignup(Resource):
     def post(self):
         data = request.get_json()
         password = data.get('password')
-        print(data.get('username'))
         if not password:
-            return {"message": "Password is required and cannot be empty."}, 400
+            return {"success": False, "message": "Password is required and cannot be empty."}, 400
         
         if data.get('username') is not None:
             new_user = User(
@@ -23,13 +22,13 @@ class UserSignup(Resource):
                 age=data.get('age'),
                 email=data.get('email'),
             )
-            new_user.set_password(password)  # Use the already retrieved password
+            new_user.set_password(data.get('password'))
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id
-            return new_user.to_dict(), 201
+            return {"success": True, "user": new_user.to_dict()}, 201
         else:
-            return {"message": "Entry could not be processed"}, 422
+            return {"success": False, "message": "Entry could not be processed"}, 422
 
 
 # User Login
@@ -40,9 +39,9 @@ class UserLogin(Resource):
 
         if user and user.check_password(data.get('password')):
             session['user_id'] = user.id
-            return user.to_dict(), 200
+            return {"success": True, "user": user.to_dict()}, 200
         else:
-            return {"message": "Invalid credentials"}, 401
+            return {"success": False, "message": "Invalid credentials"}, 401
 
 # User Logout
 class UserLogout(Resource):
@@ -81,11 +80,13 @@ class UserProfile(Resource):
 # User authentication status
 class UserAuthStatus(Resource):
     def get(self):
-        if 'user_id' in session:
-            user = User.query.get(session['user_id'])
-            return {"logged_in": True, "user": user.to_dict()}
+        user_id = session.get('user_id')
+        if user_id:
+            user = User.query.get(user_id)
+            return {"success": True, "user": user.to_dict()}, 200
         else:
-            return {"logged_in": False}, 200
+            return {"success": False}, 401
+
 
 # Password reset request
 class UserPasswordResetRequest(Resource):

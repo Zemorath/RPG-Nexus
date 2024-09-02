@@ -6,20 +6,20 @@ const API_URL = 'http://127.0.0.1:5000/auth/';
 // Login user
 const login = async (email, password) => {
   try {
-    const response = await axios.post(`${API_URL}login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(`${API_URL}login`, { email, password });
 
-    if (response.data.token) {
-      localStorage.setItem('user', JSON.stringify(response.data));
+    if (response.data.success) {
+      // Store some form of authentication token or flag in localStorage
+      localStorage.setItem('auth', JSON.stringify(response.data)); 
     }
 
     return response.data;
   } catch (error) {
-    throw new Error('Login failed. Please check your credentials and try again.');
+    throw new Error('Login failed');
   }
 };
+
+
 
 // Logout user
 const logout = async () => {
@@ -52,11 +52,22 @@ const getProfile = async (userId) => {
   }
 };
 
+const checkAuthStatus = async () => {
+  try {
+    const response = await axios.get(`${API_URL}status`);
+    return response.data;
+  } catch (error) {
+    console.error('Auth status check failed', error);
+    return { isAuthenticated: false };
+  }
+};
+
 const authService = {
   login,
   logout,
   register,
   getProfile,
+  checkAuthStatus
 };
 
 export default authService;
