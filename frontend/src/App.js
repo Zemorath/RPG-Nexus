@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import { useAuth } from './hooks/useAuth';
 import { ProtectedRoute, PublicRoute } from './components/Routes';
+import RPGSystemsPage from './pages/RPGSystems'
 
 function App() {
   const { isAuthenticated, loading, logout } = useAuth();
@@ -29,6 +30,7 @@ function App() {
         {/* Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rpgsystems" element={<RPGSystemsPage />} />
           {/* Other protected routes can go here */}
         </Route>
       </Routes>

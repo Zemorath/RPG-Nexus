@@ -86,8 +86,10 @@ class Race(db.Model, SerializerMixin):
     vision_type = db.Column(db.String(50), nullable=True)
     natural_weapons = db.Column(db.String(255), nullable=True)
     favored_class = db.Column(db.String(50), nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterRace', backref='race', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('races', lazy=True))
 
 
 class CharacterRace(db.Model, SerializerMixin):
@@ -112,8 +114,10 @@ class Class(db.Model, SerializerMixin):
     spellcasting = db.Column(db.Boolean, nullable=True)
     subclass_options = db.Column(db.JSON, nullable=True)
     resource_tracking = db.Column(db.JSON, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterClass', backref='char_class', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('classes', lazy=True))
 
 
 class CharacterClass(db.Model, SerializerMixin):
@@ -135,8 +139,10 @@ class Skill(db.Model, SerializerMixin):
     skill_category = db.Column(db.String(50), nullable=True)
     difficulty_class = db.Column(db.Integer, nullable=True)
     requires_training = db.Column(db.Boolean, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterSkill', backref='skill', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('skills', lazy=True))
 
 
 class CharacterSkill(db.Model, SerializerMixin):
@@ -193,8 +199,10 @@ class Item(db.Model, SerializerMixin):
     enchantment_level = db.Column(db.Integer, nullable=True)
     material = db.Column(db.String(50), nullable=True)
     slot_type = db.Column(db.String(50), nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterItem', backref='item', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('items', lazy=True))
 
 
 class CharacterItem(db.Model, SerializerMixin):
@@ -322,6 +330,8 @@ class Monster(db.Model, SerializerMixin):
     abilities = db.Column(db.JSON, nullable=True)  # System-specific abilities and traits
     actions = db.Column(db.JSON, nullable=True)  # Actions the monster can perform
     legendary_actions = db.Column(db.JSON, nullable=True)  # Legendary actions, if applicable
+
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('monsters', lazy=True))
 
 
 class HomebrewMonster(db.Model, SerializerMixin):

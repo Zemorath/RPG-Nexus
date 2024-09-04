@@ -5,10 +5,18 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from .config import Config
 from flask_cors import CORS
+from sqlalchemy import MetaData
 
+naming_convention = {
+    "ix": "ix_%(column_0_label)s",
+    "uq": "uq_%(table_name)s_%(column_0_name)s",
+    "ck": "ck_%(table_name)s_%(constraint_name)s",
+    "fk": "fk_%(table_name)s_%(column_0_name)s",
+    "pk": "pk_%(table_name)s"
+}
 
-
-db = SQLAlchemy()
+metadata = MetaData(naming_convention=naming_convention)
+db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
 bcrypt = Bcrypt()
 
@@ -18,7 +26,7 @@ def create_app(config_class=Config):
         __name__,
         static_url_path='',
         static_folder='../client/build',
-        template_folder='../client/build'
+        template_folder='../client/build',
     )
 
     CORS(app)
