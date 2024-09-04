@@ -544,6 +544,119 @@ def seed_rpg_systems():
             {"name": "The Blackrazor", "description": "A sentient sword that devours souls and grows stronger with each soul consumed.", "weight": 4, "rarity": "Artifact", "cost": 750000, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
             {"name": "The Axe of the Dwarvish Lords", "description": "A powerful weapon and symbol of authority among dwarves. Grants powers to shape stone and command dwarves.", "weight": 6, "rarity": "Artifact", "cost": 600000, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"}
         ],
+        "Pathfinder 2nd Edition": [
+            # Simple Weapons
+            {"name": "Club", "description": "A simple wooden club.", "weight": 1, "rarity": "Common", "cost": 0, "damage_type": "Bludgeoning", "material": "Wood", "slot_type": "Weapon"},
+            {"name": "Dagger", "description": "A small blade used for close combat or throwing.", "weight": 0.5, "rarity": "Common", "cost": 2, "damage_type": "Piercing/Slashing", "material": "Metal", "slot_type": "Weapon"},
+            {"name": "Spear", "description": "A simple spear used for thrusting attacks.", "weight": 1.5, "rarity": "Common", "cost": 5, "damage_type": "Piercing", "material": "Wood/Metal", "slot_type": "Weapon"},
+            
+            # Martial Weapons
+            {"name": "Longsword", "description": "A versatile sword used by warriors.", "weight": 1.5, "rarity": "Common", "cost": 15, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
+            {"name": "Greataxe", "description": "A large axe that deals significant damage.", "weight": 3, "rarity": "Common", "cost": 30, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
+            {"name": "Rapier", "description": "A lightweight sword used for piercing thrusts.", "weight": 1, "rarity": "Uncommon", "cost": 20, "damage_type": "Piercing", "material": "Metal", "slot_type": "Weapon"},
+            
+            # Ranged Weapons
+            {"name": "Shortbow", "description": "A lightweight bow for long-distance combat.", "weight": 1, "rarity": "Common", "cost": 20, "damage_type": "Piercing", "material": "Wood", "slot_type": "Weapon"},
+            {"name": "Crossbow", "description": "A mechanical ranged weapon that fires bolts.", "weight": 2, "rarity": "Common", "cost": 35, "damage_type": "Piercing", "material": "Wood/Metal", "slot_type": "Weapon"},
+            
+            # Advanced Weapons
+            {"name": "Flail", "description": "A weapon with a spiked ball attached to a chain for versatile attacks.", "weight": 2, "rarity": "Uncommon", "cost": 10, "damage_type": "Bludgeoning", "material": "Metal", "slot_type": "Weapon"},
+            {"name": "Halberd", "description": "A pole weapon with an axe blade for cutting and thrusting attacks.", "weight": 3, "rarity": "Uncommon", "cost": 10, "damage_type": "Slashing/Piercing", "material": "Metal", "slot_type": "Weapon"},
+            
+            # Exotic Weapons
+            {"name": "Kukri", "description": "A short blade with a curved edge, often used by exotic fighters.", "weight": 1, "rarity": "Rare", "cost": 10, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
+            {"name": "Katana", "description": "A long curved sword known for its sharpness.", "weight": 1.5, "rarity": "Rare", "cost": 50, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
+        
+            # Light Armor
+            {"name": "Padded Armor", "description": "Soft armor made from layers of fabric.", "weight": 8, "rarity": "Common", "cost": 5, "armor_class_bonus": 1, "max_dex_bonus": 4, "material": "Cloth", "slot_type": "Armor"},
+            {"name": "Leather Armor", "description": "Simple armor made from toughened leather.", "weight": 10, "rarity": "Common", "cost": 10, "armor_class_bonus": 2, "max_dex_bonus": 3, "material": "Leather", "slot_type": "Armor"},
+            {"name": "Studded Leather Armor", "description": "Leather armor reinforced with metal studs.", "weight": 13, "rarity": "Uncommon", "cost": 25, "armor_class_bonus": 3, "max_dex_bonus": 2, "material": "Leather/Metal", "slot_type": "Armor"},
+            
+            # Medium Armor
+            {"name": "Hide Armor", "description": "Armor made from thick animal hides.", "weight": 25, "rarity": "Common", "cost": 20, "armor_class_bonus": 3, "max_dex_bonus": 2, "material": "Hide", "slot_type": "Armor"},
+            {"name": "Chain Shirt", "description": "A shirt made of interlocking metal rings.", "weight": 20, "rarity": "Common", "cost": 50, "armor_class_bonus": 4, "max_dex_bonus": 2, "material": "Metal", "slot_type": "Armor"},
+            
+            # Heavy Armor
+            {"name": "Scale Mail", "description": "Armor made of metal scales sewn to a fabric backing.", "weight": 45, "rarity": "Common", "cost": 50, "armor_class_bonus": 4, "max_dex_bonus": 1, "material": "Metal", "slot_type": "Armor"},
+            {"name": "Breastplate", "description": "A fitted metal chestplate for protection.", "weight": 30, "rarity": "Uncommon", "cost": 200, "armor_class_bonus": 5, "max_dex_bonus": 1, "material": "Metal", "slot_type": "Armor"},
+            {"name": "Full Plate", "description": "Armor that covers the entire body with interlocking plates.", "weight": 65, "rarity": "Rare", "cost": 1500, "armor_class_bonus": 6, "max_dex_bonus": 0, "material": "Metal", "slot_type": "Armor"},
+            
+            # Shields
+            {"name": "Buckler", "description": "A small, lightweight shield used for deflecting attacks.", "weight": 2, "rarity": "Common", "cost": 5, "armor_class_bonus": 1, "material": "Wood/Metal", "slot_type": "Shield"},
+            {"name": "Heavy Shield", "description": "A larger shield offering more protection.", "weight": 15, "rarity": "Uncommon", "cost": 20, "armor_class_bonus": 2, "material": "Wood/Metal", "slot_type": "Shield"},
+            {"name": "Tower Shield", "description": "A massive shield that covers nearly the entire body.", "weight": 45, "rarity": "Rare", "cost": 100, "armor_class_bonus": 4, "material": "Wood/Metal", "slot_type": "Shield"},
+        
+            # Potions
+            {"name": "Potion of Healing", "description": "Restores hit points to the drinker.", "weight": 0.1, "rarity": "Common", "cost": 50, "effect": "Restores 1d8 hit points", "slot_type": "Consumable"},
+            {"name": "Greater Potion of Healing", "description": "Restores a greater amount of hit points.", "weight": 0.1, "rarity": "Uncommon", "cost": 250, "effect": "Restores 4d8 hit points", "slot_type": "Consumable"},
+            {"name": "Potion of Invisibility", "description": "Grants the drinker temporary invisibility.", "weight": 0.1, "rarity": "Rare", "cost": 300, "effect": "Grants invisibility for 1 minute", "slot_type": "Consumable"},
+            {"name": "Elixir of Life", "description": "Cures poisons and diseases.", "weight": 0.1, "rarity": "Rare", "cost": 500, "effect": "Removes poison and disease effects", "slot_type": "Consumable"},
+            
+            # Scrolls
+            {"name": "Scroll of Fireball", "description": "Casts the Fireball spell.", "weight": 0.05, "rarity": "Common", "cost": 100, "effect": "Casts Fireball (3rd level)", "slot_type": "Consumable"},
+            {"name": "Scroll of Teleportation", "description": "Casts the Teleport spell.", "weight": 0.05, "rarity": "Uncommon", "cost": 250, "effect": "Casts Teleport (5th level)", "slot_type": "Consumable"},
+            
+            # Alchemical Items
+            {"name": "Alchemist's Fire", "description": "A flask of volatile liquid that ignites when thrown.", "weight": 1, "rarity": "Common", "cost": 20, "effect": "Deals 1d6 fire damage per round for 1 minute", "slot_type": "Consumable"},
+            {"name": "Tanglefoot Bag", "description": "A bag of sticky substance that can entangle foes.", "weight": 1, "rarity": "Uncommon", "cost": 30, "effect": "Entangles target, reducing movement", "slot_type": "Consumable"},
+            {"name": "Smokestick", "description": "Creates a cloud of smoke to obscure vision.", "weight": 0.5, "rarity": "Common", "cost": 10, "effect": "Creates a smoke cloud for 1 minute", "slot_type": "Consumable"},
+
+            # Poisons
+            {"name": "Drow Poison", "description": "A poison often used by the drow to incapacitate their foes.", "weight": 0.1, "rarity": "Rare", "cost": 200, "effect": "Target falls unconscious if they fail a Fortitude save", "slot_type": "Consumable"},
+            {"name": "Wyvern Poison", "description": "A deadly poison harvested from wyvern stingers.", "weight": 0.1, "rarity": "Very Rare", "cost": 500, "effect": "Deals 7d6 poison damage over time", "slot_type": "Consumable"},
+        
+            # Amulets
+            {"name": "Amulet of Natural Armor", "description": "Grants an enhancement bonus to natural armor.", "weight": 0.1, "rarity": "Uncommon", "cost": 300, "effect": "+1 to natural armor", "slot_type": "Neck"},
+            {"name": "Amulet of Mighty Fists", "description": "Enhances unarmed strikes and natural weapons.", "weight": 0.1, "rarity": "Rare", "cost": 2000, "effect": "+1 to attack and damage rolls for unarmed strikes", "slot_type": "Neck"},
+            
+            # Belts
+            {"name": "Belt of Giant Strength", "description": "Increases the wearer's Strength score.", "weight": 1, "rarity": "Rare", "cost": 5000, "effect": "Increases Strength by +2", "slot_type": "Waist"},
+            {"name": "Belt of Physical Might", "description": "Increases two physical ability scores.", "weight": 1, "rarity": "Very Rare", "cost": 8000, "effect": "Increases Strength and Constitution by +2", "slot_type": "Waist"},
+            
+            # Cloaks
+            {"name": "Cloak of Resistance", "description": "Grants a bonus on all saving throws.", "weight": 0.5, "rarity": "Uncommon", "cost": 1000, "effect": "+1 bonus on all saving throws", "slot_type": "Shoulders"},
+            {"name": "Cloak of Invisibility", "description": "Grants temporary invisibility when activated.", "weight": 0.5, "rarity": "Very Rare", "cost": 6000, "effect": "Grants invisibility for up to 10 minutes", "slot_type": "Shoulders"},
+            
+            # Boots
+            {"name": "Boots of Speed", "description": "Increases movement speed and grants a haste effect.", "weight": 1, "rarity": "Rare", "cost": 4000, "effect": "Grants haste for up to 10 rounds per day", "slot_type": "Feet"},
+            {"name": "Boots of Levitation", "description": "Allows the wearer to levitate at will.", "weight": 1, "rarity": "Very Rare", "cost": 6000, "effect": "Allows levitation for up to 1 hour per day", "slot_type": "Feet"},
+            
+            # Headbands
+            {"name": "Headband of Inspired Wisdom", "description": "Increases the wearer's Wisdom score.", "weight": 0.2, "rarity": "Rare", "cost": 5000, "effect": "Increases Wisdom by +2", "slot_type": "Head"},
+            {"name": "Headband of Mental Superiority", "description": "Increases all mental ability scores.", "weight": 0.2, "rarity": "Very Rare", "cost": 12000, "effect": "Increases Intelligence, Wisdom, and Charisma by +2", "slot_type": "Head"},
+            
+            # Rings
+            {"name": "Ring of Protection", "description": "Grants a deflection bonus to AC.", "weight": 0.05, "rarity": "Uncommon", "cost": 2000, "effect": "+1 deflection bonus to AC", "slot_type": "Ring"},
+            {"name": "Ring of Regeneration", "description": "Slowly heals the wearer over time.", "weight": 0.05, "rarity": "Very Rare", "cost": 10000, "effect": "Heals 1 hit point every 10 minutes", "slot_type": "Ring"},
+            
+            # Bracers
+            {"name": "Bracers of Archery", "description": "Improves proficiency with bows.", "weight": 0.5, "rarity": "Rare", "cost": 3000, "effect": "+1 to attack rolls with bows", "slot_type": "Arms"},
+            {"name": "Bracers of Defense", "description": "Grants an armor bonus to AC.", "weight": 0.5, "rarity": "Very Rare", "cost": 8000, "effect": "+2 armor bonus to AC", "slot_type": "Arms"},
+        
+                    # Legendary Weapons
+            {"name": "Sunblade", "description": "A longsword that functions as a sunlamp and deals radiant damage.", "weight": 2, "rarity": "Legendary", "cost": 0, "damage_type": "Radiant", "effect": "Deals an extra 2d6 radiant damage to undead", "slot_type": "Hand"},
+            {"name": "Vorpal Sword", "description": "A blade that can decapitate foes.", "weight": 3, "rarity": "Legendary", "cost": 0, "damage_type": "Slashing", "effect": "On a natural 20, decapitate target", "slot_type": "Hand"},
+            
+            # Legendary Armor
+            {"name": "Armor of Invulnerability", "description": "Grants resistance to all damage types.", "weight": 25, "rarity": "Legendary", "cost": 0, "effect": "Immune to non-magical damage and resistant to all magical damage", "slot_type": "Body"},
+            {"name": "Plate of the Dawnflower", "description": "Blessed plate armor that offers immense protection and radiant damage resistance.", "weight": 30, "rarity": "Legendary", "cost": 0, "effect": "+3 bonus to AC, resistance to radiant damage", "slot_type": "Body"},
+            
+            # Legendary Artifacts
+            {"name": "Rod of Lordly Might", "description": "A powerful artifact that can transform into various weapons and tools.", "weight": 5, "rarity": "Artifact", "cost": 0, "effect": "Transforms into various weapons, provides bonuses to Strength", "slot_type": "Hand"},
+            {"name": "Staff of the Magi", "description": "A legendary staff with powerful magical abilities.", "weight": 5, "rarity": "Artifact", "cost": 0, "effect": "Stores spell slots, can absorb spells, and cast high-level spells", "slot_type": "Hand"},
+            
+            # Legendary Wondrous Items
+            {"name": "Cloak of the Phoenix", "description": "A cloak that grants the wearer the ability to rise from the ashes after death.", "weight": 1, "rarity": "Legendary", "cost": 0, "effect": "Once per day, rise from death with full hit points", "slot_type": "Shoulders"},
+            {"name": "Belt of Dwarvenkind", "description": "A belt that grants dwarven resilience and physical fortitude.", "weight": 1, "rarity": "Legendary", "cost": 0, "effect": "Grants +2 Constitution, advantage on saving throws against poison, and resistance to poison damage", "slot_type": "Waist"},
+            
+            # Legendary Rings
+            {"name": "Ring of Three Wishes", "description": "A ring with the power to grant three wishes.", "weight": 0.05, "rarity": "Legendary", "cost": 0, "effect": "Grants three wishes, one per activation", "slot_type": "Ring"},
+            {"name": "Ring of Elemental Command", "description": "Allows control over one of the four elements (fire, water, earth, air).", "weight": 0.05, "rarity": "Legendary", "cost": 0, "effect": "Grants control over a specific element, such as summoning or manipulating elemental forces", "slot_type": "Ring"},
+            
+            # Legendary Amulets
+            {"name": "Amulet of the Planes", "description": "Allows the wearer to shift between planes of existence.", "weight": 0.1, "rarity": "Legendary", "cost": 0, "effect": "Teleport to other planes of existence", "slot_type": "Neck"},
+            {"name": "Amulet of Perfect Health", "description": "Grants immunity to diseases and poison, and restores hit points.", "weight": 0.1, "rarity": "Legendary", "cost": 0, "effect": "Immunity to disease, poison, and full restoration of hit points once per day", "slot_type": "Neck"}
+        ],
     }
 
     monsters = {
