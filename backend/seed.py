@@ -633,7 +633,7 @@ def seed_rpg_systems():
             {"name": "Bracers of Archery", "description": "Improves proficiency with bows.", "weight": 0.5, "rarity": "Rare", "cost": 3000, "effect": "+1 to attack rolls with bows", "slot_type": "Arms"},
             {"name": "Bracers of Defense", "description": "Grants an armor bonus to AC.", "weight": 0.5, "rarity": "Very Rare", "cost": 8000, "effect": "+2 armor bonus to AC", "slot_type": "Arms"},
         
-                    # Legendary Weapons
+            # Legendary Weapons
             {"name": "Sunblade", "description": "A longsword that functions as a sunlamp and deals radiant damage.", "weight": 2, "rarity": "Legendary", "cost": 0, "damage_type": "Radiant", "effect": "Deals an extra 2d6 radiant damage to undead", "slot_type": "Hand"},
             {"name": "Vorpal Sword", "description": "A blade that can decapitate foes.", "weight": 3, "rarity": "Legendary", "cost": 0, "damage_type": "Slashing", "effect": "On a natural 20, decapitate target", "slot_type": "Hand"},
             

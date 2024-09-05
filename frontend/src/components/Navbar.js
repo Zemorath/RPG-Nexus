@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ onLogout }) => {
-    console.log("Navbar received onLogout prop:", onLogout);
     const [showSystemsDropdown, setShowSystemsDropdown] = useState(false);
     const [showCampaignsDropdown, setShowCampaignsDropdown] = useState(false);
     const [showHomebrewDropdown, setShowHomebrewDropdown] = useState(false);
