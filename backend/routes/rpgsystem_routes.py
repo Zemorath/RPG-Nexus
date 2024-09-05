@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from backend.models import db, RPGSystem
 from backend.utils.decorators import admin_required
 
-rpgsystem_bp = Blueprint('rpgsystem', __name__)
+rpgsystem_bp = Blueprint('rpgsystem', __name__, url_prefix='/api')
 rpgsystem_api = Api(rpgsystem_bp)
 
 # List of all RPGs
@@ -98,6 +98,7 @@ class RPGSystemDefaultSettings(Resource):
     def get(self, rpg_system_id):
         rpg_system = RPGSystem.query.get_or_404(rpg_system_id)
         return jsonify(rpg_system.default_settings)
+
 
 # RPG System Routes
 rpgsystem_api.add_resource(RPGSystemList, '/rpgsystems')

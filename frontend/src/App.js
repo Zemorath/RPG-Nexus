@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/Home';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
+import Dashboard from './pages/Dashboard';
+import Navbar from './components/Navbar';
+import { useAuth } from './hooks/useAuth';
+import { ProtectedRoute, PublicRoute } from './components/Routes';
+import RPGSystemsPage from './pages/RPGSystems'
 
 function App() {
+  const { isAuthenticated, loading, logout } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>; // You can customize this with a loader component
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {isAuthenticated && <Navbar onLogout={logout} />} {/* Render the navbar only if authenticated */}
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<PublicRoute isAuthenticated={isAuthenticated} />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<HomePage />} />
+        </Route>
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rpgsystems" element={<RPGSystemsPage />} />
+          {/* Other protected routes can go here */}
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

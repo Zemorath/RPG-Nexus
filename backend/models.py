@@ -1,30 +1,55 @@
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.dialects.postgresql import JSON
-from backend import db
+from sqlalchemy_serializer import SerializerMixin
+from backend import db, bcrypt
 
 
-class User(db.Model):
+class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
+    _password_hash = db.Column(db.String(128), nullable=False)
+    first_name = db.Column(db.String(80), nullable=False)
+    last_name = db.Column(db.String(80), nullable=False)
+    age = db.Column(db.Integer, nullable=True)
     is_admin = db.Column(db.Boolean, default=False)
 
+    
     characters = db.relationship('Character', backref='user', lazy=True)
-    campaigns = db.relationship('Campaign', backref='user', lazy=True)
-    homebrew_skills = db.relationship('HomebrewSkill', back_populates='user', cascade="all, delete-orphan")
-    homebrew_items = db.relationship('HomebrewItem', back_populates='user', cascade="all, delete-orphan")
+    managed_campaigns = db.relationship('Campaign', backref='gm_user', lazy=True)
+    bookmarked_items = db.relationship('Item', secondary='user_bookmarked_items', backref='users', lazy=True)
+    bookmarked_monsters = db.relationship('Monster', secondary='user_bookmarked_monsters', backref='users', lazy=True)
+    bookmarked_npcs = db.relationship('NPC', secondary='user_bookmarked_npcs', backref='users', lazy=True)
+    homebrew_items = db.relationship('HomebrewItem', back_populates='user', lazy=True)
+    homebrew_skills = db.relationship('HomebrewSkill', back_populates='user', lazy=True)
+    homebrew_npcs = db.relationship('HomebrewNPC', back_populates='user', lazy=True)
+    notes = db.relationship('Note', backref='creator', lazy=True)
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self._password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return bcrypt.check_password_hash(self._password_hash, password)
     
-# ---------------------------------------------------------------
+    
+user_bookmarked_items = db.Table('user_bookmarked_items',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('item_id', db.Integer, db.ForeignKey('item.id'), primary_key=True)
+)
+
+user_bookmarked_monsters = db.Table('user_bookmarked_monsters',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('monster_id', db.Integer, db.ForeignKey('monster.id'), primary_key=True)
+)
+
+user_bookmarked_npcs = db.Table('user_bookmarked_npcs',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('npc_id', db.Integer, db.ForeignKey('npc.id'), primary_key=True)
+)
+
+
 # Character table
-class Character(db.Model):
+class Character(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -47,11 +72,11 @@ class Character(db.Model):
     classes = db.relationship('CharacterClass', backref='character', lazy=True, cascade="all, delete-orphan")
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
+    campaigns = db.relationship('Campaign', secondary='character_campaign', backref='characters')
 
 
-# ---------------------------------------------------------------
 # Race table and the related join
-class Race(db.Model):
+class Race(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -61,10 +86,13 @@ class Race(db.Model):
     vision_type = db.Column(db.String(50), nullable=True)
     natural_weapons = db.Column(db.String(255), nullable=True)
     favored_class = db.Column(db.String(50), nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterRace', backref='race', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('races', lazy=True))
 
-class CharacterRace(db.Model):
+
+class CharacterRace(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     race_id = db.Column(db.Integer, db.ForeignKey('race.id'), nullable=False)
@@ -73,9 +101,9 @@ class CharacterRace(db.Model):
     # System-specific race attributes
     race_data = db.Column(db.JSON, nullable=True)  # This can include traits, bonuses, etc. 
 
-# ---------------------------------------------------------------
+
 # Class table and the related join
-class Class(db.Model):
+class Class(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -86,11 +114,13 @@ class Class(db.Model):
     spellcasting = db.Column(db.Boolean, nullable=True)
     subclass_options = db.Column(db.JSON, nullable=True)
     resource_tracking = db.Column(db.JSON, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterClass', backref='char_class', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('classes', lazy=True))
 
 
-class CharacterClass(db.Model):
+class CharacterClass(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=False)
@@ -100,9 +130,8 @@ class CharacterClass(db.Model):
     system_data = db.Column(db.JSON, nullable=True)  # This can include hit dice, spellcasting abilities, etc.  
 
 
-# ---------------------------------------------------------------
 # Skill table and the related join table
-class Skill(db.Model):
+class Skill(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -110,10 +139,13 @@ class Skill(db.Model):
     skill_category = db.Column(db.String(50), nullable=True)
     difficulty_class = db.Column(db.Integer, nullable=True)
     requires_training = db.Column(db.Boolean, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterSkill', backref='skill', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('skills', lazy=True))
 
-class CharacterSkill(db.Model):
+
+class CharacterSkill(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
@@ -121,7 +153,8 @@ class CharacterSkill(db.Model):
     # System-specific skill attributes
     system_data = db.Column(db.JSON, nullable=True)  # This can include things like proficiency bonuses, effects, etc.
 
-class HomebrewSkill(db.Model):
+
+class HomebrewSkill(db.Model, SerializerMixin):
     __tablename__ = 'homebrew_skills'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -139,7 +172,7 @@ class HomebrewSkill(db.Model):
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='homebrew_skill')
 
 
-class CharacterHomebrewSkill(db.Model):
+class CharacterHomebrewSkill(db.Model, SerializerMixin):
     __tablename__ = 'character_homebrew_skill'
     
     id = db.Column(db.Integer, primary_key=True)
@@ -153,9 +186,8 @@ class CharacterHomebrewSkill(db.Model):
     homebrew_skill = db.relationship('HomebrewSkill', back_populates='character_homebrew_skills')
 
 
-# ---------------------------------------------------------------
 # Item Table and the related join table
-class Item(db.Model):
+class Item(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -167,11 +199,13 @@ class Item(db.Model):
     enchantment_level = db.Column(db.Integer, nullable=True)
     material = db.Column(db.String(50), nullable=True)
     slot_type = db.Column(db.String(50), nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     
     characters = db.relationship('CharacterItem', backref='item', lazy=True)
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('items', lazy=True))
 
 
-class CharacterItem(db.Model):
+class CharacterItem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
@@ -179,7 +213,8 @@ class CharacterItem(db.Model):
     # System-specific item attributes
     system_data = db.Column(db.JSON, nullable=True)  # This can include things like magical properties, weight, etc.
 
-class HomebrewItem(db.Model):
+
+class HomebrewItem(db.Model, SerializerMixin):
     __tablename__ = 'homebrew_items'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -200,7 +235,8 @@ class HomebrewItem(db.Model):
     user = db.relationship('User', back_populates='homebrew_items')
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='homebrew_item')
 
-class CharacterHomebrewItem(db.Model):
+
+class CharacterHomebrewItem(db.Model, SerializerMixin):
     __tablename__ = 'character_homebrew_item'
     
     id = db.Column(db.Integer, primary_key=True)
@@ -214,10 +250,8 @@ class CharacterHomebrewItem(db.Model):
     homebrew_item = db.relationship('HomebrewItem', back_populates='character_homebrew_items')
 
 
-
-# ---------------------------------------------------------------
 # RPG System table and the related join table
-class RPGSystem(db.Model):
+class RPGSystem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -231,7 +265,7 @@ class RPGSystem(db.Model):
     characters = db.relationship('CharacterRPGSystem', backref='rpg_system', lazy=True)
 
 
-class CharacterRPGSystem(db.Model):
+class CharacterRPGSystem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
@@ -239,13 +273,12 @@ class CharacterRPGSystem(db.Model):
     # Additional fields for categorizing or describing the system further
     ruleset_version = db.Column(db.String(20), nullable=True)
 
-# ---------------------------------------------------------------
-# General campaign and Note models
-class Campaign(db.Model):
+
+# Campaign models
+class Campaign(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
     status = db.Column(db.String(20), nullable=True)  # Active, Paused, Completed
     start_date = db.Column(db.DateTime, nullable=True)
@@ -257,9 +290,19 @@ class Campaign(db.Model):
     world_setting = db.Column(db.String(255), nullable=True)  # World or setting name
     house_rules = db.Column(db.Text, nullable=True)  # Custom rules for the campaign
 
+    # Notes relationship
     notes = db.relationship('Note', backref='campaign', lazy=True)
 
-class Note(db.Model):
+
+# CharacterCampaign Join Table
+character_campaign = db.Table('character_campaign',
+    db.Column('character_id', db.Integer, db.ForeignKey('character.id'), primary_key=True),
+    db.Column('campaign_id', db.Integer, db.ForeignKey('campaign.id'), primary_key=True)
+)
+
+
+# Note model
+class Note(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
@@ -272,9 +315,9 @@ class Note(db.Model):
     shared_with = db.Column(db.JSON, nullable=True)  # List of user IDs with whom the note is shared
     related_entities = db.Column(db.JSON, nullable=True)  # References to related entities
 
-# ---------------------------------------------------------------
+
 # Monsters
-class Monster(db.Model):
+class Monster(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -288,7 +331,10 @@ class Monster(db.Model):
     actions = db.Column(db.JSON, nullable=True)  # Actions the monster can perform
     legendary_actions = db.Column(db.JSON, nullable=True)  # Legendary actions, if applicable
 
-class HomebrewMonster(db.Model):
+    rpg_system = db.relationship('RPGSystem', backref=db.backref('monsters', lazy=True))
+
+
+class HomebrewMonster(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     name = db.Column(db.String(100), nullable=False)
@@ -303,17 +349,17 @@ class HomebrewMonster(db.Model):
     actions = db.Column(db.JSON, nullable=True)
     legendary_actions = db.Column(db.JSON, nullable=True)
 
+
 # Join table
-class CampaignMonster(db.Model):
+class CampaignMonster(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
     monster_id = db.Column(db.Integer, db.ForeignKey('monster.id'), nullable=True)  # Link to master monster list
     homebrew_monster_id = db.Column(db.Integer, db.ForeignKey('homebrew_monster.id'), nullable=True)  # Link to homebrew monster
 
 
-# ---------------------------------------------------------------
 # NPCs
-class NPC(db.Model):
+class NPC(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
@@ -324,7 +370,8 @@ class NPC(db.Model):
     inventory = db.Column(db.JSON, nullable=True)  # Items or resources the NPC possesses
     motivations = db.Column(db.JSON, nullable=True)  # Motivations, goals, or quests related to the NPC
 
-class HomebrewNPC(db.Model):
+
+class HomebrewNPC(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     name = db.Column(db.String(100), nullable=False)
@@ -336,13 +383,15 @@ class HomebrewNPC(db.Model):
     inventory = db.Column(db.JSON, nullable=True)
     motivations = db.Column(db.JSON, nullable=True)
 
+    user = db.relationship('User', back_populates='homebrew_npcs')
+
+
 # Join table
-class CampaignNPC(db.Model):
+class CampaignNPC(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
     npc_id = db.Column(db.Integer, db.ForeignKey('npc.id'), nullable=True)  # Link to master NPC list
     homebrew_npc_id = db.Column(db.Integer, db.ForeignKey('homebrew_npc.id'), nullable=True)  # Link to homebrew NPC
-
 
 __table_args__ = (
     db.CheckConstraint(
@@ -354,5 +403,3 @@ __table_args__ = (
         name='check_npc_or_homebrew_npc'
     ),
 )
-
-

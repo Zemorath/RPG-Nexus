@@ -5,6 +5,7 @@ from backend.models import db, Character, CharacterRace, CharacterClass, Charact
 character_bp = Blueprint('character', __name__)
 character_api = Api(character_bp)
 
+# List all characters
 class CharacterList(Resource):
     def get(self):
         characters = Character.query.all()
@@ -12,7 +13,6 @@ class CharacterList(Resource):
 
     def post(self):
         data = request.get_json()
-
         new_character = Character(
             name=data.get('name'),
             user_id=data.get('user_id'),
@@ -27,12 +27,11 @@ class CharacterList(Resource):
             last_active=data.get('last_active'),
             system_data=data.get('system_data', {})
         )
-
         db.session.add(new_character)
         db.session.commit()
         return new_character.to_dict(), 201
 
-
+# Character details
 class CharacterDetail(Resource):
     def get(self, character_id):
         character = Character.query.get_or_404(character_id)
@@ -62,13 +61,13 @@ class CharacterDetail(Resource):
         db.session.commit()
         return {"message": "Character deleted successfully"}, 200
 
-# Get all characters belonging to specific user
+# Get all characters for a specific user
 class UserCharacters(Resource):
     def get(self, user_id):
         characters = Character.query.filter_by(user_id=user_id).all()
         return jsonify([character.to_dict() for character in characters])
 
-# Search for characters
+# Search characters
 class SearchCharacters(Resource):
     def get(self):
         name = request.args.get('name')
@@ -86,22 +85,21 @@ class SearchCharacters(Resource):
         characters = query.all()
         return jsonify([character.to_dict() for character in characters])
 
-# Character level up
+# Level up character
 class CharacterLevelUp(Resource):
     def post(self, character_id):
         character = Character.query.get_or_404(character_id)
         character.level += 1
-        # Additional logic for leveling up, such as increasing health, adding abilities, etc.
         db.session.commit()
         return character.to_dict(), 200
 
-# Filter by RPG system they belong to
+# Filter characters by RPG system
 class CharactersBySystem(Resource):
     def get(self, rpg_system_id):
         characters = Character.query.filter_by(rpg_system_id=rpg_system_id).all()
         return jsonify([character.to_dict() for character in characters])
-    
-# Duplicate character
+
+# Clone character
 class CharacterClone(Resource):
     def post(self, character_id):
         character = Character.query.get_or_404(character_id)
@@ -141,7 +139,7 @@ class CharacterExport(Resource):
     def get(self, character_id):
         character = Character.query.get_or_404(character_id)
         return jsonify(character.to_dict())
-    
+
 # Import character
 class CharacterImport(Resource):
     def post(self):

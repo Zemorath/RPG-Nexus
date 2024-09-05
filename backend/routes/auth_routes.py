@@ -8,10 +8,12 @@ user_api = Api(auth_bp)
 
 # User Registration
 class UserSignup(Resource):
-    
     def post(self):
         data = request.get_json()
-
+        password = data.get('password')
+        if not password:
+            return {"success": False, "message": "Password is required and cannot be empty."}, 400
+        
         if data.get('username') is not None:
             new_user = User(
                 username=data.get('username'),
@@ -20,26 +22,26 @@ class UserSignup(Resource):
                 age=data.get('age'),
                 email=data.get('email'),
             )
-            new_user._password_hash = data.get('password')
+            new_user.set_password(data.get('password'))
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id
-            return new_user.to_dict(), 201
+            return {"success": True, "user": new_user.to_dict()}, 201
         else:
-            return {"message": "Entry could not be processed"}, 422
+            return {"success": False, "message": "Entry could not be processed"}, 422
+
 
 # User Login
 class UserLogin(Resource):
-    
     def post(self):
         data = request.get_json()
         user = User.query.filter_by(email=data.get('email')).first()
 
         if user and user.check_password(data.get('password')):
             session['user_id'] = user.id
-            return user.to_dict(), 200
+            return {"success": True, "user": user.to_dict()}, 200
         else:
-            return {"message": "Invalid credentials"}, 401
+            return {"success": False, "message": "Invalid credentials"}, 401
 
 # User Logout
 class UserLogout(Resource):
@@ -47,10 +49,8 @@ class UserLogout(Resource):
         session.pop('user_id', None)
         return {"message": "Logout successful"}, 200
 
-
 # Get user info | Delete User
 class UserProfile(Resource):
-    
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
         return user.to_dict()
@@ -58,15 +58,15 @@ class UserProfile(Resource):
     def put(self, user_id):
         user = User.query.get_or_404(user_id)
         data = request.get_json()
-        
+
         user.username = data.get('username', user.username)
         user.first_name = data.get('first_name', user.first_name)
         user.last_name = data.get('last_name', user.last_name)
         user.age = data.get('age', user.age)
         user.email = data.get('email', user.email)
-        
+
         if 'password' in data:
-            user._password_hash = data['password']
+            user.set_password(data['password'])
 
         db.session.commit()
         return user.to_dict(), 200
@@ -80,11 +80,13 @@ class UserProfile(Resource):
 # User authentication status
 class UserAuthStatus(Resource):
     def get(self):
-        if 'user_id' in session:
-            user = User.query.get(session['user_id'])
-            return {"logged_in": True, "user": user.to_dict()}
+        user_id = session.get('user_id')
+        if user_id:
+            user = User.query.get(user_id)
+            return {"success": True, "user": user.to_dict()}, 200
         else:
-            return {"logged_in": False}, 200
+            return {"success": False}, 401
+
 
 # Password reset request
 class UserPasswordResetRequest(Resource):
@@ -103,10 +105,10 @@ class UserPasswordReset(Resource):
     def post(self, token):
         data = request.get_json()
         new_password = data.get('password')
-        
+
         # Logic to verify token and reset password
         return {"message": "Password reset successful"}, 200
-    
+
 # Verification email
 class UserSendVerification(Resource):
     def post(self):
@@ -129,7 +131,7 @@ class UserVerifyAccount(Resource):
 class UserSettings(Resource):
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
-        return user.settings 
+        return user.settings
 
     def put(self, user_id):
         user = User.query.get_or_404(user_id)

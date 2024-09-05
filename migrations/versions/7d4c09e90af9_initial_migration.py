@@ -1,8 +1,8 @@
 """initial migration
 
-Revision ID: 2e456a640fba
+Revision ID: 7d4c09e90af9
 Revises: 
-Create Date: 2024-08-26 16:33:01.253930
+Create Date: 2024-09-01 11:38:10.710965
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy import Text
 
 # revision identifiers, used by Alembic.
-revision = '2e456a640fba'
+revision = '7d4c09e90af9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -83,8 +83,11 @@ def upgrade():
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=80), nullable=False),
+    sa.Column('first_name', sa.String(length=80), nullable=False),
+    sa.Column('last_name', sa.String(length=80), nullable=False),
+    sa.Column('age', sa.Integer(), nullable=True),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password_hash', sa.String(length=128), nullable=True),
+    sa.Column('_password_hash', sa.String(length=128), nullable=False),
     sa.Column('is_admin', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -94,7 +97,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('rpg_system_id', sa.Integer(), nullable=False),
     sa.Column('status', sa.String(length=20), nullable=True),
     sa.Column('start_date', sa.DateTime(), nullable=True),
@@ -107,7 +109,6 @@ def upgrade():
     sa.Column('house_rules', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['gm_id'], ['user.id'], ),
     sa.ForeignKeyConstraint(['rpg_system_id'], ['rpg_system.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('character',
@@ -240,6 +241,15 @@ def upgrade():
     sa.ForeignKeyConstraint(['npc_id'], ['npc.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('campaign_user',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('campaign_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('role', sa.String(length=20), nullable=False),
+    sa.ForeignKeyConstraint(['campaign_id'], ['campaign.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('character_class',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('character_id', sa.Integer(), nullable=False),
@@ -337,6 +347,7 @@ def downgrade():
     op.drop_table('character_homebrew_skill')
     op.drop_table('character_homebrew_item')
     op.drop_table('character_class')
+    op.drop_table('campaign_user')
     op.drop_table('campaign_npc')
     op.drop_table('campaign_monster')
     op.drop_table('npc')
