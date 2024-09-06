@@ -1,13 +1,13 @@
 from app import app
-from backend import db
-from backend.models import RPGSystem, Class, Race, Skill, Item, Monster
+from __init__ import db
+from models import RPGSystem, Class, Race, Skill, Item, Monster
 
 def seed_rpg_systems():
     # Define RPG systems data
     rpg_systems = [
     {
         "name": "Dungeons & Dragons 5th Edition",
-        "description": "A fantasy tabletop role-playing game...",
+        "description": "D&D 5th Edition is a high-fantasy roleplaying game known for its accessibility and streamlined rules. Players create characters from a variety of races and classes, exploring worlds filled with magic, monsters, and adventure. The system emphasizes roleplay, exploration, and combat, with a flexible set of rules that encourage creativity. Its advantage/disadvantage mechanic simplifies gameplay, allowing for quicker decision-making. D&D 5E is highly customizable, making it ideal for both new and experienced players. The game features a rich ecosystem of supplemental content, expanding the core rules.",
         "publisher": "Wizards of the Coast",
         "edition": "5th Edition",
         "core_rulebook": "Player's Handbook",
@@ -18,12 +18,13 @@ def seed_rpg_systems():
             "classes": ["Barbarian", "Wizard", "Rogue"],
             "races": ["Elf", "Dwarf", "Human"],
             "mechanics": ["Ability Scores", "Saving Throws", "Proficiency Bonus"],
-            "setting": "Forgotten Realms"
+            "setting": "Forgotten Realms",
+            "logo": "/systemLogos/DnDLogo.png",
         }
     },
     {
         "name": "Pathfinder",
-        "description": "A fantasy tabletop role-playing game based on D&D 3.5...",
+        "description": "Pathfinder 2E is a fantasy roleplaying game known for its detailed and intricate mechanics. Building upon the rules of D&D 3.5, it offers a complex and tactical system where players can fine-tune their characters with various feats, abilities, and ancestries. Combat in Pathfinder 2E is strategic, with an action economy that offers players more flexibility in how they approach each turn. It caters to players who enjoy deep customization and mechanical depth, allowing for unique character builds. The system’s world, Golarion, is rich in lore, offering diverse settings and stories for campaigns.",
         "publisher": "Paizo Publishing",
         "edition": "2nd Edition",
         "core_rulebook": "Pathfinder Core Rulebook",
@@ -34,12 +35,13 @@ def seed_rpg_systems():
             "classes": ["Alchemist", "Fighter", "Sorcerer"],
             "races": ["Elf", "Goblin", "Halfling"],
             "mechanics": ["Action Economy", "Feats", "Ancestries"],
-            "setting": "Golarion"
+            "setting": "Golarion",
+            "logo": "/systemLogos/PathfinderLogo.png",
         }
     },
     {
         "name": "Call of Cthulhu",
-        "description": "A horror role-playing game based on the Cthulhu Mythos...",
+        "description": "Call of Cthulhu is a horror-themed roleplaying game set in the worlds of H.P. Lovecraft. In the 7th edition, players take on the roles of investigators uncovering dark secrets, often leading to encounters with eldritch horrors beyond human comprehension. The system is known for its focus on investigation, mental strain, and the fragility of human sanity. Combat is often a last resort, with the emphasis on gathering clues, solving mysteries, and surviving the unknown. Call of Cthulhu uses a percentile-based system that rewards careful thinking and roleplay, rather than brute force.",
         "publisher": "Chaosium",
         "edition": "7th Edition",
         "core_rulebook": "Call of Cthulhu Investigator Handbook",
@@ -47,14 +49,17 @@ def seed_rpg_systems():
         "popularity": 9,
         "default_settings": {
             "dice": "d100",
+            "classes": ["Antiquarian", "Occultist", "Private Investigator"],
+            "races": ["Human", "Deep One Hybrid", "Ghoul"],
             "skills": ["Spot Hidden", "Psychology", "Library Use"],
             "mechanics": ["Sanity", "Luck"],
-            "setting": "1920s Lovecraftian Horror"
+            "setting": "1920s Lovecraftian Horror",
+            "logo": "/systemLogos/CoCLogo.png",
         }
     },
     {
         "name": "Shadowrun",
-        "description": "A cyberpunk fantasy role-playing game...",
+        "description": "Shadowrun combines cyberpunk and fantasy elements, setting players in a dystopian future where magic and technology coexist. Players take on the roles of shadowrunners—mercenaries who work in the criminal underworld to complete dangerous missions for powerful corporations. The system is known for its complex mechanics, especially regarding hacking, magic, and combat, and it encourages teamwork to tackle multi-faceted challenges. Shadowrun’s world is gritty and dark, with themes of corporate greed, social inequality, and technological advancements clashing with traditional magic.",
         "publisher": "Catalyst Game Labs",
         "edition": "6th Edition",
         "core_rulebook": "Shadowrun Core Rulebook",
@@ -65,12 +70,13 @@ def seed_rpg_systems():
             "classes": ["Street Samurai", "Decker", "Mage"],
             "races": ["Human", "Elf", "Ork"],
             "mechanics": ["Augmentations", "Hacking", "Magic"],
-            "setting": "Dystopian future with magic"
+            "setting": "Dystopian future with magic",
+            "logo": "/systemLogos/ShadowrunLogo.png",
         }
     },
     {
         "name": "Star Wars: Edge of the Empire",
-        "description": "A role-playing game set in the Star Wars universe...",
+        "description": "Edge of the Empire is set in the Star Wars universe, focusing on the seedy underbelly of the galaxy—smugglers, bounty hunters, and outlaws. The system uses narrative dice, which allow for more storytelling-driven outcomes beyond simple success or failure. Players must manage their obligations and relationships while navigating a galaxy controlled by the Empire. The game is known for its flexible storytelling and immersive world-building, allowing players to create their own Star Wars adventures, often with a focus on personal motivations and survival.",
         "publisher": "Fantasy Flight Games",
         "edition": "Edge of the Empire",
         "core_rulebook": "Edge of the Empire Core Rulebook",
@@ -81,12 +87,13 @@ def seed_rpg_systems():
             "classes": ["Bounty Hunter", "Smuggler", "Technician"],
             "races": ["Human", "Twi'lek", "Wookiee"],
             "mechanics": ["Obligation", "Destiny Points"],
-            "setting": "Outer Rim Territories"
+            "setting": "Outer Rim Territories",
+            "logo": "/systemLogos/StarWarsLogo.png",
         }
     },
     {
         "name": "Mothership RPG",
-        "description": "A sci-fi horror role-playing game...",
+        "description": "Mothership is a sci-fi horror roleplaying game where players take on the roles of crewmembers aboard spaceships, exploring the unknown and facing existential threats. The system emphasizes player survival in a hostile and uncaring universe, with mechanics that focus on stress, fear, and the constant threat of death. Players must manage their resources carefully and work together to overcome both physical and psychological dangers. Mothership encourages a tense, atmospheric experience where the stakes are high, and failure can be catastrophic.",
         "publisher": "Tuesday Knight Games",
         "edition": "1st Edition",
         "core_rulebook": "Mothership Player's Survival Guide",
@@ -97,7 +104,8 @@ def seed_rpg_systems():
             "classes": ["Marine", "Scientist", "Android"],
             "races": ["Human"],
             "mechanics": ["Panic Rolls", "Stress and Trauma"],
-            "setting": "Deep space exploration and survival"
+            "setting": "Deep space exploration and survival",
+            "logo": "/systemLogos/MothershipLogo.png",
         }
     }
 ]

@@ -1,7 +1,7 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from backend.models import db, Monster, HomebrewMonster, User
-from backend.utils.decorators import admin_required
+from models import db, Monster, HomebrewMonster, User
+from utils.decorators import admin_required
 
 monster_bp = Blueprint('monster', __name__)
 monster_api = Api(monster_bp)

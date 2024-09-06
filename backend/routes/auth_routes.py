@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, session
 from flask_restful import Resource, Api
-from backend.models import db, User
+from models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_bp = Blueprint('auth', __name__)
