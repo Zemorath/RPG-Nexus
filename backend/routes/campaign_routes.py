@@ -1,6 +1,6 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from models import db, Campaign, Character, User, NPC, Monster, character_campaign
+from backend.models import db, Campaign, Character, User, NPC, Monster, character_campaign
 
 campaign_bp = Blueprint('campaign', __name__)
 campaign_api = Api(campaign_bp)

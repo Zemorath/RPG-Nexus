@@ -1,7 +1,7 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
-from models import db, RPGSystem
-from utils.decorators import admin_required
+from backend.models import db, RPGSystem
+from backend.utils.decorators import admin_required
 
 rpgsystem_bp = Blueprint('rpgsystem', __name__, url_prefix='/api')
 rpgsystem_api = Api(rpgsystem_bp)

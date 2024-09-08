@@ -5,9 +5,12 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import SelectRacePage from './pages/SelectRacePage';
+import RPGSystemsPage from './pages/RPGSystems'
+import CharacterCreationLandingPage from './pages/CharacterCreationLandingPage';
 import { useAuth } from './hooks/useAuth';
 import { ProtectedRoute, PublicRoute } from './components/Routes';
-import RPGSystemsPage from './pages/RPGSystems'
+
 
 function App() {
   const { isAuthenticated, loading, logout } = useAuth();
@@ -31,6 +34,8 @@ function App() {
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/rpgsystems" element={<RPGSystemsPage />} />
+          <Route path="/character/create" element={<CharacterCreationLandingPage />} />
+          <Route path="/character/create/race/:systemId" element={<SelectRacePage />} />
           {/* Other protected routes can go here */}
         </Route>
       </Routes>

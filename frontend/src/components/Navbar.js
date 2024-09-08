@@ -76,8 +76,8 @@ const Navbar = ({ onLogout }) => {
                     <button className="text-text font-bold hover:text-accent">Characters</button>
                     {showCharactersDropdown && (
                         <div className="absolute bg-secondary p-4 rounded-lg shadow-lg space-y-2">
-                        <Link to="/characters/view" className="block text-text hover:text-accent">View Characters</Link>
-                        <Link to="/characters/create" className="block text-text hover:text-accent">Create Character</Link>
+                        <Link to="/character/view" className="block text-text hover:text-accent">View Characters</Link>
+                        <Link to="/character/create" className="block text-text hover:text-accent">Create Character</Link>
                         </div>
                     )}
                 </div>

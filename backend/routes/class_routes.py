@@ -1,9 +1,9 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from models import db, Class, CharacterClass, Campaign
-from utils.decorators import admin_required
+from backend.models import db, Class, CharacterClass, Campaign
+from backend.utils.decorators import admin_required
 
-class_bp = Blueprint('class', __name__)
+class_bp = Blueprint('class', __name__, url_prefix='/api')
 class_api = Api(class_bp)
 
 # List all classes

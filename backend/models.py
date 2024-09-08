@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy_serializer import SerializerMixin
-from __init__ import db, bcrypt
+from .__init__ import db, bcrypt
 
 
 class User(db.Model, SerializerMixin):
@@ -85,9 +85,9 @@ class Race(db.Model, SerializerMixin):
     description = db.Column(db.Text, nullable=True)
     size = db.Column(db.String(20), nullable=True)
     speed = db.Column(db.Integer, nullable=True)
-    languages = db.Column(db.String(255), nullable=True)
+    languages = db.Column(db.Text, nullable=True)
     vision_type = db.Column(db.String(50), nullable=True)
-    natural_weapons = db.Column(db.String(255), nullable=True)
+    natural_weapons = db.Column(db.Text, nullable=True)
     favored_class = db.Column(db.String(50), nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 

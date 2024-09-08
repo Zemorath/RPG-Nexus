@@ -1,6 +1,6 @@
 from functools import wraps
 from flask import request, jsonify, session
-from models import User
+from backend.models import User
 
 def admin_required(f):
     @wraps(f)

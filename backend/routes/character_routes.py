@@ -1,8 +1,8 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
-from models import db, Character, CharacterRace, CharacterClass, CharacterSkill, CharacterItem
+from backend.models import db, Character, CharacterRace, CharacterClass, CharacterSkill, CharacterItem
 
-character_bp = Blueprint('character', __name__)
+character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
 
 # List all characters
@@ -148,6 +148,42 @@ class CharacterImport(Resource):
         db.session.add(new_character)
         db.session.commit()
         return new_character.to_dict(), 201
+    
+# Initialize character creation with RPG system selection
+class InitializeCharacter(Resource):
+    def post(self):
+        data = request.get_json()
+        
+        # Create a new character with the selected RPG system
+        new_character = Character(
+            user_id=data.get('user_id'),  # Assuming this is passed from frontend (logged-in user)
+            rpg_system_id=data.get('rpg_system_id'),  # RPG system selected at the start
+            race_id=None,  # Initially null; will be updated when race is selected
+            class_id=None,  # Initially null; will be updated when class is selected
+            system_data={}  # Placeholder for system-specific data
+        )
+        
+        db.session.add(new_character)
+        db.session.commit()
+        
+        return new_character.to_dict(), 201
+    
+# Update character with selected race after race selection
+class UpdateCharacterRace(Resource):
+    def post(self):
+        data = request.get_json()
+        
+        # Fetch the character by ID
+        character = Character.query.get_or_404(data.get('character_id'))
+        
+        # Update the character with the selected race
+        character.race_id = data.get('race_id')
+        
+        db.session.commit()  # Save changes to the database
+        
+        return character.to_dict(), 200
+
+
 
 # Character Routes
 character_api.add_resource(CharacterList, '/characters')
@@ -160,3 +196,5 @@ character_api.add_resource(CharacterClone, '/characters/<int:character_id>/clone
 character_api.add_resource(CharacterArchive, '/characters/<int:character_id>/archive')
 character_api.add_resource(CharacterExport, '/characters/<int:character_id>/export')
 character_api.add_resource(CharacterImport, '/characters/import')
+character_api.add_resource(InitializeCharacter, '/characters/initialize')
+character_api.add_resource(UpdateCharacterRace, '/characters/update-race')

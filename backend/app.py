@@ -1,5 +1,5 @@
 # app.py
-from __init__ import create_app  # Import your factory function
+from .__init__ import create_app  # Import your factory function
 from flask import jsonify
 
 app = create_app()

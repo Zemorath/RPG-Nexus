@@ -1,6 +1,6 @@
 from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
-from models import db, Note, User
+from backend.models import db, Note, User
 
 note_bp = Blueprint('note', __name__)
 note_api = Api(note_bp)
