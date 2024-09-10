@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import authService from '../../services/auth/authService';
+import { AuthContext } from '../../services/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);  // Access the login function from context
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-text">
@@ -18,19 +19,12 @@ const Login = () => {
             password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
           })}
           onSubmit={async (values, { setSubmitting }) => {
-            try {
-              const response = await authService.login(values.email, values.password);
-              console.log(response);
-          
-              if (response.success) {
-                navigate('/dashboard');
-                window.location.reload(); // Force a reload to reset the state
-              } else {
-                alert(response.message || 'Login failed');
-              }
-            } catch (error) {
-              console.error(error);
-              alert('An error occurred during login.');
+            const response = await login(values.email, values.password);
+            if (response.success) {
+              navigate('/dashboard');
+              window.location.reload();
+            } else {
+              alert(response.message || 'Login failed');
             }
             setSubmitting(false);
           }}

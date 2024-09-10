@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 from .config import Config
 from flask_cors import CORS
 from sqlalchemy import MetaData
+from flask_session import Session
 import os
 
 naming_convention = {
@@ -20,6 +21,8 @@ db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
 bcrypt = Bcrypt()
 
+from . import models
+
 def create_app(config_class=Config):
     app = Flask(
         __name__,
@@ -27,13 +30,15 @@ def create_app(config_class=Config):
     )
     
     # Enable CORS for external access
-    CORS(app)
+    CORS(app, supports_credentials=True, origins=["http://localhost:3000"], allow_headers=["Content-Type", "Authorization"], expose_headers=["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"])
     app.config.from_object(config_class)
 
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
+
     bcrypt.init_app(app)
+    Session(app)
 
     # Import and register blueprints
     from .routes.campaign_routes import campaign_bp

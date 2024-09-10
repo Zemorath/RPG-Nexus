@@ -2,10 +2,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import authService from '../../services/auth/authService';
+import { AuthContext } from '../../services/AuthContext'; // Import useAuthContext to manage session
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { setUser } = AuthContext(); // Destructure setUser from AuthContext
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-text">
@@ -33,15 +34,34 @@ const Signup = () => {
               .required('Confirm Password is required'),
           })}
           onSubmit={async (values, { setSubmitting }) => {
-            const { confirmPassword, ...data } = values;
-            console.log(data);
-            const response = await authService.register(data);
-            if (response.success) {
-              navigate('/dashboard');
-            } else {
-              alert(response.message);
+            try {
+              const { confirmPassword, ...data } = values;
+              
+              // Make a POST request to the backend to register the user
+              const response = await fetch('http://127.0.0.1:5555/auth/register', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                credentials: 'include', // Important for managing sessions with cookies
+              });
+
+              const result = await response.json();
+
+              if (result.success) {
+                // Update the session in the React state
+                setUser(result.user); 
+                navigate('/dashboard'); // Navigate to dashboard after signup
+              } else {
+                alert(result.message || 'Signup failed');
+              }
+            } catch (error) {
+              console.error('Error during signup:', error);
+              alert('An error occurred during signup.');
+            } finally {
+              setSubmitting(false);
             }
-            setSubmitting(false);
           }}
         >
           {({ isSubmitting }) => (

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../services/AuthContext'
 
 const SelectRacePage = () => {
   const [races, setRaces] = useState([]);
@@ -9,6 +10,8 @@ const SelectRacePage = () => {
   const { systemId } = useParams(); // Get the RPG system ID from URL params
   const navigate = useNavigate();
   const modalRef = useRef(null); // Ref to track modal for outside click
+
+  const { user } = useContext(AuthContext)
 
   useEffect(() => {
     const fetchRaces = async () => {
@@ -31,18 +34,22 @@ const SelectRacePage = () => {
 
   const handleRaceConfirm = async () => {
     try {
-      // Send a request to progressively save the selected race to the character in the backend
-      const response = await axios.post(`http://127.0.0.1:5555/api/characters/update-race`, {
-        race_id: selectedRace.id, // The selected race ID
-        character_id: 1
+      // Initialize the character with the selected race
+      const response = await axios.post(`http://127.0.0.1:5555/api/characters/initialize`, {
+        user_id: user.id,  // Current logged-in user ID
+        rpg_system_id: systemId,  // The RPG system ID
+        race_id: selectedRace.id  // The selected race ID
       });
-
+  
       const characterId = response.data.id;
-      navigate(`/character/create/class/${characterId}`);
+  
+      // Navigate to class selection page after successful race selection
+      navigate(`/character/create/class/${systemId}/${characterId}`);
     } catch (error) {
-      console.error('Error saving race:', error);
+      console.error('Error initializing character with race:', error);
     }
   };
+  
 
   const handleCloseModal = () => {
     setSelectedRace(null); // Close the modal

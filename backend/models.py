@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.types import JSON
 from sqlalchemy_serializer import SerializerMixin
-from .__init__ import db, bcrypt
+from . import db, bcrypt
 
 
 class User(db.Model, SerializerMixin):
@@ -104,6 +104,51 @@ class CharacterRace(db.Model, SerializerMixin):
     system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
     serialize_rules = ('-character.races', '-race.characters')
+
+# class Character(db.Model, SerializerMixin):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(50), nullable=False)
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+#     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+#     race_id = db.Column(db.Integer, db.ForeignKey('race.id'), nullable=True)  # Direct foreign key to Race
+#     level = db.Column(db.Integer, nullable=False)
+#     health = db.Column(db.Integer, nullable=True)
+#     experience_points = db.Column(db.Integer, nullable=True)
+#     alignment = db.Column(db.String(20), nullable=True)
+#     background = db.Column(db.String(100), nullable=True)
+#     inventory_weight_limit = db.Column(db.Integer, nullable=True)
+#     status_effects = db.Column(db.JSON, nullable=True)
+#     last_active = db.Column(db.DateTime, nullable=True)
+#     system_data = db.Column(db.JSON, nullable=True)
+#     physical_features = db.Column(db.JSON, nullable=True)
+
+#     # Relationships to other tables
+#     skills = db.relationship('CharacterSkill', backref='character', lazy=True, cascade="all, delete-orphan")
+#     items = db.relationship('CharacterItem', backref='character', lazy=True, cascade="all, delete-orphan")
+#     rpg_systems = db.relationship('CharacterRPGSystem', backref='character', lazy=True, cascade="all, delete-orphan")
+#     classes = db.relationship('CharacterClass', backref='character', lazy=True, cascade="all, delete-orphan")
+#     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
+#     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
+#     campaigns = db.relationship('Campaign', secondary='character_campaign', backref='characters')
+
+#     serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character')
+
+# class Race(db.Model, SerializerMixin):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(50), nullable=False)
+#     description = db.Column(db.Text, nullable=True)
+#     size = db.Column(db.String(20), nullable=True)
+#     speed = db.Column(db.Integer, nullable=True)
+#     languages = db.Column(db.Text, nullable=True)
+#     vision_type = db.Column(db.String(50), nullable=True)
+#     natural_weapons = db.Column(db.Text, nullable=True)
+#     favored_class = db.Column(db.String(50), nullable=True)
+#     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+
+#     rpg_system = db.relationship('RPGSystem', backref=db.backref('races', lazy=True))
+
+#     serialize_rules = ('-characters.race', '-rpg_system.races')
+
 
 
 # Class table and the related join

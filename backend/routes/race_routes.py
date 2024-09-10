@@ -1,6 +1,6 @@
-from flask import request, jsonify, session, Blueprint
+from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
-from backend.models import db, Race, User, Campaign, CharacterRace
+from backend.models import db, Race, User, Campaign
 from backend.utils.decorators import admin_required
 
 race_bp = Blueprint('race', __name__, url_prefix='/api')
@@ -108,12 +108,7 @@ class RaceTraitsList(Resource):
         traits = Race.query.with_entities(Race.natural_weapons, Race.size, Race.vision_type).distinct().all()
         return jsonify([{"natural_weapons": t[0], "size": t[1], "vision_type": t[2]} for t in traits])
 
-# Race by character
-class RaceByCharacter(Resource):
-    def get(self, character_id):
-        character_races = CharacterRace.query.filter_by(character_id=character_id).all()
-        races = [character_race.race.to_dict() for character_race in character_races]
-        return jsonify(races)
+
 
 # Race Management Routes
 race_api.add_resource(RaceList, '/races')
@@ -123,6 +118,5 @@ race_api.add_resource(RaceUpdate, '/races/<int:race_id>/update')
 race_api.add_resource(RaceDelete, '/races/<int:race_id>/delete')
 race_api.add_resource(RaceSearch, '/races/search')
 race_api.add_resource(RaceByRPGSystem, '/races/rpgsystem/<int:rpg_system_id>')
-race_api.add_resource(RaceByCharacter, '/races/character/<int:character_id>')
 race_api.add_resource(RaceByCampaign, '/races/campaign/<int:campaign_id>')
 race_api.add_resource(RaceTraitsList, '/races/traits')

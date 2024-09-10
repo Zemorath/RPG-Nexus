@@ -39,15 +39,20 @@ class UserLogin(Resource):
 
         if user and user.check_password(data.get('password')):
             session['user_id'] = user.id
+            session.permanent = True
+            print(f"Session user_id set: {session['user_id']}")
             return {"success": True, "user": user.to_dict()}, 200
         else:
             return {"success": False, "message": "Invalid credentials"}, 401
 
 # User Logout
 class UserLogout(Resource):
-    def post(self):
-        session.pop('user_id', None)
-        return {"message": "Logout successful"}, 200
+    def delete(self):
+        if not session['user_id']:
+            return {"message": "Unauthorized access"}, 401
+        else:
+            session['user_id'] = None
+            return {}, 204
 
 # Get user info | Delete User
 class UserProfile(Resource):
@@ -81,11 +86,16 @@ class UserProfile(Resource):
 class UserAuthStatus(Resource):
     def get(self):
         user_id = session.get('user_id')
+        print(f"Session on auth status check: {session}")  # Use .get() to avoid KeyError
         if user_id:
-            user = User.query.get(user_id)
-            return {"success": True, "user": user.to_dict()}, 200
+            user = User.query.filter(User.id == user_id).first()
+            if user:
+                return {"success": True, "user": user.to_dict()}, 200
+            else:
+                return {"success": False, "message": "User not found"}, 404
         else:
-            return {"success": False}, 401
+            return {"success": False, "message": "Unauthorized"}, 401
+
 
 
 # Password reset request

@@ -3,38 +3,32 @@ import authService from '../services/auth/authService';
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const authStatus = await authService.checkAuthStatus();
-        setIsAuthenticated(authStatus.success);
-      } catch (error) {
-        console.error('Error checking auth status:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const storedAuth = localStorage.getItem('auth');
-    if (storedAuth) {
+    const storedUser = localStorage.getItem('user'); // Check local storage for user session
+    if (storedUser) {
       setIsAuthenticated(true);
-      setLoading(false);
-    } else {
-      checkAuthStatus();
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
-  const logout = async () => {
-    try {
-      await authService.logout();
-      localStorage.removeItem('auth'); // Clear local storage
-      setIsAuthenticated(false);
-    } catch (error) {
-      console.error('Error logging out:', error);
+  const login = async (email, password) => {
+    const response = await authService.login(email, password);
+    if (response.success) {
+      setIsAuthenticated(true);
+      setUser(response.user);
+      localStorage.setItem('user', JSON.stringify(response.user));  // Persist the user session
     }
+    return response;
   };
 
-  return { isAuthenticated, loading, logout };
+  const logout = () => {
+    authService.logout();
+    setIsAuthenticated(false);
+    setUser(null);
+    localStorage.removeItem('user');
+  };
+
+  return { isAuthenticated, user, login, logout };
 };
