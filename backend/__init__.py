@@ -23,6 +23,8 @@ bcrypt = Bcrypt()
 
 from . import models
 
+
+
 def create_app(config_class=Config):
     app = Flask(
         __name__,

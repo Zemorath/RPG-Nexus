@@ -1,6 +1,6 @@
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, CharacterClass, CharacterSkill, CharacterItem
+from backend.models import db, Character, CharacterSkill, CharacterItem
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
@@ -61,11 +61,30 @@ class CharacterDetail(Resource):
         db.session.commit()
         return {"message": "Character deleted successfully"}, 200
 
-# Get all characters for a specific user
 class UserCharacters(Resource):
-    def get(self, user_id):
+    def get(self):
+        user_id = session.get('user_id')  # Fetch user_id from session
+
+        if not user_id:
+            return {"error": "Unauthorized access"}, 401
+
+        # Fetch characters for the logged-in user
         characters = Character.query.filter_by(user_id=user_id).all()
-        return jsonify([character.to_dict() for character in characters])
+
+        # Prepare the character data
+        character_data = [
+            {
+                "id": character.id,
+                "name": character.name,
+                "race": character.race.name if character.race else "Unknown",
+                "class": character.character_class.name if character.character_class else "Unknown",
+                "level": character.level,
+                "rpg_system": character.rpg_system.name
+            }
+            for character in characters
+        ]
+
+        return {"characters": character_data}, 200
 
 # Search characters
 class SearchCharacters(Resource):
@@ -157,10 +176,11 @@ class InitializeCharacter(Resource):
         new_character = Character(
             user_id=data.get('user_id'),
             rpg_system_id=data.get('rpg_system_id'),
-            race_id=data.get('race_id'),  # Directly associate the race with the character
-            level=1,  # Assuming level starts at 1
-            health=100,  # Default health
-            system_data={}  # Placeholder for system-specific data
+            race_id=data.get('race_id'),
+            level=1,
+            health=100,
+            system_data={},
+            name="Unnamed Character",
         )
         
         db.session.add(new_character)
@@ -168,7 +188,21 @@ class InitializeCharacter(Resource):
 
         return new_character.to_dict(), 201
 
+class UpdateCharacterClass(Resource):
+    def post(self):
+        data = request.get_json()
 
+        # Find the character by ID
+        character = Character.query.get(data.get('character_id'))
+        if not character:
+            return {"message": "Character not found"}, 404
+
+        # Assign the selected class_id directly
+        character.class_id = data.get('class_id')
+        
+        db.session.commit()
+
+        return character.to_dict(), 200
 
 
 
@@ -176,7 +210,7 @@ class InitializeCharacter(Resource):
 # Character Routes
 character_api.add_resource(CharacterList, '/characters')
 character_api.add_resource(CharacterDetail, '/characters/<int:character_id>')
-character_api.add_resource(UserCharacters, '/users/<int:user_id>/characters')
+character_api.add_resource(UserCharacters, '/characters/view')
 character_api.add_resource(SearchCharacters, '/characters/search')
 character_api.add_resource(CharacterLevelUp, '/characters/<int:character_id>/level_up')
 character_api.add_resource(CharactersBySystem, '/characters/system/<int:rpg_system_id>')
@@ -185,3 +219,4 @@ character_api.add_resource(CharacterArchive, '/characters/<int:character_id>/arc
 character_api.add_resource(CharacterExport, '/characters/<int:character_id>/export')
 character_api.add_resource(CharacterImport, '/characters/import')
 character_api.add_resource(InitializeCharacter, '/characters/initialize')
+character_api.add_resource(UpdateCharacterClass, '/characters/update-class')

@@ -1,5 +1,4 @@
-from .app import app
-from .__init__ import db
+from backend import create_app, db
 from backend.models import RPGSystem, Class, Race, Skill, Item, Monster
 import json
 
@@ -1048,7 +1047,9 @@ def seed_rpg_systems():
     db.session.commit()
     print("Database seeded successfully!")
 
-if __name__ == '__main__':
+
+def run_seed():
+    app = create_app()
     with app.app_context():
         db.session.query(Monster).delete()
         db.session.query(Item).delete()
@@ -1058,3 +1059,7 @@ if __name__ == '__main__':
         db.session.query(RPGSystem).delete()
         db.session.commit()
         seed_rpg_systems()
+
+
+if __name__ == '__main__':
+    run_seed()

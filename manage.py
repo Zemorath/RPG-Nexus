@@ -2,7 +2,7 @@ from flask import current_app
 from flask.cli import with_appcontext
 from flask_migrate import Migrate
 from backend import create_app, db
-from backend.models import User, Character, Race, Class, CharacterClass, Skill, CharacterSkill, HomebrewSkill, CharacterHomebrewSkill, Item, CharacterItem, HomebrewItem, CharacterHomebrewItem, RPGSystem, CharacterRPGSystem, Campaign, Note, Monster, HomebrewMonster, CampaignMonster, NPC, HomebrewNPC, CampaignNPC  # Add all your models here
+from backend.models import User, Character, Race, Class, Skill, CharacterSkill, HomebrewSkill, CharacterHomebrewSkill, Item, CharacterItem, HomebrewItem, CharacterHomebrewItem, RPGSystem, CharacterRPGSystem, Campaign, Note, Monster, HomebrewMonster, CampaignMonster, NPC, HomebrewNPC, CampaignNPC  # Add all your models here
 
 app = create_app()
 migrate = Migrate(app, db)

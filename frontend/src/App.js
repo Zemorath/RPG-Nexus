@@ -9,6 +9,7 @@ import SelectRacePage from './pages/SelectRacePage';
 import RPGSystemsPage from './pages/RPGSystems'
 import CharacterCreationLandingPage from './pages/CharacterCreationLandingPage';
 import SelectClassPage from './pages/SelectClassPage';
+import ViewCharactersPage from './pages/ViewCharacters'
 import { AuthProvider } from './services/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import { ProtectedRoute, PublicRoute } from './components/Routes';
@@ -40,6 +41,7 @@ function App() {
             <Route path="/character/create" element={<CharacterCreationLandingPage />} />
             <Route path="/character/create/race/:systemId" element={<SelectRacePage />} />
             <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
+            <Route path="/character/view" element={<ViewCharactersPage />} />
             {/* Other protected routes can go here */}
           </Route>
         </Routes>

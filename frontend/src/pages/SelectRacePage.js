@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../services/AuthContext'
+// import CharacterInfoBar from '../components/CharacterInfoBar';
 
 const SelectRacePage = () => {
   const [races, setRaces] = useState([]);
@@ -10,7 +11,12 @@ const SelectRacePage = () => {
   const { systemId } = useParams(); // Get the RPG system ID from URL params
   const navigate = useNavigate();
   const modalRef = useRef(null); // Ref to track modal for outside click
-
+  // const [characterData, setCharacterData] = useState({
+  //   name: '',
+  //   rpgSystem: 'Dungeons & Dragons 5th Edition',
+  //   race: '',
+  //   className: '',
+  // });
   const { user } = useContext(AuthContext)
 
   useEffect(() => {
@@ -49,6 +55,10 @@ const SelectRacePage = () => {
       console.error('Error initializing character with race:', error);
     }
   };
+
+  // const handleNameChange = (newName) => {
+  //   setCharacterData({ ...characterData, name: newName });
+  // };
   
 
   const handleCloseModal = () => {
@@ -77,6 +87,7 @@ const SelectRacePage = () => {
 
   return (
     <div className="min-h-screen bg-background text-text p-8">
+      {/* <CharacterInfoBar characterData={characterData} onNameChange={handleNameChange} /> */}
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center text-accent mb-8">Select a Race</h1>
         <p className="text-center mb-10 text-lg">Choose a race for your character.</p>

@@ -31,18 +31,19 @@ const SelectClassPage = () => {
 
   const handleClassConfirm = async () => {
     try {
-      // Send a request to progressively save the selected class to the character in the backend
+      // Send a request to save the selected class to the character in the backend
       const response = await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
         class_id: selectedClass.id, // The selected class ID
         character_id: characterId // The character ID
       });
-
+  
       // Navigate to the next step (Assign Ability Scores)
       navigate(`/character/create/ability-scores/${characterId}`);
     } catch (error) {
       console.error('Error saving class:', error);
     }
   };
+  
 
   const handleCloseModal = () => {
     setSelectedClass(null); // Close the modal
@@ -64,9 +65,9 @@ const SelectClassPage = () => {
             className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
             onClick={handleBackButton}
           >
-            Back to Race Selection
+            ←
           </button>
-          <h1 className="text-4xl font-bold text-center text-accent">Select a Class</h1>
+          <h1 className="text-4xl font-bold text-center text-accent mx-auto">Select a Class</h1>
           <button
             className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
             onClick={() => navigate('/')} // Navigate to home
