@@ -10,42 +10,46 @@ import RPGSystemsPage from './pages/RPGSystems'
 import CharacterCreationLandingPage from './pages/CharacterCreationLandingPage';
 import SelectClassPage from './pages/SelectClassPage';
 import ViewCharactersPage from './pages/ViewCharacters'
-import { AuthProvider } from './services/AuthContext';
-import { useAuth } from './hooks/useAuth';
+import { AuthProvider, useAuth } from './components/auth/auth';
 import { ProtectedRoute, PublicRoute } from './components/Routes';
 
-
-function App() {
-  const { isAuthenticated, loading, logout } = useAuth();
+function AppContent() {
+  const { user, loading, logout } = useAuth();
 
   if (loading) {
     return <div>Loading...</div>; // You can customize this with a loader component
   }
 
   return (
-    <AuthProvider>
-      <Router>
-        {isAuthenticated && <Navbar onLogout={logout} />} {/* Render the navbar only if authenticated */}
-        <Routes>
-          {/* Public Routes */}
-          <Route element={<PublicRoute isAuthenticated={isAuthenticated} />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/" element={<HomePage />} />
-          </Route>
+    <Router>
+      {user && <Navbar onLogout={logout} />} {/* Render the navbar only if authenticated */}
+      <Routes>
+        {/* Public Routes */}
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<HomePage />} />
+        </Route>
 
-          {/* Protected Routes */}
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/rpgsystems" element={<RPGSystemsPage />} />
-            <Route path="/character/create" element={<CharacterCreationLandingPage />} />
-            <Route path="/character/create/race/:systemId" element={<SelectRacePage />} />
-            <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
-            <Route path="/character/view" element={<ViewCharactersPage />} />
-            {/* Other protected routes can go here */}
-          </Route>
-        </Routes>
-      </Router>
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rpgsystems" element={<RPGSystemsPage />} />
+          <Route path="/character/create" element={<CharacterCreationLandingPage />} />
+          <Route path="/character/create/race/:systemId" element={<SelectRacePage />} />
+          <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
+          <Route path="/character/view" element={<ViewCharactersPage />} />
+          {/* Other protected routes can go here */}
+        </Route>
+      </Routes>
+    </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
     </AuthProvider>
   );
 }

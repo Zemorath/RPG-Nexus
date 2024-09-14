@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../../services/AuthContext';
+import { useAuth } from './auth';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);  // Access the login function from context
+  const { login } = useAuth();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-text">
@@ -22,7 +22,6 @@ const Login = () => {
             const response = await login(values.email, values.password);
             if (response.success) {
               navigate('/dashboard');
-              window.location.reload();
             } else {
               alert(response.message || 'Login failed');
             }
@@ -63,7 +62,7 @@ const Login = () => {
         </Formik>
         <p className="mt-4 text-center">
           Don't have an account?{' '}
-          <a href="/signup" className="text-accent hover:text-secondary">Sign up here</a>
+          <Link to="/signup" className="text-accent hover:text-secondary">Sign up here</Link>
         </p>
         <div className="mt-6 text-center">
           <Link

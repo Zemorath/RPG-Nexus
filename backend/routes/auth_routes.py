@@ -1,10 +1,19 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify, session, make_response
 from flask_restful import Resource, Api
 from backend.models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_bp = Blueprint('auth', __name__)
 user_api = Api(auth_bp)
+
+
+@auth_bp.route('/auth/test_session')
+def test_session():
+    if 'test_value' not in session:
+        session['test_value'] = 0
+    session['test_value'] += 1
+    return jsonify({"test_value": session['test_value']})
+
 
 # User Registration
 class UserSignup(Resource):
@@ -30,8 +39,6 @@ class UserSignup(Resource):
         else:
             return {"success": False, "message": "Entry could not be processed"}, 422
 
-
-# User Login
 class UserLogin(Resource):
     def post(self):
         data = request.get_json()
@@ -39,11 +46,21 @@ class UserLogin(Resource):
 
         if user and user.check_password(data.get('password')):
             session['user_id'] = user.id
-            session.permanent = True
-            print(f"Session user_id set: {session['user_id']}")
-            return {"success": True, "user": user.to_dict()}, 200
+            session.modified = True  # Ensure the session is saved
+            # Return only basic user data to avoid recursion
+            return {
+                "success": True, 
+                "user": {
+                    "id": user.id, 
+                    "username": user.username, 
+                    "email": user.email,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name
+                }
+            }, 200
         else:
             return {"success": False, "message": "Invalid credentials"}, 401
+
 
 # User Logout
 class UserLogout(Resource):
@@ -85,7 +102,8 @@ class UserProfile(Resource):
 # User authentication status
 class UserAuthStatus(Resource):
     def get(self):
-        user_id = session.get('user_id')
+        user_id = session['user_id']
+        # user_id = session.get('user_id')
         print(f"Session on auth status check: {session}")  # Use .get() to avoid KeyError
         if user_id:
             user = User.query.filter(User.id == user_id).first()

@@ -11,7 +11,7 @@ const ViewCharactersPage = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5555/api/characters/view'); // Adjust API endpoint as needed
+        const response = await axios.get('http://127.0.0.1:5555/api/characters/view', { withCredentials: true });
         setCharacters(response.data.characters);
         setLoading(false);
       } catch (error) {
@@ -24,8 +24,8 @@ const ViewCharactersPage = () => {
   }, []);
 
   // Determine the border color based on RPG system
-  const getBorderColor = (systemName) => {
-    switch (systemName.toLowerCase()) {
+  const getBorderColor = (rpgSystem) => {
+    switch (rpgSystem.toLowerCase()) {
       case 'dungeons & dragons':
         return 'border-red-600'; // D&D
       case 'pathfinder':
@@ -57,16 +57,16 @@ const ViewCharactersPage = () => {
             >
               <h2 className="text-2xl font-bold text-center mb-2">{character.name}</h2>
               <p className="text-center mb-2">
-                <strong>Race:</strong> {character.race.name}
+                <strong>Race:</strong> {character.race}
               </p>
               <p className="text-center mb-2">
-                <strong>Class:</strong> {character.class.name}
+                <strong>Class:</strong> {character.class}
               </p>
               <p className="text-center mb-2">
                 <strong>Level:</strong> {character.level}
               </p>
               <p className="text-center text-xs italic text-accent mt-4">
-                {character.rpg_system.name}
+                {character.rpg_system}
               </p>
             </div>
           ))}

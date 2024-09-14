@@ -5,6 +5,13 @@ from backend.models import db, Character, CharacterSkill, CharacterItem
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
 
+@character_bp.route('/character/test_session')
+def test_session():
+    if 'test_value' not in session:
+        session['test_value'] = 0
+    session['test_value'] += 1
+    return jsonify({"test_value": session['test_value']})
+
 # List all characters
 class CharacterList(Resource):
     def get(self):
@@ -62,9 +69,11 @@ class CharacterDetail(Resource):
         return {"message": "Character deleted successfully"}, 200
 
 class UserCharacters(Resource):
-    def get(self):
-        user_id = session.get('user_id')  # Fetch user_id from session
 
+    def get(self):
+        print(f"Session in UserCharacters: {session}")
+        print(f"Test value in session: {session.get('user_id')}")
+        user_id = session.get('user_id')
         if not user_id:
             return {"error": "Unauthorized access"}, 401
 

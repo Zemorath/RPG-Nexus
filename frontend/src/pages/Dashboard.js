@@ -1,30 +1,41 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../services/AuthContext'; // Use the context
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../components/auth/auth'; // Update this import path as needed
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [characters, setCharacters] = useState([]);
-  const { user, loading } = useContext(AuthContext); // Access user from context
+  const { user, loading } = useAuth(); // Use the useAuth hook
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCharacters = async () => {
+      if (!user) return; // Exit if there's no user
+
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/users/${user.id}/characters`);
+        const response = await axios.get(`http://127.0.0.1:5555/api/characters/view`, {
+          withCredentials: true // Ensure cookies are sent with the request
+        });
         setCharacters(response.data);
       } catch (error) {
         console.error('Error fetching characters:', error);
+        // Handle error (e.g., redirect to login if unauthorized)
+        if (error.response && error.response.status === 401) {
+          navigate('/login');
+        }
       }
     };
 
-    if (user) {
-      fetchCharacters();
-    }
-  }, [user]);
+    fetchCharacters();
+  }, [user, navigate]);
 
   if (loading) {
     return <div>Loading...</div>; // Loading state
+  }
+
+  if (!user) {
+    navigate('/login');
+    return null;
   }
 
   return (
@@ -75,7 +86,7 @@ const Dashboard = () => {
           {/* Recent Activities Section */}
           <div className="bg-primary p-6 rounded-lg shadow-lg md:col-span-2">
             <h2 className="text-2xl font-bold mb-4">Recent Activities</h2>
-            <p>See what you’ve been up to recently with your characters and campaigns.</p>
+            <p>See what you've been up to recently with your characters and campaigns.</p>
           </div>
         </div>
       </div>

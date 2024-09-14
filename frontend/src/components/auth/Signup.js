@@ -2,11 +2,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../../services/AuthContext'; // Import useAuthContext to manage session
+import { useAuth } from './auth'; // Update this import path as needed
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { setUser } = AuthContext(); // Destructure setUser from AuthContext
+  const { register } = useAuth();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-text">
@@ -36,23 +36,9 @@ const Signup = () => {
           onSubmit={async (values, { setSubmitting }) => {
             try {
               const { confirmPassword, ...data } = values;
-              
-              // Make a POST request to the backend to register the user
-              const response = await fetch('http://127.0.0.1:5555/auth/register', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-                credentials: 'include', // Important for managing sessions with cookies
-              });
-
-              const result = await response.json();
-
+              const result = await register(data);
               if (result.success) {
-                // Update the session in the React state
-                setUser(result.user); 
-                navigate('/dashboard'); // Navigate to dashboard after signup
+                navigate('/dashboard');
               } else {
                 alert(result.message || 'Signup failed');
               }
@@ -76,6 +62,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="username" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="first_name">First Name</label>
                 <Field
@@ -86,6 +73,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="first_name" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="last_name">Last Name</label>
                 <Field
@@ -96,6 +84,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="last_name" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="age">Age</label>
                 <Field
@@ -106,6 +95,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="age" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
                 <Field
@@ -116,6 +106,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
                 <Field
@@ -126,6 +117,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <div className="mb-6">
                 <label className="block text-sm font-medium mb-1" htmlFor="confirmPassword">Confirm Password</label>
                 <Field
@@ -136,6 +128,7 @@ const Signup = () => {
                 />
                 <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm mt-1" />
               </div>
+
               <button
                 type="submit"
                 className="bg-accent text-background font-bold py-2 px-4 rounded w-full hover:bg-text hover:text-background transition duration-300"
@@ -148,7 +141,7 @@ const Signup = () => {
         </Formik>
         <p className="mt-4 text-center">
           Already have an account?{' '}
-          <a href="/login" className="text-accent hover:text-secondary">Login here</a>
+          <Link to="/login" className="text-accent hover:text-secondary">Login here</Link>
         </p>
         <div className="mt-6 text-center">
           <Link

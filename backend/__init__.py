@@ -31,9 +31,13 @@ def create_app(config_class=Config):
         instance_path=os.path.join(os.path.abspath(os.curdir), 'instance')
     )
     
-    # Enable CORS for external access
-    CORS(app, supports_credentials=True, origins=["http://localhost:3000"], allow_headers=["Content-Type", "Authorization"], expose_headers=["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"])
+
     app.config.from_object(config_class)
+
+
+    app.config['SESSION_COOKIE_SECURE'] = True 
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 
     # Initialize extensions
     db.init_app(app)
@@ -41,6 +45,8 @@ def create_app(config_class=Config):
 
     bcrypt.init_app(app)
     Session(app)
+
+    CORS(app, supports_credentials=True, origins=["http://localhost:3000"], allow_headers=["Content-Type", "Authorization"], expose_headers=["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"])
 
     # Import and register blueprints
     from .routes.campaign_routes import campaign_bp

@@ -1,71 +1,68 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../services/AuthContext'
-// import CharacterInfoBar from '../components/CharacterInfoBar';
+import { useAuth } from '../components/auth/auth'; // Update this import path as needed
 
 const SelectRacePage = () => {
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedRace, setSelectedRace] = useState(null); // To store the selected race for the modal
-  const { systemId } = useParams(); // Get the RPG system ID from URL params
+  const [selectedRace, setSelectedRace] = useState(null);
+  const { systemId } = useParams();
   const navigate = useNavigate();
-  const modalRef = useRef(null); // Ref to track modal for outside click
-  // const [characterData, setCharacterData] = useState({
-  //   name: '',
-  //   rpgSystem: 'Dungeons & Dragons 5th Edition',
-  //   race: '',
-  //   className: '',
-  // });
-  const { user } = useContext(AuthContext)
+  const modalRef = useRef(null);
+  
+  const { user } = useAuth(); // Use the useAuth hook
 
   useEffect(() => {
     const fetchRaces = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/races/rpgsystem/${systemId}`);
+        const response = await axios.get(`http://127.0.0.1:5555/api/races/rpgsystem/${systemId}`, {
+          withCredentials: true // Ensure cookies are sent with the request
+        });
         setRaces(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching races:', error);
         setLoading(false);
+        // Handle unauthorized access
+        if (error.response && error.response.status === 401) {
+          navigate('/login');
+        }
       }
     };
 
     fetchRaces();
-  }, [systemId]);
+  }, [systemId, navigate]);
 
   const handleRaceSelect = (race) => {
-    setSelectedRace(race); // Set the selected race for the modal
+    setSelectedRace(race);
   };
 
   const handleRaceConfirm = async () => {
     try {
-      // Initialize the character with the selected race
       const response = await axios.post(`http://127.0.0.1:5555/api/characters/initialize`, {
-        user_id: user.id,  // Current logged-in user ID
-        rpg_system_id: systemId,  // The RPG system ID
-        race_id: selectedRace.id  // The selected race ID
+        user_id: user.id,
+        rpg_system_id: systemId,
+        race_id: selectedRace.id
+      }, {
+        withCredentials: true // Ensure cookies are sent with the request
       });
   
       const characterId = response.data.id;
-  
-      // Navigate to class selection page after successful race selection
       navigate(`/character/create/class/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error initializing character with race:', error);
+      // Handle unauthorized access
+      if (error.response && error.response.status === 401) {
+        navigate('/login');
+      }
     }
   };
 
-  // const handleNameChange = (newName) => {
-  //   setCharacterData({ ...characterData, name: newName });
-  // };
-  
-
   const handleCloseModal = () => {
-    setSelectedRace(null); // Close the modal
+    setSelectedRace(null);
   };
 
-  // Close modal if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -73,10 +70,8 @@ const SelectRacePage = () => {
       }
     };
 
-    // Add event listener when modal is open
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // Remove event listener on cleanup
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [selectedRace]);
@@ -85,9 +80,13 @@ const SelectRacePage = () => {
     return <div className="text-center text-text text-lg">Loading Races...</div>;
   }
 
+  if (!user) {
+    navigate('/login');
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-background text-text p-8">
-      {/* <CharacterInfoBar characterData={characterData} onNameChange={handleNameChange} /> */}
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center text-accent mb-8">Select a Race</h1>
         <p className="text-center mb-10 text-lg">Choose a race for your character.</p>
@@ -107,7 +106,6 @@ const SelectRacePage = () => {
           ))}
         </div>
 
-        {/* Modal Popup */}
         {selectedRace && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div
@@ -143,7 +141,6 @@ const SelectRacePage = () => {
           </div>
         )}
 
-        {/* Back Button */}
         <button
           className="mt-6 bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
           onClick={() => navigate("/character/create")}

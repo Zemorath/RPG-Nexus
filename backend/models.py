@@ -14,17 +14,17 @@ class User(db.Model, SerializerMixin):
     age = db.Column(db.Integer, nullable=True)
     is_admin = db.Column(db.Boolean, default=False)
 
-    characters = db.relationship('Character', backref='user', lazy=True)
-    managed_campaigns = db.relationship('Campaign', backref='gm_user', lazy=True)
-    bookmarked_items = db.relationship('Item', secondary='user_bookmarked_items', backref='users', lazy=True)
-    bookmarked_monsters = db.relationship('Monster', secondary='user_bookmarked_monsters', backref='users', lazy=True)
-    bookmarked_npcs = db.relationship('NPC', secondary='user_bookmarked_npcs', backref='users', lazy=True)
+    characters = db.relationship('Character', back_populates='user', lazy=True)
+    managed_campaigns = db.relationship('Campaign', back_populates='gm_user', lazy=True)
+    bookmarked_items = db.relationship('Item', secondary='user_bookmarked_items', back_populates='users', lazy=True)
+    bookmarked_monsters = db.relationship('Monster', secondary='user_bookmarked_monsters', back_populates='users', lazy=True)
+    bookmarked_npcs = db.relationship('NPC', secondary='user_bookmarked_npcs', back_populates='users', lazy=True)
     homebrew_items = db.relationship('HomebrewItem', back_populates='user', lazy=True)
     homebrew_skills = db.relationship('HomebrewSkill', back_populates='user', lazy=True)
     homebrew_npcs = db.relationship('HomebrewNPC', back_populates='user', lazy=True)
-    notes = db.relationship('Note', backref='creator', lazy=True)
+    notes = db.relationship('Note', back_populates='creator', lazy=True)
 
-    serialize_rules = ('-characters.user', '-managed_campaigns.gm_user')
+    serialize_rules = ('-characters.user', '-managed_campaigns.gm_user', '-bookmarked_items.users', '-bookmarked_monsters.users', '-bookmarked_npcs.users', '-homebrew_items.user', '-homebrew_skills.user', '-homebrew_npcs.user', '-notes.creator')
 
     def set_password(self, password):
         self._password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
@@ -48,63 +48,6 @@ user_bookmarked_npcs = db.Table('user_bookmarked_npcs',
     db.Column('npc_id', db.Integer, db.ForeignKey('npc.id'), primary_key=True)
 )
 
-
-# # Character table
-# class Character(db.Model, SerializerMixin):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
-#     level = db.Column(db.Integer, nullable=False)
-#     health = db.Column(db.Integer, nullable=True)
-#     experience_points = db.Column(db.Integer, nullable=True)
-#     alignment = db.Column(db.String(20), nullable=True)
-#     background = db.Column(db.String(100), nullable=True)
-#     inventory_weight_limit = db.Column(db.Integer, nullable=True)
-#     status_effects = db.Column(db.JSON, nullable=True)
-#     last_active = db.Column(db.DateTime, nullable=True)
-#     system_data = db.Column(db.JSON, nullable=True)
-
-#     # Relationships to other tables
-#     skills = db.relationship('CharacterSkill', backref='character', lazy=True, cascade="all, delete-orphan")
-#     items = db.relationship('CharacterItem', backref='character', lazy=True, cascade="all, delete-orphan")
-#     rpg_systems = db.relationship('CharacterRPGSystem', backref='character', lazy=True, cascade="all, delete-orphan")
-#     races = db.relationship('CharacterRace', backref='character', lazy=True, cascade="all, delete-orphan")
-#     classes = db.relationship('CharacterClass', backref='character', lazy=True, cascade="all, delete-orphan")
-#     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
-#     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
-#     campaigns = db.relationship('Campaign', secondary='character_campaign', backref='characters')
-
-#     serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-races.character', '-classes.character')
-
-
-# # Race table and the related join
-# class Race(db.Model, SerializerMixin):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(50), nullable=False)
-#     description = db.Column(db.Text, nullable=True)
-#     size = db.Column(db.String(20), nullable=True)
-#     speed = db.Column(db.Integer, nullable=True)
-#     languages = db.Column(db.Text, nullable=True)
-#     vision_type = db.Column(db.String(50), nullable=True)
-#     natural_weapons = db.Column(db.Text, nullable=True)
-#     favored_class = db.Column(db.String(50), nullable=True)
-#     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
-
-#     characters = db.relationship('CharacterRace', backref='race', lazy=True)
-#     rpg_system = db.relationship('RPGSystem', backref=db.backref('races', lazy=True))
-
-#     serialize_rules = ('-characters.race', '-rpg_system.races')
-
-
-# class CharacterRace(db.Model, SerializerMixin):
-#     id = db.Column(db.Integer, primary_key=True)
-#     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-#     race_id = db.Column(db.Integer, db.ForeignKey('race.id'), nullable=False)
-#     system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
-
-#     serialize_rules = ('-character.races', '-race.characters')
-
 class Character(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
@@ -124,14 +67,17 @@ class Character(db.Model, SerializerMixin):
     physical_features = db.Column(db.JSON, nullable=True)
 
     # Relationships to other tables
-    skills = db.relationship('CharacterSkill', backref='character', lazy=True, cascade="all, delete-orphan")
-    items = db.relationship('CharacterItem', backref='character', lazy=True, cascade="all, delete-orphan")
-    rpg_systems = db.relationship('CharacterRPGSystem', backref='character', lazy=True, cascade="all, delete-orphan")
+    race = db.relationship('Race', back_populates='characters')
+    character_class = db.relationship('Class', back_populates='characters')
+    skills = db.relationship('CharacterSkill', back_populates='character', lazy=True, cascade="all, delete-orphan")
+    items = db.relationship('CharacterItem', back_populates='character', lazy=True, cascade="all, delete-orphan")
+    rpg_systems = db.relationship('CharacterRPGSystem', back_populates='character', lazy=True, cascade="all, delete-orphan")
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
-    campaigns = db.relationship('Campaign', secondary='character_campaign', backref='characters')
+    campaigns = db.relationship('Campaign', secondary='character_campaign', back_populates='characters')
+    user = db.relationship('User', back_populates='characters')
 
-    serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character')
+    serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters')
 
 class Race(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -145,7 +91,8 @@ class Race(db.Model, SerializerMixin):
     favored_class = db.Column(db.String(50), nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    rpg_system = db.relationship('RPGSystem', backref=db.backref('races', lazy=True))
+    rpg_system = db.relationship('RPGSystem', back_populates='races', lazy=True)
+    characters = db.relationship('Character', back_populates='race', lazy=True)
 
     serialize_rules = ('-characters.race', '-rpg_system.races')
 
@@ -164,10 +111,10 @@ class Class(db.Model, SerializerMixin):
     resource_tracking = db.Column(db.JSON, nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    characters = db.relationship('Character', backref='char_class', lazy=True)  # Update backref to Character
-    rpg_system = db.relationship('RPGSystem', backref=db.backref('classes', lazy=True))
+    characters = db.relationship('Character', back_populates='character_class', lazy=True)
+    rpg_system = db.relationship('RPGSystem', back_populates='classes', lazy=True)
 
-    serialize_rules = ('-characters.char_class', '-rpg_system.classes')
+    serialize_rules = ('-characters.character_class', '-rpg_system.classes')
 
 
 # Skill table and the related join table
@@ -181,8 +128,8 @@ class Skill(db.Model, SerializerMixin):
     requires_training = db.Column(db.Boolean, nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    characters = db.relationship('CharacterSkill', backref='skill', lazy=True)
-    rpg_system = db.relationship('RPGSystem', backref=db.backref('skills', lazy=True))
+    characters = db.relationship('CharacterSkill', back_populates='skill', lazy=True)
+    rpg_system = db.relationship('RPGSystem', back_populates='skills', lazy=True)
 
     serialize_rules = ('-characters.skill', '-rpg_system.skills')
 
@@ -192,7 +139,11 @@ class CharacterSkill(db.Model, SerializerMixin):
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
 
+    character = db.relationship('Character', back_populates='skills')
+    skill = db.relationship('Skill', back_populates='characters')
+
     serialize_rules = ('-character.skills', '-skill.characters')
+    
 
 
 class HomebrewSkill(db.Model, SerializerMixin):
@@ -243,16 +194,21 @@ class Item(db.Model, SerializerMixin):
     slot_type = db.Column(db.String(50), nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    characters = db.relationship('CharacterItem', backref='item', lazy=True)
-    rpg_system = db.relationship('RPGSystem', backref=db.backref('items', lazy=True))
+    characters = db.relationship('CharacterItem', back_populates='item', lazy=True)
+    rpg_system = db.relationship('RPGSystem', back_populates='items')
+    users = db.relationship('User', secondary='user_bookmarked_items', back_populates='bookmarked_items', lazy=True)
+    
 
-    serialize_rules = ('-characters.item', '-rpg_system.items')
+    serialize_rules = ('-characters.item', '-rpg_system.items', '-users.bookmarked_items')
 
 
 class CharacterItem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
+
+    character = db.relationship('Character', back_populates='items')
+    item = db.relationship('Item', back_populates='characters')
 
     serialize_rules = ('-character.items', '-item.characters')
 
@@ -305,15 +261,23 @@ class RPGSystem(db.Model, SerializerMixin):
     popularity = db.Column(db.Integer, nullable=True)
     default_settings = db.Column(db.JSON, nullable=True)
 
-    characters = db.relationship('CharacterRPGSystem', backref='rpg_system', lazy=True)
+    characters = db.relationship('CharacterRPGSystem', back_populates='rpg_system', lazy=True)
+    races = db.relationship('Race', back_populates='rpg_system', lazy=True)
+    classes = db.relationship('Class', back_populates='rpg_system', lazy=True)
+    skills = db.relationship('Skill', back_populates='rpg_system', lazy=True)
+    items = db.relationship('Item', back_populates='rpg_system', lazy=True)
+    monsters = db.relationship('Monster', back_populates='rpg_system', lazy=True)
 
-    serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system')
+    serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system', '-npcs.rpg_system')
 
 
 class CharacterRPGSystem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+
+    character = db.relationship('Character', back_populates='rpg_systems')
+    rpg_system = db.relationship('RPGSystem', back_populates='characters')
 
     serialize_rules = ('-character.rpg_systems', '-rpg_system.characters')
 
@@ -334,9 +298,11 @@ class Campaign(db.Model, SerializerMixin):
     world_setting = db.Column(db.String(255), nullable=True)
     house_rules = db.Column(db.Text, nullable=True)
 
-    notes = db.relationship('Note', backref='campaign', lazy=True)
+    notes = db.relationship('Note', back_populates='campaign', lazy=True)
+    gm_user = db.relationship('User', back_populates='managed_campaigns')
+    characters = db.relationship('Character', secondary='character_campaign', back_populates='campaigns')
 
-    serialize_rules = ('-characters.campaign', '-gm_user.managed_campaigns')
+    serialize_rules = ('-characters.campaigns', '-gm_user.managed_campaigns', '-notes.campaign')
 
 
 # CharacterCampaign Join Table
@@ -355,10 +321,13 @@ class Note(db.Model, SerializerMixin):
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=True)
     note_type = db.Column(db.String(50), nullable=True)
     tags = db.Column(db.String(255), nullable=True)
-    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+    creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     last_updated = db.Column(db.DateTime, nullable=True)
     shared_with = db.Column(db.JSON, nullable=True)
     related_entities = db.Column(db.JSON, nullable=True)
+
+    creator = db.relationship('User', back_populates='notes')
+    campaign = db.relationship('Campaign', back_populates='notes')
 
     serialize_rules = ('-creator.notes', '-campaign.notes', '-character.notes')
 
@@ -378,10 +347,10 @@ class Monster(db.Model, SerializerMixin):
     actions = db.Column(db.JSON, nullable=True)
     legendary_actions = db.Column(db.JSON, nullable=True)
 
-    rpg_system = db.relationship('RPGSystem', backref=db.backref('monsters', lazy=True))
+    rpg_system = db.relationship('RPGSystem', back_populates='monsters')
+    users = db.relationship('User', secondary='user_bookmarked_monsters', back_populates='bookmarked_monsters', lazy=True)
 
-    serialize_rules = ('-rpg_system.monsters',)
-
+    serialize_rules = ('-rpg_system.monsters', '-users.bookmarked_monsters')
 
 class HomebrewMonster(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -423,7 +392,9 @@ class NPC(db.Model, SerializerMixin):
     inventory = db.Column(db.JSON, nullable=True)
     motivations = db.Column(db.JSON, nullable=True)
 
-    serialize_rules = ('-rpg_system.npcs', '-campaign.characters')
+    users = db.relationship('User', secondary='user_bookmarked_npcs', back_populates='bookmarked_npcs', lazy=True)
+
+    serialize_rules = ('-rpg_system.npcs', '-users.bookmarked_npcs')
 
 
 class HomebrewNPC(db.Model, SerializerMixin):
@@ -437,6 +408,7 @@ class HomebrewNPC(db.Model, SerializerMixin):
     abilities = db.Column(db.JSON, nullable=True)
     inventory = db.Column(db.JSON, nullable=True)
     motivations = db.Column(db.JSON, nullable=True)
+
 
     user = db.relationship('User', back_populates='homebrew_npcs')
 
