@@ -12,7 +12,6 @@ class RPGSystemList(Resource):
         rpg_systems = RPGSystem.query.all()
         return jsonify([rpg_system.to_dict() for rpg_system in rpg_systems])
 
-
 # Details of specific RPG
 class RPGSystemDetail(Resource):
     def get(self, rpg_system_id):

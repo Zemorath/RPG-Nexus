@@ -48,6 +48,12 @@ class CharacterDetail(Resource):
         character = Character.query.get_or_404(character_id)
         data = request.get_json()
 
+        if 'race_id' in data:
+            character.race_id = data['race_id']
+
+        if 'class_id' in data:
+            character.class_id = data['class_id']
+
         character.name = data.get('name', character.name)
         character.level = data.get('level', character.level)
         character.health = data.get('health', character.health)
@@ -71,8 +77,6 @@ class CharacterDetail(Resource):
 class UserCharacters(Resource):
 
     def get(self):
-        print(f"Session in UserCharacters: {session}")
-        print(f"Test value in session: {session.get('user_id')}")
         user_id = session.get('user_id')
         if not user_id:
             return {"error": "Unauthorized access"}, 401
@@ -80,18 +84,7 @@ class UserCharacters(Resource):
         # Fetch characters for the logged-in user
         characters = Character.query.filter_by(user_id=user_id).all()
 
-        # Prepare the character data
-        character_data = [
-            {
-                "id": character.id,
-                "name": character.name,
-                "race": character.race.name if character.race else "Unknown",
-                "class": character.character_class.name if character.character_class else "Unknown",
-                "level": character.level,
-                "rpg_system": character.rpg_system.name
-            }
-            for character in characters
-        ]
+        character_data = [character.to_dict() for character in characters]
 
         return {"characters": character_data}, 200
 

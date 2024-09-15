@@ -7,7 +7,7 @@ const SelectRacePage = () => {
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRace, setSelectedRace] = useState(null);
-  const { systemId } = useParams();
+  const { systemId, characterId } = useParams();
   const navigate = useNavigate();
   const modalRef = useRef(null);
   
@@ -38,21 +38,32 @@ const SelectRacePage = () => {
     setSelectedRace(race);
   };
 
+  
+
   const handleRaceConfirm = async () => {
     try {
-      const response = await axios.post(`http://127.0.0.1:5555/api/characters/initialize`, {
-        user_id: user.id,
-        rpg_system_id: systemId,
-        race_id: selectedRace.id
-      }, {
-        withCredentials: true // Ensure cookies are sent with the request
-      });
+      if (characterId) {
+        // Update existing character
+        await axios.put(`http://127.0.0.1:5555/api/characters/${characterId}`, {
+          race_id: selectedRace.id
+        }, {
+          withCredentials: true
+        });
+      } else {
+        // Initialize new character
+        const response = await axios.post(`http://127.0.0.1:5555/api/characters/initialize`, {
+          user_id: user.id,
+          rpg_system_id: systemId,
+          race_id: selectedRace.id
+        }, {
+          withCredentials: true
+        });
   
-      const characterId = response.data.id;
-      navigate(`/character/create/class/${systemId}/${characterId}`);
+        const newCharacterId = response.data.id;
+        navigate(`/character/create/class/${systemId}/${newCharacterId}`);
+      }
     } catch (error) {
-      console.error('Error initializing character with race:', error);
-      // Handle unauthorized access
+      console.error('Error initializing/updating character with race:', error);
       if (error.response && error.response.status === 401) {
         navigate('/login');
       }

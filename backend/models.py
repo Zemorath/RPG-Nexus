@@ -26,6 +26,17 @@ class User(db.Model, SerializerMixin):
 
     serialize_rules = ('-characters.user', '-managed_campaigns.gm_user', '-bookmarked_items.users', '-bookmarked_monsters.users', '-bookmarked_npcs.users', '-homebrew_items.user', '-homebrew_skills.user', '-homebrew_npcs.user', '-notes.creator')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age,
+            'is_admin': self.is_admin
+        }
+
     def set_password(self, password):
         self._password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 
@@ -71,13 +82,45 @@ class Character(db.Model, SerializerMixin):
     character_class = db.relationship('Class', back_populates='characters')
     skills = db.relationship('CharacterSkill', back_populates='character', lazy=True, cascade="all, delete-orphan")
     items = db.relationship('CharacterItem', back_populates='character', lazy=True, cascade="all, delete-orphan")
-    rpg_systems = db.relationship('CharacterRPGSystem', back_populates='character', lazy=True, cascade="all, delete-orphan")
+    rpg_system = db.relationship('RPGSystem', back_populates='characters')
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
     campaigns = db.relationship('Campaign', secondary='character_campaign', back_populates='characters')
     user = db.relationship('User', back_populates='characters')
 
     serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'level': self.level,
+            'health': self.health,
+            'experience_points': self.experience_points,
+            'alignment': self.alignment,
+            'background': self.background,
+            'inventory_weight_limit': self.inventory_weight_limit,
+            'status_effects': self.status_effects,
+            'last_active': self.last_active,
+            'system_data': self.system_data,
+            'physical_features': self.physical_features,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            },
+            'race': {
+                'id': self.race.id if self.race else None,
+                'name': self.race.name if self.race else None
+            },
+            'class': {
+                'id': self.character_class.id if self.character_class else None,
+                'name': self.character_class.name if self.character_class else None
+            },
+            'user': {
+                'id': self.user.id,
+                'username': self.user.username
+            }
+        }
 
 class Race(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -95,6 +138,23 @@ class Race(db.Model, SerializerMixin):
     characters = db.relationship('Character', back_populates='race', lazy=True)
 
     serialize_rules = ('-characters.race', '-rpg_system.races')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'size': self.size,
+            'speed': self.speed,
+            'languages': self.languages,
+            'vision_type': self.vision_type,
+            'natural_weapons': self.natural_weapons,
+            'favored_class': self.favored_class,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
 
 
 
@@ -116,6 +176,25 @@ class Class(db.Model, SerializerMixin):
 
     serialize_rules = ('-characters.character_class', '-rpg_system.classes')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'hit_die': self.hit_die,
+            'primary_ability': self.primary_ability,
+            'armor_proficiencies': self.armor_proficiencies,
+            'weapon_proficiencies': self.weapon_proficiencies,
+            'spellcasting': self.spellcasting,
+            'subclass_options': self.subclass_options,
+            'resource_tracking': self.resource_tracking,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+    
+
 
 # Skill table and the related join table
 class Skill(db.Model, SerializerMixin):
@@ -133,6 +212,21 @@ class Skill(db.Model, SerializerMixin):
 
     serialize_rules = ('-characters.skill', '-rpg_system.skills')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'associated_ability': self.associated_ability,
+            'skill_category': self.skill_category,
+            'difficulty_class': self.difficulty_class,
+            'requires_training': self.requires_training,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+
 
 class CharacterSkill(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -143,6 +237,19 @@ class CharacterSkill(db.Model, SerializerMixin):
     skill = db.relationship('Skill', back_populates='characters')
 
     serialize_rules = ('-character.skills', '-skill.characters')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'character': {
+                'id': self.character.id,
+                'name': self.character.name
+            },
+            'skill': {
+                'id': self.skill.id,
+                'name': self.skill.name
+            }
+        }
     
 
 
@@ -201,6 +308,25 @@ class Item(db.Model, SerializerMixin):
 
     serialize_rules = ('-characters.item', '-rpg_system.items', '-users.bookmarked_items')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'weight': self.weight,
+            'rarity': self.rarity,
+            'cost': self.cost,
+            'damage_type': self.damage_type,
+            'durability': self.durability,
+            'enchantment_level': self.enchantment_level,
+            'material': self.material,
+            'slot_type': self.slot_type,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+
 
 class CharacterItem(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -211,6 +337,19 @@ class CharacterItem(db.Model, SerializerMixin):
     item = db.relationship('Item', back_populates='characters')
 
     serialize_rules = ('-character.items', '-item.characters')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'character': {
+                'id': self.character.id,
+                'name': self.character.name
+            },
+            'item': {
+                'id': self.item.id,
+                'name': self.item.name
+            }
+        }
 
 
 class HomebrewItem(db.Model, SerializerMixin):
@@ -261,7 +400,7 @@ class RPGSystem(db.Model, SerializerMixin):
     popularity = db.Column(db.Integer, nullable=True)
     default_settings = db.Column(db.JSON, nullable=True)
 
-    characters = db.relationship('CharacterRPGSystem', back_populates='rpg_system', lazy=True)
+    characters = db.relationship('Character', back_populates='rpg_system', lazy=True)
     races = db.relationship('Race', back_populates='rpg_system', lazy=True)
     classes = db.relationship('Class', back_populates='rpg_system', lazy=True)
     skills = db.relationship('Skill', back_populates='rpg_system', lazy=True)
@@ -270,16 +409,18 @@ class RPGSystem(db.Model, SerializerMixin):
 
     serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system', '-npcs.rpg_system')
 
-
-class CharacterRPGSystem(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
-
-    character = db.relationship('Character', back_populates='rpg_systems')
-    rpg_system = db.relationship('RPGSystem', back_populates='characters')
-
-    serialize_rules = ('-character.rpg_systems', '-rpg_system.characters')
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'publisher': self.publisher,
+            'edition': self.edition,
+            'core_rulebook': self.core_rulebook,
+            'genre': self.genre,
+            'popularity': self.popularity,
+            'default_settings': self.default_settings
+        }
 
 
 # Campaign models
@@ -303,6 +444,25 @@ class Campaign(db.Model, SerializerMixin):
     characters = db.relationship('Character', secondary='character_campaign', back_populates='campaigns')
 
     serialize_rules = ('-characters.campaigns', '-gm_user.managed_campaigns', '-notes.campaign')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'status': self.status,
+            'start_date': self.start_date,
+            'end_date': self.end_date,
+            'player_count': self.player_count,
+            'gm_user': {
+                'id': self.gm_user.id,
+                'username': self.gm_user.username
+            } if self.gm_user else None,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
 
 
 # CharacterCampaign Join Table
@@ -352,6 +512,22 @@ class Monster(db.Model, SerializerMixin):
 
     serialize_rules = ('-rpg_system.monsters', '-users.bookmarked_monsters')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'size': self.size,
+            'type': self.type,
+            'hit_points': self.hit_points,
+            'armor_class': self.armor_class,
+            'challenge_rating': self.challenge_rating,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+
 class HomebrewMonster(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -395,6 +571,19 @@ class NPC(db.Model, SerializerMixin):
     users = db.relationship('User', secondary='user_bookmarked_npcs', back_populates='bookmarked_npcs', lazy=True)
 
     serialize_rules = ('-rpg_system.npcs', '-users.bookmarked_npcs')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'role': self.role,
+            'alignment': self.alignment,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
 
 
 class HomebrewNPC(db.Model, SerializerMixin):

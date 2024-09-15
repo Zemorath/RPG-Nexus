@@ -36,7 +36,7 @@ function AppContent() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/rpgsystems" element={<RPGSystemsPage />} />
           <Route path="/character/create" element={<CharacterCreationLandingPage />} />
-          <Route path="/character/create/race/:systemId" element={<SelectRacePage />} />
+          <Route path="/character/create/race/:systemId/:characterId?" element={<SelectRacePage />} />
           <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
           <Route path="/character/view" element={<ViewCharactersPage />} />
           {/* Other protected routes can go here */}
