@@ -205,8 +205,22 @@ class UpdateCharacterClass(Resource):
         db.session.commit()
 
         return character.to_dict(), 200
+    
+class UpdateCharacterAbilityScores(Resource):
+    def post(self):
+        data = request.get_json()
 
+        # Fetch character
+        character = Character.query.get(data.get('character_id'))
+        if not character:
+            return {"message": "Character not found"}, 404
 
+        # Update the ability scores
+        character.ability_scores = data.get('ability_scores', {})
+
+        db.session.commit()
+
+        return character.to_dict(), 200
 
 
 # Character Routes
@@ -222,3 +236,4 @@ character_api.add_resource(CharacterExport, '/characters/<int:character_id>/expo
 character_api.add_resource(CharacterImport, '/characters/import')
 character_api.add_resource(InitializeCharacter, '/characters/initialize')
 character_api.add_resource(UpdateCharacterClass, '/characters/update-class')
+character_api.add_resource(UpdateCharacterAbilityScores, '/characters/update-ability-scores')

@@ -18,6 +18,7 @@ def seed_rpg_systems():
             "classes": ["Barbarian", "Wizard", "Rogue"],
             "races": ["Elf", "Dwarf", "Human"],
             "mechanics": ["Ability Scores", "Saving Throws", "Proficiency Bonus"],
+            "ability_scores": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"],
             "setting": "Forgotten Realms",
             "logo": "/systemLogos/DnDLogo.png",
         }
@@ -35,6 +36,7 @@ def seed_rpg_systems():
             "classes": ["Alchemist", "Fighter", "Sorcerer"],
             "races": ["Elf", "Goblin", "Halfling"],
             "mechanics": ["Action Economy", "Feats", "Ancestries"],
+            "ability_scores": ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"],
             "setting": "Golarion",
             "logo": "/systemLogos/PathfinderLogo.png",
         }
@@ -53,6 +55,7 @@ def seed_rpg_systems():
             "races": ["Human", "Deep One Hybrid", "Ghoul"],
             "skills": ["Spot Hidden", "Psychology", "Library Use"],
             "mechanics": ["Sanity", "Luck"],
+            "ability_scores": ["Strength", "Dexterity", "Constitution", "Intelligence", "Power", "Appearance", "Size", "Education"],
             "setting": "1920s Lovecraftian Horror",
             "logo": "/systemLogos/CoCLogo.png",
         }
@@ -70,6 +73,7 @@ def seed_rpg_systems():
             "classes": ["Street Samurai", "Decker", "Mage"],
             "races": ["Human", "Elf", "Ork"],
             "mechanics": ["Augmentations", "Hacking", "Magic"],
+            "ability_scores": ["Body", "Agility", "Reaction", "Strength", "Willpower", "Logic", "Intuition", "Charisma", "Edge"],
             "setting": "Dystopian future with magic",
             "logo": "/systemLogos/ShadowrunLogo.png",
         }
@@ -87,6 +91,7 @@ def seed_rpg_systems():
             "classes": ["Bounty Hunter", "Smuggler", "Technician"],
             "races": ["Human", "Twi'lek", "Wookiee"],
             "mechanics": ["Obligation", "Destiny Points"],
+            "ability_scores": ["Brawn", "Agility", "Intellect", "Cunning", "Willpower", "Presence"],
             "setting": "Outer Rim Territories",
             "logo": "/systemLogos/StarWarsLogo.png",
         }
@@ -104,6 +109,7 @@ def seed_rpg_systems():
             "classes": ["Marine", "Scientist", "Android"],
             "races": ["Human"],
             "mechanics": ["Panic Rolls", "Stress and Trauma"],
+            "ability_scores": ["Strength", "Speed", "Intellect", "Combat"],
             "setting": "Deep space exploration and survival",
             "logo": "/systemLogos/MothershipLogo.png",
         }

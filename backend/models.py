@@ -76,6 +76,7 @@ class Character(db.Model, SerializerMixin):
     last_active = db.Column(db.DateTime, nullable=True)
     system_data = db.Column(db.JSON, nullable=True)
     physical_features = db.Column(db.JSON, nullable=True)
+    ability_scores = db.Column(db.JSON, nullable=True)
 
     # Relationships to other tables
     race = db.relationship('Race', back_populates='characters')
@@ -104,6 +105,7 @@ class Character(db.Model, SerializerMixin):
             'last_active': self.last_active,
             'system_data': self.system_data,
             'physical_features': self.physical_features,
+            'ability_scores': self.ability_scores,
             'rpg_system': {
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name

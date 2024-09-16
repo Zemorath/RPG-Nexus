@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   
     const logout = async () => {
       try {
-        await axios.post(`${API_URL}logout`);
+        await axios.delete(`${API_URL}logout`);
         setUser(null);
         setIsAuthenticated(false);
       } catch (error) {

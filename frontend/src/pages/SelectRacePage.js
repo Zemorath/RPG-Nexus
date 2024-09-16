@@ -49,6 +49,8 @@ const SelectRacePage = () => {
         }, {
           withCredentials: true
         });
+
+        navigate(`/character/create/class/${systemId}/${characterId}`);
       } else {
         // Initialize new character
         const response = await axios.post(`http://127.0.0.1:5555/api/characters/initialize`, {

@@ -32,13 +32,13 @@ const SelectClassPage = () => {
   const handleClassConfirm = async () => {
     try {
       // Send a request to save the selected class to the character in the backend
-      const response = await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
+      await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
         class_id: selectedClass.id, // The selected class ID
         character_id: characterId // The character ID
       });
   
       // Navigate to the next step (Assign Ability Scores)
-      navigate(`/character/create/ability-scores/${characterId}`);
+      navigate(`/character/create/ability-scores/:systemId/${characterId}`);
     } catch (error) {
       console.error('Error saving class:', error);
     }
