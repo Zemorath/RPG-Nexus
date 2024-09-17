@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, CharacterSkill, CharacterItem
+from backend.models import db, Character, CharacterSkill, CharacterItem, Feat, CharacterFeat, Spell, ClassProgression
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
@@ -195,16 +195,23 @@ class UpdateCharacterClass(Resource):
         data = request.get_json()
 
         # Find the character by ID
-        character = Character.query.get(data.get('character_id'))
-        if not character:
-            return {"message": "Character not found"}, 404
+        character = Character.query.get_or_404(data.get('character_id'))
 
         # Assign the selected class_id directly
-        character.class_id = data.get('class_id')
+        class_id = data.get('class_id')
+        character.class_id = class_id
         
+        # Fetch the correct class progression based on the character's class and level
+        class_progression = ClassProgression.query.filter_by(class_id=class_id, level=character.level).first()
+
+        if not class_progression:
+            return {"message": "Class progression not found for this level"}, 404
+        
+        # Commit the changes
         db.session.commit()
 
         return character.to_dict(), 200
+
     
 class UpdateCharacterAbilityScores(Resource):
     def post(self):
@@ -222,6 +229,135 @@ class UpdateCharacterAbilityScores(Resource):
 
         return character.to_dict(), 200
 
+class CharacterFeats(Resource):
+    def get(self, character_id):
+        character = Character.query.get_or_404(character_id)
+
+        # Fetch feats related to the character's class and race
+        feats = Feat.query.filter_by(rpg_system_id=character.rpg_system_id).all()
+
+        return {
+            "feats": [feat.to_dict() for feat in feats]
+        }
+
+class UpdateCharacterFeats(Resource):
+    def post(self):
+        data = request.get_json()
+
+        # Find the character by ID
+        character = Character.query.get(data.get('character_id'))
+        if not character:
+            return {"message": "Character not found"}, 404
+
+        # Update character's feats
+        feat_ids = data.get('feat_ids', [])
+
+        # Delete old feats
+        CharacterFeat.query.filter_by(character_id=character.id).delete()
+
+        # Add new feats
+        for feat_id in feat_ids:
+            new_feat = CharacterFeat(character_id=character.id, feat_id=feat_id)
+            db.session.add(new_feat)
+
+        db.session.commit()
+
+        return character.to_dict(), 200
+    
+class UpdateCharacterSpells(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        spell_ids = data.get('spell_ids')
+
+        # Find the character
+        character = Character.query.get_or_404(character_id)
+        
+        # Ensure spell_ids exist and are valid
+        if not spell_ids or not isinstance(spell_ids, list):
+            return {"message": "Invalid or missing spell IDs"}, 400
+
+        # Fetch the corresponding spells from the database
+        selected_spells = Spell.query.filter(Spell.id.in_(spell_ids)).all()
+
+        if not selected_spells:
+            return {"message": "No valid spells found"}, 404
+
+        # Store selected spells in character system_data (or wherever you are storing the data)
+        character.system_data = character.system_data or {}
+        character.system_data['selected_spells'] = [spell.id for spell in selected_spells]
+
+        db.session.commit()
+
+        return {"message": "Spells updated successfully"}, 200
+
+class UpdateCharacterClassProgression(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        level = data.get('level')  # New level provided
+
+        # Find the character
+        character = Character.query.get_or_404(character_id)
+
+        if not character.class_id:
+            return {"message": "Character does not have a class assigned"}, 400
+
+        # Find the corresponding class progression for the character's class and new level
+        class_progression = ClassProgression.query.filter_by(class_id=character.class_id, level=level).first()
+
+        if not class_progression:
+            return {"message": "Class progression not found for this level"}, 404
+
+        # Update the character's progression based on the new level
+        character.level = level
+
+        
+        db.session.commit()
+
+        return {"message": "Class progression updated successfully"}, 200
+
+class UpdateCharacterLevel(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        new_level = data.get('level')
+
+        # Find the character by ID
+        character = Character.query.get_or_404(character_id)
+
+        if not character.class_id:
+            return {"message": "Character does not have a class assigned"}, 400
+
+        # Update the character's level
+        character.level = new_level
+
+        # Find the corresponding class progression for the character's class and new level
+        class_progression = ClassProgression.query.filter_by(class_id=character.class_id, level=new_level).first()
+
+        if not class_progression:
+            return {"message": "Class progression not found for this level"}, 404
+
+        # Update the character's class progression
+        character.class_progression_id = class_progression.id
+
+        # Commit the changes
+        db.session.commit()
+
+        return {"message": "Character level and progression updated successfully", "character": character.to_dict()}, 200
+    
+class ClassProgressionResource(Resource):
+    def get(self, class_id, level):
+        # Query the class progression based on the class_id and level
+        class_progression = ClassProgression.query.filter_by(class_id=class_id, level=level).first()
+
+        if not class_progression:
+            return {"message": "Class progression not found for this level"}, 404
+
+        return class_progression.to_dict(), 200
+
+
+
 
 # Character Routes
 character_api.add_resource(CharacterList, '/characters')
@@ -237,3 +373,8 @@ character_api.add_resource(CharacterImport, '/characters/import')
 character_api.add_resource(InitializeCharacter, '/characters/initialize')
 character_api.add_resource(UpdateCharacterClass, '/characters/update-class')
 character_api.add_resource(UpdateCharacterAbilityScores, '/characters/update-ability-scores')
+character_api.add_resource(CharacterFeats, '/characters/<int:character_id>/feats')
+character_api.add_resource(UpdateCharacterFeats, '/characters/update-feats')
+character_api.add_resource(UpdateCharacterSpells, '/characters/update-spell')
+character_api.add_resource(UpdateCharacterClassProgression, '/characters/update-class-progression')
+character_api.add_resource(ClassProgressionResource, '/class_progression/<int:class_id>/level/<int:level>')

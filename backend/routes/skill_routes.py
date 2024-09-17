@@ -90,7 +90,7 @@ class SkillSearch(Resource):
 # List skills by rpg system
 class SkillByRPGSystem(Resource):
     def get(self, rpg_system_id):
-        skills = Skill.query.filter(Skill.system_data['rpg_system_id'].astext == str(rpg_system_id)).all()
+        skills = Skill.query.filter_by(rpg_system_id=rpg_system_id).all()
         return jsonify([skill.to_dict() for skill in skills])
 
 # Bulk import skills

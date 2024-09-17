@@ -83,15 +83,22 @@ class Character(db.Model, SerializerMixin):
     character_class = db.relationship('Class', back_populates='characters')
     skills = db.relationship('CharacterSkill', back_populates='character', lazy=True, cascade="all, delete-orphan")
     items = db.relationship('CharacterItem', back_populates='character', lazy=True, cascade="all, delete-orphan")
+    feats = db.relationship('CharacterFeat', back_populates='character', lazy=True, cascade="all, delete-orphan")
+    spell_slots = db.relationship('SpellSlot', back_populates='character', lazy=True, cascade="all, delete-orphan")
+
     rpg_system = db.relationship('RPGSystem', back_populates='characters')
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
     campaigns = db.relationship('Campaign', secondary='character_campaign', back_populates='characters')
     user = db.relationship('User', back_populates='characters')
 
-    serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters')
+    serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters', '-progressions.character')
 
     def to_dict(self):
+        class_progression = None
+        if self.character_class:
+            class_progression = ClassProgression.query.filter_by(class_id=self.character_class.id, level=self.level).first()
+        
         return {
             'id': self.id,
             'name': self.name,
@@ -116,13 +123,16 @@ class Character(db.Model, SerializerMixin):
             },
             'class': {
                 'id': self.character_class.id if self.character_class else None,
-                'name': self.character_class.name if self.character_class else None
+                'name': self.character_class.name if self.character_class else None,
+                'progression': class_progression.to_dict() if class_progression else None
             },
             'user': {
                 'id': self.user.id,
                 'username': self.user.username
             }
         }
+
+
 
 class Race(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -135,6 +145,7 @@ class Race(db.Model, SerializerMixin):
     natural_weapons = db.Column(db.Text, nullable=True)
     favored_class = db.Column(db.String(50), nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+    race_features = db.Column(db.JSON, nullable=True)
 
     rpg_system = db.relationship('RPGSystem', back_populates='races', lazy=True)
     characters = db.relationship('Character', back_populates='race', lazy=True)
@@ -175,6 +186,8 @@ class Class(db.Model, SerializerMixin):
 
     characters = db.relationship('Character', back_populates='character_class', lazy=True)
     rpg_system = db.relationship('RPGSystem', back_populates='classes', lazy=True)
+    spells = db.relationship('ClassSpell', back_populates='character_class', lazy=True)
+    progressions = db.relationship('ClassProgression', back_populates='character_class', lazy=True)
 
     serialize_rules = ('-characters.character_class', '-rpg_system.classes')
 
@@ -193,7 +206,8 @@ class Class(db.Model, SerializerMixin):
             'rpg_system': {
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name
-            }
+            },
+            'progressions': [progression.to_dict() for progression in self.progressions]
         }
     
 
@@ -286,6 +300,41 @@ class CharacterHomebrewSkill(db.Model, SerializerMixin):
     homebrew_skill = db.relationship('HomebrewSkill', back_populates='character_homebrew_skills')
 
     serialize_rules = ('-character.character_homebrew_skills', '-homebrew_skill.character_homebrew_skills')
+
+class Feat(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    associated_ability = db.Column(db.String(50), nullable=True)
+    feat_category = db.Column(db.String(50), nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+
+    # Relationship to characters through a join table
+    characters = db.relationship('CharacterFeat', back_populates='feat', lazy=True)
+    rpg_system = db.relationship('RPGSystem', back_populates='feats', lazy=True)
+
+    serialize_rules = ('-characters.feat', '-rpg_system.feats')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'associated_ability': self.associated_ability,
+            'feat_category': self.feat_category,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+    
+class CharacterFeat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    feat_id = db.Column(db.Integer, db.ForeignKey('feat.id'), nullable=False)
+
+    character = db.relationship('Character', back_populates='feats')
+    feat = db.relationship('Feat', back_populates='characters')
 
 
 # Item Table and the related join table
@@ -408,8 +457,10 @@ class RPGSystem(db.Model, SerializerMixin):
     skills = db.relationship('Skill', back_populates='rpg_system', lazy=True)
     items = db.relationship('Item', back_populates='rpg_system', lazy=True)
     monsters = db.relationship('Monster', back_populates='rpg_system', lazy=True)
+    feats = db.relationship('Feat', back_populates='rpg_system', lazy=True)
+    spells = db.relationship('Spell', back_populates='rpg_system', lazy=True)
 
-    serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system', '-npcs.rpg_system')
+    serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system', '-npcs.rpg_system', '-feats.rpg_system')
 
     def to_dict(self):
         return {
@@ -614,6 +665,88 @@ class CampaignNPC(db.Model, SerializerMixin):
     homebrew_npc_id = db.Column(db.Integer, db.ForeignKey('homebrew_npc.id'), nullable=True)  # Link to homebrew NPC
 
     serialize_rules = ('-campaign.characters', '-npc.characters', '-homebrew_npc.characters')
+
+class Spell(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    level = db.Column(db.Integer, nullable=False)  # Spell level (1-9 for D&D)
+    school = db.Column(db.String(50), nullable=True)  # School of magic (e.g., Evocation, Necromancy)
+    casting_time = db.Column(db.String(50), nullable=True)
+    range = db.Column(db.String(50), nullable=True)
+    duration = db.Column(db.String(50), nullable=True)
+    components = db.Column(db.String(100), nullable=True)  # Verbal, Somatic, Material
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+
+    # Relationships
+    classes = db.relationship('ClassSpell', back_populates='spell', lazy=True, cascade="all, delete-orphan")
+    rpg_system = db.relationship('RPGSystem', back_populates='spells', lazy=True)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'level': self.level,
+            'school': self.school,
+            'casting_time': self.casting_time,
+            'range': self.range,
+            'duration': self.duration,
+            'components': self.components,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+
+class ClassSpell(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=False)
+    spell_id = db.Column(db.Integer, db.ForeignKey('spell.id'), nullable=False)
+
+    # Relationships
+    spell = db.relationship('Spell', back_populates='classes')
+    character_class = db.relationship('Class', back_populates='spells')
+
+    def to_dict(self):
+        return {
+            'class_id': self.class_id,
+            'spell_id': self.spell_id,
+            'spell': self.spell.to_dict()
+        }
+
+class SpellSlot(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=False)
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    level = db.Column(db.Integer, nullable=False)
+    slots_available = db.Column(db.Integer, nullable=False)
+
+    character = db.relationship('Character', back_populates='spell_slots')
+
+    def to_dict(self):
+        return {
+            'class_id': self.class_id,
+            'character_id': self.character_id,
+            'level': self.level,
+            'slots_available': self.slots_available
+        }
+
+class ClassProgression(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=False)
+    level = db.Column(db.Integer, nullable=False)
+    available_spell = db.Column(db.JSON, nullable=True)
+
+    character_class = db.relationship('Class', back_populates='progressions')
+
+    def to_dict(self):
+        return {
+            'class_id': self.class_id,
+            'level': self.level,
+            'available_spell': self.available_spell
+        }
+
 
 
 __table_args__ = (

@@ -31,26 +31,32 @@ const SelectClassPage = () => {
 
   const handleClassConfirm = async () => {
     try {
-      // Send a request to save the selected class to the character in the backend
-      await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
+      // Send a request to save the selected class and its class progression to the character in the backend
+      const response = await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
         class_id: selectedClass.id, // The selected class ID
         character_id: characterId // The character ID
       });
-  
+
+      // Fetch class progression based on the class and character's level
+      const progressionResponse = await axios.post(`http://127.0.0.1:5555/api/characters/update-class-progression`, {
+        class_id: selectedClass.id,
+        character_id: characterId,
+        level: response.data.level // Assuming character level is returned from the first API response
+      });
+
       // Navigate to the next step (Assign Ability Scores)
-      navigate(`/character/create/ability-scores/:systemId/${characterId}`);
+      navigate(`/character/create/ability-scores/${systemId}/${characterId}`);
     } catch (error) {
-      console.error('Error saving class:', error);
+      console.error('Error saving class and progression:', error);
     }
   };
-  
 
   const handleCloseModal = () => {
     setSelectedClass(null); // Close the modal
   };
 
   const handleBackButton = () => {
-    navigate(`/character/create/race/${characterId}`); // Navigate back to the SelectRacePage
+    navigate(`/character/create/race/${systemId}/${characterId}`); // Navigate back to the SelectRacePage
   };
 
   if (loading) {

@@ -85,4 +85,7 @@ def create_app(config_class=Config):
     from .routes.utility_routes import utility_bp
     app.register_blueprint(utility_bp)
 
+    from .routes.spell_routes import spell_bp
+    app.register_blueprint(spell_bp)
+
     return app

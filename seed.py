@@ -1,5 +1,5 @@
 from backend import create_app, db
-from backend.models import RPGSystem, Class, Race, Skill, Item, Monster
+from backend.models import RPGSystem, Class, Race, Skill, Item, Monster, Spell, ClassSpell, Feat, ClassProgression
 import json
 
 def seed_rpg_systems():
@@ -92,6 +92,7 @@ def seed_rpg_systems():
             "races": ["Human", "Twi'lek", "Wookiee"],
             "mechanics": ["Obligation", "Destiny Points"],
             "ability_scores": ["Brawn", "Agility", "Intellect", "Cunning", "Willpower", "Presence"],
+            "generation method": '',
             "setting": "Outer Rim Territories",
             "logo": "/systemLogos/StarWarsLogo.png",
         }
@@ -968,6 +969,138 @@ def seed_rpg_systems():
         ],
     }
 
+    feats = {
+        "Dungeons & Dragons 5th Edition": [
+            {"name": "Alert", "description": "Always on the lookout for danger. Gain a +5 bonus to initiative and can't be surprised while conscious."},
+            {"name": "Athlete", "description": "You have undergone extensive physical training. Increase either your Strength or Dexterity by 1."},
+            {"name": "Tough", "description": "Your hit point maximum increases by an amount equal to twice your level."}
+        ],
+        "Pathfinder": [
+            {"name": "Power Attack", "description": "Take a penalty on attack rolls to gain a bonus on damage rolls."},
+            {"name": "Toughness", "description": "Gain a flat bonus to hit points."},
+            {"name": "Improved Initiative", "description": "Gain a +4 bonus to initiative checks."}
+        ],
+        "Call of Cthulhu": [
+            {"name": "Resilient", "description": "You are naturally tough and recover from mental or physical trauma more quickly."},
+            {"name": "Sharp Shooter", "description": "Gain a bonus when firing ranged weapons."}
+        ],
+        "Shadowrun": [
+            {"name": "Ambidextrous", "description": "You can use either hand equally well for any task."},
+            {"name": "Toughness", "description": "Gain bonus hit points or resistances."},
+            {"name": "Lightning Reflexes", "description": "Improve reaction times in combat."}
+        ],
+        "Star Wars: Edge of the Empire": [
+            {"name": "Quick Draw", "description": "You can draw or holster a weapon as an incidental action."},
+            {"name": "Deadly Accuracy", "description": "When you choose a combat skill, your attacks with it deal increased damage."}
+        ],
+        "Mothership RPG": [
+            {"name": "Fearless", "description": "You are immune to fear effects."},
+            {"name": "Hardened", "description": "Gain a bonus to resist physical trauma."}
+        ]
+    }
+
+    spells = {
+        "Dungeons & Dragons 5th Edition": [
+            {"name": "Fireball", "description": "A bright streak flashes from your pointing finger to a point you choose within range, then blossoms with a low roar into an explosion of flame.", "level": 3, "school": "Evocation", "casting_time": "1 action", "range": "150 feet", "duration": "Instantaneous", "components": "V, S, M (a tiny ball of bat guano and sulfur)"},
+            {"name": "Cure Wounds", "description": "A creature you touch regains hit points equal to 1d8 + your spellcasting ability modifier.", "level": 1, "school": "Evocation", "casting_time": "1 action", "range": "Touch", "duration": "Instantaneous", "components": "V, S"}
+        ],
+        "Pathfinder": [
+            {"name": "Magic Missile", "description": "You fire unerring bolts of magical force at your foes.", "level": 1, "school": "Evocation", "casting_time": "1 action", "range": "120 feet", "duration": "Instantaneous", "components": "V, S"},
+            {"name": "Shield", "description": "An invisible barrier of force appears and protects you.", "level": 1, "school": "Abjuration", "casting_time": "1 reaction", "range": "Self", "duration": "1 round", "components": "V, S"}
+        ],
+        "Call of Cthulhu": [
+            {"name": "Shriveling", "description": "You project dark energy towards a target, causing damage.", "level": 1, "school": "Necromancy", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "V, S, M (a withered leaf)"}
+        ],
+        "Shadowrun": [
+            {"name": "Stun Bolt", "description": "A non-lethal magical attack that causes mental strain.", "level": 1, "school": "Combat", "casting_time": "1 action", "range": "Line of Sight", "duration": "Instantaneous", "components": "S"}
+        ],
+        "Star Wars: Edge of the Empire": [
+            {"name": "Force Push", "description": "You push objects or creatures using the Force.", "level": 1, "school": "Telekinesis", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "S"}
+        ],
+        "Mothership RPG": [
+            {"name": "EMP Pulse", "description": "A pulse that disables nearby electronic devices.", "level": 1, "school": "Tech", "casting_time": "1 action", "range": "10 feet", "duration": "Instantaneous", "components": "S"}
+        ]
+    }
+
+    class_spells = {
+        "Dungeons & Dragons 5th Edition": {
+            "Druid": ["Cure Wounds"],
+            "Wizard": ["Fireball"]
+        },
+        "Pathfinder": {
+            "Wizard": ["Magic Missile", "Shield"]
+        },
+        "Call of Cthulhu": {
+            "Occultist": ["Shriveling"]
+        },
+        "Shadowrun": {
+            "Mage": ["Stun Bolt"]
+        },
+        "Star Wars: Edge of the Empire": {
+            "Technician": ["Force Push"]
+        },
+        "Mothership RPG": {
+            "Scientist": ["EMP Pulse"]
+        }
+    }
+
+    class_progression_spells = {
+        "Dungeons & Dragons 5th Edition": {
+            "Druid": {
+                1: {"cantrips": 2, "spells": 2},
+                2: {"cantrips": 2, "spells": 3},
+                3: {"cantrips": 2, "spells": 4},
+                4: {"cantrips": 3, "spells": 5},
+                5: {"cantrips": 3, "spells": 6}
+            },
+            "Wizard": {
+                1: {"cantrips": 3, "spells": 2},
+                2: {"cantrips": 3, "spells": 3},
+                3: {"cantrips": 3, "spells": 4},
+                4: {"cantrips": 4, "spells": 5},
+                5: {"cantrips": 4, "spells": 6}
+            }
+        },
+        "Pathfinder": {
+            "Wizard": {
+                1: {"cantrips": 4, "spells": 2},
+                2: {"cantrips": 4, "spells": 3},
+                3: {"cantrips": 4, "spells": 4},
+                4: {"cantrips": 5, "spells": 5},
+                5: {"cantrips": 5, "spells": 6}
+            }
+        },
+        "Call of Cthulhu": {
+            "Occultist": {
+                1: {"spells": 3},
+                2: {"spells": 4},
+                3: {"spells": 5}
+            }
+        },
+        "Shadowrun": {
+            "Mage": {
+                1: {"spells": 2},
+                2: {"spells": 3},
+                3: {"spells": 4}
+            }
+        },
+        "Star Wars: Edge of the Empire": {
+            "Technician": {
+                1: {"abilities": 2},
+                2: {"abilities": 3},
+                3: {"abilities": 4}
+            }
+        },
+        "Mothership RPG": {
+            "Scientist": {
+                1: {"spells": 1},
+                2: {"spells": 2},
+                3: {"spells": 3}
+            }
+        }
+    }
+
+
     # Seeding data
     for system_data in rpg_systems:
         # Create and save the RPG system
@@ -995,6 +1128,57 @@ def seed_rpg_systems():
                     rpg_system_id=system.id  # Ensure this class is linked to the correct RPG system
                 )
                 db.session.add(new_class)
+                db.session.commit()
+
+                # Seed class progression for each class
+                if system_data["name"] in class_progression_spells and new_class.name in class_progression_spells[system_data["name"]]:
+                    progression_data = class_progression_spells[system_data["name"]][new_class.name]
+                    
+                    # Iterate over each level and the corresponding progression data
+                    for level, progression in progression_data.items():
+                        class_progression = ClassProgression(
+                            class_id=new_class.id,
+                            level=level,
+                            available_spell=progression  # Assign the available_spell field directly from the progression data
+                        )
+                        db.session.add(class_progression)
+
+
+        # Seed feats
+        if system_data["name"] in feats:
+            for feat_data in feats[system_data["name"]]:
+                new_feat = Feat(
+                    name=feat_data["name"],
+                    description=feat_data["description"],
+                    rpg_system_id=system.id  # Ensure this feat is linked to the correct RPG system
+                )
+                db.session.add(new_feat)
+
+        # Seed spells
+        if system_data["name"] in spells:
+            for spell_data in spells[system_data["name"]]:
+                new_spell = Spell(
+                    name=spell_data["name"],
+                    description=spell_data["description"],
+                    level=spell_data["level"],
+                    school=spell_data["school"],
+                    casting_time=spell_data["casting_time"],
+                    range=spell_data["range"],
+                    duration=spell_data["duration"],
+                    components=spell_data["components"],
+                    rpg_system_id=system.id
+                )
+                db.session.add(new_spell)
+
+        # Seed class-spells relationships
+        if system_data["name"] in class_spells:
+            for class_name, spell_names in class_spells[system_data["name"]].items():
+                class_obj = Class.query.filter_by(name=class_name, rpg_system_id=system.id).first()
+                for spell_name in spell_names:
+                    spell_obj = Spell.query.filter_by(name=spell_name, rpg_system_id=system.id).first()
+                    if class_obj and spell_obj:
+                        class_spell = ClassSpell(class_id=class_obj.id, spell_id=spell_obj.id)
+                        db.session.add(class_spell)
 
         # Seed races
         if system_data["name"] in races:
@@ -1050,9 +1234,9 @@ def seed_rpg_systems():
                 )
                 db.session.add(new_monster)
 
+
     db.session.commit()
     print("Database seeded successfully!")
-
 
 def run_seed():
     app = create_app()
@@ -1063,6 +1247,10 @@ def run_seed():
         db.session.query(Race).delete()
         db.session.query(Class).delete()
         db.session.query(RPGSystem).delete()
+        db.session.query(Spell).delete()
+        db.session.query(ClassSpell).delete()
+        db.session.query(Feat).delete()
+        db.session.query(ClassProgression).delete()
         db.session.commit()
         seed_rpg_systems()
 
