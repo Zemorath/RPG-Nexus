@@ -44,7 +44,7 @@ const SelectClassPage = () => {
         level: response.data.level // Assuming character level is returned from the first API response
       });
 
-      // Navigate to the next step (Assign Ability Scores)
+      // Navigate to the next step
       navigate(`/character/create/ability-scores/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error saving class and progression:', error);
