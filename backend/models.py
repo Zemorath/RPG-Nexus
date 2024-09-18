@@ -64,13 +64,15 @@ class Character(db.Model, SerializerMixin):
     name = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+    background_id = db.Column(db.Integer, db.ForeignKey('background.id'), nullable=True)
+    alignment_id = db.Column(db.Integer, db.ForeignKey('alignment.id'), nullable=True)
     race_id = db.Column(db.Integer, db.ForeignKey('race.id'), nullable=True)
     class_id = db.Column(db.Integer, db.ForeignKey('class.id'), nullable=True)
     level = db.Column(db.Integer, nullable=False)
     health = db.Column(db.Integer, nullable=True)
     experience_points = db.Column(db.Integer, nullable=True)
     alignment = db.Column(db.String(20), nullable=True)
-    background = db.Column(db.String(100), nullable=True)
+    description = db.Column(db.String(100), nullable=True)
     inventory_weight_limit = db.Column(db.Integer, nullable=True)
     status_effects = db.Column(db.JSON, nullable=True)
     last_active = db.Column(db.DateTime, nullable=True)
@@ -87,12 +89,14 @@ class Character(db.Model, SerializerMixin):
     spell_slots = db.relationship('SpellSlot', back_populates='character', lazy=True, cascade="all, delete-orphan")
 
     rpg_system = db.relationship('RPGSystem', back_populates='characters')
+    background = db.relationship('Background', back_populates='characters')
+    alignment = db.relationship('Alignment', back_populates='characters')
     character_homebrew_items = db.relationship('CharacterHomebrewItem', back_populates='character')
     character_homebrew_skills = db.relationship('CharacterHomebrewSkill', back_populates='character')
     campaigns = db.relationship('Campaign', secondary='character_campaign', back_populates='characters')
     user = db.relationship('User', back_populates='characters')
 
-    serialize_rules = ('-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters', '-progressions.character')
+    serialize_rules = ('-background.characters', '-alignment.characters', '-user.characters', '-skills.character', '-items.character', '-rpg_systems.character', '-race.characters', '-character_class.characters', '-character_homebrew_items.character', '-character_homebrew_skills.character', '-campaigns.characters', '-progressions.character')
 
     def to_dict(self):
         class_progression = None
@@ -106,7 +110,7 @@ class Character(db.Model, SerializerMixin):
             'health': self.health,
             'experience_points': self.experience_points,
             'alignment': self.alignment,
-            'background': self.background,
+            'description': self.description,
             'inventory_weight_limit': self.inventory_weight_limit,
             'status_effects': self.status_effects,
             'last_active': self.last_active,
@@ -117,6 +121,8 @@ class Character(db.Model, SerializerMixin):
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name
             },
+            'background': self.background.to_dict() if self.background else None,
+            'alignment': self.alignment.to_dict() if self.alignment else None,
             'race': {
                 'id': self.race.id if self.race else None,
                 'name': self.race.name if self.race else None
@@ -459,6 +465,8 @@ class RPGSystem(db.Model, SerializerMixin):
     monsters = db.relationship('Monster', back_populates='rpg_system', lazy=True)
     feats = db.relationship('Feat', back_populates='rpg_system', lazy=True)
     spells = db.relationship('Spell', back_populates='rpg_system', lazy=True)
+    backgrounds = db.relationship('Background', back_populates='rpg_system', lazy=True)
+    alignments = db.relationship('Alignment', back_populates='rpg_system', lazy=True)
 
     serialize_rules = ('-characters.rpg_system', '-classes.rpg_system', '-races.rpg_system', '-skills.rpg_system', '-items.rpg_system', '-monsters.rpg_system', '-npcs.rpg_system', '-feats.rpg_system')
 
@@ -747,6 +755,71 @@ class ClassProgression(db.Model, SerializerMixin):
             'available_spell': self.available_spell
         }
 
+class Background(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+    proficiencies = db.Column(db.JSON, nullable=True)  # JSON for a list of proficiencies
+    ability_score_increases = db.Column(db.JSON, nullable=True)  # JSON for ability score increases by system
+    granted_feats = db.Column(db.JSON, nullable=True)  # JSON for feats granted by the background
+    choosable_feats = db.Column(db.JSON, nullable=True)  # JSON for optional feats that can be chosen by the user
+    equipment = db.Column(db.JSON, nullable=True)  # JSON for starting equipment
+    languages = db.Column(db.JSON, nullable=True)  # JSON for languages known or learned
+    background_features = db.Column(db.JSON, nullable=True)  # Special features unique to the background
+    system_specific_data = db.Column(db.JSON, nullable=True)  # JSON field for system-specific information
+
+    rpg_system = db.relationship('RPGSystem', back_populates='backgrounds', lazy=True)
+    characters = db.relationship('Character', back_populates='background')
+
+    serialize_rules = ('-rpg_system.backgrounds',)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'proficiencies': self.proficiencies,
+            'ability_score_increases': self.ability_score_increases,
+            'granted_feats': self.granted_feats,
+            'choosable_feats': self.choosable_feats,
+            'equipment': self.equipment,
+            'languages': self.languages,
+            'background_features': self.background_features,
+            'system_specific_data': self.system_specific_data,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
+
+class Alignment(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
+    moral_axis = db.Column(db.String(20), nullable=True)  # "Good", "Neutral", "Evil", etc.
+    ethical_axis = db.Column(db.String(20), nullable=True)  # "Lawful", "Neutral", "Chaotic", etc.
+    system_specific_data = db.Column(db.JSON, nullable=True)  # JSON for system-specific alignment info
+
+    rpg_system = db.relationship('RPGSystem', back_populates='alignments', lazy=True)
+    characters = db.relationship('Character', back_populates='alignment')
+
+    serialize_rules = ('-rpg_system.alignments',)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'moral_axis': self.moral_axis,
+            'ethical_axis': self.ethical_axis,
+            'system_specific_data': self.system_specific_data,
+            'rpg_system': {
+                'id': self.rpg_system.id,
+                'name': self.rpg_system.name
+            }
+        }
 
 
 __table_args__ = (

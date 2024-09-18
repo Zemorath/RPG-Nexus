@@ -37,13 +37,6 @@ const SelectClassPage = () => {
         character_id: characterId // The character ID
       });
 
-      // Fetch class progression based on the class and character's level
-      const progressionResponse = await axios.post(`http://127.0.0.1:5555/api/characters/update-class-progression`, {
-        class_id: selectedClass.id,
-        character_id: characterId,
-        level: response.data.level // Assuming character level is returned from the first API response
-      });
-
       // Navigate to the next step
       navigate(`/character/create/ability-scores/${systemId}/${characterId}`);
     } catch (error) {

@@ -61,9 +61,9 @@ const ViewCharactersPage = () => {
       case 'pathfinder':
         return 'border-yellow-500'; // Pathfinder
       case 'call of cthulhu':
-        return 'border-blue-600'; // Call of Cthulhu
+        return 'border-green-600'; // Call of Cthulhu
       case 'shadowrun':
-        return 'border-green-600'; // Shadowrun
+        return 'border-blue-600'; // Shadowrun
       case 'star wars: edge of the empire':
         return 'border-purple-600'; // Star Wars
       case 'mothership rpg':

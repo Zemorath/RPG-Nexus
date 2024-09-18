@@ -1,5 +1,5 @@
 from backend import create_app, db
-from backend.models import RPGSystem, Class, Race, Skill, Item, Monster, Spell, ClassSpell, Feat, ClassProgression
+from backend.models import RPGSystem, Class, Race, Skill, Item, Monster, Spell, ClassSpell, Feat, ClassProgression, Background, Alignment
 import json
 
 def seed_rpg_systems():
@@ -4549,15 +4549,177 @@ def seed_rpg_systems():
                 2: {"cantrips": 2, "spells": 3},
                 3: {"cantrips": 2, "spells": 4},
                 4: {"cantrips": 3, "spells": 5},
-                5: {"cantrips": 3, "spells": 6}
+                5: {"cantrips": 3, "spells": 6},
+                6: {"cantrips": 3, "spells": 7},
+                7: {"cantrips": 3, "spells": 8},
+                8: {"cantrips": 3, "spells": 9},
+                9: {"cantrips": 3, "spells": 10},
+                10: {"cantrips": 4, "spells": 11},
+                11: {"cantrips": 4, "spells": 12},
+                12: {"cantrips": 4, "spells": 12},
+                13: {"cantrips": 4, "spells": 13},
+                14: {"cantrips": 4, "spells": 13},
+                15: {"cantrips": 4, "spells": 14},
+                16: {"cantrips": 4, "spells": 14},
+                17: {"cantrips": 4, "spells": 15},
+                18: {"cantrips": 4, "spells": 15},
+                19: {"cantrips": 4, "spells": 15},
+                20: {"cantrips": 4, "spells": 16}
             },
             "Wizard": {
                 1: {"cantrips": 3, "spells": 2},
                 2: {"cantrips": 3, "spells": 3},
                 3: {"cantrips": 3, "spells": 4},
                 4: {"cantrips": 4, "spells": 5},
-                5: {"cantrips": 4, "spells": 6}
-            }
+                5: {"cantrips": 4, "spells": 6},
+                6: {"cantrips": 4, "spells": 7},
+                7: {"cantrips": 4, "spells": 8},
+                8: {"cantrips": 4, "spells": 9},
+                9: {"cantrips": 4, "spells": 10},
+                10: {"cantrips": 5, "spells": 11},
+                11: {"cantrips": 5, "spells": 12},
+                12: {"cantrips": 5, "spells": 12},
+                13: {"cantrips": 5, "spells": 13},
+                14: {"cantrips": 5, "spells": 13},
+                15: {"cantrips": 5, "spells": 14},
+                16: {"cantrips": 5, "spells": 14},
+                17: {"cantrips": 5, "spells": 15},
+                18: {"cantrips": 5, "spells": 15},
+                19: {"cantrips": 5, "spells": 15},
+                20: {"cantrips": 5, "spells": 16}
+            },
+            "Cleric": {
+                1: {"cantrips": 3, "spells": 2},
+                2: {"cantrips": 3, "spells": 3},
+                3: {"cantrips": 3, "spells": 4},
+                4: {"cantrips": 4, "spells": 5},
+                5: {"cantrips": 4, "spells": 6},
+                6: {"cantrips": 4, "spells": 7},
+                7: {"cantrips": 4, "spells": 8},
+                8: {"cantrips": 4, "spells": 9},
+                9: {"cantrips": 4, "spells": 10},
+                10: {"cantrips": 5, "spells": 11},
+                11: {"cantrips": 5, "spells": 12},
+                12: {"cantrips": 5, "spells": 12},
+                13: {"cantrips": 5, "spells": 13},
+                14: {"cantrips": 5, "spells": 13},
+                15: {"cantrips": 5, "spells": 14},
+                16: {"cantrips": 5, "spells": 14},
+                17: {"cantrips": 5, "spells": 15},
+                18: {"cantrips": 5, "spells": 15},
+                19: {"cantrips": 5, "spells": 15},
+                20: {"cantrips": 5, "spells": 16}
+            },
+            "Sorcerer": {
+                1: {"cantrips": 4, "spells": 2},
+                2: {"cantrips": 4, "spells": 3},
+                3: {"cantrips": 4, "spells": 4},
+                4: {"cantrips": 5, "spells": 5},
+                5: {"cantrips": 5, "spells": 6},
+                6: {"cantrips": 5, "spells": 7},
+                7: {"cantrips": 5, "spells": 8},
+                8: {"cantrips": 5, "spells": 9},
+                9: {"cantrips": 5, "spells": 10},
+                10: {"cantrips": 6, "spells": 11},
+                11: {"cantrips": 6, "spells": 12},
+                12: {"cantrips": 6, "spells": 12},
+                13: {"cantrips": 6, "spells": 13},
+                14: {"cantrips": 6, "spells": 13},
+                15: {"cantrips": 6, "spells": 14},
+                16: {"cantrips": 6, "spells": 14},
+                17: {"cantrips": 6, "spells": 15},
+                18: {"cantrips": 6, "spells": 15},
+                19: {"cantrips": 6, "spells": 15},
+                20: {"cantrips": 6, "spells": 16}
+            },
+            "Bard": {
+                1: {"cantrips": 2, "spells": 2},
+                2: {"cantrips": 2, "spells": 3},
+                3: {"cantrips": 2, "spells": 4},
+                4: {"cantrips": 3, "spells": 5},
+                5: {"cantrips": 3, "spells": 6},
+                6: {"cantrips": 3, "spells": 7},
+                7: {"cantrips": 3, "spells": 8},
+                8: {"cantrips": 3, "spells": 9},
+                9: {"cantrips": 3, "spells": 10},
+                10: {"cantrips": 4, "spells": 11},
+                11: {"cantrips": 4, "spells": 12},
+                12: {"cantrips": 4, "spells": 12},
+                13: {"cantrips": 4, "spells": 13},
+                14: {"cantrips": 4, "spells": 13},
+                15: {"cantrips": 4, "spells": 14},
+                16: {"cantrips": 4, "spells": 14},
+                17: {"cantrips": 4, "spells": 15},
+                18: {"cantrips": 4, "spells": 15},
+                19: {"cantrips": 4, "spells": 15},
+                20: {"cantrips": 4, "spells": 16}
+            },
+            "Paladin": {
+                1: {"cantrips": 0, "spells": 0},
+                2: {"cantrips": 0, "spells": 2},
+                3: {"cantrips": 0, "spells": 3},
+                4: {"cantrips": 0, "spells": 3},
+                5: {"cantrips": 0, "spells": 4},
+                6: {"cantrips": 0, "spells": 4},
+                7: {"cantrips": 0, "spells": 5},
+                8: {"cantrips": 0, "spells": 5},
+                9: {"cantrips": 0, "spells": 6},
+                10: {"cantrips": 0, "spells": 6},
+                11: {"cantrips": 0, "spells": 7},
+                12: {"cantrips": 0, "spells": 7},
+                13: {"cantrips": 0, "spells": 8},
+                14: {"cantrips": 0, "spells": 8},
+                15: {"cantrips": 0, "spells": 9},
+                16: {"cantrips": 0, "spells": 9},
+                17: {"cantrips": 0, "spells": 10},
+                18: {"cantrips": 0, "spells": 10},
+                19: {"cantrips": 0, "spells": 11},
+                20: {"cantrips": 0, "spells": 11}
+            },
+            "Ranger": {
+                1: {"cantrips": 0, "spells": 0},
+                2: {"cantrips": 0, "spells": 2},
+                3: {"cantrips": 0, "spells": 3},
+                4: {"cantrips": 0, "spells": 3},
+                5: {"cantrips": 0, "spells": 4},
+                6: {"cantrips": 0, "spells": 4},
+                7: {"cantrips": 0, "spells": 5},
+                8: {"cantrips": 0, "spells": 5},
+                9: {"cantrips": 0, "spells": 6},
+                10: {"cantrips": 0, "spells": 6},
+                11: {"cantrips": 0, "spells": 7},
+                12: {"cantrips": 0, "spells": 7},
+                13: {"cantrips": 0, "spells": 8},
+                14: {"cantrips": 0, "spells": 8},
+                15: {"cantrips": 0, "spells": 9},
+                16: {"cantrips": 0, "spells": 9},
+                17: {"cantrips": 0, "spells": 10},
+                18: {"cantrips": 0, "spells": 10},
+                19: {"cantrips": 0, "spells": 11},
+                20: {"cantrips": 0, "spells": 11}
+            },
+            "Warlock": {
+                1: {"cantrips": 2, "spells": 2},
+                2: {"cantrips": 2, "spells": 2},
+                3: {"cantrips": 2, "spells": 2},
+                4: {"cantrips": 3, "spells": 3},
+                5: {"cantrips": 3, "spells": 3},
+                6: {"cantrips": 3, "spells": 3},
+                7: {"cantrips": 3, "spells": 3},
+                8: {"cantrips": 3, "spells": 3},
+                9: {"cantrips": 3, "spells": 3},
+                10: {"cantrips": 4, "spells": 4},
+                11: {"cantrips": 4, "spells": 4},
+                12: {"cantrips": 4, "spells": 4},
+                13: {"cantrips": 4, "spells": 4},
+                14: {"cantrips": 4, "spells": 4},
+                15: {"cantrips": 4, "spells": 4},
+                16: {"cantrips": 4, "spells": 4},
+                17: {"cantrips": 4, "spells": 4},
+                18: {"cantrips": 4, "spells": 4},
+                19: {"cantrips": 4, "spells": 4},
+                20: {"cantrips": 4, "spells": 4}
+            },
         },
         "Pathfinder": {
             "Wizard": {
@@ -4596,6 +4758,387 @@ def seed_rpg_systems():
                 3: {"spells": 3}
             }
         }
+    }
+
+    backgrounds = {
+        "Dungeons & Dragons 5th Edition": [
+            {
+                "name": "Acolyte",
+                "description": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices to conduct worshipers into the presence of the divine.",
+                "proficiencies": {
+                    "skills": ["Insight", "Religion"],
+                    "languages": ["Two languages of your choice"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Holy symbol",
+                    "Prayer book or prayer wheel",
+                    "5 sticks of incense",
+                    "Vestments",
+                    "Set of common clothes",
+                    "15 gold pieces"
+                ],
+                "languages": ["Two of your choice"],
+                "background_features": {
+                    "name": "Shelter of the Faithful",
+                    "description": "You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Criminal",
+                "description": "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the underworld. You're far closer than others to the world of murder, theft, and violence that pervades the underbelly of civilization.",
+                "proficiencies": {
+                    "skills": ["Deception", "Stealth"],
+                    "tools": ["One type of gaming set", "Thieves' tools"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Crowbar",
+                    "Set of dark common clothes including a hood",
+                    "Belt pouch containing 15 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Criminal Contact",
+                    "description": "You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Folk Hero",
+                "description": "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.",
+                "proficiencies": {
+                    "skills": ["Animal Handling", "Survival"],
+                    "tools": ["One type of artisan's tools", "Vehicles (land)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Set of artisan's tools (your choice)",
+                    "Shovel",
+                    "Iron pot",
+                    "Set of common clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Rustic Hospitality",
+                    "description": "Since you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among other commoners, unless you have shown yourself to be a danger to them. They will shield you from the law or anyone else searching for you, though they will not risk their lives for you."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Noble",
+                "description": "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, or a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement.",
+                "proficiencies": {
+                    "skills": ["History", "Persuasion"],
+                    "tools": ["One type of gaming set"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Set of fine clothes",
+                    "Signet ring",
+                    "Scroll of pedigree",
+                    "Purse containing 25 gold pieces"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Position of Privilege",
+                    "description": "Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society, and people assume you have the right to be wherever you are. The common folk make every effort to accommodate you and avoid your displeasure, and other people of high birth treat you as a member of the same social sphere. You can secure an audience with a local noble if you need to."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Charlatan",
+                "description": "You have always had a way with people. You know what makes them tick, you can tease out their hearts’ desires after a few minutes of conversation, and with a few leading questions you can read them like they were children’s books.",
+                "proficiencies": {
+                    "skills": ["Deception", "Sleight of Hand"],
+                    "tools": ["Disguise kit", "Forgery kit"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Fine clothes",
+                    "Disguise kit",
+                    "Tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke)",
+                    "Belt pouch containing 15 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "False Identity",
+                    "description": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Entertainer",
+                "description": "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poise and wit are the products of years of practice, study, and hard work.",
+                "proficiencies": {
+                    "skills": ["Acrobatics", "Performance"],
+                    "tools": ["Disguise kit", "One musical instrument"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "One musical instrument",
+                    "The favor of an admirer (love letter, lock of hair, or trinket)",
+                    "Costume",
+                    "Belt pouch containing 15 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "By Popular Demand",
+                    "description": "You can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble’s court. You receive free lodging and food of a modest or comfortable standard as long as you perform each night."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Guild Artisan",
+                "description": "You are a member of an artisan’s guild, skilled in a particular field and closely associated with other artisans. You are well established in the world of trade and commerce, and you take pride in your guild membership.",
+                "proficiencies": {
+                    "skills": ["Insight", "Persuasion"],
+                    "tools": ["One type of artisan's tools"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Set of artisan's tools (one of your choice)",
+                    "Letter of introduction from your guild",
+                    "Set of traveler’s clothes",
+                    "Belt pouch containing 15 gold pieces"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Guild Membership",
+                    "description": "As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Hermit",
+                "description": "You lived in seclusion—either in a sheltered community such as a monastery, or entirely alone—for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.",
+                "proficiencies": {
+                    "skills": ["Medicine", "Religion"],
+                    "tools": ["Herbalism kit"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Scroll case stuffed full of notes from your studies or prayers",
+                    "Winter blanket",
+                    "Set of common clothes",
+                    "Herbalism kit",
+                    "5 gold pieces"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Discovery",
+                    "description": "The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Outlander",
+                "description": "You grew up in the wilds, far from the comforts of town and technology. You’ve witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction.",
+                "proficiencies": {
+                    "skills": ["Athletics", "Survival"],
+                    "tools": ["One type of musical instrument"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Staff",
+                    "Hunting trap",
+                    "Trophy from an animal you killed",
+                    "Set of traveler’s clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Wanderer",
+                    "description": "You have an excellent memory for maps and geography, and you can always recall the general layout of terrain, settlements, and other features around you. In addition, you can find food and fresh water for yourself and up to five other people each day, provided that the land offers such resources."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Sage",
+                "description": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you.",
+                "proficiencies": {
+                    "skills": ["Arcana", "History"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Bottle of black ink",
+                    "Quill",
+                    "Small knife",
+                    "Letter from a dead colleague posing a question you have not yet been able to answer",
+                    "Set of common clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": ["Two of your choice"],
+                "background_features": {
+                    "name": "Researcher",
+                    "description": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Sailor",
+                "description": "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the sea is in your blood.",
+                "proficiencies": {
+                    "skills": ["Athletics", "Perception"],
+                    "tools": ["Navigator's tools", "Vehicles (water)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Belaying pin (club)",
+                    "50 feet of silk rope",
+                    "Lucky charm such as a rabbit foot or small stone",
+                    "Set of common clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Ship’s Passage",
+                    "description": "When you need to, you can secure free passage on a sailing ship for yourself and your adventuring companions. You might sail on the ship you served on, or another ship with which you have good relations."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Soldier",
+                "description": "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield.",
+                "proficiencies": {
+                    "skills": ["Athletics", "Intimidation"],
+                    "tools": ["One type of gaming set", "Vehicles (land)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Insignia of rank",
+                    "Trophy taken from a fallen enemy (dagger, broken blade, or piece of a banner)",
+                    "Set of bone dice or deck of cards",
+                    "Set of common clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Military Rank",
+                    "description": "You have a military rank from your career as a soldier. Soldiers loyal to your former military organization still recognize your authority and influence, and they defer to you if they are of a lower rank."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Urchin",
+                "description": "You grew up on the streets alone, orphaned, and poor, enduring the hardships of life in the slums. You had no one to watch over you or to provide for you, so you learned to provide for yourself.",
+                "proficiencies": {
+                    "skills": ["Sleight of Hand", "Stealth"],
+                    "tools": ["Disguise kit", "Thieves' tools"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Small knife",
+                    "Map of the city you grew up in",
+                    "Pet mouse",
+                    "Token to remember your parents by",
+                    "Set of common clothes",
+                    "Belt pouch containing 10 gold pieces"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "City Secrets",
+                    "description": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. When you are not in combat, you (and companions you lead) can travel between any two locations in the city twice as fast as your speed would normally allow."
+                },
+                "system_specific_data": None
+            }
+        ]
+    }
+
+    alignments = {
+        "Dungeons & Dragons 5th Edition": [
+            {
+                "name": "Lawful Good",
+                "description": "Lawful good characters believe that a strong, well-ordered society with a well-established code of conduct can make life better for the majority of people. Lawful good characters will support just laws and honor agreements.",
+                "moral_axis": "Good",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "Neutral Good",
+                "description": "Neutral good characters do the best they can to help others according to their needs. They do not feel beholden to any particular moral code or order, but instead strive to do the most good in a situation.",
+                "moral_axis": "Good",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Good",
+                "description": "Chaotic good characters act as their conscience directs, with little regard for what others expect. They believe in doing what is right, but their methods may be unconventional or even disruptive.",
+                "moral_axis": "Good",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            },
+            {
+                "name": "Lawful Neutral",
+                "description": "Lawful neutral characters follow the law or a code of conduct strictly, whether it is good or bad. They believe in order, but not necessarily in promoting good or evil—stability is paramount.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "True Neutral",
+                "description": "True neutral characters do not feel compelled to choose between good and evil or law and chaos. They act according to their own needs and the needs of the situation, without attachment to a particular philosophy or code.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Neutral",
+                "description": "Chaotic neutral characters follow their own whims and are individualistic above all. They prioritize personal freedom, often disregarding laws and traditions, and believe that chaos is the natural state of the universe.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            },
+            {
+                "name": "Lawful Evil",
+                "description": "Lawful evil characters follow a code or a set of rules, but their purpose is primarily to dominate or gain power. They believe that society functions best when it is structured and ordered, but they may exploit the system to serve their own interests.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "Neutral Evil",
+                "description": "Neutral evil characters do whatever they can get away with, without regard for law or chaos. They care only for themselves and do not care who they hurt or what they destroy in their pursuit of personal gain.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Evil",
+                "description": "Chaotic evil characters thrive on chaos and destruction. They act with complete disregard for laws, customs, or human life, seeking to sow discord wherever they go.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            }
+        ]
     }
 
 
@@ -4734,6 +5277,38 @@ def seed_rpg_systems():
                 db.session.add(new_monster)
 
 
+        if system_data["name"] in backgrounds:
+            for background_data in backgrounds[system_data["name"]]:
+                new_background = Background(
+                    name=background_data["name"],
+                    description=background_data["description"],
+                    proficiencies=background_data["proficiencies"],
+                    ability_score_increases=background_data["ability_score_increases"],
+                    granted_feats=background_data["granted_feats"],
+                    choosable_feats=background_data["choosable_feats"],
+                    equipment=background_data["equipment"],
+                    languages=background_data["languages"],
+                    background_features=background_data["background_features"],
+                    system_specific_data=background_data["system_specific_data"],
+                    rpg_system_id=system.id  # Ensure this background is linked to the correct RPG system
+                )
+                db.session.add(new_background)
+            db.session.commit()
+
+        if system_data["name"] in alignments:
+            for alignment_data in alignments[system_data["name"]]:
+                new_alignment = Alignment(
+                    name=alignment_data["name"],
+                    description=alignment_data["description"],
+                    moral_axis=alignment_data["moral_axis"],
+                    ethical_axis=alignment_data["ethical_axis"],
+                    system_specific_data=alignment_data["system_specific_data"],
+                    rpg_system_id=system.id  # Ensure this alignment is linked to the correct RPG system
+                )
+                db.session.add(new_alignment)
+            db.session.commit()
+
+
     db.session.commit()
     print("Database seeded successfully!")
 
@@ -4750,6 +5325,8 @@ def run_seed():
         db.session.query(ClassSpell).delete()
         db.session.query(Feat).delete()
         db.session.query(ClassProgression).delete()
+        db.session.query(Background).delete()
+        db.session.query(Alignment).delete()
         db.session.commit()
         seed_rpg_systems()
 

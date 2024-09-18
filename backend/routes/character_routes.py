@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, CharacterSkill, CharacterItem, Feat, CharacterFeat, Spell, ClassProgression
+from backend.models import db, Character, CharacterSkill, CharacterItem, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
@@ -192,25 +192,25 @@ class InitializeCharacter(Resource):
 
 class UpdateCharacterClass(Resource):
     def post(self):
+        # Get JSON data from the request
         data = request.get_json()
 
         # Find the character by ID
         character = Character.query.get_or_404(data.get('character_id'))
 
-        # Assign the selected class_id directly
+        # Assign the selected class_id to the character
         class_id = data.get('class_id')
-        character.class_id = class_id
-        
-        # Fetch the correct class progression based on the character's class and level
-        class_progression = ClassProgression.query.filter_by(class_id=class_id, level=character.level).first()
+        if not class_id:
+            return {"message": "class_id is required"}, 400
 
-        if not class_progression:
-            return {"message": "Class progression not found for this level"}, 404
-        
-        # Commit the changes
+        character.class_id = class_id
+
+        # Commit the change to the database
         db.session.commit()
 
+        # Return the updated character data
         return character.to_dict(), 200
+
 
     
 class UpdateCharacterAbilityScores(Resource):
@@ -356,7 +356,25 @@ class ClassProgressionResource(Resource):
 
         return class_progression.to_dict(), 200
 
+class BackgroundsByRPGSystemResource(Resource):
+    def get(self, rpg_system_id):
+        # Query the backgrounds based on the provided RPG system ID
+        backgrounds = Background.query.filter_by(rpg_system_id=rpg_system_id).all()
+        
+        if not backgrounds:
+            return {"message": "No backgrounds found for this RPG system"}, 404
+        
+        return [background.to_dict() for background in backgrounds], 200
 
+class AlignmentsByRPGSystemResource(Resource):
+    def get(self, rpg_system_id):
+        # Query the alignments based on the provided RPG system ID
+        alignments = Alignment.query.filter_by(rpg_system_id=rpg_system_id).all()
+        
+        if not alignments:
+            return {"message": "No alignments found for this RPG system"}, 404
+        
+        return [alignment.to_dict() for alignment in alignments], 200
 
 
 # Character Routes
@@ -375,6 +393,10 @@ character_api.add_resource(UpdateCharacterClass, '/characters/update-class')
 character_api.add_resource(UpdateCharacterAbilityScores, '/characters/update-ability-scores')
 character_api.add_resource(CharacterFeats, '/characters/<int:character_id>/feats')
 character_api.add_resource(UpdateCharacterFeats, '/characters/update-feats')
-character_api.add_resource(UpdateCharacterSpells, '/characters/update-spell')
+character_api.add_resource(UpdateCharacterSpells, '/characters/update-spells')
 character_api.add_resource(UpdateCharacterClassProgression, '/characters/update-class-progression')
 character_api.add_resource(ClassProgressionResource, '/class_progression/<int:class_id>/level/<int:level>')
+character_api.add_resource(BackgroundsByRPGSystemResource, '/backgrounds/system/<int:rpg_system_id>')
+character_api.add_resource(AlignmentsByRPGSystemResource, '/alignments/system/<int:rpg_system_id>')
+
+

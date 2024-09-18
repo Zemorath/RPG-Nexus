@@ -19,7 +19,8 @@ const SelectSpellsPage = () => {
         // Get character class
         const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
         const characterClassId = characterResponse.data.class.id;
-  
+        
+
         // Fetch class progression for the selected level
         const progressionResponse = await axios.get(`http://127.0.0.1:5555/api/class_progression/${characterClassId}/level/${selectedLevel}`);
         
@@ -70,7 +71,7 @@ const SelectSpellsPage = () => {
         character_id: characterId,
         spell_ids: selectedSpells.map(spell => spell.id),
       });
-      navigate(`/character/create/equipment/${systemId}/${characterId}`);
+      navigate(`/character/create/background/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error updating spells:', error);
     }
@@ -87,6 +88,22 @@ const SelectSpellsPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-text p-8">
+      {/* Reset and Next Buttons */}
+      <div className="flex justify-between mt-8">
+        <button
+          onClick={handleReset}
+          className="bg-red-600 text-white py-2 px-4 rounded"
+        >
+          Reset
+        </button>
+
+        <button
+          onClick={handleSubmit}
+          className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
+        >
+          Next
+        </button>
+      </div>
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center text-accent mb-8">Select Spells</h1>
 
@@ -120,23 +137,6 @@ const SelectSpellsPage = () => {
               <p>School: {spell.school}</p>
             </div>
           ))}
-        </div>
-
-        {/* Reset and Next Buttons */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={handleReset}
-            className="bg-red-600 text-white py-2 px-4 rounded"
-          >
-            Reset
-          </button>
-
-          <button
-            onClick={handleSubmit}
-            className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
-          >
-            Next
-          </button>
         </div>
       </div>
     </div>
