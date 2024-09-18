@@ -9,43 +9,49 @@ const AbilityScoresPage = () => {
   const [scores, setScores] = useState({});
   const navigate = useNavigate();
 
-  // Fetch ability scores from the RPG system
+  // Fetch ability scores from the RPG system and the character's saved scores (if any)
   useEffect(() => {
     const fetchAbilityScores = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/rpgsystems/${systemId}/default_settings`);
-        const systemSettings = response.data;
+        // Fetch system default ability scores
+        const systemResponse = await axios.get(`http://127.0.0.1:5555/api/rpgsystems/${systemId}/default_settings`);
+        const systemSettings = systemResponse.data;
         setAbilityScores(systemSettings.ability_scores);
 
-        // Initialize scores with default structure
+        // Fetch character's ability scores (if they exist)
+        const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
+        const characterScores = characterResponse.data.ability_scores || {};
+
+        // Initialize scores with either saved character scores or default structure
         const initialScores = {};
-        systemSettings.ability_scores.forEach(score => {
-          initialScores[score] = {
-            total_score: '--',
-            modifier: '--',
-            base_score: '--',
-            species_bonus: '--',
-            ability_improvements: '--',
-            misc_bonus: '--',
-            set_score: '--',
-            other_modifier: '--',
-            override_score: '--'
+        systemSettings.ability_scores.forEach((ability) => {
+          initialScores[ability] = {
+            total_score: characterScores[ability]?.total_score || '--',
+            modifier: characterScores[ability]?.modifier || '--',
+            base_score: characterScores[ability]?.base_score || '--',
+            species_bonus: characterScores[ability]?.species_bonus || '--',
+            ability_improvements: characterScores[ability]?.ability_improvements || '--',
+            misc_bonus: characterScores[ability]?.misc_bonus || '--',
+            set_score: characterScores[ability]?.set_score || '--',
+            other_modifier: characterScores[ability]?.other_modifier || '--',
+            override_score: characterScores[ability]?.override_score || 0 // Default to 0 if not set
           };
         });
+
         setScores(initialScores);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching ability scores:', error);
+        console.error('Error fetching ability scores and character data:', error);
         setLoading(false);
       }
     };
 
     fetchAbilityScores();
-  }, [systemId]);
+  }, [systemId, characterId]);
 
   // Handle score changes
   const handleScoreChange = (ability, field, value) => {
-    setScores(prevScores => ({
+    setScores((prevScores) => ({
       ...prevScores,
       [ability]: {
         ...prevScores[ability],
@@ -107,7 +113,7 @@ const AbilityScoresPage = () => {
         <h1 className="text-4xl font-bold text-center text-accent mb-8">Assign Ability Scores</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-          {abilityScores.map(ability => (
+          {abilityScores.map((ability) => (
             <div key={ability} className="bg-secondary p-6 rounded-lg shadow-lg w-full max-w-xs"> {/* Keep width consistent */}
               {/* Ability Name Header with Bar */}
               <div className="bg-primary text-accent p-3 rounded-t-lg text-center">
@@ -150,7 +156,7 @@ const AbilityScoresPage = () => {
                     type="number"
                     value={scores[ability].other_modifier === '--' ? '' : scores[ability].other_modifier}
                     onChange={(e) => handleScoreChange(ability, 'other_modifier', e.target.value)}
-                    className="border border-gray-400 p-1 w-12 text-center"
+                    className="bg-gray-700 text-white border border-gray-400 p-3 w-20 text-center rounded-lg"
                   />
                 </div>
                 <div className="flex justify-between">
@@ -159,7 +165,7 @@ const AbilityScoresPage = () => {
                     type="number"
                     value={scores[ability].override_score === '--' ? '' : scores[ability].override_score}
                     onChange={(e) => handleScoreChange(ability, 'override_score', e.target.value)}
-                    className="border border-gray-400 p-1 w-12 text-center"
+                    className="bg-gray-700 text-white border border-gray-400 p-3 w-20 text-center rounded-lg"
                   />
                 </div>
               </div>
