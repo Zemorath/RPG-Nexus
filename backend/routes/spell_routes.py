@@ -1,21 +1,34 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
-from backend.models import db, Spell, ClassProgression, Character, Class
+from backend.models import db, Spell, ClassProgression, Character, Class, ClassSpell
 
 spell_bp = Blueprint('spell', __name__)
 spell_api = Api(spell_bp)
 
+# class SpellsByClassAndLevel(Resource):
+#     def get(self, class_id, level):
+#         # Find the class to get the RPG system ID
+#         character_class = Class.query.get_or_404(class_id)
+#         rpg_system_id = character_class.rpg_system_id
+
+#         # Fetch all spells that belong to the same RPG system and whose level is <= the selected level
+#         available_spells = Spell.query.filter_by(rpg_system_id=rpg_system_id).filter(Spell.level <= level).all()
+
+#         return jsonify([spell.to_dict() for spell in available_spells])
+
+
 class SpellsByClassAndLevel(Resource):
     def get(self, class_id, level):
-        # Find the class to get the RPG system ID
+        # Find the class to ensure it exists
         character_class = Class.query.get_or_404(class_id)
-        rpg_system_id = character_class.rpg_system_id
-
-        # Fetch all spells that belong to the same RPG system and whose level is <= the selected level
-        available_spells = Spell.query.filter_by(rpg_system_id=rpg_system_id).filter(Spell.level <= level).all()
+        
+        # Fetch all spells for the given class and whose level is <= the selected level
+        available_spells = db.session.query(Spell).join(ClassSpell).filter(
+            ClassSpell.class_id == class_id,
+            Spell.level <= level
+        ).all()
 
         return jsonify([spell.to_dict() for spell in available_spells])
-
 
 
 # Fetch all spells for a specific system
