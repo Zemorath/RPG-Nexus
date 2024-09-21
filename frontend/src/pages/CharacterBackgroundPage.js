@@ -34,39 +34,54 @@ const CharacterBackgroundPage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Fetch alignment and background data
+  // Fetch alignment and background data, as well as character's existing data
   useEffect(() => {
-    const fetchAlignmentAndBackgrounds = async () => {
+    const fetchData = async () => {
       try {
-        const alignmentResponse = await axios.get(`http://127.0.0.1:5555/api/alignments/system/${systemId}`);
-        setAlignments(alignmentResponse.data);
+        // Fetch alignment and background data
+        const [alignmentResponse, backgroundResponse, characterResponse] = await Promise.all([
+          axios.get(`http://127.0.0.1:5555/api/alignments/system/${systemId}`),
+          axios.get(`http://127.0.0.1:5555/api/backgrounds/system/${systemId}`),
+          axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`)
+        ]);
 
-        const backgroundResponse = await axios.get(`http://127.0.0.1:5555/api/backgrounds/system/${systemId}`);
+        setAlignments(alignmentResponse.data);
         setBackgrounds(backgroundResponse.data);
+
+        // Populate the form fields with the character's existing data
+        const character = characterResponse.data;
+        setCharacterData({
+          name: character.name || '',
+          alignment: character.alignment?.name || '',
+          background: character.background?.name || '',
+          description: {
+            hair: character.physical_features?.hair || '',
+            skin: character.physical_features?.skin || '',
+            eyes: character.physical_features?.eyes || '',
+            height: character.physical_features?.height || '',
+            weight: character.physical_features?.weight || '',
+            age: character.physical_features?.age || '',
+            gender: character.physical_features?.gender || ''
+          },
+          traits: character.physical_features?.traits || [],
+          ideals: character.physical_features?.ideals || [],
+          bonds: character.physical_features?.bonds || [],
+          flaws: character.physical_features?.flaws || [],
+          organizations: character.physical_features?.organizations || [],
+          allies: character.physical_features?.allies || [],
+          enemies: character.physical_features?.enemies || [],
+          other: character.physical_features?.other || []
+        });
 
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching alignments and backgrounds:', error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       }
     };
 
-    fetchAlignmentAndBackgrounds();
-  }, [systemId]);
-
-  const handleAdd = (category) => {
-    setModalCategory(category);
-    setModalContent('');
-    document.getElementById('modal').style.display = 'block'; // Show modal
-  };
-
-  const handleAccept = () => {
-    setCharacterData((prev) => ({
-      ...prev,
-      [modalCategory]: [...prev[modalCategory], modalContent]
-    }));
-    document.getElementById('modal').style.display = 'none'; // Hide modal
-  };
+    fetchData();
+  }, [systemId, characterId]);
 
   const handleInputChange = (e, field, subfield) => {
     if (subfield) {
@@ -85,6 +100,22 @@ const CharacterBackgroundPage = () => {
     }
   };
 
+  // Handle opening the modal to add traits, ideals, etc.
+  const handleAdd = (category) => {
+    setModalCategory(category);
+    setModalContent('');
+    document.getElementById('modal').style.display = 'block'; // Show modal
+  };
+
+  // Handle accepting the modal input and adding to the corresponding list
+  const handleAccept = () => {
+    setCharacterData((prev) => ({
+      ...prev,
+      [modalCategory]: [...prev[modalCategory], modalContent]
+    }));
+    document.getElementById('modal').style.display = 'none'; // Hide modal
+  };
+
   const handleNextButton = async () => {
     try {
       await axios.post(`http://127.0.0.1:5555/api/characters/update-background`, {
@@ -92,8 +123,8 @@ const CharacterBackgroundPage = () => {
         ...characterData
       });
 
-      // Navigate to the next step (example: roll for health)
-      navigate(`/character/create/health/${systemId}/${characterId}`);
+      // Navigate to the next step (equipment selection)
+      navigate(`/character/create/equipment/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error updating character background:', error);
     }
@@ -114,11 +145,13 @@ const CharacterBackgroundPage = () => {
             ← Back
           </button>
           <h1 className="text-4xl font-bold text-center text-accent mx-auto">Character Background</h1>
+          {/* Next Button */}
+        
           <button
-            className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
-            onClick={() => navigate('/')} // Navigate to home
+            className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
+            onClick={handleNextButton}
           >
-            Home
+            Next
           </button>
         </div>
 
@@ -246,16 +279,6 @@ const CharacterBackgroundPage = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Next Button */}
-        <div className="flex justify-end mt-6">
-          <button
-            className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
-            onClick={handleNextButton}
-          >
-            Next
-          </button>
         </div>
       </div>
     </div>

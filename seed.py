@@ -6379,7 +6379,7 @@ def seed_rpg_systems():
                     description=class_data["description"],
                     hit_die=class_data["hit_die"],
                     primary_ability=class_data["primary_ability"],
-                    rpg_system_id=system.id  # Ensure this class is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_class)
                 db.session.commit()
@@ -6404,7 +6404,7 @@ def seed_rpg_systems():
                 new_feat = Feat(
                     name=feat_data["name"],
                     description=feat_data["description"],
-                    rpg_system_id=system.id  # Ensure this feat is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_feat)
 
@@ -6447,7 +6447,7 @@ def seed_rpg_systems():
                     vision_type=race_data["vision_type"],
                     natural_weapons=race_data["natural_weapons"],
                     favored_class=race_data["favored_class"],
-                    rpg_system_id=system.id  # Ensure this race is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_race)
 
@@ -6458,7 +6458,7 @@ def seed_rpg_systems():
                     name=skill_data["name"],
                     description=skill_data["description"],
                     associated_ability=skill_data["associated_ability"],
-                    rpg_system_id=system.id  # Ensure this skill is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_skill)
 
@@ -6472,9 +6472,12 @@ def seed_rpg_systems():
                     rarity=item_data["rarity"],
                     cost=item_data["cost"],
                     damage_type=item_data.get("damage_type"),
-                    rpg_system_id=system.id  # Ensure this item is linked to the correct RPG system
+                    material=item_data.get("material"),
+                    slot_type=item_data.get("slot_type"),
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_item)
+            db.session.commit()
 
         # Seed monsters
         if system_data["name"] in monsters:
@@ -6485,7 +6488,7 @@ def seed_rpg_systems():
                     size=monster_data["size"],
                     hit_points=monster_data["hit_points"],
                     armor_class=monster_data["armor_class"],
-                    rpg_system_id=system.id  # Ensure this monster is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_monster)
 
@@ -6503,7 +6506,7 @@ def seed_rpg_systems():
                     languages=background_data["languages"],
                     background_features=background_data["background_features"],
                     system_specific_data=background_data["system_specific_data"],
-                    rpg_system_id=system.id  # Ensure this background is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_background)
             db.session.commit()
@@ -6516,7 +6519,7 @@ def seed_rpg_systems():
                     moral_axis=alignment_data["moral_axis"],
                     ethical_axis=alignment_data["ethical_axis"],
                     system_specific_data=alignment_data["system_specific_data"],
-                    rpg_system_id=system.id  # Ensure this alignment is linked to the correct RPG system
+                    rpg_system_id=system.id
                 )
                 db.session.add(new_alignment)
             db.session.commit()

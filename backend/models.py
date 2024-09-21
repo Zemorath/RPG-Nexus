@@ -79,12 +79,12 @@ class Character(db.Model, SerializerMixin):
     system_data = db.Column(db.JSON, nullable=True)
     physical_features = db.Column(db.JSON, nullable=True)
     ability_scores = db.Column(db.JSON, nullable=True)
+    inventory = db.Column(db.JSON, nullable=True)  # List of item IDs
 
     # Relationships to other tables
     race = db.relationship('Race', back_populates='characters')
     character_class = db.relationship('Class', back_populates='characters')
     skills = db.relationship('CharacterSkill', back_populates='character', lazy=True, cascade="all, delete-orphan")
-    items = db.relationship('CharacterItem', back_populates='character', lazy=True, cascade="all, delete-orphan")
     feats = db.relationship('CharacterFeat', back_populates='character', lazy=True, cascade="all, delete-orphan")
     spell_slots = db.relationship('SpellSlot', back_populates='character', lazy=True, cascade="all, delete-orphan")
 
@@ -102,6 +102,10 @@ class Character(db.Model, SerializerMixin):
         class_progression = None
         if self.character_class:
             class_progression = ClassProgression.query.filter_by(class_id=self.character_class.id, level=self.level).first()
+
+        inventory_items = []
+        if self.inventory:
+            inventory_items = Item.query.filter(Item.id.in_(self.inventory)).all()
         
         return {
             'id': self.id,
@@ -112,6 +116,7 @@ class Character(db.Model, SerializerMixin):
             'alignment': self.alignment,
             'description': self.description,
             'inventory_weight_limit': self.inventory_weight_limit,
+            'inventory': [item.to_dict() for item in inventory_items],
             'status_effects': self.status_effects,
             'last_active': self.last_active,
             'system_data': self.system_data,
@@ -356,14 +361,14 @@ class Item(db.Model, SerializerMixin):
     enchantment_level = db.Column(db.Integer, nullable=True)
     material = db.Column(db.String(50), nullable=True)
     slot_type = db.Column(db.String(50), nullable=True)
+    type = db.Column(db.String(50), nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    characters = db.relationship('CharacterItem', back_populates='item', lazy=True)
     rpg_system = db.relationship('RPGSystem', back_populates='items')
     users = db.relationship('User', secondary='user_bookmarked_items', back_populates='bookmarked_items', lazy=True)
     
 
-    serialize_rules = ('-characters.item', '-rpg_system.items', '-users.bookmarked_items')
+    serialize_rules = ('-rpg_system.items', '-users.bookmarked_items')
 
     def to_dict(self):
         return {
@@ -385,28 +390,28 @@ class Item(db.Model, SerializerMixin):
         }
 
 
-class CharacterItem(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-    item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
+# class CharacterItem(db.Model, SerializerMixin):
+#     id = db.Column(db.Integer, primary_key=True)
+#     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+#     item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
 
-    character = db.relationship('Character', back_populates='items')
-    item = db.relationship('Item', back_populates='characters')
+#     character = db.relationship('Character', back_populates='items')
+#     item = db.relationship('Item', back_populates='characters')
 
-    serialize_rules = ('-character.items', '-item.characters')
+#     serialize_rules = ('-character.items', '-item.characters')
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'character': {
-                'id': self.character.id,
-                'name': self.character.name
-            },
-            'item': {
-                'id': self.item.id,
-                'name': self.item.name
-            }
-        }
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'character': {
+#                 'id': self.character.id,
+#                 'name': self.character.name
+#             },
+#             'item': {
+#                 'id': self.item.id,
+#                 'name': self.item.name
+#             }
+#         }
 
 
 class HomebrewItem(db.Model, SerializerMixin):

@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, CharacterSkill, CharacterItem, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background
+from backend.models import db, Character, CharacterSkill, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
@@ -375,6 +375,71 @@ class AlignmentsByRPGSystemResource(Resource):
             return {"message": "No alignments found for this RPG system"}, 404
         
         return [alignment.to_dict() for alignment in alignments], 200
+    
+class UpdateCharacterInventory(Resource):
+    def post(self):
+        data = request.get_json()
+        character = Character.query.get_or_404(data['character_id'])
+
+        # Update the inventory with the selected item IDs
+        character.inventory = data.get('item_ids', [])
+        db.session.commit()
+
+        return {'message': 'Inventory updated successfully'}, 200
+
+
+class UpdateCharacterBackground(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        name = data.get('name')
+        alignment_name = data.get('alignment')
+        background_name = data.get('background')
+
+        character = Character.query.get_or_404(character_id)
+
+        # Update character name
+        if name:
+            character.name = name
+
+        # Update alignment_id based on the alignment name
+        if alignment_name:
+            alignment = Alignment.query.filter_by(name=alignment_name).first()
+            if alignment:
+                character.alignment_id = alignment.id
+
+        # Update background_id based on the background name
+        if background_name:
+            background = Background.query.filter_by(name=background_name).first()
+            if background:
+                character.background_id = background.id
+
+        # Update physical features and other details
+        character.physical_features = {
+            "hair": data.get("description", {}).get("hair"),
+            "skin": data.get("description", {}).get("skin"),
+            "eyes": data.get("description", {}).get("eyes"),
+            "height": data.get("description", {}).get("height"),
+            "weight": data.get("description", {}).get("weight"),
+            "age": data.get("description", {}).get("age"),
+            "gender": data.get("description", {}).get("gender"),
+            "traits": data.get("traits", []),
+            "ideals": data.get("ideals", []),
+            "bonds": data.get("bonds", []),
+            "flaws": data.get("flaws", []),
+            "organizations": data.get("organizations", []),
+            "allies": data.get("allies", []),
+            "enemies": data.get("enemies", []),
+            "other": data.get("other", [])
+        }
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        return {"message": "Character background updated successfully"}, 200
+
+
+
 
 
 # Character Routes
@@ -398,5 +463,6 @@ character_api.add_resource(UpdateCharacterClassProgression, '/characters/update-
 character_api.add_resource(ClassProgressionResource, '/class_progression/<int:class_id>/level/<int:level>')
 character_api.add_resource(BackgroundsByRPGSystemResource, '/backgrounds/system/<int:rpg_system_id>')
 character_api.add_resource(AlignmentsByRPGSystemResource, '/alignments/system/<int:rpg_system_id>')
-
+character_api.add_resource(UpdateCharacterInventory, '/characters/update-items')
+character_api.add_resource(UpdateCharacterBackground, '/characters/update-background')
 

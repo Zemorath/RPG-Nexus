@@ -97,7 +97,7 @@ class ItemSearch(Resource):
 # List items by RPG 
 class ItemByRPGSystem(Resource):
     def get(self, rpg_system_id):
-        items = Item.query.filter(Item.system_data['rpg_system_id'].astext == str(rpg_system_id)).all()
+        items = Item.query.filter_by(rpg_system_id=rpg_system_id).all()
         return jsonify([item.to_dict() for item in items])
 
 # Bookmark item
@@ -235,6 +235,18 @@ class HomebrewItemImport(Resource):
         db.session.add(imported_item)
         db.session.commit()
         return imported_item.to_dict(), 201
+    
+# Add this to your item_routes.py
+from sqlalchemy import distinct
+
+class UniqueSlotTypes(Resource):
+    def get(self, rpg_system_id):
+        # Query for distinct slot_types for the given RPG system
+        unique_slot_types = db.session.query(distinct(Item.slot_type)).filter_by(rpg_system_id=rpg_system_id).all()
+        # Flatten the result into a simple list of slot_types
+        slot_types = [slot_type[0] for slot_type in unique_slot_types if slot_type[0] is not None]
+        return jsonify(slot_types)
+
 
 # Item Management Routes
 item_api.add_resource(ItemList, '/items')
@@ -253,3 +265,4 @@ item_api.add_resource(HomebrewItemUpdate, '/homebrew/items/<int:homebrew_item_id
 item_api.add_resource(HomebrewItemDelete, '/homebrew/items/<int:homebrew_item_id>/delete')
 item_api.add_resource(HomebrewItemExport, '/homebrew/items/<int:homebrew_item_id>/export')
 item_api.add_resource(HomebrewItemImport, '/homebrew/items/import')
+item_api.add_resource(UniqueSlotTypes, '/items/slot-types/rpgsystem/<int:rpg_system_id>')
