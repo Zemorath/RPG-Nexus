@@ -105,8 +105,9 @@ class Character(db.Model, SerializerMixin):
 
         inventory_items = []
         if self.inventory:
+            # Fetch all item objects corresponding to the IDs stored in the inventory
             inventory_items = Item.query.filter(Item.id.in_(self.inventory)).all()
-        
+
         return {
             'id': self.id,
             'name': self.name,
@@ -142,6 +143,7 @@ class Character(db.Model, SerializerMixin):
                 'username': self.user.username
             }
         }
+
 
 
 

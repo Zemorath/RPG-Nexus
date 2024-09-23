@@ -2,6 +2,7 @@ from flask import request, jsonify, session, Blueprint
 from flask_restful import Resource, Api
 from backend.models import db, Item, User, HomebrewItem
 from backend.utils.decorators import admin_required
+from sqlalchemy import distinct
 
 item_bp = Blueprint('item', __name__)
 item_api = Api(item_bp)
@@ -236,8 +237,6 @@ class HomebrewItemImport(Resource):
         db.session.commit()
         return imported_item.to_dict(), 201
     
-# Add this to your item_routes.py
-from sqlalchemy import distinct
 
 class UniqueSlotTypes(Resource):
     def get(self, rpg_system_id):

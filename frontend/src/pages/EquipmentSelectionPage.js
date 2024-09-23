@@ -26,19 +26,13 @@ const EquipmentSelectionPage = () => {
         ]);
 
         const allItems = itemsResponse.data;
-        const characterInventoryIds = characterResponse.data.inventory || [];
-        
-        // Populate inventory with items the character already has by filtering allItems
-        const characterInventory = allItems.filter(item => characterInventoryIds.includes(item.id));
-        
-        // Set available items by removing the character's inventory from the list
-        const availableItems = allItems.filter(item => !characterInventoryIds.includes(item.id));
+        const characterInventory = characterResponse.data.inventory;
 
         setItems(allItems); // Store original items list
-        setInventory(characterInventory); // Populate inventory with pre-selected items
-        setFilteredItems(availableItems); // Filter out items already in inventory
-        setUniqueSlotTypes(slotTypesResponse.data); // Set the unique slot types for category filtering
+        setInventory(characterInventory); // Populate inventory with detailed items
+        setFilteredItems(allItems); // Display all items, no need to filter
 
+        setUniqueSlotTypes(slotTypesResponse.data); // Set the unique slot types for category filtering
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,22 +46,11 @@ const EquipmentSelectionPage = () => {
   // Handle adding an item to inventory
   const handleAddToInventory = (item) => {
     setInventory((prevInventory) => [...prevInventory, item]);
-    setFilteredItems((prevItems) => prevItems.filter((i) => i.id !== item.id)); // Remove from available items
   };
 
-  // Handle removing an item from inventory and place it back into its original position
+  // Handle removing an item from inventory
   const handleRemoveFromInventory = (item) => {
     setInventory((prevInventory) => prevInventory.filter((i) => i.id !== item.id));
-
-    // Find the original index of the item in the full item list
-    const originalIndex = items.findIndex(i => i.id === item.id);
-
-    // Insert the item back into the filtered items in the correct position
-    setFilteredItems((prevItems) => {
-      const newItems = [...prevItems];
-      newItems.splice(originalIndex, 0, item); // Insert item at its original position
-      return newItems;
-    });
   };
 
   // Handle search functionality
@@ -105,7 +88,7 @@ const EquipmentSelectionPage = () => {
         character_id: characterId,
         item_ids: inventory.map((item) => item.id),
       });
-      navigate(`/character/summary/${systemId}/${characterId}`); // Navigate to character summary or next step
+      navigate(`/character/summary/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error submitting inventory:', error);
     }
