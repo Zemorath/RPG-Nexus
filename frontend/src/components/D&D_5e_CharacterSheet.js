@@ -49,20 +49,20 @@ const generateCharacterSheet = async (characterId) => {
 
   // Saving Throws
   const savingThrows = character.saving_throws || {};
-  form.getTextField('ST Strength').setText(String(savingThrows.strength?.total || ''));
-  form.getTextField('ST Dexterity').setText(String(savingThrows.dexterity?.total || ''));
-  form.getTextField('ST Constitution').setText(String(savingThrows.constitution?.total || ''));
-  form.getTextField('ST Intelligence').setText(String(savingThrows.intelligence?.total || ''));
-  form.getTextField('ST Wisdom').setText(String(savingThrows.wisdom?.total || ''));
-  form.getTextField('ST Charisma').setText(String(savingThrows.charisma?.total || ''));
+  form.getTextField('ST Strength').setText(String(savingThrows.Strength?.total || ''));
+  form.getTextField('ST Dexterity').setText(String(savingThrows.Dexterity?.total || ''));
+  form.getTextField('ST Constitution').setText(String(savingThrows.Constitution?.total || ''));
+  form.getTextField('ST Intelligence').setText(String(savingThrows.Intelligence?.total || ''));
+  form.getTextField('ST Wisdom').setText(String(savingThrows.Wisdom?.total || ''));
+  form.getTextField('ST Charisma').setText(String(savingThrows.Charisma?.total || ''));
 
   // Checkboxes for saving throws proficiency
-  form.getCheckBox('Check STR').check(savingThrows.strength?.proficient || false);
-  form.getCheckBox('Check DEX').check(savingThrows.dexterity?.proficient || false);
-  form.getCheckBox('Check CON').check(savingThrows.constitution?.proficient || false);
-  form.getCheckBox('Check INT').check(savingThrows.intelligence?.proficient || false);
-  form.getCheckBox('Check WIS').check(savingThrows.wisdom?.proficient || false);
-  form.getCheckBox('Check CHA').check(savingThrows.charisma?.proficient || false);
+  form.getCheckBox('Check STR').check(savingThrows.Strength?.proficient || false);
+  form.getCheckBox('Check DEX').check(savingThrows.Dexterity?.proficient || false);
+  form.getCheckBox('Check CON').check(savingThrows.Constitution?.proficient || false);
+  form.getCheckBox('Check INT').check(savingThrows.Intelligence?.proficient || false);
+  form.getCheckBox('Check WIS').check(savingThrows.Wisdom?.proficient || false);
+  form.getCheckBox('Check CHA').check(savingThrows.Charisma?.proficient || false);
 
   // Skills
   const skills = character.skills || {};
@@ -114,6 +114,13 @@ const generateCharacterSheet = async (characterId) => {
     form.getTextField('Wpn1 AtkBonus').setText(String(character.weapons[0].attack_bonus || ''));
     form.getTextField('Wpn1 Damage').setText(character.weapons[0].damage || '');
   }
+
+  form.getTextField('Background').setText(character.background.name)
+  form.getTextField('Alignment').setText(character.alignment.name)
+  form.getTextField('Race').setText(character.race.name)
+  form.getTextField('Initiative').setText(String(character.initiative))
+  form.getTextField('HPMax').setText(String(character.health))
+  form.getTextField('HPCurrent').setText(String(character.health))
 
   // Save the modified PDF and download it
   const pdfBytes = await pdfDoc.save();

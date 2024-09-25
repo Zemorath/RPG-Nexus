@@ -136,8 +136,14 @@ class Character(db.Model, SerializerMixin):
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name
             },
-            'background': self.background.to_dict() if self.background else None,
-            'alignment': self.alignment.to_dict() if self.alignment else None,
+            'background': {
+                'id': self.background.id if self.background else None,
+                'name': self.background.name if self.background else None
+                },
+            'alignment': {
+                'id': self.alignment.id if self.alignment else None,
+                'name': self.alignment.name if self.alignment else None
+                },
             'race': {
                 'id': self.race.id if self.race else None,
                 'name': self.race.name if self.race else None
