@@ -1,33 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import generateCharacterSheet from '../components/D&D_5e_CharacterSheet'; // Import the function here
 
 const CharacterSummaryPage = () => {
   const { systemId, characterId } = useParams();
   const [character, setCharacter] = useState(null);
+  const [calculatedCharacter, setCalculatedCharacter] = useState(null); // Add state for calculated character
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCharacterDetails = async () => {
+    const fetchCharacter = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
-        setCharacter(response.data);
-        setLoading(false);
+        // Fetch the character data
+        const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
+        setCharacter(characterResponse.data);
+
+        // Fetch the calculated character data
+        const calculatedResponse = await axios.get(`http://127.0.0.1:5555/api/characters/calculate/${characterId}`);
+        setCalculatedCharacter(calculatedResponse.data);
       } catch (error) {
-        console.error('Error fetching character details:', error);
-        setLoading(false);
+        console.error('Error fetching character data:', error);
+      } finally {
+        setLoading(false); // Update loading state after both calls are complete
       }
     };
-
-    fetchCharacterDetails();
+  
+    fetchCharacter();
   }, [characterId]);
+
+  const handleGenerateCharacterSheet = () => {
+    // Generate the PDF using the generateCharacterSheet function
+    generateCharacterSheet(characterId);
+  };
 
   if (loading) {
     return <div className="text-text">Loading character details...</div>;
   }
 
-  if (!character) {
+  if (!character || !calculatedCharacter) {
     return <div className="text-text">Character not found</div>;
   }
 
@@ -35,7 +47,7 @@ const CharacterSummaryPage = () => {
     <div className="min-h-screen bg-background text-text p-8">
       <div className="container mx-auto">
         <h1 className="text-5xl font-bold text-accent mb-8 text-center">{character.name}</h1>
-        
+
         {/* Character Info */}
         <div className="mb-8 p-6 bg-primary rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-accent mb-4">Character Information</h2>
@@ -49,17 +61,21 @@ const CharacterSummaryPage = () => {
               <p><strong>Background:</strong> {character.background ? character.background.name : 'None'}</p>
               <p><strong>Alignment:</strong> {character.alignment ? character.alignment.name : 'None'}</p>
               <p><strong>Inventory Weight Limit:</strong> {character.inventory_weight_limit}</p>
+              <p><strong>Armor Class:</strong> {calculatedCharacter.armor_class}</p> {/* Armor Class */}
+              <p><strong>Initiative:</strong> {calculatedCharacter.initiative}</p> {/* Initiative */}
+              <p><strong>Proficiency Bonus:</strong> {calculatedCharacter.proficiency_bonus}</p> {/* Proficiency Bonus */}
             </div>
             <div>
               <h3 className="text-xl font-bold text-accent mt-4">Ability Scores</h3>
-              {character.ability_scores ? (
+              {calculatedCharacter.ability_scores ? (
                 <ul className="list-inside list-disc">
-                  {Object.keys(character.ability_scores).map((key) => {
-                    const score = character.ability_scores[key];
-                    const displayedScore = score.override_score || score.total_score;  // Display override_score if present, otherwise total_score
+                  {Object.keys(calculatedCharacter.ability_scores).map((key) => {
+                    const score = calculatedCharacter.ability_scores[key];
+                    const displayedScore = score.override_score || score.total_score; // Display override_score if present, otherwise total_score
+                    const modifier = score.modifier !== undefined ? ` (Modifier: ${score.modifier})` : ''; // Display modifier
                     return (
                       <li key={key}>
-                        <strong>{key}:</strong> {displayedScore}
+                        <strong>{key}:</strong> {displayedScore} {modifier}
                       </li>
                     );
                   })}
@@ -98,6 +114,13 @@ const CharacterSummaryPage = () => {
             className="bg-accent text-background py-2 px-6 rounded-lg hover:bg-text hover:text-background transition duration-300"
           >
             Edit Character
+          </button>
+
+          <button
+            onClick={handleGenerateCharacterSheet} // Generate Character Sheet Button
+            className="bg-accent text-background py-2 px-6 rounded-lg hover:bg-text hover:text-background transition duration-300"
+          >
+            Generate Character Sheet
           </button>
 
           <button

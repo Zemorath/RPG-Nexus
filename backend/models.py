@@ -79,12 +79,18 @@ class Character(db.Model, SerializerMixin):
     system_data = db.Column(db.JSON, nullable=True)
     physical_features = db.Column(db.JSON, nullable=True)
     ability_scores = db.Column(db.JSON, nullable=True)
-    inventory = db.Column(db.JSON, nullable=True)  # List of item IDs
+    inventory = db.Column(db.JSON, nullable=True)
+    saving_throws = db.Column(db.JSON, nullable=True)
+    skills = db.Column(db.JSON, nullable=True)
+    status_effects = db.Column(db.JSON, nullable=True)
+    saving_throws = db.Column(db.JSON, nullable=True)
+    proficiency_bonus = db.Column(db.Integer, nullable=True) 
+    initiative = db.Column(db.Integer, nullable=True)
+
 
     # Relationships to other tables
     race = db.relationship('Race', back_populates='characters')
     character_class = db.relationship('Class', back_populates='characters')
-    skills = db.relationship('CharacterSkill', back_populates='character', lazy=True, cascade="all, delete-orphan")
     feats = db.relationship('CharacterFeat', back_populates='character', lazy=True, cascade="all, delete-orphan")
     spell_slots = db.relationship('SpellSlot', back_populates='character', lazy=True, cascade="all, delete-orphan")
 
@@ -123,6 +129,9 @@ class Character(db.Model, SerializerMixin):
             'system_data': self.system_data,
             'physical_features': self.physical_features,
             'ability_scores': self.ability_scores,
+            'saving_throws': self.saving_throws,
+            'skills': self.skills,
+            'status_effects': self.status_effects,
             'rpg_system': {
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name
@@ -225,7 +234,6 @@ class Class(db.Model, SerializerMixin):
     
 
 
-# Skill table and the related join table
 class Skill(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -236,10 +244,9 @@ class Skill(db.Model, SerializerMixin):
     requires_training = db.Column(db.Boolean, nullable=True)
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
-    characters = db.relationship('CharacterSkill', back_populates='skill', lazy=True)
     rpg_system = db.relationship('RPGSystem', back_populates='skills', lazy=True)
 
-    serialize_rules = ('-characters.skill', '-rpg_system.skills')
+    serialize_rules = ('-rpg_system.skills')
 
     def to_dict(self):
         return {
@@ -257,28 +264,29 @@ class Skill(db.Model, SerializerMixin):
         }
 
 
-class CharacterSkill(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-    skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
 
-    character = db.relationship('Character', back_populates='skills')
-    skill = db.relationship('Skill', back_populates='characters')
+# class CharacterSkill(db.Model, SerializerMixin):
+#     id = db.Column(db.Integer, primary_key=True)
+#     character_id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+#     skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
 
-    serialize_rules = ('-character.skills', '-skill.characters')
+#     character = db.relationship('Character', back_populates='skills')
+#     skill = db.relationship('Skill', back_populates='characters')
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'character': {
-                'id': self.character.id,
-                'name': self.character.name
-            },
-            'skill': {
-                'id': self.skill.id,
-                'name': self.skill.name
-            }
-        }
+#     serialize_rules = ('-character.skills', '-skill.characters')
+
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'character': {
+#                 'id': self.character.id,
+#                 'name': self.character.name
+#             },
+#             'skill': {
+#                 'id': self.skill.id,
+#                 'name': self.skill.name
+#             }
+#         }
     
 
 

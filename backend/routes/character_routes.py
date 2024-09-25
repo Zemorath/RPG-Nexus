@@ -1,16 +1,12 @@
 from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, CharacterSkill, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background
+from backend.models import db, Character, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background, RPGSystem
+from backend.utils.calculation_service import CalculationService
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
 
-@character_bp.route('/character/test_session')
-def test_session():
-    if 'test_value' not in session:
-        session['test_value'] = 0
-    session['test_value'] += 1
-    return jsonify({"test_value": session['test_value']})
+calculation_service = CalculationService()
 
 # List all characters
 class CharacterList(Resource):
@@ -76,6 +72,7 @@ class CharacterDetail(Resource):
         db.session.delete(character)
         db.session.commit()
         return {"message": "Character deleted successfully"}, 200
+
 
 class UserCharacters(Resource):
 
@@ -177,21 +174,64 @@ class InitializeCharacter(Resource):
     def post(self):
         data = request.get_json()
 
-        # Create a new character with the selected RPG system and race
+        # Fetch RPG system
+        rpg_system = RPGSystem.query.get(data.get('rpg_system_id'))
+        if not rpg_system:
+            return {"message": "RPG System not found"}, 404
+
+        # Initialize default skills and saving throws for the RPG system
+        default_skills = self.get_default_skills(rpg_system)
+        default_saving_throws = self.get_default_saving_throws(rpg_system)
+
+        # Initialize character with base stats
         new_character = Character(
             user_id=data.get('user_id'),
             rpg_system_id=data.get('rpg_system_id'),
             race_id=data.get('race_id'),
             level=1,
-            health=100,
-            system_data={},
-            name="Unnamed Character",
+            health=1,  # Default starting health
+            system_data={},  # Additional system-specific data
+            name="Unnamed Character",  # Default name
+            skills=default_skills,  # Initialize skills based on the RPG system
+            saving_throws=default_saving_throws,  # Initialize saving throws
+            proficiency_bonus=2,  # Default proficiency bonus for a level 1 character
+            initiative=0,  # Initiative will be calculated based on ability scores later
         )
         
         db.session.add(new_character)
         db.session.commit()
 
         return new_character.to_dict(), 201
+
+    def get_default_skills(self, rpg_system):
+        """
+        Fetch the default skills for the selected RPG system and map them to the character.
+        This function assumes that the RPG system has a list of associated skills.
+        """
+        default_skills = {}
+        for skill in rpg_system.skills:
+            default_skills[skill.name] = {
+                'ability': skill.associated_ability,
+                'proficient': False,  # Default proficiency is False
+                'bonus': 0  # No additional bonus at the start
+            }
+        return default_skills
+
+    def get_default_saving_throws(self, rpg_system):
+        """
+        Fetch the default saving throws for the selected RPG system.
+        In many RPG systems like D&D, saving throws are associated with ability scores.
+        """
+        default_saving_throws = {
+            "Strength": {'proficient': False, 'bonus': 0},
+            "Dexterity": {'proficient': False, 'bonus': 0},
+            "Constitution": {'proficient': False, 'bonus': 0},
+            "Intelligence": {'proficient': False, 'bonus': 0},
+            "Wisdom": {'proficient': False, 'bonus': 0},
+            "Charisma": {'proficient': False, 'bonus': 0},
+        }
+        return default_saving_throws
+
 
 class UpdateCharacterClass(Resource):
     def post(self):
@@ -440,6 +480,20 @@ class UpdateCharacterBackground(Resource):
         db.session.commit()
 
         return {"message": "Character background updated successfully"}, 200
+    
+class CharacterCalculation(Resource):
+    def get(self, character_id):
+        # Fetch the character from the database
+        character = Character.query.get_or_404(character_id)
+        character_data = character.to_dict()
+
+        # Use the CalculationService to apply the calculations
+        calculation_service = CalculationService()
+        calculated_character = calculation_service.calculate_dnd5e_stats(character_data)
+
+        # Return the calculated data
+        return calculated_character, 200
+
 
 
 
@@ -468,4 +522,6 @@ character_api.add_resource(BackgroundsByRPGSystemResource, '/backgrounds/system/
 character_api.add_resource(AlignmentsByRPGSystemResource, '/alignments/system/<int:rpg_system_id>')
 character_api.add_resource(UpdateCharacterInventory, '/characters/update-items')
 character_api.add_resource(UpdateCharacterBackground, '/characters/update-background')
+character_api.add_resource(CharacterCalculation, '/characters/calculate/<int:character_id>')
+
 
