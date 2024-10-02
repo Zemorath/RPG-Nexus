@@ -13,32 +13,45 @@ const SelectRacePage = () => {
   
   const { user } = useAuth(); // Use the useAuth hook
 
+  // Fetch Races and Existing Character Data
   useEffect(() => {
-    const fetchRaces = async () => {
+    const fetchRacesAndCharacter = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/races/rpgsystem/${systemId}`, {
+        // Fetch the races for the selected RPG system
+        const raceResponse = await axios.get(`http://127.0.0.1:5555/api/races/rpgsystem/${systemId}`, {
           withCredentials: true // Ensure cookies are sent with the request
         });
-        setRaces(response.data);
+        setRaces(raceResponse.data);
+
+        // If there's an existing character, fetch its details to get the selected race
+        if (characterId) {
+          const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`, {
+            withCredentials: true
+          });
+          
+          // Automatically highlight the previously selected race (if available)
+          const characterRaceId = characterResponse.data.race ? characterResponse.data.race.id : null;
+          if (characterRaceId) {
+            const previouslySelectedRace = raceResponse.data.find(race => race.id === characterRaceId);
+            setSelectedRace(previouslySelectedRace);
+          }
+        }
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching races:', error);
+        console.error('Error fetching races or character:', error);
         setLoading(false);
-        // Handle unauthorized access
         if (error.response && error.response.status === 401) {
           navigate('/login');
         }
       }
     };
 
-    fetchRaces();
-  }, [systemId, navigate]);
+    fetchRacesAndCharacter();
+  }, [systemId, characterId, navigate]);
 
   const handleRaceSelect = (race) => {
     setSelectedRace(race);
   };
-
-  
 
   const handleRaceConfirm = async () => {
     try {
@@ -108,7 +121,8 @@ const SelectRacePage = () => {
           {races.map(race => (
             <div
               key={race.id}
-              className="bg-secondary p-6 rounded-lg shadow-lg hover:shadow-2xl hover:bg-accent hover:text-background transition-all duration-300 cursor-pointer transform hover:scale-105"
+              className={`bg-secondary p-6 rounded-lg shadow-lg hover:shadow-2xl hover:bg-accent hover:text-background transition-all duration-300 cursor-pointer transform hover:scale-105
+                ${selectedRace && selectedRace.id === race.id ? 'border-4 border-accent' : ''}`} // Highlight selected race
               onClick={() => handleRaceSelect(race)}
             >
               <div className="text-center text-2xl font-bold mb-4">{race.name}</div>

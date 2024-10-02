@@ -9,21 +9,35 @@ const SelectClassPage = () => {
   const { systemId, characterId } = useParams(); // Get the RPG system ID and character ID from URL params
   const navigate = useNavigate();
 
-  // Fetch the available classes for the selected RPG system
+  // Fetch the available classes for the selected RPG system and the character's existing class
   useEffect(() => {
-    const fetchClasses = async () => {
+    const fetchClassesAndCharacter = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5555/api/classes/rpgsystem/${systemId}`);
-        setClasses(response.data);
+        // Fetch the classes for the selected RPG system
+        const classResponse = await axios.get(`http://127.0.0.1:5555/api/classes/rpgsystem/${systemId}`);
+        setClasses(classResponse.data);
+
+        // If there's an existing character, fetch its details to get the selected class
+        if (characterId) {
+          const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
+          
+          // Automatically highlight the previously selected class (if available)
+          const characterClassId = characterResponse.data.class ? characterResponse.data.class.id : null;
+          if (characterClassId) {
+            const previouslySelectedClass = classResponse.data.find(cls => cls.id === characterClassId);
+            setSelectedClass(previouslySelectedClass);
+          }
+        }
+
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching classes:', error);
+        console.error('Error fetching classes or character:', error);
         setLoading(false);
       }
     };
 
-    fetchClasses();
-  }, [systemId]);
+    fetchClassesAndCharacter();
+  }, [systemId, characterId]);
 
   const handleClassSelect = (cls) => {
     setSelectedClass(cls); // Set the selected class for the modal
@@ -32,7 +46,7 @@ const SelectClassPage = () => {
   const handleClassConfirm = async () => {
     try {
       // Send a request to save the selected class and its class progression to the character in the backend
-      const response = await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
+      await axios.post(`http://127.0.0.1:5555/api/characters/update-class`, {
         class_id: selectedClass.id, // The selected class ID
         character_id: characterId // The character ID
       });
@@ -81,7 +95,8 @@ const SelectClassPage = () => {
           {classes.map(cls => (
             <div
               key={cls.id}
-              className="bg-secondary p-6 rounded-lg shadow-lg hover:shadow-2xl hover:bg-accent hover:text-background transition-all duration-300 cursor-pointer transform hover:scale-105"
+              className={`bg-secondary p-6 rounded-lg shadow-lg hover:shadow-2xl hover:bg-accent hover:text-background transition-all duration-300 cursor-pointer transform hover:scale-105
+                ${selectedClass && selectedClass.id === cls.id ? 'border-4 border-accent' : ''}`} // Highlight selected class
               onClick={() => handleClassSelect(cls)}
             >
               <div className="text-center text-2xl font-bold mb-4">{cls.name}</div>

@@ -2,174 +2,246 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
+const AssignmentRow = ({ abilityScores, availableScores, onAssign }) => {
+  return (
+    <div className="grid grid-cols-6 gap-4 mb-8">
+      {abilityScores.map((ability) => (
+        <div key={ability} className="bg-secondary p-4 rounded-lg">
+          <h3 className="text-accent text-lg font-bold mb-2">{ability}</h3>
+          <select
+            onChange={(e) => onAssign(ability, parseInt(e.target.value))}
+            className="bg-primary text-text border border-accent p-2 w-full text-center rounded-lg"
+          >
+            <option value="">Assign</option>
+            {availableScores.length > 0 ? (
+              availableScores.map((score) => (
+                <option key={score} value={score}>
+                  {score}
+                </option>
+              ))
+            ) : (
+              <option value="">No scores available</option>
+            )}
+          </select>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const AbilityScoreCard = ({ ability, score, modifier, onOverride }) => {
+  const [isOverriding, setIsOverriding] = useState(false);
+  const [overrideValue, setOverrideValue] = useState(score);
+
+  const handleOverride = () => {
+    onOverride(ability, parseInt(overrideValue));
+    setIsOverriding(false);
+  };
+
+  return (
+    <div className="bg-secondary p-6 rounded-lg shadow-lg w-full max-w-xs">
+      <div className="bg-primary text-accent p-3 rounded-t-lg text-center">
+        <h2 className="text-xl font-bold">{ability}</h2>
+      </div>
+      <div className="p-3 space-y-2">
+        <div className="text-center">
+          <span className="text-accent text-2xl font-bold">{score}</span>
+          <span className="text-text ml-2">({modifier})</span>
+        </div>
+        {isOverriding ? (
+          <div className="flex items-center justify-between">
+            <input
+              type="number"
+              value={overrideValue}
+              onChange={(e) => setOverrideValue(e.target.value)}
+              className="bg-primary text-text border border-accent p-2 w-20 text-center rounded-lg"
+            />
+            <button
+              onClick={handleOverride}
+              className="bg-accent text-background py-1 px-3 rounded hover:bg-text hover:text-background transition duration-300"
+            >
+              Save
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setIsOverriding(true)}
+            className="bg-accent text-background py-1 px-3 rounded hover:bg-text hover:text-background transition duration-300 w-full"
+          >
+            Override
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const AbilityScoresPage = () => {
   const { systemId, characterId } = useParams();
   const [abilityScores, setAbilityScores] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [scores, setScores] = useState({});
+  const [generationMethod, setGenerationMethod] = useState('manual');
+  const [availableScores, setAvailableScores] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Fetch ability scores from the RPG system and the character's saved scores (if any)
   useEffect(() => {
     const fetchAbilityScores = async () => {
       try {
-        // Fetch system default ability scores
         const systemResponse = await axios.get(`http://127.0.0.1:5555/api/rpgsystems/${systemId}/default_settings`);
         const systemSettings = systemResponse.data;
         setAbilityScores(systemSettings.ability_scores);
 
-        // Fetch character's ability scores (if they exist)
         const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
         const characterScores = characterResponse.data.ability_scores || {};
+        setScores(characterScores);
 
-        // Initialize scores with either saved character scores or default structure
-        const initialScores = {};
-        systemSettings.ability_scores.forEach((ability) => {
-          initialScores[ability] = {
-            total_score: characterScores[ability]?.total_score || '--',
-            modifier: characterScores[ability]?.modifier || '--',
-            base_score: characterScores[ability]?.base_score || '--',
-            species_bonus: characterScores[ability]?.species_bonus || '--',
-            ability_improvements: characterScores[ability]?.ability_improvements || '--',
-            misc_bonus: characterScores[ability]?.misc_bonus || '--',
-            set_score: characterScores[ability]?.set_score || '--',
-            other_modifier: characterScores[ability]?.other_modifier || '--',
-            override_score: characterScores[ability]?.override_score || 0 // Default to 0 if not set
-          };
-        });
-
-        setScores(initialScores);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching ability scores and character data:', error);
-        setLoading(false);
+        console.error('Error fetching data:', error);
       }
     };
-
     fetchAbilityScores();
   }, [systemId, characterId]);
 
-  // Handle score changes
-  const handleScoreChange = (ability, field, value) => {
-    setScores((prevScores) => ({
-      ...prevScores,
-      [ability]: {
-        ...prevScores[ability],
-        [field]: value === '' ? '--' : parseInt(value) || 0 // If empty, set '--', else use int or 0
+  const handleMethodChange = async (method) => {
+    setGenerationMethod(method);
+    if (method === 'standard_array' || method === 'point_buy') {
+      try {
+        console.log(`Requesting ${method} scores...`);
+        const response = await axios.post(
+          `http://127.0.0.1:5555/api/characters/generate-ability-scores/${systemId}/${method}`,
+          {}, // Empty object as payload
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        console.log('Full response data:', response.data);
+        
+        let scores = [];
+        if (method === 'standard_array' && response.data.standard_array) {
+          scores = response.data.standard_array;
+        } else if (method === 'point_buy' && response.data.available_scores) {
+          scores = response.data.available_scores;
+        } else {
+          console.error('Unexpected response data structure:', response.data);
+        }
+
+        if (scores.length > 0) {
+          setAvailableScores(scores);
+          console.log('Available scores set:', scores);
+        } else {
+          console.error('No scores found in response data');
+          setAvailableScores([]);
+        }
+      } catch (error) {
+        console.error('Error generating ability scores:', error);
+        if (error.response) {
+          console.error('Response data:', error.response.data);
+          console.error('Response status:', error.response.status);
+          console.error('Response headers:', error.response.headers);
+        }
+        setAvailableScores([]);
       }
+    } else {
+      setAvailableScores([]);
+    }
+  };
+
+  const handleAssign = (ability, value) => {
+    setScores(prev => ({
+      ...prev,
+      [ability]: { ...prev[ability], score: value, modifier: calculateModifier(value) }
+    }));
+    setAvailableScores(prev => prev.filter(score => score !== value));
+  };
+
+  const handleOverride = (ability, value) => {
+    setScores(prev => ({
+      ...prev,
+      [ability]: { ...prev[ability], score: value, modifier: calculateModifier(value) }
     }));
   };
 
-  // Submit the ability scores and navigate to the next step
+  const calculateModifier = (score) => {
+    return Math.floor((score - 10) / 2);
+  };
+
   const handleSubmit = async () => {
     try {
-      // Ensure any fields left unchanged remain '--'
-      const updatedScores = { ...scores };
-
-      for (const ability in updatedScores) {
-        for (const field in updatedScores[ability]) {
-          if (updatedScores[ability][field] === '--' || updatedScores[ability][field] === '') {
-            updatedScores[ability][field] = '--';
-          }
-        }
-      }
-
       await axios.post(`http://127.0.0.1:5555/api/characters/update-ability-scores`, {
         character_id: characterId,
-        ability_scores: updatedScores
+        ability_scores: scores
       });
-
-      // Navigate to the next step (placeholder URL for now)
       navigate(`/character/create/spells/${systemId}/${characterId}`);
     } catch (error) {
-      console.error('Error submitting ability scores:', error);
+      console.error('Error submitting scores:', error);
     }
   };
 
   if (loading) {
-    return <div>Loading Ability Scores...</div>;
+    return <div className="min-h-screen bg-background text-text flex items-center justify-center">
+      <div className="text-2xl">Loading...</div>
+    </div>;
   }
 
   return (
     <div className="min-h-screen bg-background text-text p-8">
       <div className="flex justify-between mt-8">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate(`/character/create/class/${systemId}/${characterId}`)}
-          className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
-        >
-          Back
-        </button>
-
-        {/* Next Button */}
-        <button
-          onClick={handleSubmit}
-          className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
-        >
-          Next
-        </button>
+        <button onClick={() => navigate(`/character/create/class/${systemId}/${characterId}`)} className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300">Back</button>
+        <button onClick={handleSubmit} className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300">Next</button>
       </div>
+
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-center text-accent mb-8">Assign Ability Scores</h1>
 
+        <div className="text-center mb-8">
+          <select 
+            value={generationMethod} 
+            onChange={(e) => handleMethodChange(e.target.value)} 
+            className="bg-secondary text-text py-2 px-4 rounded-lg border border-accent"
+          >
+            <option value="manual">Manual</option>
+            <option value="standard_array">Standard Array</option>
+            <option value="point_buy">Point Buy</option>
+          </select>
+        </div>
+
+        {(generationMethod === 'standard_array' || generationMethod === 'point_buy') && (
+          <AssignmentRow
+            abilityScores={abilityScores}
+            availableScores={availableScores}
+            onAssign={handleAssign}
+          />
+        )}
+
+        {generationMethod === 'manual' && (
+          <div className="grid grid-cols-6 gap-4 mb-8">
+            {abilityScores.map((ability) => (
+              <div key={ability} className="bg-secondary p-4 rounded-lg">
+                <h3 className="text-accent text-lg font-bold mb-2">{ability}</h3>
+                <input
+                  type="number"
+                  value={scores[ability]?.score || ''}
+                  onChange={(e) => handleOverride(ability, parseInt(e.target.value))}
+                  className="bg-primary text-text border border-accent p-2 w-full text-center rounded-lg"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {abilityScores.map((ability) => (
-            <div key={ability} className="bg-secondary p-6 rounded-lg shadow-lg w-full max-w-xs"> {/* Keep width consistent */}
-              {/* Ability Name Header with Bar */}
-              <div className="bg-primary text-accent p-3 rounded-t-lg text-center">
-                <h2 className="text-xl font-bold">{ability}</h2>
-              </div>
-
-              {/* Ability Stats */}
-              <div className="p-3 space-y-2">
-                <div className="flex justify-between">
-                  <span>Total Score</span>
-                  <span>{scores[ability].total_score || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Modifier</span>
-                  <span>{scores[ability].modifier || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Base Score</span>
-                  <span>{scores[ability].base_score || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Species Bonus</span>
-                  <span>{scores[ability].species_bonus || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Ability Improvements</span>
-                  <span>{scores[ability].ability_improvements || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Misc Bonus</span>
-                  <span>{scores[ability].misc_bonus || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Set Score</span>
-                  <span>{scores[ability].set_score || '--'}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Other Modifier</span>
-                  <input
-                    type="number"
-                    value={scores[ability].other_modifier === '--' ? '' : scores[ability].other_modifier}
-                    onChange={(e) => handleScoreChange(ability, 'other_modifier', e.target.value)}
-                    className="bg-gray-700 text-white border border-gray-400 p-3 w-20 text-center rounded-lg"
-                  />
-                </div>
-                <div className="flex justify-between">
-                  <span>Override Score</span>
-                  <input
-                    type="number"
-                    value={scores[ability].override_score === '--' ? '' : scores[ability].override_score}
-                    onChange={(e) => handleScoreChange(ability, 'override_score', e.target.value)}
-                    className="bg-gray-700 text-white border border-gray-400 p-3 w-20 text-center rounded-lg"
-                  />
-                </div>
-              </div>
-            </div>
+            <AbilityScoreCard
+              key={ability}
+              ability={ability}
+              score={scores[ability]?.score || 0}
+              modifier={scores[ability]?.modifier || 0}
+              onOverride={handleOverride}
+            />
           ))}
         </div>
       </div>

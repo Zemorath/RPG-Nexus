@@ -2,11 +2,13 @@ from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
 from backend.models import db, Character, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background, RPGSystem
 from backend.utils.calculation_service import CalculationService
+from backend.utils.ability_score_service import AbilityScoreService
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
 
 calculation_service = CalculationService()
+ability_score_service = AbilityScoreService()
 
 # List all characters
 class CharacterList(Resource):
@@ -496,7 +498,25 @@ class CharacterCalculation(Resource):
 
 
 
+class GenerateAbilityScores(Resource):
+    def post(self, rpg_system_id, method):
+        data = request.get_json()
+        assigned_scores = data.get('assigned_scores', {})
 
+        if rpg_system_id == 1:  # D&D 5e
+            if method == 'standard_array':
+                result = AbilityScoreService.generate_dd_5e_standard_array()
+                return result, 200
+            elif method == 'point_buy':
+                result = AbilityScoreService.generate_dd_5e_point_buy(assigned_scores)
+                if "error" in result:
+                    return result, 400
+                return result, 200
+        elif rpg_system_id == 2:  # Pathfinder
+            if method == 'point_buy':
+                # Implement Pathfinder point buy logic here
+                pass
+        return {"error": "Invalid RPG system or method"}, 400
 
 
 # Character Routes
@@ -523,5 +543,8 @@ character_api.add_resource(AlignmentsByRPGSystemResource, '/alignments/system/<i
 character_api.add_resource(UpdateCharacterInventory, '/characters/update-items')
 character_api.add_resource(UpdateCharacterBackground, '/characters/update-background')
 character_api.add_resource(CharacterCalculation, '/characters/calculate/<int:character_id>')
+character_api.add_resource(GenerateAbilityScores, '/characters/generate-ability-scores/<int:rpg_system_id>/<string:method>')
+
+
 
 
