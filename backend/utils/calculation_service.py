@@ -11,32 +11,23 @@ class CalculationService:
 
     def calculate_ability_modifiers(self, character):
         """Calculate ability modifiers for D&D 5e."""
-        for ability, score in character['ability_scores'].items():
-            # Check if override_score exists and use it if available
-            if score.get('override_score') is not None:
-                score['total_score'] = score['override_score']
-            else:
-                # Otherwise, calculate total_score from base_score and other bonuses
-                base_score = score.get('base_score', 0)
-                species_bonus = score.get('species_bonus', 0)
-                ability_improvements = score.get('ability_improvements', 0)
-                misc_bonus = score.get('misc_bonus', 0)
-                score['total_score'] = (
-                    base_score + species_bonus + ability_improvements + misc_bonus
-                )
-
-            # Calculate modifier based on the total_score
-            score['modifier'] = (score['total_score'] - 10) // 2
+        ability_scores = character.get('ability_scores', {})
+        character['ability_modifiers'] = {}
+        
+        for ability, score in ability_scores.items():
+            modifier = (score - 10) // 2
+            character['ability_modifiers'][ability] = modifier
+        
         return character
 
     def calculate_initiative(self, character):
         """Calculate initiative for D&D 5e."""
-        character['initiative'] = character['ability_scores']['Dexterity']['modifier']
+        character['initiative'] = character['ability_modifiers'].get('Dexterity', 0)
         return character
 
     def calculate_armor_class(self, character):
         """Calculate armor class for D&D 5e (basic)."""
-        dex_mod = character['ability_scores']['Dexterity']['modifier']
+        dex_mod = character['ability_modifiers'].get('Dexterity', 0)
         armor_bonus = character.get('armor_bonus', 0)
         character['armor_class'] = 10 + dex_mod + armor_bonus
         return character
@@ -60,12 +51,11 @@ class CalculationService:
         """Calculate saving throws for D&D 5e."""
         proficiency_bonus = character['proficiency_bonus']
         
-        # Ensure saving_throws is present
         if 'saving_throws' not in character:
-            character['saving_throws'] = {}  # Initialize it if missing
+            character['saving_throws'] = {}
 
         for saving_throw, details in character['saving_throws'].items():
-            modifier = character['ability_scores'][saving_throw]['modifier']
+            modifier = character['ability_modifiers'].get(saving_throw, 0)
             if details.get('proficient', False):
                 details['total'] = modifier + proficiency_bonus
             else:
@@ -76,17 +66,14 @@ class CalculationService:
         """Calculate skill checks for D&D 5e."""
         proficiency_bonus = character['proficiency_bonus']
         
-        # Ensure skills is present
         if 'skills' not in character:
-            character['skills'] = {}  # Initialize as empty if missing
+            character['skills'] = {}
 
         for skill, details in character['skills'].items():
-            ability = details['ability']  # Example: 'Dexterity' for Acrobatics
-            modifier = character['ability_scores'][ability]['modifier']
+            ability = details['ability']
+            modifier = character['ability_modifiers'].get(ability, 0)
             if details.get('proficient', False):
                 details['total'] = modifier + proficiency_bonus + details.get('bonus', 0)
             else:
                 details['total'] = modifier + details.get('bonus', 0)
         return character
-
-

@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import generateCharacterSheet from '../components/D&D_5e_CharacterSheet'; // Import the function here
+import generateCharacterSheet from '../components/D&D_5e_CharacterSheet';
 
 const CharacterSummaryPage = () => {
   const { systemId, characterId } = useParams();
   const [character, setCharacter] = useState(null);
-  const [calculatedCharacter, setCalculatedCharacter] = useState(null); // Add state for calculated character
+  const [calculatedCharacter, setCalculatedCharacter] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCharacter = async () => {
       try {
-        // Fetch the character data
         const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
         setCharacter(characterResponse.data);
 
-        // Fetch the calculated character data
         const calculatedResponse = await axios.get(`http://127.0.0.1:5555/api/characters/calculate/${characterId}`);
         setCalculatedCharacter(calculatedResponse.data);
       } catch (error) {
         console.error('Error fetching character data:', error);
       } finally {
-        setLoading(false); // Update loading state after both calls are complete
+        setLoading(false);
       }
     };
   
     fetchCharacter();
   }, [characterId]);
 
+  const calculateModifier = (score) => {
+    return Math.floor((score - 10) / 2);
+  };
+
   const handleGenerateCharacterSheet = () => {
-    // Generate the PDF using the generateCharacterSheet function
     generateCharacterSheet(characterId);
   };
 
@@ -61,21 +62,19 @@ const CharacterSummaryPage = () => {
               <p><strong>Background:</strong> {character.background ? character.background.name : 'None'}</p>
               <p><strong>Alignment:</strong> {character.alignment ? character.alignment.name : 'None'}</p>
               <p><strong>Inventory Weight Limit:</strong> {character.inventory_weight_limit}</p>
-              <p><strong>Armor Class:</strong> {calculatedCharacter.armor_class}</p> {/* Armor Class */}
-              <p><strong>Initiative:</strong> {calculatedCharacter.initiative}</p> {/* Initiative */}
-              <p><strong>Proficiency Bonus:</strong> {calculatedCharacter.proficiency_bonus}</p> {/* Proficiency Bonus */}
+              <p><strong>Armor Class:</strong> {calculatedCharacter.armor_class}</p>
+              <p><strong>Initiative:</strong> {calculatedCharacter.initiative}</p>
+              <p><strong>Proficiency Bonus:</strong> {calculatedCharacter.proficiency_bonus}</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-accent mt-4">Ability Scores</h3>
               {calculatedCharacter.ability_scores ? (
                 <ul className="list-inside list-disc">
-                  {Object.keys(calculatedCharacter.ability_scores).map((key) => {
-                    const score = calculatedCharacter.ability_scores[key];
-                    const displayedScore = score.override_score || score.total_score; // Display override_score if present, otherwise total_score
-                    const modifier = score.modifier !== undefined ? ` (Modifier: ${score.modifier})` : ''; // Display modifier
+                  {Object.entries(calculatedCharacter.ability_scores).map(([ability, score]) => {
+                    const modifier = calculateModifier(score);
                     return (
-                      <li key={key}>
-                        <strong>{key}:</strong> {displayedScore} {modifier}
+                      <li key={ability}>
+                        <strong>{ability}:</strong> {score} (Modifier: {modifier >= 0 ? '+' : ''}{modifier})
                       </li>
                     );
                   })}
@@ -117,7 +116,7 @@ const CharacterSummaryPage = () => {
           </button>
 
           <button
-            onClick={handleGenerateCharacterSheet} // Generate Character Sheet Button
+            onClick={handleGenerateCharacterSheet}
             className="bg-accent text-background py-2 px-6 rounded-lg hover:bg-text hover:text-background transition duration-300"
           >
             Generate Character Sheet

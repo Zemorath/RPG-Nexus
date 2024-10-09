@@ -4,18 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EquipmentSelectionPage = () => {
   const { systemId, characterId } = useParams();
-  const [items, setItems] = useState([]); // Full item list (original order)
-  const [filteredItems, setFilteredItems] = useState([]); // Filtered item list
-  const [inventory, setInventory] = useState([]); // Character's inventory
-  const [searchTerm, setSearchTerm] = useState(''); // Search bar state
-  const [selectedCategories, setSelectedCategories] = useState([]); // Categories toggled on
-  const [uniqueSlotTypes, setUniqueSlotTypes] = useState([]); // Store unique slot types from the backend
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [inventory, setInventory] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [uniqueSlotTypes, setUniqueSlotTypes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isInventoryOpen, setIsInventoryOpen] = useState(false); // Accordion state for inventory (collapsed by default)
-  const [isItemsOpen, setIsItemsOpen] = useState(false); // Accordion state for available items (collapsed by default)
+  const [isInventoryOpen, setIsInventoryOpen] = useState(false);
+  const [isItemsOpen, setIsItemsOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Fetch items, character's existing inventory, and unique slot types from the backend
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,13 +25,15 @@ const EquipmentSelectionPage = () => {
         ]);
 
         const allItems = itemsResponse.data;
-        const characterInventory = characterResponse.data.inventory;
+        const characterInventory = characterResponse.data.inventory.map((item, index) => ({
+          ...item,
+          inventoryId: `${item.id}-${index}`
+        }));
 
-        setItems(allItems); // Store original items list
-        setInventory(characterInventory); // Populate inventory with detailed items
-        setFilteredItems(allItems); // Display all items, no need to filter
-
-        setUniqueSlotTypes(slotTypesResponse.data); // Set the unique slot types for category filtering
+        setItems(allItems);
+        setInventory(characterInventory);
+        setFilteredItems(allItems);
+        setUniqueSlotTypes(slotTypesResponse.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -43,17 +44,18 @@ const EquipmentSelectionPage = () => {
     fetchData();
   }, [systemId, characterId]);
 
-  // Handle adding an item to inventory
   const handleAddToInventory = (item) => {
-    setInventory((prevInventory) => [...prevInventory, item]);
+    const newInventoryItem = {
+      ...item,
+      inventoryId: `${item.id}-${inventory.length}`
+    };
+    setInventory((prevInventory) => [...prevInventory, newInventoryItem]);
   };
 
-  // Handle removing an item from inventory
-  const handleRemoveFromInventory = (item) => {
-    setInventory((prevInventory) => prevInventory.filter((i) => i.id !== item.id));
+  const handleRemoveFromInventory = (inventoryId) => {
+    setInventory((prevInventory) => prevInventory.filter((i) => i.inventoryId !== inventoryId));
   };
 
-  // Handle search functionality
   const handleSearch = (event) => {
     const search = event.target.value.toLowerCase();
     setSearchTerm(search);
@@ -66,7 +68,6 @@ const EquipmentSelectionPage = () => {
     );
   };
 
-  // Handle toggling categories
   const handleCategoryToggle = (category) => {
     const updatedCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((cat) => cat !== category)
@@ -81,7 +82,6 @@ const EquipmentSelectionPage = () => {
     }
   };
 
-  // Submit selected items to backend
   const handleSubmit = async () => {
     try {
       await axios.post(`http://127.0.0.1:5555/api/characters/update-items`, {
@@ -155,7 +155,7 @@ const EquipmentSelectionPage = () => {
             <div className="bg-secondary p-4 rounded-lg shadow-lg overflow-y-scroll h-64 text-center max-w-lg mx-auto">
               {inventory.length > 0 ? (
                 inventory.map((item) => (
-                  <div key={item.id} className="flex justify-between items-center mb-4 border border-accent rounded p-4 shadow">
+                  <div key={item.inventoryId} className="flex justify-between items-center mb-4 border border-accent rounded p-4 shadow">
                     <div>
                       <h3 className="text-lg font-bold">{item.name}</h3>
                       <p>Rarity: {item.rarity}</p>
@@ -163,7 +163,7 @@ const EquipmentSelectionPage = () => {
                       <p>Cost: {item.cost} gold</p>
                     </div>
                     <button
-                      onClick={() => handleRemoveFromInventory(item)}
+                      onClick={() => handleRemoveFromInventory(item.inventoryId)}
                       className="bg-red-600 text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
                     >
                       Remove

@@ -29,13 +29,21 @@ const AssignmentRow = ({ abilityScores, availableScores, onAssign }) => {
   );
 };
 
-const AbilityScoreCard = ({ ability, score, modifier, onOverride }) => {
+const AbilityScoreCard = ({ ability, score, onOverride }) => {
   const [isOverriding, setIsOverriding] = useState(false);
   const [overrideValue, setOverrideValue] = useState(score);
+
+  useEffect(() => {
+    setOverrideValue(score);
+  }, [score]);
 
   const handleOverride = () => {
     onOverride(ability, parseInt(overrideValue));
     setIsOverriding(false);
+  };
+
+  const calculateModifier = (score) => {
+    return Math.floor((score - 10) / 2);
   };
 
   return (
@@ -46,7 +54,7 @@ const AbilityScoreCard = ({ ability, score, modifier, onOverride }) => {
       <div className="p-3 space-y-2">
         <div className="text-center">
           <span className="text-accent text-2xl font-bold">{score}</span>
-          <span className="text-text ml-2">({modifier})</span>
+          <span className="text-text ml-2">({calculateModifier(score)})</span>
         </div>
         {isOverriding ? (
           <div className="flex items-center justify-between">
@@ -94,6 +102,8 @@ const AbilityScoresPage = () => {
 
         const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
         const characterScores = characterResponse.data.ability_scores || {};
+        
+        // Set scores directly from the character data
         setScores(characterScores);
 
         setLoading(false);
@@ -108,41 +118,31 @@ const AbilityScoresPage = () => {
     setGenerationMethod(method);
     if (method === 'standard_array' || method === 'point_buy') {
       try {
-        console.log(`Requesting ${method} scores...`);
         const response = await axios.post(
           `http://127.0.0.1:5555/api/characters/generate-ability-scores/${systemId}/${method}`,
-          {}, // Empty object as payload
+          {},
           {
             headers: {
               'Content-Type': 'application/json',
             },
           }
         );
-        console.log('Full response data:', response.data);
         
-        let scores = [];
+        let newScores = [];
         if (method === 'standard_array' && response.data.standard_array) {
-          scores = response.data.standard_array;
+          newScores = response.data.standard_array;
         } else if (method === 'point_buy' && response.data.available_scores) {
-          scores = response.data.available_scores;
-        } else {
-          console.error('Unexpected response data structure:', response.data);
+          newScores = response.data.available_scores;
         }
 
-        if (scores.length > 0) {
-          setAvailableScores(scores);
-          console.log('Available scores set:', scores);
+        if (newScores.length > 0) {
+          setAvailableScores(newScores);
         } else {
           console.error('No scores found in response data');
           setAvailableScores([]);
         }
       } catch (error) {
         console.error('Error generating ability scores:', error);
-        if (error.response) {
-          console.error('Response data:', error.response.data);
-          console.error('Response status:', error.response.status);
-          console.error('Response headers:', error.response.headers);
-        }
         setAvailableScores([]);
       }
     } else {
@@ -153,7 +153,7 @@ const AbilityScoresPage = () => {
   const handleAssign = (ability, value) => {
     setScores(prev => ({
       ...prev,
-      [ability]: { ...prev[ability], score: value, modifier: calculateModifier(value) }
+      [ability]: value
     }));
     setAvailableScores(prev => prev.filter(score => score !== value));
   };
@@ -161,12 +161,8 @@ const AbilityScoresPage = () => {
   const handleOverride = (ability, value) => {
     setScores(prev => ({
       ...prev,
-      [ability]: { ...prev[ability], score: value, modifier: calculateModifier(value) }
+      [ability]: value
     }));
-  };
-
-  const calculateModifier = (score) => {
-    return Math.floor((score - 10) / 2);
   };
 
   const handleSubmit = async () => {
@@ -224,7 +220,7 @@ const AbilityScoresPage = () => {
                 <h3 className="text-accent text-lg font-bold mb-2">{ability}</h3>
                 <input
                   type="number"
-                  value={scores[ability]?.score || ''}
+                  value={scores[ability] || ''}
                   onChange={(e) => handleOverride(ability, parseInt(e.target.value))}
                   className="bg-primary text-text border border-accent p-2 w-full text-center rounded-lg"
                 />
@@ -238,8 +234,7 @@ const AbilityScoresPage = () => {
             <AbilityScoreCard
               key={ability}
               ability={ability}
-              score={scores[ability]?.score || 0}
-              modifier={scores[ability]?.modifier || 0}
+              score={scores[ability] || 0}
               onOverride={handleOverride}
             />
           ))}
