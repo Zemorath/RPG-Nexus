@@ -16,16 +16,9 @@ const generateCharacterSheet = async (characterId) => {
 
   // Get the form and the fields
   const form = pdfDoc.getForm();
+  
 
-  // Log all the form fields' names
-  const fields = form.getFields();
-  fields.forEach((field) => {
-    const type = field.constructor.name;
-    const name = field.getName();
-    console.log(`${name}`);
-  });
-
-  // Map the character data to the fillable fields on the PDF
+  // Map character data to the fillable fields on the PDF
   form.getTextField('CharacterName').setText(character.name);
   form.getTextField('ClassLevel').setText(character.class ? `${character.class.name} ${character.level}` : '');
   form.getTextField('ProfBonus').setText(String(character.proficiency_bonus || ''));
@@ -34,41 +27,25 @@ const generateCharacterSheet = async (characterId) => {
   form.getTextField('HD').setText(String(character.hit_dice || ''));
 
   // Ability scores and modifiers
-  form.getTextField('STR').setText(String(character.ability_scores.Strength.override_score || character.ability_scores.Strength.total_score));
-  form.getTextField('STRmod').setText(String(character.ability_scores.Strength.modifier));
-  form.getTextField('DEX').setText(String(character.ability_scores.Dexterity.override_score || character.ability_scores.Dexterity.total_score));
-  form.getTextField('DEXmod').setText(String(character.ability_scores.Dexterity.modifier));
-  form.getTextField('CON').setText(String(character.ability_scores.Constitution.override_score || character.ability_scores.Constitution.total_score));
-  form.getTextField('CONmod').setText(String(character.ability_scores.Constitution.modifier));
-  form.getTextField('INT').setText(String(character.ability_scores.Intelligence.override_score || character.ability_scores.Intelligence.total_score));
-  form.getTextField('INTmod').setText(String(character.ability_scores.Intelligence.modifier));
-  form.getTextField('WIS').setText(String(character.ability_scores.Wisdom.override_score || character.ability_scores.Wisdom.total_score));
-  form.getTextField('WISmod').setText(String(character.ability_scores.Wisdom.modifier));
-  form.getTextField('CHA').setText(String(character.ability_scores.Charisma.override_score || character.ability_scores.Charisma.total_score));
-  form.getTextField('CHamod').setText(String(character.ability_scores.Charisma.modifier));
+  const abilityScores = character.ability_scores;
+  Object.entries(abilityScores).forEach(([ability, score]) => {
+    const modifier = Math.floor((score - 10) / 2);
+    form.getTextField(ability.substring(0, 3).toUpperCase()).setText(String(score));
+    form.getTextField(`${ability.substring(0, 3).toUpperCase()}mod`).setText(String(modifier));
+  });
 
   // Saving Throws
   const savingThrows = character.saving_throws || {};
-  form.getTextField('ST Strength').setText(String(savingThrows.Strength?.total || ''));
-  form.getTextField('ST Dexterity').setText(String(savingThrows.Dexterity?.total || ''));
-  form.getTextField('ST Constitution').setText(String(savingThrows.Constitution?.total || ''));
-  form.getTextField('ST Intelligence').setText(String(savingThrows.Intelligence?.total || ''));
-  form.getTextField('ST Wisdom').setText(String(savingThrows.Wisdom?.total || ''));
-  form.getTextField('ST Charisma').setText(String(savingThrows.Charisma?.total || ''));
-
-  // Checkboxes for saving throws proficiency
-  form.getCheckBox('Check STR').check(savingThrows.Strength?.proficient || false);
-  form.getCheckBox('Check DEX').check(savingThrows.Dexterity?.proficient || false);
-  form.getCheckBox('Check CON').check(savingThrows.Constitution?.proficient || false);
-  form.getCheckBox('Check INT').check(savingThrows.Intelligence?.proficient || false);
-  form.getCheckBox('Check WIS').check(savingThrows.Wisdom?.proficient || false);
-  form.getCheckBox('Check CHA').check(savingThrows.Charisma?.proficient || false);
+  Object.entries(savingThrows).forEach(([ability, data]) => {
+    form.getTextField(`ST ${ability}`).setText(String(data.total || ''));
+    form.getCheckBox(`Check ${ability.substring(0, 3).toUpperCase()}`).check(data.proficient || false);
+  });
 
   // Skills
   const skills = character.skills || {};
   const skillsMapping = {
     Acrobatics: { field: 'Acrobatics', ability: 'Dexterity' },
-    AnimalHandling: { field: 'Animal', ability: 'Wisdom' }, // Animal Handling
+    AnimalHandling: { field: 'Animal', ability: 'Wisdom' },
     Arcana: { field: 'Arcana', ability: 'Intelligence' },
     Athletics: { field: 'Athletics', ability: 'Strength' },
     Deception: { field: 'Deception', ability: 'Charisma' },
@@ -82,31 +59,53 @@ const generateCharacterSheet = async (characterId) => {
     Performance: { field: 'Performance', ability: 'Charisma' },
     Persuasion: { field: 'Persuasion', ability: 'Charisma' },
     Religion: { field: 'Religion', ability: 'Intelligence' },
-    SleightofHand: { field: 'SleightofHand', ability: 'Dexterity' }, // Sleight of Hand
+    SleightofHand: { field: 'SleightofHand', ability: 'Dexterity' },
     Stealth: { field: 'Stealth', ability: 'Dexterity' },
     Survival: { field: 'Survival', ability: 'Wisdom' }
   };
-  const abilityScores = character.ability_scores;
-  Object.keys(skillsMapping).forEach((skill) => {
-    const skillData = skills[skill];
-    const { field, ability } = skillsMapping[skill];
-    if (skillData) {
-      // Set the skill modifier field (e.g., Acrobatics, Animal)
-      form.getTextField(field).setText(String(abilityScores[ability]?.modifier || ''));
 
-      // Check the proficiency checkbox (e.g., Check Acrobatics, Check Animal)
+  Object.entries(skillsMapping).forEach(([skill, { field, ability }]) => {
+    const skillData = skills[skill];
+    if (skillData) {
+      const abilityModifier = Math.floor((abilityScores[ability] - 10) / 2);
+      form.getTextField(field).setText(String(abilityModifier + (skillData.proficient ? character.proficiency_bonus : 0)));
       form.getCheckBox(`Check ${field}`).check(skillData.proficient || false);
     }
   });
 
   // Passive Wisdom (Perception)
-  form.getTextField('Passive').setText(String(character.passive_perception || ''));
+  const passiveWisdom = 10 + Math.floor((abilityScores['Wisdom'] - 10) / 2);
+  form.getTextField('Passive').setText(String(passiveWisdom));
 
-  // Proficiencies and Languages
-  form.getTextField('ProficienciesLang').setText(character.proficiencies_and_languages || '');
+  // Physical features and character traits
+  const physicalFeatures = character.physical_features || {};
+  form.getTextField('Age').setText(physicalFeatures.age || '');
+  form.getTextField('Height').setText(physicalFeatures.height || '');
+  form.getTextField('Weight').setText(physicalFeatures.weight || '');
+  form.getTextField('Eyes').setText(physicalFeatures.eyes || '');
+  form.getTextField('Skin').setText(physicalFeatures.skin || '');
+  form.getTextField('Hair').setText(physicalFeatures.hair || '');
 
-  // Personality Traits
-  form.getTextField('PersonalityTraits').setText(character.personality_traits || '');
+  form.getTextField('PersonalityTraits').setText(physicalFeatures.traits?.join(', ') || '');
+  form.getTextField('Ideals').setText(physicalFeatures.ideals?.join(', ') || '');
+  form.getTextField('Bonds').setText(physicalFeatures.bonds?.join(', ') || '');
+  form.getTextField('Flaws').setText(physicalFeatures.flaws?.join(', ') || '');
+  form.getTextField('Allies').setText(physicalFeatures.allies?.join(', ') || '');
+  form.getTextField('FactionName').setText(physicalFeatures.organizations?.join(', ') || '');
+
+  // Equipment (Inventory)
+  const inventoryResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}/inventory`);
+  const inventory = inventoryResponse.data;
+  const inventoryText = inventory.map(item => `${item.name} (${item.quantity})`).join(', ');
+  form.getTextField('Equipment').setText(inventoryText);
+
+  // Other fields 
+  form.getTextField('Background').setText(character.background.name);
+  form.getTextField('Alignment').setText(character.alignment.name);
+  form.getTextField('Race').setText(character.race.name);
+  form.getTextField('Initiative').setText(String(character.initiative));
+  form.getTextField('HPMax').setText(String(character.health));
+  form.getTextField('HPCurrent').setText(String(character.health));
 
   // Weapons (if available)
   if (character.weapons?.length > 0) {
@@ -114,13 +113,6 @@ const generateCharacterSheet = async (characterId) => {
     form.getTextField('Wpn1 AtkBonus').setText(String(character.weapons[0].attack_bonus || ''));
     form.getTextField('Wpn1 Damage').setText(character.weapons[0].damage || '');
   }
-
-  form.getTextField('Background').setText(character.background.name)
-  form.getTextField('Alignment').setText(character.alignment.name)
-  form.getTextField('Race').setText(character.race.name)
-  form.getTextField('Initiative').setText(String(character.initiative))
-  form.getTextField('HPMax').setText(String(character.health))
-  form.getTextField('HPCurrent').setText(String(character.health))
 
   // Save the modified PDF and download it
   const pdfBytes = await pdfDoc.save();

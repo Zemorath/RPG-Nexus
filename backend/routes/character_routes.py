@@ -1,6 +1,6 @@
 from flask import request, jsonify, Blueprint, session
 from flask_restful import Resource, Api
-from backend.models import db, Character, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background, RPGSystem
+from backend.models import db, Character, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background, RPGSystem, Item
 from backend.utils.calculation_service import CalculationService
 from backend.utils.ability_score_service import AbilityScoreService
 
@@ -517,6 +517,24 @@ class GenerateAbilityScores(Resource):
                 # Implement Pathfinder point buy logic here
                 pass
         return {"error": "Invalid RPG system or method"}, 400
+    
+class CharacterInventory(Resource):
+    def get(self, character_id):
+        character = Character.query.get_or_404(character_id)
+        
+        # Fetch the items based on the IDs stored in character.inventory
+        inventory_items = Item.query.filter(Item.id.in_(character.inventory)).all()
+        
+        # Create a list of dictionaries containing item details
+        inventory_data = []
+        for item in inventory_items:
+            item_data = item.to_dict()
+            # Count the occurrences of each item in the inventory
+            item_data['quantity'] = character.inventory.count(item.id)
+            inventory_data.append(item_data)
+
+        return jsonify(inventory_data)
+
 
 
 # Character Routes
@@ -544,7 +562,7 @@ character_api.add_resource(UpdateCharacterInventory, '/characters/update-items')
 character_api.add_resource(UpdateCharacterBackground, '/characters/update-background')
 character_api.add_resource(CharacterCalculation, '/characters/calculate/<int:character_id>')
 character_api.add_resource(GenerateAbilityScores, '/characters/generate-ability-scores/<int:rpg_system_id>/<string:method>')
-
+character_api.add_resource(CharacterInventory, '/characters/<int:character_id>/inventory')
 
 
 
