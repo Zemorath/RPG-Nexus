@@ -36,9 +36,30 @@ const generateCharacterSheet = async (characterId) => {
 
   // Saving Throws
   const savingThrows = character.saving_throws || {};
-  Object.entries(savingThrows).forEach(([ability, data]) => {
-    form.getTextField(`ST ${ability}`).setText(String(data.total || ''));
-    form.getCheckBox(`Check ${ability.substring(0, 3).toUpperCase()}`).check(data.proficient || false);
+  const abilities = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'];
+
+  abilities.forEach((ability) => {
+    const savingThrowData = savingThrows[ability];
+    if (savingThrowData) {
+      const abilityModifier = Math.floor((abilityScores[ability] - 10) / 2);
+      const totalBonus = abilityModifier + (savingThrowData.proficient ? character.proficiency_bonus : 0);
+      
+      // Set the saving throw total
+      form.getTextField(`ST ${ability}`).setText(String(totalBonus));
+      
+      // Set the proficiency checkbox
+      const checkboxField = form.getCheckBox(`Check ${ability.substring(0, 3).toUpperCase()}`);
+      if (savingThrowData.proficient) {
+        checkboxField.check();
+      } else {
+        checkboxField.uncheck();
+      }
+    } else {
+      // If there's no saving throw data, just set the ability modifier
+      const abilityModifier = Math.floor((abilityScores[ability] - 10) / 2);
+      form.getTextField(`ST ${ability}`).setText(String(abilityModifier));
+      form.getCheckBox(`Check ${ability.substring(0, 3).toUpperCase()}`).uncheck();
+    }
   });
 
   // Skills
@@ -68,8 +89,15 @@ const generateCharacterSheet = async (characterId) => {
     const skillData = skills[skill];
     if (skillData) {
       const abilityModifier = Math.floor((abilityScores[ability] - 10) / 2);
-      form.getTextField(field).setText(String(abilityModifier + (skillData.proficient ? character.proficiency_bonus : 0)));
-      form.getCheckBox(`Check ${field}`).check(skillData.proficient || false);
+      const totalBonus = abilityModifier + (skillData.proficient ? character.proficiency_bonus : 0) + (skillData.bonus || 0);
+      form.getTextField(field).setText(String(totalBonus));
+      
+      // Only check the box if the skill is proficient
+      if (skillData.proficient) {
+        form.getCheckBox(`Check ${field}`).check();
+      } else {
+        form.getCheckBox(`Check ${field}`).uncheck();
+      }
     }
   });
 
