@@ -4503,8 +4503,1066 @@ def seed_rpg_systems():
             }
         ],
         "Pathfinder": [
-            {"name": "Magic Missile", "description": "You fire unerring bolts of magical force at your foes.", "level": 1, "school": "Evocation", "casting_time": "1 action", "range": "120 feet", "duration": "Instantaneous", "components": "V, S"},
-            {"name": "Shield", "description": "An invisible barrier of force appears and protects you.", "level": 1, "school": "Abjuration", "casting_time": "1 reaction", "range": "Self", "duration": "1 round", "components": "V, S"}
+            {
+                "name": "Acid Splash",
+                "description": "You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage.",
+                "level": 0,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Arcane Mark",
+                "description": "This spell allows you to inscribe your personal rune or mark, which can consist of no more than six characters. The writing can be visible or invisible.",
+                "level": 0,
+                "school": "Universal",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Permanent",
+                "components": "V, S"
+            },
+            {
+                "name": "Bleed",
+                "description": "You cause a living creature that is below 0 hit points but stabilized to resume dying. Upon casting this spell, you target a living creature that has –1 or fewer hit points. That creature begins dying, taking 1 point of damage per round.",
+                "level": 0,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Create Water",
+                "description": "This spell generates wholesome, drinkable water, just like clean rain water. Water can be created in an area as small as will actually contain the liquid, or in an area three times as large—possibly creating a downpour or filling many small receptacles.",
+                "level": 0,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Daze",
+                "description": "This spell clouds the mind of a humanoid creature with 4 or fewer Hit Dice so that it takes no actions. Humanoids of 5 or more HD are not affected. A dazed subject is not stunned, so attackers get no special advantage against it.",
+                "level": 0,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round",
+                "components": "V, S, M (a pinch of wool or similar substance)"
+            },
+            {
+                "name": "Detect Magic",
+                "description": "You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject.",
+                "level": 0,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "Concentration, up to 1 min./level",
+                "components": "V, S"
+            },
+            {
+                "name": "Detect Poison",
+                "description": "You determine whether a creature, object, or area has been poisoned or is poisonous. You can determine the exact type of poison with a DC 20 Wisdom check.",
+                "level": 0,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Flare",
+                "description": "This cantrip creates a burst of light. If you cause the light to burst in front of a single creature, that creature is dazzled for 1 minute unless it makes a successful Fortitude save.",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Ghost Sound",
+                "description": "Ghost sound allows you to create a volume of sound that rises, recedes, approaches, or remains at a fixed place. You choose what type of sound ghost sound creates when casting it and cannot thereafter change the sound's basic character.",
+                "level": 0,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M (a bit of wool or a small lump of wax)"
+            },
+            {
+                "name": "Guidance",
+                "description": "This spell imbues the subject with a touch of divine guidance. The creature gets a +1 competence bonus on a single attack roll, saving throw, or skill check.",
+                "level": 0,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute or until discharged",
+                "components": "V, S"
+            },
+            {
+                "name": "Light",
+                "description": "This spell causes a touched object to glow like a torch, shedding normal light in a 20-foot radius from the point touched, and increasing the light level for an additional 20 feet by one step, up to normal light (darkness becomes dim light, and dim light becomes normal light).",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "10 min./level",
+                "components": "V, M/DF (a firefly)"
+            },
+            {
+                "name": "Mage Hand",
+                "description": "You point your finger at an object and can lift it and move it at will from a distance. As a move action, you can propel the object as far as 15 feet in any direction, though the spell ends if the distance between you and the object ever exceeds the spell's range.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Concentration",
+                "components": "V, S"
+            },
+            {
+                "name": "Mending",
+                "description": "This spell repairs damaged objects, restoring 1d4 hit points to the object. If the object has the broken condition, this condition is removed if the object is restored to at least half its original hit points.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "10 minutes",
+                "range": "10 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Message",
+                "description": "You can whisper messages and receive whispered replies. Those nearby can hear these messages with a DC 25 Perception check. You point your finger at each creature you want to receive the message.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "10 min./level",
+                "components": "V, S, F (a piece of copper wire)"
+            },
+            {
+                "name": "Open/Close",
+                "description": "You can open or close (your choice) a door, chest, box, window, bag, pouch, bottle, barrel, or other container. If anything resists this activity (such as a bar on a door or a lock on a chest), the spell fails.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S, F (a brass key)"
+            },
+            {
+                "name": "Prestidigitation",
+                "description": "Prestidigitations are minor tricks that novice spellcasters use for practice. Once cast, a prestidigitation spell enables you to perform simple magical effects for 1 hour.",
+                "level": 0,
+                "school": "Universal",
+                "casting_time": "1 standard action",
+                "range": "10 ft.",
+                "duration": "1 hour",
+                "components": "V, S"
+            },
+            {
+                "name": "Purify Food and Drink",
+                "description": "This spell makes spoiled, rotten, diseased, poisonous, or otherwise contaminated food and water pure and suitable for eating and drinking. This spell does not prevent subsequent natural decay or spoilage.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "10 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Read Magic",
+                "description": "You can decipher magical inscriptions on objects—books, scrolls, weapons, and the like—that would otherwise be unintelligible. This deciphering does not normally invoke the magic contained in the writing, although it may do so in the case of a cursed or trapped scroll.",
+                "level": 0,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "10 min./level",
+                "components": "V, S, F (a clear crystal or mineral prism)"
+            },
+            {
+                "name": "Resistance",
+                "description": "You imbue the subject with magical energy that protects it from harm, granting it a +1 resistance bonus on saves.",
+                "level": 0,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute",
+                "components": "V, S, M (a miniature cloak)"
+            },
+            {
+                "name": "Spark",
+                "description": "You can make an unattended flammable object no larger than a Huge creature burst into flames. This spell can target one Fine object or up to a 5-foot cube of loose material.",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V or S"
+            },
+            {
+                "name": "Stabilize",
+                "description": "Upon casting this spell, you target a living creature that has –1 or fewer hit points. That creature is automatically stabilized and does not lose any more hit points. If the creature later takes damage, it continues dying normally.",
+                "level": 0,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Alarm",
+                "description": "Alarm creates a subtle ward on an area you select. When a creature enters the warded area, the alarm alerts you.",
+                "level": 1,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level",
+                "components": "V, S, F/DF (a tiny bell and a piece of very fine silver wire)"
+            },
+            {
+                "name": "Animate Rope",
+                "description": "You can animate a rope-like object. The maximum length assumes a rope with a 1-inch diameter.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Burning Hands",
+                "description": "A cone of searing flame shoots from your fingertips. Any creature in the area of the flames takes 1d4 points of fire damage per caster level (maximum 5d4).",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "15 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Charm Person",
+                "description": "This charm makes a humanoid creature regard you as its trusted friend and ally. If the creature is currently being threatened or attacked by you or your allies, however, it receives a +5 bonus on its saving throw.",
+                "level": 1,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 hour/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Color Spray",
+                "description": "A vivid cone of clashing colors springs forth from your hand, causing creatures to become stunned, perhaps also blinded, and possibly knocking them unconscious.",
+                "level": 1,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "15 ft.",
+                "duration": "Instantaneous; see text",
+                "components": "V, S, M (red, yellow, and blue powder or colored sand)"
+            },
+            {
+                "name": "Comprehend Languages",
+                "description": "You can understand the spoken words of creatures or read otherwise incomprehensible written messages.",
+                "level": 1,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "10 min./level",
+                "components": "V, S, M (a pinch of soot and salt)"
+            },
+            {
+                "name": "Cure Light Wounds",
+                "description": "When laying your hand upon a living creature, you channel positive energy that cures 1d8 points of damage + 1 point per caster level (maximum +5).",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Detect Secret Doors",
+                "description": "You can detect secret doors, compartments, caches, and so forth.",
+                "level": 1,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "Concentration, up to 1 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Disguise Self",
+                "description": "You make yourself—including clothing, armor, weapons, and equipment—look different.",
+                "level": 1,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "10 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Erase",
+                "description": "Erase removes writings of either magical or mundane nature from a scroll or from one or two pages of paper, parchment, or similar surfaces.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Expeditious Retreat",
+                "description": "This spell increases your base land speed by 30 feet. This adjustment is treated as an enhancement bonus.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Feather Fall",
+                "description": "The affected creatures or objects fall slowly. Feather fall instantly changes the rate at which the targets fall to a mere 60 feet per round (equivalent to the end of a fall from a few feet), and the subjects take no damage upon landing while the spell is in effect.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 immediate action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Until landing or 1 round/level",
+                "components": "V"
+            },
+            {
+                "name": "Grease",
+                "description": "A grease spell covers a solid surface with a layer of slippery grease. Any creature in the area when the spell is cast must make a successful Reflex save or fall.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M (butter)"
+            },
+            {
+                "name": "Identify",
+                "description": "This spell functions as detect magic, except that it gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession.",
+                "level": 1,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "3 rounds/level (D)",
+                "components": "V, S, M (wine stirred with an owl's feather)"
+            },
+            {
+                "name": "Magic Missile",
+                "description": "A missile of magical energy darts forth from your fingertip and strikes its target, dealing 1d4+1 points of force damage.",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Mage Armor",
+                "description": "An invisible but tangible field of force surrounds the subject of a mage armor spell, providing a +4 armor bonus to AC.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 hour/level (D)",
+                "components": "V, S, F (a piece of cured leather)"
+            },
+            {
+                "name": "Protection from Evil",
+                "description": "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures.",
+                "level": 1,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M/DF"
+            },
+            {
+                "name": "Shield",
+                "description": "Shield creates an invisible shield of force that hovers in front of you. It negates magic missile attacks directed at you.",
+                "level": 1,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Silent Image",
+                "description": "This spell creates the visual illusion of an object, creature, or force, as visualized by you.",
+                "level": 1,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Concentration",
+                "components": "V, S, F (a bit of fleece)"
+            },
+            {
+                "name": "Sleep",
+                "description": "A sleep spell causes a magical slumber to come upon 4 HD of creatures.",
+                "level": 1,
+                "school": "Enchantment",
+                "casting_time": "1 round",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 min./level",
+                "components": "V, S, M (fine sand, rose petals, or a live cricket)"
+            },
+            {
+                "name": "Acid Arrow",
+                "description": "A magical arrow of acid springs from your hand and speeds to its target. You must succeed on a ranged touch attack to hit your target. The arrow deals 2d4 points of acid damage with no splash damage.",
+                "level": 2,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "1 round + 1 round per three levels",
+                "components": "V, S, M (rhubarb leaf and an adder's stomach), F (a dart)"
+            },
+            {
+                "name": "Alter Self",
+                "description": "You assume the form of a creature of the same type as your normal form. The new form must be within one size category of your normal size.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M (a piece of the creature whose form you plan to assume)"
+            },
+            {
+                "name": "Blur",
+                "description": "The subject's outline appears blurred, shifting and wavering. This distortion grants the subject concealment (20% miss chance).",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level (D)",
+                "components": "V"
+            },
+            {
+                "name": "Bull's Strength",
+                "description": "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level",
+                "components": "V, S, M (a few hairs, or a pinch of dung, from a bull)"
+            },
+            {
+                "name": "Darkness",
+                "description": "This spell causes an object to radiate darkness out to a 20-foot radius. This darkness causes the illumination level in the area to drop one step, from bright light to normal light, from normal light to dim light, or from dim light to darkness.",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level (D)",
+                "components": "V, M/DF (bat fur and a piece of coal)"
+            },
+            {
+                "name": "Darkvision",
+                "description": "The subject gains the ability to see 60 feet even in total darkness. Darkvision is black and white only but otherwise like normal sight.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 hour/level",
+                "components": "V, S, M (either a pinch of dried carrot or an agate)"
+            },
+            {
+                "name": "Detect Thoughts",
+                "description": "You detect surface thoughts. The amount of information revealed depends on how long you study a particular area or subject.",
+                "level": 2,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "Concentration, up to 1 min./level (D)",
+                "components": "V, S, F/DF (a copper piece)"
+            },
+            {
+                "name": "Flaming Sphere",
+                "description": "A burning globe of fire rolls in whichever direction you point and burns those it strikes. It moves 30 feet per round. As part of this movement, it can ascend or jump up to 30 feet to strike a target.",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, M/DF (tallow, brimstone, and powdered iron)"
+            },
+            {
+                "name": "Glitterdust",
+                "description": "A cloud of golden particles covers everyone and everything in the area, causing creatures to become blinded and visibly outlining invisible things for the duration of the spell.",
+                "level": 2,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, M (ground mica)"
+            },
+            {
+                "name": "Invisibility",
+                "description": "The creature or object touched becomes invisible. If the recipient is a creature carrying gear, that vanishes, too. If you cast the spell on someone else, neither you nor your allies can see the subject, unless you can normally see invisible things or you employ magic to do so.",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M/DF (an eyelash encased in gum arabic)"
+            },
+            {
+                "name": "Knock",
+                "description": "The knock spell opens stuck, barred, locked, held, or arcane locked doors. It opens secret doors, as well as locked or trick-opening boxes or chests. It also loosens welds, shackles, or chains.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Levitate",
+                "description": "Levitate allows you to move yourself, another creature, or an object up and down as you wish. A creature must be willing to be levitated, and an object must be unattended or possessed by a willing creature.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal or close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 min./level (D)",
+                "components": "V, S, F (either a small leather loop or a piece of golden wire bent into a cup shape)"
+            },
+            {
+                "name": "Mirror Image",
+                "description": "This spell creates a number of illusory doubles of you that inhabit your square. These duplicates make it difficult for enemies to precisely locate and attack you.",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level",
+                "components": "V, S"
+            },
+            {
+                "name": "Resist Energy",
+                "description": "This abjuration grants a creature limited protection from damage of whichever one of five energy types you select: acid, cold, electricity, fire, or sonic.",
+                "level": 2,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "10 min./level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Scorching Ray",
+                "description": "You blast your enemies with fiery rays. You may fire one ray, plus one additional ray for every four levels beyond 3rd (to a maximum of three rays at 11th level). Each ray requires a ranged touch attack to hit and deals 4d6 points of fire damage.",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "See Invisibility",
+                "description": "You can see any objects or beings that are invisible within your range of vision, as well as any that are ethereal, as if they were normally visible.",
+                "level": 2,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "10 min./level (D)",
+                "components": "V, S, M (talc and powdered silver)"
+            },
+            {
+                "name": "Web",
+                "description": "Web creates a many-layered mass of strong, sticky strands. These strands trap those caught in them. The strands are similar to spider webs but far larger and tougher.",
+                "level": 2,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "10 min./level (D)",
+                "components": "V, S, M (spider web)"
+            },
+            {
+                "name": "Animate Dead",
+                "description": "This spell turns corpses into undead skeletons or zombies that obey your spoken commands.",
+                "level": 3,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, M (an onyx gem worth at least 25 gp per Hit Die of the undead)"
+            },
+            {
+                "name": "Blink",
+                "description": "You \"blink\" quickly back and forth between the Material Plane and the Ethereal Plane and look as though you're winking in and out of reality at random.",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Clairaudience/Clairvoyance",
+                "description": "You can hear or see (your choice) some other place for a limited duration as if you were there.",
+                "level": 3,
+                "school": "Divination",
+                "casting_time": "10 minutes",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "1 min./level (D)",
+                "components": "V, S, F/DF (a small horn or a glass eye)"
+            },
+            {
+                "name": "Dispel Magic",
+                "description": "You can use dispel magic to end one ongoing spell that has been cast on a creature or object, to temporarily suppress the magical abilities of a magic item, or to counter another spellcaster's spell.",
+                "level": 3,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Fireball",
+                "description": "A fireball spell generates a searing explosion of flame that detonates with a low roar and deals 1d6 points of fire damage per caster level (maximum 10d6) to every creature within the area.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a tiny ball of bat guano and sulfur)"
+            },
+            {
+                "name": "Fly",
+                "description": "The subject can fly at a speed of 60 feet (or 40 feet if it wears medium or heavy armor, or if it carries a medium or heavy load). It can ascend at half speed and descend at double speed.",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level",
+                "components": "V, S, F (a wing feather from any bird)"
+            },
+            {
+                "name": "Gaseous Form",
+                "description": "The subject and all its gear become insubstantial, misty, and translucent. Its material armor (including natural armor) becomes worthless, though its size, Dexterity, deflection bonuses, and armor bonuses from force effects still apply.",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "2 min./level (D)",
+                "components": "S, M/DF (a bit of gauze and a wisp of smoke)"
+            },
+            {
+                "name": "Haste",
+                "description": "The transmuted creatures move and act more quickly than normal. This extra speed has several effects.",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S, M (a shaving of licorice root)"
+            },
+            {
+                "name": "Lightning Bolt",
+                "description": "You release a powerful stroke of electrical energy that deals 1d6 points of electricity damage per caster level (maximum 10d6) to each creature within its area.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "120 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S, M (fur and a glass rod)"
+            },
+            {
+                "name": "Magic Circle against Evil",
+                "description": "All creatures within the area gain the effects of a protection from evil spell, and evil summoned creatures cannot enter the area either.",
+                "level": 3,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "10 min./level",
+                "components": "V, S, M/DF (a little powdered silver with which you trace a 3-foot-diameter circle on the floor around the creature to be warded)"
+            },
+            {
+                "name": "Major Image",
+                "description": "This spell functions like silent image, except that sound, smell, and thermal illusions are included in the spell effect. While concentrating, you can move the image within the range.",
+                "level": 3,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Concentration + 3 rounds",
+                "components": "V, S, F (a bit of fleece)"
+            },
+            {
+                "name": "Phantom Steed",
+                "description": "You conjure a Large, quasi-real, horselike creature. The steed can be ridden only by you or by the one person for whom you specifically created the mount.",
+                "level": 3,
+                "school": "Conjuration",
+                "casting_time": "10 minutes",
+                "range": "0 ft.",
+                "duration": "1 hour/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Protection from Energy",
+                "description": "Protection from energy grants temporary immunity to the type of energy you specify when you cast it (acid, cold, electricity, fire, or sonic).",
+                "level": 3,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "10 min./level or until discharged",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Slow",
+                "description": "An affected creature moves and attacks at a drastically slowed rate. A slowed creature can take only a single move action or standard action each turn, but not both (nor may it take full-round actions).",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S, M (a drop of molasses)"
+            },
+            {
+                "name": "Stinking Cloud",
+                "description": "Stinking cloud creates a bank of fog like that created by fog cloud, except that the vapors are nauseating. Living creatures in the cloud become nauseated.",
+                "level": 3,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, M (a rotten egg or several skunk cabbage leaves)"
+            },
+            {
+                "name": "Summon Monster III",
+                "description": "This spell functions like summon monster I, except that you can summon one creature from the 3rd-level list, 1d3 creatures of the same kind from the 2nd-level list, or 1d4+1 creatures of the same kind from the 1st-level list.",
+                "level": 3,
+                "school": "Conjuration",
+                "casting_time": "1 round",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, F/DF (a tiny bag and a small candle)"
+            },
+            {
+                "name": "Vampiric Touch",
+                "description": "You must succeed on a melee touch attack. Your touch deals 1d6 points of damage per two caster levels (maximum 10d6). You gain temporary hit points equal to the damage you deal.",
+                "level": 3,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous/1 hour; see text",
+                "components": "V, S"
+            },
+            {
+                "name": "Baleful Polymorph",
+                "description": "You transform the subject into a Small or smaller animal of no more than 1 HD. If the new form would prove fatal to the creature, the subject gets a +4 bonus on the save.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Permanent",
+                "components": "V, S"
+            },
+            {
+                "name": "Black Tentacles",
+                "description": "This spell causes a field of rubbery black tentacles to appear, grasping at creatures in the area. These tentacles grapple any creature in the area or that enters the area.",
+                "level": 4,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M (piece of tentacle from a giant octopus or a giant squid)"
+            },
+            {
+                "name": "Charm Monster",
+                "description": "This spell functions like charm person, except that the effect is not restricted by creature type or size.",
+                "level": 4,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Confusion",
+                "description": "This spell causes confusion in the targets, making them unable to determine their actions. Roll on the following table at the start of each subject's turn each round to see what it does in that round.",
+                "level": 4,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, M/DF (three nutshells)"
+            },
+            {
+                "name": "Dimension Door",
+                "description": "You instantly transfer yourself from your current location to any other spot within range. You always arrive at exactly the spot desired – whether by simply visualizing the area or by stating direction.",
+                "level": 4,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Enervation",
+                "description": "You point your finger and fire a black ray of negative energy that suppresses the life force of any living creature it strikes. You must make a ranged touch attack to hit. If you hit, the subject gains 1d4 negative levels.",
+                "level": 4,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Fear",
+                "description": "An invisible cone of terror causes each living creature in the area to become panicked unless it succeeds on a Will save.",
+                "level": 4,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "30 ft.",
+                "duration": "1 round/level or 1 round; see text",
+                "components": "V, S, M (the heart of a hen or a white feather)"
+            },
+            {
+                "name": "Greater Invisibility",
+                "description": "This spell functions like invisibility, except that it doesn't end if the subject attacks.",
+                "level": 4,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Personal or touch",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Ice Storm",
+                "description": "Great magical hailstones pound down for 1 full round, dealing 3d6 points of bludgeoning damage and 2d6 points of cold damage to every creature in the area.",
+                "level": 4,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "1 full round",
+                "components": "V, S, M/DF (dust and water)"
+            },
+            {
+                "name": "Phantasmal Killer",
+                "description": "You create a phantasmal image of the most fearsome creature imaginable to the subject simply by forming the fears of the subject's subconscious mind into something that its conscious mind can visualize: this most horrible beast.",
+                "level": 4,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Polymorph",
+                "description": "This spell transforms a willing creature into an animal, humanoid or elemental of your choosing. The spell fails if the target's form is inappropriate for its new form or if the target is unwilling.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M (a piece of the creature whose form you plan to assume)"
+            },
+            {
+                "name": "Resilient Sphere",
+                "description": "A globe of shimmering force encloses a creature, provided the creature is small enough to fit within the diameter of the sphere. The sphere contains its subject for the spell's duration.",
+                "level": 4,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 min./level (D)",
+                "components": "V, S, F (a hemispherical piece of clear crystal and a matching hemispherical piece of gum arabic)"
+            },
+            {
+                "name": "Scrying",
+                "description": "You can observe a creature at any distance. If the subject succeeds on a Will save, the spell fails. The difficulty of the save depends on how well your knowledge of the subject and what sort of physical connection (if any) you have to that creature.",
+                "level": 4,
+                "school": "Divination",
+                "casting_time": "1 hour",
+                "range": "See text",
+                "duration": "1 min./level",
+                "components": "V, S, M/DF, F (a pool of water)"
+            },
+            {
+                "name": "Solid Fog",
+                "description": "This spell functions like fog cloud, but in addition to obscuring sight, the solid fog is so thick that it impedes movement.",
+                "level": 4,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft. level)",
+                "duration": "1 min./level",
+                "components": "V, S, M (powdered peas and an animal hoof)"
+            },
+            {
+                "name": "Stone Shape",
+                "description": "You can form an existing piece of stone into any shape that suits your purpose. While it's possible to make crude coffers, doors, and so forth with stone shape, fine detail isn't possible.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, M/DF (soft clay)"
+            },
+            {
+                "name": "Wall of Fire",
+                "description": "An immobile, blazing curtain of shimmering violet fire springs into existence. One side of the wall, selected by you, sends forth waves of heat, dealing 2d4 points of fire damage to creatures within 10 feet and 1d4 points of fire damage to those past 10 feet but within 20 feet.",
+                "level": 4,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Concentration + 1 round/level",
+                "components": "V, S, M/DF (a piece of phosphorus)"
+            },
+            {
+                "name": "Animate Objects",
+                "description": "You imbue inanimate objects with mobility and a semblance of life. Each animated object then immediately attacks whomever or whatever you initially designate.",
+                "level": 5,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Baleful Polymorph",
+                "description": "This spell functions like polymorph, except that you change the subject into a Small or smaller animal of no more than 1 HD. If the new form would prove fatal to the creature, the subject gets a +4 bonus on the save.",
+                "level": 5,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Permanent",
+                "components": "V, S"
+            },
+            {
+                "name": "Cloudkill",
+                "description": "This spell generates a bank of fog, similar to a fog cloud, except that its vapors are yellowish green and poisonous. These vapors automatically kill any living creature with 3 or fewer HD (no save).",
+                "level": 5,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 min./level",
+                "components": "V, S"
+            },
+            {
+                "name": "Cone of Cold",
+                "description": "Cone of cold creates an area of extreme cold, originating at your hand and extending outward in a cone. It causes 1d6 points of cold damage per caster level (maximum 15d6).",
+                "level": 5,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a small crystal or glass cone)"
+            },
+            {
+                "name": "Dominate Person",
+                "description": "You can control the actions of any humanoid creature through a telepathic link that you establish with the subject's mind.",
+                "level": 5,
+                "school": "Enchantment",
+                "casting_time": "1 round",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Dream",
+                "description": "You, or a messenger touched by you, sends a phantasmal message to others in the form of a dream. At the beginning of the spell, you must name the recipient or identify him or her by some title that leaves no doubt as to identity.",
+                "level": 5,
+                "school": "Illusion",
+                "casting_time": "1 minute",
+                "range": "Unlimited",
+                "duration": "See text",
+                "components": "V, S"
+            },
+            {
+                "name": "Feeblemind",
+                "description": "If the target creature fails a Will saving throw, its Intelligence and Charisma scores each drop to 1. The affected creature is unable to use Intelligence- or Charisma-based skills, cast spells, understand language, or communicate coherently.",
+                "level": 5,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a handful of clay, crystal, glass, or mineral spheres)"
+            },
+            {
+                "name": "Hold Monster",
+                "description": "This spell functions like hold person, except that it affects any living creature that fails its Will save.",
+                "level": 5,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M/DF (one hard metal bar or rod, which can be as small as a three-penny nail)"
+            },
+            {
+                "name": "Magic Jar",
+                "description": "By casting magic jar, you place your soul in a gem or large crystal (known as the magic jar), leaving your body lifeless. Then you can attempt to take control of a nearby body, forcing its soul into the magic jar.",
+                "level": 5,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 hour/level or until you return to your body",
+                "components": "V, S, F (a gem or crystal worth at least 100 gp)"
+            },
+            {
+                "name": "Passwall",
+                "description": "You create a passage through wooden, plaster, or stone walls, but not through metal or other harder materials. The passage is 10 feet deep plus an additional 5 feet deep per three caster levels above 9th (15 feet at 12th, 20 feet at 15th, and a maximum of 25 feet deep at 18th level).",
+                "level": 5,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 hour/level (D)",
+                "components": "V, S, M (sesame seeds)"
+            },
+            {
+                "name": "Persistent Image",
+                "description": "This spell functions like silent image, except that the figment includes visual, auditory, olfactory, and thermal elements, and the spell is permanent.",
+                "level": 5,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Permanent (D)",
+                "components": "V, S, M (a bit of fleece and several grains of sand)"
+            },
+            {
+                "name": "Telekinesis",
+                "description": "You move objects or creatures by concentrating on them. Depending on the version selected, the spell can provide a gentle, sustained force, perform a variety of combat maneuvers, or exert a single short, violent thrust.",
+                "level": 5,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Concentration (up to 1 round/level) or instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Teleport",
+                "description": "This spell instantly transports you to a designated destination, which may be as distant as 100 miles per caster level. Interplanar travel is not possible.",
+                "level": 5,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Personal and touch",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Wall of Force",
+                "description": "A wall of force creates an invisible wall of pure force. The wall cannot move and is not easily destroyed. A wall of force is immune to dispel magic, although a mage's disjunction can still dispel it.",
+                "level": 5,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round /level (D)",
+                "components": "V, S, M (powder made from a clear gem)"
+            },
+            {
+                "name": "Wall of Stone",
+                "description": "This spell creates a wall of rock that merges into adjoining rock surfaces. A wall of stone is 1 inch thick per four caster levels and composed of up to one 5-foot square per level.",
+                "level": 5,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M/DF (a small block of granite)"
+            },
         ],
         "Call of Cthulhu": [
             {"name": "Shriveling", "description": "You project dark energy towards a target, causing damage.", "level": 1, "school": "Necromancy", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "V, S, M (a withered leaf)"}
