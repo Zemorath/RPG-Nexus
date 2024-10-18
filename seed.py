@@ -5563,9 +5563,976 @@ def seed_rpg_systems():
                 "duration": "Instantaneous",
                 "components": "V, S, M/DF (a small block of granite)"
             },
+            {
+            "name": "Antimagic Field",
+            "description": "An invisible barrier surrounds you and moves with you. The space within this barrier is impervious to most magical effects, including spells, spell-like abilities, and supernatural abilities.",
+            "level": 6,
+            "school": "Abjuration",
+            "casting_time": "1 standard action",
+            "range": "10 ft.",
+            "duration": "10 min./level (D)",
+            "components": "V, S, M/DF (a pinch of powdered iron or iron filings)"
+            },
+            {
+                "name": "Chain Lightning",
+                "description": "You create a stroke of lightning that arcs to a target of your choice. The bolt deals 1d6 points of electricity damage per caster level (maximum 20d6) to the primary target. After it strikes, lightning can arc to a number of secondary targets equal to your caster level (maximum 20).",
+                "level": 6,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, F (a bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for each of your caster levels)"
+            },
+            {
+                "name": "Disintegrate",
+                "description": "A thin, green ray springs from your pointing finger. You must make a successful ranged touch attack to hit. Any creature struck by the ray takes 2d6 points of damage per caster level (to a maximum of 40d6). Any creature reduced to 0 or fewer hit points by this spell is entirely disintegrated, leaving behind only a trace of fine dust.",
+                "level": 6,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M/DF (a lodestone and a pinch of dust)"
+            },
+            {
+                "name": "Flesh to Stone",
+                "description": "The subject, along with all its carried gear, turns into a mindless, inert statue. If the statue resulting from this spell is broken or damaged, the subject (if ever returned to its original state) has similar damage or deformities.",
+                "level": 6,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (lime, water, and earth)"
+            },
+            {
+                "name": "Globe of Invulnerability",
+                "description": "An immobile, faintly shimmering magical sphere surrounds you and excludes all spell effects of 4th level or lower. The area or effect of any such spells does not include the area of the globe of invulnerability.",
+                "level": 6,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "10 ft.",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M (a glass or crystal bead)"
+            },
+            {
+                "name": "Greater Dispel Magic",
+                "description": "This spell functions like dispel magic, except that it can end more than one spell on a target and it can be used to target multiple creatures.",
+                "level": 6,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Heroism, Greater",
+                "description": "This spell functions like heroism, but the creature gains a +4 morale bonus on attack rolls, saves, and skill checks, immunity to fear effects, and temporary hit points equal to your caster level (maximum 20).",
+                "level": 6,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level",
+                "components": "V, S"
+            },
+            {
+                "name": "Mass Suggestion",
+                "description": "This spell functions like suggestion, except that it can affect more creatures. You can suggest a course of action to multiple creatures (one suggestion per group of creatures).",
+                "level": 6,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 hour/level or until completed",
+                "components": "V, M (a snake's tongue and either a bit of honeycomb or a drop of sweet oil)"
+            },
+            {
+                "name": "Move Earth",
+                "description": "Move earth moves dirt (clay, loam, sand), possibly collapsing embankments, moving hillocks, shifting dunes, and so forth. However, in no event can rock formations be collapsed or moved.",
+                "level": 6,
+                "school": "Transmutation",
+                "casting_time": "See text",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a mixture of soils in a small bag, and an iron blade)"
+            },
+            {
+                "name": "Planar Binding",
+                "description": "Casting this spell attempts a dangerous act: to lure a creature from another plane to a specifically prepared trap, which must lie within the spell's range. The called creature is held in the trap until it agrees to perform one service in return for its freedom.",
+                "level": 6,
+                "school": "Conjuration",
+                "casting_time": "10 minutes",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Stone to Flesh",
+                "description": "This spell restores a petrified creature to its normal state, restoring life and goods. The creature must make a DC 15 Fortitude save to survive the process.",
+                "level": 6,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a pinch of earth and a drop of blood)"
+            },
+            {
+                "name": "True Seeing",
+                "description": "You confer on the subject the ability to see all things as they actually are. The subject sees through normal and magical darkness, notices secret doors hidden by magic, sees the exact locations of creatures or objects under blur or displacement effects, sees invisible creatures or objects normally, sees through illusions, and sees the true form of polymorphed, changed, or transmuted things.",
+                "level": 6,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level",
+                "components": "V, S, M (an ointment for the eyes that costs 250 gp)"
+            },
+            {
+                "name": "Veil",
+                "description": "You instantly change the appearance of the subjects and then maintain that appearance for the spell's duration. You can make the subjects appear to be anything you wish.",
+                "level": 6,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Concentration + 1 hour/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Banishment",
+                "description": "A banishment spell is a more powerful version of the dismissal spell. It enables you to force extraplanar creatures out of your home plane. As many as 2 Hit Dice of creatures per caster level can be banished.",
+                "level": 7,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S, F (see text)"
+            },
+            {
+                "name": "Control Weather",
+                "description": "You change the weather in the local area. It takes 10 minutes to cast the spell and an additional 10 minutes for the effects to manifest. You can call forth weather appropriate to the climate and season of the area you are in.",
+                "level": 7,
+                "school": "Transmutation",
+                "casting_time": "10 minutes; see text",
+                "range": "2 miles",
+                "duration": "4d12 hours; see text",
+                "components": "V, S"
+            },
+            {
+                "name": "Delayed Blast Fireball",
+                "description": "This spell functions like fireball, except that it is more powerful and can detonate up to 5 rounds after the spell is cast. The burst of flame deals 1d6 points of fire damage per caster level (maximum 20d6).",
+                "level": 7,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "5 rounds or less; see text",
+                "components": "V, S, M (a tiny ball of bat guano and sulfur)"
+            },
+            {
+                "name": "Ethereal Jaunt",
+                "description": "You become ethereal, along with your equipment. For the duration of the spell, you are in the Ethereal Plane, which overlaps the Material Plane. When the spell expires, you return to material existence.",
+                "level": 7,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Finger of Death",
+                "description": "You can slay any one living creature within range. The target is entitled to a Fortitude saving throw to survive the attack. If the save is successful, the creature instead takes 3d6 points of damage +1 point per caster level (maximum +25).",
+                "level": 7,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Forcecage",
+                "description": "This spell creates an immobile, invisible cubical prison composed of either bars of force or solid walls of force (your choice). Creatures within the area are caught and contained unless they are too big to fit inside, in which case the spell automatically fails.",
+                "level": 7,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level (D)",
+                "components": "V, S, M (ruby dust worth 1,500 gp)"
+            },
+            {
+                "name": "Greater Teleport",
+                "description": "This spell functions like teleport, except that there is no range limit and there is no chance you arrive off target. You must have some clear idea of the location and layout of the destination.",
+                "level": 7,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Personal and touch",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Mage's Magnificent Mansion",
+                "description": "You conjure up an extradimensional dwelling that has a single entrance on the plane from which the spell was cast. The entry point looks like a faint shimmering in the air that is 4 feet wide and 8 feet high.",
+                "level": 7,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level (D)",
+                "components": "V, S, F (a miniature portal carved from ivory, a small piece of polished marble, and a tiny silver spoon, each item worth 5 gp)"
+            },
+            {
+                "name": "Mass Hold Person",
+                "description": "This spell functions like hold person, except that it affects multiple creatures and lasts longer.",
+                "level": 7,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M/DF (one hard metal bar or rod, which can be as small as a three-penny nail)"
+            },
+            {
+                "name": "Phase Door",
+                "description": "This spell creates an ethereal passage through wooden, plaster, or stone walls, but not other materials. The phase door is invisible and inaccessible to all creatures except you, and only you can use the passage.",
+                "level": 7,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "One usage per two levels",
+                "components": "V"
+            },
+            {
+                "name": "Plane Shift",
+                "description": "You move yourself or some other creature to another plane of existence or alternate dimension. If several willing persons link hands in a circle, as many as eight can be affected by the plane shift at the same time.",
+                "level": 7,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, F (a small, forked metal rod)"
+            },
+            {
+                "name": "Prismatic Spray",
+                "description": "This spell causes seven shimmering, intertwined, multicolored beams of light to spray from your hand. Each beam has a different power. Creatures in the area of the spell with 8 HD or less are automatically blinded for 2d4 rounds.",
+                "level": 7,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Reverse Gravity",
+                "description": "This spell reverses gravity in an area, causing unattached objects and creatures in the area to fall upward and reach the top of the area in 1 round. If a solid object (such as a ceiling) is encountered in this fall, falling objects and creatures strike it in the same manner as they would during a normal downward fall.",
+                "level": 7,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M/DF (a lodestone and iron filings)"
+            },
+            {
+            "name": "Antipathy",
+            "description": "You cause an object or location to emanate magical vibrations that repel either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you.",
+            "level": 8,
+            "school": "Enchantment",
+            "casting_time": "1 hour",
+            "range": "Close (25 ft. + 5 ft./2 levels)",
+            "duration": "2 hours/level (D)",
+            "components": "V, S, M/DF (a lump of alum soaked in vinegar)"
+            },
+            {
+                "name": "Clone",
+                "description": "This spell makes an inert duplicate of a creature. If the original individual has been slain, its soul immediately transfers to the clone, creating a replacement (provided that the soul is free and willing to return).",
+                "level": 8,
+                "school": "Necromancy",
+                "casting_time": "10 minutes",
+                "range": "0 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S, M (laboratory supplies worth 1,000 gp)"
+            },
+            {
+                "name": "Create Greater Undead",
+                "description": "This evil spell functions like create undead, except that you can create more powerful and intelligent sorts of undead: shadows, wraiths, spectres, and devourers.",
+                "level": 8,
+                "school": "Necromancy",
+                "casting_time": "1 hour",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a black sapphire worth 100 gp per HD of the undead to be created)"
+            },
+            {
+                "name": "Dimensional Lock",
+                "description": "You create a shimmering emerald barrier that completely blocks extradimensional travel. Forms of movement barred include astral projection, blink, dimension door, ethereal jaunt, etherealness, gate, maze, plane shift, shadow walk, teleport, and similar spell-like abilities.",
+                "level": 8,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Horrid Wilting",
+                "description": "This spell evaporates moisture from the body of each subject living creature, causing flesh to wither and crack and crumble to dust. This deals 1d6 points of damage per caster level (maximum 20d6).",
+                "level": 8,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S, M/DF (a bit of sponge)"
+            },
+            {
+                "name": "Incendiary Cloud",
+                "description": "An incendiary cloud spell creates a cloud of roiling smoke shot through with white-hot embers. The smoke obscures all sight as a fog cloud does. In addition, the white-hot embers within the cloud deal 6d6 points of fire damage to everything within the cloud on your turn each round.",
+                "level": 8,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Iron Body",
+                "description": "This spell transforms your body into living iron, which grants you several powerful resistances and abilities.",
+                "level": 8,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level (D)",
+                "components": "V, S, M/DF (a piece of iron from an iron golem, a hero's armor, or a war machine)"
+            },
+            {
+                "name": "Maze",
+                "description": "You banish the subject into an extradimensional labyrinth. Each round on its turn, it may attempt a DC 20 Intelligence check to escape the labyrinth as a full-round action.",
+                "level": 8,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "See text",
+                "components": "V, S"
+            },
+            {
+                "name": "Mind Blank",
+                "description": "The subject is protected from all devices and spells that gather information about the target through divination magic. This spell also grants a +8 resistance bonus on saving throws against all mind-affecting spells and effects.",
+                "level": 8,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "24 hours",
+                "components": "V, S"
+            },
+            {
+                "name": "Polar Ray",
+                "description": "A blue-white ray of freezing air and ice springs from your hand. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d6 points of cold damage per caster level (maximum 25d6).",
+                "level": 8,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S, F (a small, white ceramic cone or prism)"
+            },
+            {
+                "name": "Polymorph Any Object",
+                "description": "This spell functions like greater polymorph, except that it changes one object or creature into another. The duration of the spell depends on how radical a change is made from the original to the transmuted form.",
+                "level": 8,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "See text",
+                "components": "V, S, M/DF (mercury, gum arabic, and smoke)"
+            },
+            {
+                "name": "Power Word Stun",
+                "description": "You utter a single word of power that instantly causes one creature of your choice to become stunned, whether the creature can hear the word or not.",
+                "level": 8,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "See text",
+                "components": "V"
+            },
+            {
+                "name": "Prismatic Wall",
+                "description": "Prismatic wall creates a vertical, opaque wall—a shimmering, multicolored plane of light that protects you from all forms of attack. The wall flashes with seven colors, each of which has a distinct power and purpose.",
+                "level": 8,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "10 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Astral Projection",
+                "description": "By freeing your spirit from your physical body, this spell allows you to project an astral body onto another plane altogether.",
+                "level": 9,
+                "school": "Necromancy",
+                "casting_time": "30 minutes",
+                "range": "Touch",
+                "duration": "See text",
+                "components": "V, S, M (jacinth worth 1,000 gp)"
+            },
+            {
+                "name": "Dominate Monster",
+                "description": "This spell functions like dominate person, except that the spell is not restricted by creature type.",
+                "level": 9,
+                "school": "Enchantment",
+                "casting_time": "1 round",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Energy Drain",
+                "description": "This spell functions like enervation, except that the creature struck gains 2d4 negative levels, and the negative levels last longer.",
+                "level": 9,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Etherealness",
+                "description": "This spell functions like ethereal jaunt, except that you and other willing creatures joined by linked hands become ethereal. Besides yourself, you can bring one creature per three caster levels to the Ethereal Plane.",
+                "level": 9,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch; see text",
+                "duration": "1 min./level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Freedom",
+                "description": "The subject is freed from spells and effects that restrict movement, including binding, entangle, grappling, imprisonment, maze, paralysis, petrification, pinning, sleep, slow, stunning, temporal stasis, and web.",
+                "level": 9,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels) or touch",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Gate",
+                "description": "Casting a gate spell has two effects. First, it creates an interdimensional connection between your plane of existence and a plane you specify, allowing travel between those two planes in either direction. Second, you may then call a particular individual or kind of being through the gate.",
+                "level": 9,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous or concentration (up to 1 round/level); see text",
+                "components": "V, S, M (diamond worth 10,000 gp)"
+            },
+            {
+                "name": "Imprisonment",
+                "description": "When you cast imprisonment and touch a creature, it is entombed in a state of suspended animation in a small sphere far beneath the surface of the ground.",
+                "level": 9,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a miniature representation of the target)"
+            },
+            {
+                "name": "Meteor Swarm",
+                "description": "Meteor swarm is a very powerful and spectacular spell that is similar to fireball in many aspects. When you cast it, four 2-foot-diameter spheres spring from your outstretched hand and streak in straight lines to the spots you select.",
+                "level": 9,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Power Word Kill",
+                "description": "You utter a single word of power that instantly kills one creature of your choice, whether the creature can hear the word or not.",
+                "level": 9,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Prismatic Sphere",
+                "description": "This spell functions like prismatic wall, except you conjure up an immobile, opaque globe of shimmering, multicolored light that surrounds you and protects you from all forms of attack.",
+                "level": 9,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "10 ft.",
+                "duration": "10 min./level (D)",
+                "components": "V"
+            },
+            {
+                "name": "Shapechange",
+                "description": "This spell functions like polymorph, except that it enables you to assume the form of any single non-unique creature (of any type) from Fine to Colossal size. The assumed form cannot have more than twice your caster level in Hit Dice (to a maximum of 50 HD).",
+                "level": 9,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "10 min./level (D)",
+                "components": "V, S, F (jade circlet worth 1,500 gp)"
+            },
+            {
+                "name": "Time Stop",
+                "description": "This spell seems to make time cease to flow for everyone but you. In fact, you speed up so greatly that all other creatures seem frozen, though they are actually still moving at their normal speeds.",
+                "level": 9,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1d4+1 rounds (apparent time)",
+                "components": "V"
+            },
+            {
+                "name": "Wish",
+                "description": "Wish is the mightiest spell a wizard or sorcerer can cast. By simply speaking aloud, you can alter reality to better suit you. Even wish, however, has its limits.",
+                "level": 9,
+                "school": "Universal",
+                "casting_time": "1 standard action",
+                "range": "See text",
+                "duration": "See text",
+                "components": "V, S, M (diamond worth 25,000 gp)"
+            }
         ],
         "Call of Cthulhu": [
-            {"name": "Shriveling", "description": "You project dark energy towards a target, causing damage.", "level": 1, "school": "Necromancy", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "V, S, M (a withered leaf)"}
+            {
+                "name": "Acidic Spray",
+                "description": "Creates a spray of corrosive acid that can damage targets.",
+                "casting_time": "Instantaneous",
+                "cost": "Variable Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Alter Weather",
+                "description": "Allows the caster to influence local weather patterns.",
+                "casting_time": "1 hour",
+                "cost": "10+ Magic points",
+                "duration": "1D6 hours"
+            },
+            {
+                "name": "Apportion Ka",
+                "description": "Transfers life force between individuals.",
+                "casting_time": "1 round",
+                "cost": "Variable Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Augur",
+                "description": "Grants visions of possible futures.",
+                "casting_time": "1D6 hours",
+                "cost": "5 Magic points, 1D6 Sanity points",
+                "duration": "Visions last 1D6 rounds"
+            },
+            {
+                "name": "Awareness",
+                "description": "Heightens the caster's senses supernaturally.",
+                "casting_time": "1 round",
+                "cost": "3 Magic points",
+                "duration": "1 hour"
+            },
+            {
+                "name": "Azure Blaze",
+                "description": "Creates a bolt of blue fire that can ignite flammable objects.",
+                "casting_time": "Instantaneous",
+                "cost": "4 Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Bless Blade",
+                "description": "Enhances a blade with magical properties.",
+                "casting_time": "10 minutes",
+                "cost": "5 Magic points",
+                "duration": "24 hours"
+            },
+            {
+                "name": "Call/Dismiss Azathoth",
+                "description": "Attempts to summon or dismiss the Daemon Sultan. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Call/Dismiss Cthulhu",
+                "description": "Attempts to summon or dismiss Great Cthulhu. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Call/Dismiss Hastur",
+                "description": "Attempts to summon or dismiss Hastur. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Call/Dismiss Yog-Sothoth",
+                "description": "Attempts to summon or dismiss Yog-Sothoth. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Cause/Cure Blindness",
+                "description": "Inflicts or cures blindness on a target.",
+                "casting_time": "1 round",
+                "cost": "8 Magic points",
+                "duration": "Permanent until cured"
+            },
+            {
+                "name": "Cloud Memory",
+                "description": "Erases or alters recent memories of a target.",
+                "casting_time": "1 round",
+                "cost": "5 Magic points, 3 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Conjure Glass of Mortlan",
+                "description": "Creates a magical scrying device.",
+                "casting_time": "1 day",
+                "cost": "15 Magic points, 1D6 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Contact Deity",
+                "description": "Establishes mental contact with a deity or Great Old One.",
+                "casting_time": "1D6 hours",
+                "cost": "1D10 Magic points, 1D10 Sanity points",
+                "duration": "Brief"
+            },
+            {
+                "name": "Contact Ghoul",
+                "description": "Summons a ghoul to the caster's presence.",
+                "casting_time": "1 hour",
+                "cost": "7 Magic points",
+                "duration": "Until dismissed"
+            },
+            {
+                "name": "Create Barricade of Spirits",
+                "description": "Forms a barrier of spectral energy.",
+                "casting_time": "1 round",
+                "cost": "Variable Magic points",
+                "duration": "1 hour"
+            },
+            {
+                "name": "Create Mist of R'lyeh",
+                "description": "Conjures a mist that disorients those who enter it.",
+                "casting_time": "1 round",
+                "cost": "8 Magic points",
+                "duration": "1D6 hours"
+            },
+            {
+                "name": "Create Scorn of Ahriman",
+                "description": "Crafts a powerful magical amulet.",
+                "casting_time": "1 week",
+                "cost": "20 Magic points, 1D10 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Curse of the Putrid Husk",
+                "description": "Causes a target's body to rapidly decay.",
+                "casting_time": "1 round",
+                "cost": "10 Magic points, 1D6 Sanity points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Deflect Harm",
+                "description": "Creates a shield against physical and magical attacks.",
+                "casting_time": "Instantaneous",
+                "cost": "Variable Magic points",
+                "duration": "1D6 rounds"
+            },
+            {
+                "name": "Dominate",
+                "description": "Allows control over a target's actions.",
+                "casting_time": "1 round",
+                "cost": "1 Magic point per round, 1D6 Sanity points",
+                "duration": "Concentration"
+            },
+            {
+                "name": "Dread Curse of Azathoth",
+                "description": "Inflicts a terrible curse on a target.",
+                "casting_time": "1 day",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Elder Sign",
+                "description": "Creates a protective symbol against cosmic entities.",
+                "casting_time": "1 hour",
+                "cost": "Variable Magic points (minimum 10)",
+                "duration": "Permanent until destroyed"
+            },
+            {
+                "name": "Elemental Conjuration",
+                "description": "Summons an elemental being.",
+                "casting_time": "1 hour",
+                "cost": "15 Magic points",
+                "duration": "Until dismissed"
+            },
+            {
+                "name": "Enchant Knife",
+                "description": "Imbues a blade with magical properties.",
+                "casting_time": "1 hour",
+                "cost": "5 Magic points, 1D4 Sanity points",
+                "duration": "Until next sunrise"
+            },
+            {
+                "name": "Enslave",
+                "description": "Binds a summoned creature to the caster's will.",
+                "casting_time": "1 hour",
+                "cost": "Variable Magic points, 1D10 Sanity points",
+                "duration": "1 year and 1 day"
+            },
+            {
+                "name": "Evil Eye",
+                "description": "Curses a target with bad luck.",
+                "casting_time": "1 round",
+                "cost": "5 Magic points, 2 Sanity points",
+                "duration": "1 week"
+            },
+            {
+                "name": "Exhaust",
+                "description": "Drains the energy from a target.",
+                "casting_time": "Instantaneous",
+                "cost": "6 Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Fist of Yog-Sothoth",
+                "description": "Creates an invisible force to strike targets.",
+                "casting_time": "Instantaneous",
+                "cost": "Variable Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Flesh Ward",
+                "description": "Toughens the caster's skin against damage.",
+                "casting_time": "5 rounds",
+                "cost": "3 Magic points",
+                "duration": "24 hours"
+            },
+            {
+                "name": "Gate",
+                "description": "Opens a portal to another dimension or location.",
+                "casting_time": "1D10 rounds",
+                "cost": "40 Magic points, 1D100 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Gather Memories",
+                "description": "Extracts memories from a corpse or location.",
+                "casting_time": "1 hour",
+                "cost": "12 Magic points, 1D6 Sanity points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Grasp of Cthulhu",
+                "description": "Summons tentacles to grapple and crush targets.",
+                "casting_time": "1 round",
+                "cost": "10 Magic points, 1D6 Sanity points",
+                "duration": "1D6 rounds"
+            },
+            {
+                "name": "Heal",
+                "description": "Restores health to a target.",
+                "casting_time": "1 round",
+                "cost": "Variable Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Implant Fear",
+                "description": "Instills overwhelming fear in a target.",
+                "casting_time": "1 round",
+                "cost": "8 Magic points, 1D4 Sanity points",
+                "duration": "1D6 hours"
+            },
+            {
+                "name": "Imprisonment",
+                "description": "Traps a being in a magical prison.",
+                "casting_time": "1 hour",
+                "cost": "20 Magic points, 1D10 Sanity points",
+                "duration": "Until released"
+            },
+            {
+                "name": "Invoke Deity",
+                "description": "Calls upon a deity for aid. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Brief"
+            },
+            {
+                "name": "Invoke Yog-Sothoth",
+                "description": "Attempts to gain knowledge from Yog-Sothoth. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Brief"
+            },
+            {
+                "name": "Mindblast",
+                "description": "Assaults a target's mind, causing confusion and pain.",
+                "casting_time": "Instantaneous",
+                "cost": "8 Magic points, 1D4 Sanity points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Possess",
+                "description": "Allows the caster to take control of another's body.",
+                "casting_time": "1D6 rounds",
+                "cost": "15 Magic points, 1D10 Sanity points",
+                "duration": "1 hour"
+            },
+            {
+                "name": "Power Drain",
+                "description": "Drains magical energy from a target.",
+                "casting_time": "1 round",
+                "cost": "5 Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Primal Scream",
+                "description": "Emits a psychically charged scream that can stun or harm.",
+                "casting_time": "Instantaneous",
+                "cost": "7 Magic points, 1D4 Sanity points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Resurrection",
+                "description": "Brings a dead person back to life. Extremely dangerous.",
+                "casting_time": "1D6 hours",
+                "cost": "All Magic points, 1D100 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Return Greeting",
+                "description": "Teleports the caster to a predetermined location.",
+                "casting_time": "1 round",
+                "cost": "10 Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Revivify",
+                "description": "Brings a recently dead person back to life.",
+                "casting_time": "1 round",
+                "cost": "15 Magic points, 1D10 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Roi's Revolver",
+                "description": "Expels a target from the immediate vicinity.",
+                "casting_time": "Instantaneous",
+                "cost": "20 Magic points",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Sea Change",
+                "description": "Transforms a human into a Deep One hybrid.",
+                "casting_time": "1 day",
+                "cost": "30 Magic points, 1D20 Sanity points",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Send Dream",
+                "description": "Implants a dream or message in a sleeping target's mind.",
+                "casting_time": "10 minutes",
+                "cost": "5 Magic points",
+                "duration": "One night's sleep"
+            },
+            {
+                "name": "Shrivelling",
+                "description": "Causes a target's flesh to wither and die.",
+                "casting_time": "Instantaneous",
+                "cost": "Variable Magic points (minimum 8)",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Summon/Bind Byakhee",
+                "description": "Summons a Byakhee, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "10 Magic points, 1D6 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Summon/Bind Fire Vampire",
+                "description": "Summons a Fire Vampire, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "10 Magic points, 1D6 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Summon/Bind Flying Polyp",
+                "description": "Summons a Flying Polyp, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "15 Magic points, 1D10 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Summon/Bind Hunting Horror",
+                "description": "Summons a Hunting Horror, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "12 Magic points, 1D8 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Summon/Bind Nightgaunt",
+                "description": "Summons a Nightgaunt, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "11 Magic points, 1D6 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Summon/Bind Star Vampire",
+                "description": "Summons a Star Vampire, which the caster can attempt to bind.",
+                "casting_time": "1 hour",
+                "cost": "14 Magic points, 1D8 Sanity points",
+                "duration": "Until dismissed or slain"
+            },
+            {
+                "name": "Time Gate",
+                "description": "Opens a portal to the past or future.",
+                "casting_time": "1D6 hours",
+                "cost": "30 Magic points, 1D20 Sanity points",
+                "duration": "Variable"
+            },
+            {
+                "name": "Vanish",
+                "description": "Makes the caster invisible.",
+                "casting_time": "1 round",
+                "cost": "8 Magic points",
+                "duration": "1D6 rounds"
+            },
+            {
+                "name": "Voice of Ra",
+                "description": "Allows the caster to speak with great authority and persuasiveness.",
+                "casting_time": "1 round",
+                "cost": "6 Magic points",
+                "duration": "1D6 rounds"
+            },
+            {
+                "name": "Voorish Sign",
+                "description": "A gesture that weakens dimensional barriers, aiding other spells.",
+                "casting_time": "Instantaneous",
+                "cost": "1 Magic point",
+                "duration": "Instantaneous"
+            },
+            {
+                "name": "Warding",
+                "description": "Creates a barrier against supernatural entities.",
+                "casting_time": "1 hour",
+                "cost": "Variable Magic points",
+                "duration": "1 day"
+            },
+            {
+                "name": "Withering",
+                "description": "Causes a target's limb to wither and become useless.",
+                "casting_time": "1 round",
+                "cost": "8 Magic points, 1D4 Sanity points",
+                "duration": "Permanent until cured"
+            },
+            {
+                "name": "Wrack",
+                "description": "Inflicts severe pain on a target.",
+                "casting_time": "1 round",
+                "cost": "6 Magic points, 1D4 Sanity points",
+                "duration": "1D6 rounds"
+            },
+            {
+                "name": "Zingaya",
+                "description": "A voodoo-like curse that causes harm to a target through a simulacrum.",
+                "casting_time": "1 hour",
+                "cost": "10 Magic points, 1D6 Sanity points",
+                "duration": "Until the simulacrum is destroyed"
+            }
         ],
         "Shadowrun": [
             {"name": "Stun Bolt", "description": "A non-lethal magical attack that causes mental strain.", "level": 1, "school": "Combat", "casting_time": "1 action", "range": "Line of Sight", "duration": "Instantaneous", "components": "S"}
