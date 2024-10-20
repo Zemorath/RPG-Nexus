@@ -711,7 +711,7 @@ class Spell(db.Model, SerializerMixin):
     type = db.Column(db.Text, nullable=True)
 
     # Force Powers for Star Wars
-    force_power_tree = db.Column(db.Text, nullable=True)  # JSON representation of the power tree
+    force_power_tree = db.Column(db.JSON, nullable=True)
     strain_cost = db.Column(db.Integer, nullable=True)  # Base strain cost to use the power
     conflict_risk = db.Column(db.Integer, nullable=True)
 

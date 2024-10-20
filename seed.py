@@ -6603,7 +6603,8 @@ def seed_rpg_systems():
                 "name": "Acid Stream",
                 "description": "Creates a corrosive stream of acid that damages the target.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6611,7 +6612,8 @@ def seed_rpg_systems():
                 "name": "Analyze Device",
                 "description": "Allows the caster to understand the purpose and operation of a device.",
                 "level": 3,
-                "school": "Category: Detection / Type: Physical",
+                "school": "Detection",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6619,7 +6621,8 @@ def seed_rpg_systems():
                 "name": "Armor",
                 "description": "Creates a field of magical protection around the target.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6627,7 +6630,8 @@ def seed_rpg_systems():
                 "name": "Clairaudience",
                 "description": "Allows the caster to hear sounds from a distant location.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6635,7 +6639,8 @@ def seed_rpg_systems():
                 "name": "Clairvoyance",
                 "description": "Allows the caster to see a distant location.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6643,7 +6648,8 @@ def seed_rpg_systems():
                 "name": "Combat Sense",
                 "description": "Enhances the target's combat awareness and reflexes.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6651,7 +6657,8 @@ def seed_rpg_systems():
                 "name": "Confusion",
                 "description": "Causes mental disorientation in the target.",
                 "level": 2,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6659,7 +6666,8 @@ def seed_rpg_systems():
                 "name": "Control Thoughts",
                 "description": "Allows the caster to control the target's actions.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6667,7 +6675,8 @@ def seed_rpg_systems():
                 "name": "Detect Enemies",
                 "description": "Alerts the caster to the presence of hostile individuals.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6675,7 +6684,8 @@ def seed_rpg_systems():
                 "name": "Detect Individual",
                 "description": "Allows the caster to locate a specific individual.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6683,7 +6693,8 @@ def seed_rpg_systems():
                 "name": "Detect Life",
                 "description": "Detects living beings in the spell's area of effect.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6691,7 +6702,8 @@ def seed_rpg_systems():
                 "name": "Detect Magic",
                 "description": "Reveals the presence of magic in the spell's area of effect.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6699,7 +6711,8 @@ def seed_rpg_systems():
                 "name": "Detect Object",
                 "description": "Allows the caster to locate a specific type of object.",
                 "level": 3,
-                "school": "Category: Detection / Type: Physical",
+                "school": "Detection",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6707,7 +6720,8 @@ def seed_rpg_systems():
                 "name": "Flamethrower",
                 "description": "Creates a stream of flame that damages the target.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6715,7 +6729,8 @@ def seed_rpg_systems():
                 "name": "Heal",
                 "description": "Heals physical damage on the target.",
                 "level": 4,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -6723,7 +6738,8 @@ def seed_rpg_systems():
                 "name": "Improved Invisibility",
                 "description": "Renders the target invisible to normal vision and technological sensors.",
                 "level": 1,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6731,7 +6747,8 @@ def seed_rpg_systems():
                 "name": "Influence",
                 "description": "Allows the caster to implant a suggestion in the target's mind.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6739,7 +6756,8 @@ def seed_rpg_systems():
                 "name": "Levitate",
                 "description": "Allows the caster to lift and move objects or persons without touching them.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6747,7 +6765,8 @@ def seed_rpg_systems():
                 "name": "Light",
                 "description": "Creates a mobile point of light.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6755,7 +6774,8 @@ def seed_rpg_systems():
                 "name": "Mana Barrier",
                 "description": "Creates an invisible barrier that blocks magical effects.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6763,7 +6783,8 @@ def seed_rpg_systems():
                 "name": "Mask",
                 "description": "Alters the perceived appearance of the target.",
                 "level": 2,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6771,7 +6792,8 @@ def seed_rpg_systems():
                 "name": "Mind Probe",
                 "description": "Allows the caster to read the thoughts and memories of the target.",
                 "level": 1,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6779,7 +6801,8 @@ def seed_rpg_systems():
                 "name": "Phantasm",
                 "description": "Creates a realistic illusion that affects all senses.",
                 "level": 1,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6787,7 +6810,8 @@ def seed_rpg_systems():
                 "name": "Physical Barrier",
                 "description": "Creates a visible, physical wall of magical energy.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6795,7 +6819,8 @@ def seed_rpg_systems():
                 "name": "Power Bolt",
                 "description": "Fires a bolt of magical energy at a target.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6803,7 +6828,8 @@ def seed_rpg_systems():
                 "name": "Silence",
                 "description": "Creates an area where no sound can be produced or heard.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6811,7 +6837,8 @@ def seed_rpg_systems():
                 "name": "Stunball",
                 "description": "Creates an area effect stunning attack.",
                 "level": 3,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -6819,7 +6846,8 @@ def seed_rpg_systems():
                 "name": "Stun Bolt",
                 "description": "Fires a bolt of magical energy that stuns rather than damages.",
                 "level": 3,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6827,7 +6855,8 @@ def seed_rpg_systems():
                 "name": "Trid Phantasm",
                 "description": "Creates a realistic three-dimensional illusion.",
                 "level": 1,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -6835,7 +6864,8 @@ def seed_rpg_systems():
                 "name": "Vehicle Mask",
                 "description": "Alters the perceived appearance of a vehicle.",
                 "level": 2,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6843,7 +6873,8 @@ def seed_rpg_systems():
                 "name": "Astral Armor",
                 "description": "Creates a protective field around the target's aura in astral space.",
                 "level": 2,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6851,7 +6882,8 @@ def seed_rpg_systems():
                 "name": "Ball Lightning",
                 "description": "Creates a ball of electrical energy that can be directed at targets.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6859,7 +6891,8 @@ def seed_rpg_systems():
                 "name": "Control Actions",
                 "description": "Allows the caster to puppeteer the target's physical movements.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6867,7 +6900,8 @@ def seed_rpg_systems():
                 "name": "Demolish",
                 "description": "Causes significant structural damage to buildings or vehicles.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6875,7 +6909,8 @@ def seed_rpg_systems():
                 "name": "Toxic Wave",
                 "description": "Creates a wave of corrosive acid that damages everything in its path.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -6883,7 +6918,8 @@ def seed_rpg_systems():
                 "name": "Mana Bind",
                 "description": "Restrains a target with bands of magical energy, preventing movement.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6891,7 +6927,8 @@ def seed_rpg_systems():
                 "name": "Mob Mind",
                 "description": "Influences the emotions and actions of a group of people.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -6899,7 +6936,8 @@ def seed_rpg_systems():
                 "name": "Petrify",
                 "description": "Turns the target into stone temporarily.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6907,7 +6945,8 @@ def seed_rpg_systems():
                 "name": "Poltergeist",
                 "description": "Allows the caster to telekinetically move multiple small objects.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -6915,7 +6954,8 @@ def seed_rpg_systems():
                 "name": "Radiation Beam",
                 "description": "Fires a beam of harmful radiation at the target.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6923,7 +6963,8 @@ def seed_rpg_systems():
                 "name": "Reshape",
                 "description": "Allows the caster to mold and shape physical materials.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -6931,7 +6972,8 @@ def seed_rpg_systems():
                 "name": "Slay",
                 "description": "A powerful spell that can instantly kill a living target.",
                 "level": 1,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -6939,7 +6981,8 @@ def seed_rpg_systems():
                 "name": "Sterilize",
                 "description": "Creates a sphere of purified, sterile space.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch (Area)",
                 "duration": "Sustained"
             },
@@ -6947,7 +6990,8 @@ def seed_rpg_systems():
                 "name": "Turn to Goo",
                 "description": "Transforms the target into a gelatinous state temporarily.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -6955,7 +6999,8 @@ def seed_rpg_systems():
                 "name": "Wreck",
                 "description": "Causes malfunctions and damage to a vehicle or mechanical device.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -6963,7 +7008,8 @@ def seed_rpg_systems():
                 "name": "Alchemical Bomb",
                 "description": "Creates a magical explosive that can be thrown or planted.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Special"
             },
@@ -6971,7 +7017,8 @@ def seed_rpg_systems():
                 "name": "Animate",
                 "description": "Brings an inanimate object to life, allowing it to move and follow simple commands.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6979,7 +7026,8 @@ def seed_rpg_systems():
                 "name": "Astral Window",
                 "description": "Creates a window into the astral plane that non-awakened individuals can see through.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -6987,7 +7035,8 @@ def seed_rpg_systems():
                 "name": "Cataclysm",
                 "description": "Causes widespread destruction in a large area, affecting structures and terrain.",
                 "level": 1,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -6995,7 +7044,8 @@ def seed_rpg_systems():
                 "name": "Clean",
                 "description": "Instantly cleans an area or object, removing dirt, grime, and even some toxins.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch (Area)",
                 "duration": "Permanent"
             },
@@ -7003,7 +7053,8 @@ def seed_rpg_systems():
                 "name": "Counterspelling",
                 "description": "Allows the caster to disrupt or negate another spell as it's being cast.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Special",
                 "duration": "Instant"
             },
@@ -7011,7 +7062,8 @@ def seed_rpg_systems():
                 "name": "Fashion",
                 "description": "Allows the caster to create or alter clothing and accessories.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7019,7 +7071,8 @@ def seed_rpg_systems():
                 "name": "Foretell",
                 "description": "Grants the caster a brief glimpse of potential future events.",
                 "level": 1,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Instant"
             },
@@ -7027,7 +7080,8 @@ def seed_rpg_systems():
                 "name": "Gecko Crawl",
                 "description": "Allows the target to climb walls and ceilings like a gecko.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7035,7 +7089,8 @@ def seed_rpg_systems():
                 "name": "Gravity Manipulation",
                 "description": "Alters the gravity in a targeted area, making it stronger, weaker, or redirected.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7043,7 +7098,8 @@ def seed_rpg_systems():
                 "name": "Hibernate",
                 "description": "Puts the target into a state of suspended animation.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7051,7 +7107,8 @@ def seed_rpg_systems():
                 "name": "Mana Sphere",
                 "description": "Creates a mobile sphere of mana that can be used to cast spells at a distance.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7059,7 +7116,8 @@ def seed_rpg_systems():
                 "name": "Nutrition",
                 "description": "Provides the target with necessary nutrients, eliminating the need for food and water temporarily.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7067,7 +7125,8 @@ def seed_rpg_systems():
                 "name": "Shift",
                 "description": "Allows the caster to teleport a short distance.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Self",
                 "duration": "Instant"
             },
@@ -7075,7 +7134,8 @@ def seed_rpg_systems():
                 "name": "Spirit Barrier",
                 "description": "Creates a barrier that blocks spirits and astral forms.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7083,7 +7143,8 @@ def seed_rpg_systems():
                 "name": "Agony",
                 "description": "Causes intense pain in the target without causing physical damage.",
                 "level": 2,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7091,7 +7152,8 @@ def seed_rpg_systems():
                 "name": "Antidote",
                 "description": "Neutralizes toxins and poisons in the target's system.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7099,7 +7161,8 @@ def seed_rpg_systems():
                 "name": "Astral Cloak",
                 "description": "Masks the target's astral signature, making them harder to detect in astral space.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7107,7 +7170,8 @@ def seed_rpg_systems():
                 "name": "Blast",
                 "description": "Creates an explosion of pure magical energy at the target location.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -7115,7 +7179,8 @@ def seed_rpg_systems():
                 "name": "Calm Animal",
                 "description": "Soothes and calms an agitated animal.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7123,7 +7188,8 @@ def seed_rpg_systems():
                 "name": "Chaotic World",
                 "description": "Creates an illusion of a chaotic, ever-changing environment around the target.",
                 "level": 2,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7131,7 +7197,8 @@ def seed_rpg_systems():
                 "name": "Control Fire",
                 "description": "Allows the caster to manipulate existing fire, controlling its size and direction.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7139,7 +7206,8 @@ def seed_rpg_systems():
                 "name": "Detect Enemies, Extended",
                 "description": "An improved version of Detect Enemies with a larger area of effect.",
                 "level": 1,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight (Extended Area)",
                 "duration": "Sustained"
             },
@@ -7147,7 +7215,8 @@ def seed_rpg_systems():
                 "name": "Enhance Aim",
                 "description": "Improves the target's accuracy with ranged weapons.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7155,7 +7224,8 @@ def seed_rpg_systems():
                 "name": "Fashion",
                 "description": "Alters the appearance and style of clothing and accessories.",
                 "level": 4,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7163,7 +7233,8 @@ def seed_rpg_systems():
                 "name": "Fling",
                 "description": "Allows the caster to telekinetically throw objects or people.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -7171,7 +7242,8 @@ def seed_rpg_systems():
                 "name": "Hardened Armor",
                 "description": "Creates an extremely durable magical armor around the target.",
                 "level": 1,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7179,7 +7251,8 @@ def seed_rpg_systems():
                 "name": "Ignite",
                 "description": "Causes a target object to burst into flames.",
                 "level": 4,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -7187,7 +7260,8 @@ def seed_rpg_systems():
                 "name": "Laser",
                 "description": "Creates a focused beam of light that can cut through objects.",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7195,7 +7269,8 @@ def seed_rpg_systems():
                 "name": "Lock",
                 "description": "Magically seals a door, window, or container.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7203,7 +7278,8 @@ def seed_rpg_systems():
                 "name": "Alter Memory",
                 "description": "Allows the caster to modify or erase specific memories of the target.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7211,7 +7287,8 @@ def seed_rpg_systems():
                 "name": "Analyze Truth",
                 "description": "Helps the caster determine if a target is telling the truth.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7219,7 +7296,8 @@ def seed_rpg_systems():
                 "name": "Astral Projection",
                 "description": "Allows the caster to project their consciousness into astral space.",
                 "level": 1,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Special"
             },
@@ -7227,7 +7305,8 @@ def seed_rpg_systems():
                 "name": "Catfall",
                 "description": "Reduces falling damage for the target.",
                 "level": 4,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7235,7 +7314,8 @@ def seed_rpg_systems():
                 "name": "Combat Sense",
                 "description": "Enhances the target's awareness and reflexes in combat situations.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7243,7 +7323,8 @@ def seed_rpg_systems():
                 "name": "Control Water",
                 "description": "Allows the caster to manipulate water, controlling its flow and shape.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7251,7 +7332,8 @@ def seed_rpg_systems():
                 "name": "Deflection",
                 "description": "Creates a field that deflects incoming projectiles.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7259,7 +7341,8 @@ def seed_rpg_systems():
                 "name": "Detox",
                 "description": "Removes toxins and alcohol from the target's system.",
                 "level": 4,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7267,7 +7350,8 @@ def seed_rpg_systems():
                 "name": "Elemental Wall",
                 "description": "Creates a wall of a chosen elemental force (fire, water, earth, or air).",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7275,7 +7359,8 @@ def seed_rpg_systems():
                 "name": "Enchant",
                 "description": "Temporarily imbues an object with magical properties.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7283,7 +7368,8 @@ def seed_rpg_systems():
                 "name": "Increase Reflexes",
                 "description": "Magically enhances the target's reflexes and speed.",
                 "level": 1,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7291,7 +7377,8 @@ def seed_rpg_systems():
                 "name": "Mana Static",
                 "description": "Creates an area of magical interference, making spellcasting more difficult.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7299,7 +7386,8 @@ def seed_rpg_systems():
                 "name": "Mob Mood",
                 "description": "Influences the emotional state of a group of people.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7307,7 +7395,8 @@ def seed_rpg_systems():
                 "name": "Penetrating Spell",
                 "description": "Enhances another spell to bypass magical defenses more easily.",
                 "level": 1,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Instant"
             },
@@ -7315,7 +7404,8 @@ def seed_rpg_systems():
                 "name": "Reinforce",
                 "description": "Temporarily increases the structural integrity of an object or building.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7323,7 +7413,8 @@ def seed_rpg_systems():
                 "name": "Aesthetic Enhancement",
                 "description": "Temporarily improves the target's physical appearance.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7331,7 +7422,8 @@ def seed_rpg_systems():
                 "name": "Astral Beacon",
                 "description": "Creates a bright beacon visible in astral space.",
                 "level": 4,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7339,7 +7431,8 @@ def seed_rpg_systems():
                 "name": "Blur",
                 "description": "Makes the target's outline blurry, making them harder to hit.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7347,7 +7440,8 @@ def seed_rpg_systems():
                 "name": "Cleanse",
                 "description": "Removes contaminants and impurities from food and water.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7355,7 +7449,8 @@ def seed_rpg_systems():
                 "name": "Clean Air",
                 "description": "Purifies air in an area, removing toxins and pollutants.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7363,7 +7458,8 @@ def seed_rpg_systems():
                 "name": "Convincing Lie",
                 "description": "Enhances the caster's ability to lie convincingly.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Sustained"
             },
@@ -7371,7 +7467,8 @@ def seed_rpg_systems():
                 "name": "Crop Growth",
                 "description": "Accelerates the growth of plants and crops.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch (Area)",
                 "duration": "Permanent"
             },
@@ -7379,7 +7476,8 @@ def seed_rpg_systems():
                 "name": "Deathtouch",
                 "description": "Delivers a potentially lethal shock to a living target.",
                 "level": 1,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7387,7 +7485,8 @@ def seed_rpg_systems():
                 "name": "Deflect Attention",
                 "description": "Makes the target less noticeable to others.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7395,7 +7494,8 @@ def seed_rpg_systems():
                 "name": "Enhance Strength",
                 "description": "Temporarily increases the target's physical strength.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7403,7 +7503,8 @@ def seed_rpg_systems():
                 "name": "Extinguish Fire",
                 "description": "Instantly puts out fires in the affected area.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -7411,7 +7512,8 @@ def seed_rpg_systems():
                 "name": "Fallout",
                 "description": "Creates a small area of radioactive contamination.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7419,7 +7521,8 @@ def seed_rpg_systems():
                 "name": "Freeze",
                 "description": "Rapidly lowers the temperature of a target, potentially freezing it.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -7427,7 +7530,8 @@ def seed_rpg_systems():
                 "name": "Glue",
                 "description": "Creates a strong adhesive substance that can bind objects or creatures.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7435,7 +7539,8 @@ def seed_rpg_systems():
                 "name": "Hibernate",
                 "description": "Puts the target into a state of suspended animation.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7443,7 +7548,8 @@ def seed_rpg_systems():
                 "name": "Aerodynamic",
                 "description": "Reduces air resistance around a target, improving speed and maneuverability.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7451,7 +7557,8 @@ def seed_rpg_systems():
                 "name": "Alter Temperature",
                 "description": "Allows the caster to raise or lower the temperature in a small area.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7459,7 +7566,8 @@ def seed_rpg_systems():
                 "name": "Astral Interference",
                 "description": "Creates static in astral space, making astral perception and projection more difficult.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7467,7 +7575,8 @@ def seed_rpg_systems():
                 "name": "Borrow Sense",
                 "description": "Allows the caster to temporarily use one of the target's senses.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7475,7 +7584,8 @@ def seed_rpg_systems():
                 "name": "Calm Pack",
                 "description": "Soothes and calms a group of animals.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7483,7 +7593,8 @@ def seed_rpg_systems():
                 "name": "Camouflage",
                 "description": "Makes the target blend in with their surroundings.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7491,7 +7602,8 @@ def seed_rpg_systems():
                 "name": "Canonize",
                 "description": "Enhances the target's charisma and perceived importance.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7499,7 +7611,8 @@ def seed_rpg_systems():
                 "name": "Crank",
                 "description": "Temporarily boosts the target's reaction time and physical capabilities.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7507,7 +7620,8 @@ def seed_rpg_systems():
                 "name": "Dehydrate",
                 "description": "Rapidly removes moisture from the target.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7515,7 +7629,8 @@ def seed_rpg_systems():
                 "name": "Dig",
                 "description": "Creates a tunnel or hole in earth or stone.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7523,7 +7638,8 @@ def seed_rpg_systems():
                 "name": "Energize",
                 "description": "Temporarily eliminates the need for sleep for the target.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7531,7 +7647,8 @@ def seed_rpg_systems():
                 "name": "Enhance Speed",
                 "description": "Increases the target's movement speed.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7539,7 +7656,8 @@ def seed_rpg_systems():
                 "name": "Firewall",
                 "description": "Creates a barrier that blocks fire and heat.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7547,7 +7665,8 @@ def seed_rpg_systems():
                 "name": "Gravity Manipulation",
                 "description": "Allows the caster to increase or decrease gravity in a small area.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7555,7 +7674,8 @@ def seed_rpg_systems():
                 "name": "Stealth",
                 "description": "Makes the target more difficult to detect through technological means.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7563,7 +7683,7 @@ def seed_rpg_systems():
                 "name": "Armor-Piercing Spell",
                 "description": "Enhances another combat spell to better penetrate magical and physical defenses.",
                 "level": 1,
-                "school": "Category: Combat / Type: Special",
+                "school": "Combat / Type: Special",
                 "range": "Special",
                 "duration": "Instant"
             },
@@ -7571,7 +7691,8 @@ def seed_rpg_systems():
                 "name": "Astral Message",
                 "description": "Allows the caster to send a short message through astral space to a known recipient.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Special",
                 "duration": "Instant"
             },
@@ -7579,7 +7700,8 @@ def seed_rpg_systems():
                 "name": "Awaken",
                 "description": "Instantly wakes up a sleeping or unconscious target.",
                 "level": 4,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7587,7 +7709,8 @@ def seed_rpg_systems():
                 "name": "Balance",
                 "description": "Improves the target's balance and coordination.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7595,7 +7718,8 @@ def seed_rpg_systems():
                 "name": "Bind",
                 "description": "Creates magical restraints around a target.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7603,7 +7727,8 @@ def seed_rpg_systems():
                 "name": "Bullet Shield",
                 "description": "Creates a field that slows down incoming projectiles.",
                 "level": 2,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7611,7 +7736,8 @@ def seed_rpg_systems():
                 "name": "Categorize",
                 "description": "Allows the caster to quickly sort and organize physical or digital information.",
                 "level": 4,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7619,7 +7745,8 @@ def seed_rpg_systems():
                 "name": "Cellular Repair",
                 "description": "Accelerates natural healing processes in the target.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7627,7 +7754,8 @@ def seed_rpg_systems():
                 "name": "Charged Barrier",
                 "description": "Creates an electrified barrier that shocks those who touch it.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7635,7 +7763,8 @@ def seed_rpg_systems():
                 "name": "Clarity",
                 "description": "Clears the target's mind, improving mental acuity and resistance to mental manipulation.",
                 "level": 2,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7643,7 +7772,8 @@ def seed_rpg_systems():
                 "name": "Dazzle",
                 "description": "Creates a bright flash of light that can disorient or blind targets.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Instant"
             },
@@ -7651,7 +7781,8 @@ def seed_rpg_systems():
                 "name": "Decrypt",
                 "description": "Assists in breaking codes or decrypting encrypted data.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7659,7 +7790,8 @@ def seed_rpg_systems():
                 "name": "Density Alteration",
                 "description": "Temporarily changes the density of an object or being.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7667,7 +7799,8 @@ def seed_rpg_systems():
                 "name": "Disrupt Focus",
                 "description": "Interferes with a target's ability to concentrate or maintain focus.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7675,7 +7808,8 @@ def seed_rpg_systems():
                 "name": "Elasticity",
                 "description": "Grants the target's body increased flexibility and elasticity.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7683,7 +7817,8 @@ def seed_rpg_systems():
                 "name": "Empathic Healing",
                 "description": "Allows the caster to take on another's injuries, healing the target but harming the caster.",
                 "level": 3,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7691,7 +7826,8 @@ def seed_rpg_systems():
                 "name": "Enhance Cybernetics",
                 "description": "Temporarily improves the functionality of cyberware or bioware.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7699,7 +7835,8 @@ def seed_rpg_systems():
                 "name": "Essence Drain",
                 "description": "Drains a portion of the target's life force, weakening them and strengthening the caster.",
                 "level": 1,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Instant"
             },
@@ -7707,7 +7844,8 @@ def seed_rpg_systems():
                 "name": "Fabricate",
                 "description": "Creates a small, simple object out of raw magical energy.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7715,7 +7853,8 @@ def seed_rpg_systems():
                 "name": "Faraday Cage",
                 "description": "Creates a field that blocks electromagnetic signals.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7723,7 +7862,8 @@ def seed_rpg_systems():
                 "name": "Forced Defense",
                 "description": "Compels the target to defend themselves, even against their will.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Sustained"
             },
@@ -7731,7 +7871,8 @@ def seed_rpg_systems():
                 "name": "Gravity Well",
                 "description": "Creates a localized area of intense gravitational pull.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Line of Sight (Area)",
                 "duration": "Sustained"
             },
@@ -7739,7 +7880,8 @@ def seed_rpg_systems():
                 "name": "Hibernate",
                 "description": "Puts the target into a state of suspended animation.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7747,7 +7889,8 @@ def seed_rpg_systems():
                 "name": "Interference",
                 "description": "Creates magical static that disrupts technological devices.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7755,7 +7898,8 @@ def seed_rpg_systems():
                 "name": "Mana Bubble",
                 "description": "Creates a small area where mana flows more freely, enhancing magical effects.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7763,7 +7907,8 @@ def seed_rpg_systems():
                 "name": "Metabolic Control",
                 "description": "Allows the caster to control their own or another's metabolic processes.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7771,7 +7916,8 @@ def seed_rpg_systems():
                 "name": "Mimic",
                 "description": "Allows the caster to perfectly imitate the voice of another person.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Self",
                 "duration": "Sustained"
             },
@@ -7779,7 +7925,8 @@ def seed_rpg_systems():
                 "name": "Nullify Toxin",
                 "description": "Neutralizes toxins and poisons in the target's system.",
                 "level": 3,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Permanent"
             },
@@ -7787,7 +7934,8 @@ def seed_rpg_systems():
                 "name": "Orb of Light",
                 "description": "Creates a floating sphere of light that follows the caster.",
                 "level": 4,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Self",
                 "duration": "Sustained"
             },
@@ -7795,7 +7943,8 @@ def seed_rpg_systems():
                 "name": "Planar Step",
                 "description": "Allows the caster to briefly step into the astral plane to avoid attacks.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Instant"
             },
@@ -7803,7 +7952,8 @@ def seed_rpg_systems():
                 "name": "Alter Ballistics",
                 "description": "Modifies the trajectory of projectiles in an area.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7811,7 +7961,8 @@ def seed_rpg_systems():
                 "name": "Astral Encryption",
                 "description": "Encrypts the caster's astral signature, making it harder to track or identify.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Sustained"
             },
@@ -7819,7 +7970,8 @@ def seed_rpg_systems():
                 "name": "Bioelectric Dampening",
                 "description": "Reduces the target's bioelectric signature, making them harder to detect by certain sensors.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Physical",
+                "school": "Illusion",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7827,7 +7979,8 @@ def seed_rpg_systems():
                 "name": "Codebreaker",
                 "description": "Enhances the caster's ability to break codes and encryption.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Self",
                 "duration": "Sustained"
             },
@@ -7835,7 +7988,8 @@ def seed_rpg_systems():
                 "name": "Electromagnetic Pulse",
                 "description": "Creates a localized EMP effect, disabling electronic devices.",
                 "level": 2,
-                "school": "Category: Manipulation / Type: Physical",
+                "school": "Manipulation",
+                "type": "Physical",
                 "range": "Area",
                 "duration": "Instant"
             },
@@ -7843,7 +7997,8 @@ def seed_rpg_systems():
                 "name": "Elemental Strike",
                 "description": "Imbues a melee attack with elemental energy (fire, ice, electricity, etc.).",
                 "level": 3,
-                "school": "Category: Combat / Type: Physical",
+                "school": "Combat",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7851,7 +8006,8 @@ def seed_rpg_systems():
                 "name": "Enhance Reflexes",
                 "description": "Drastically improves the target's reaction time and coordination.",
                 "level": 1,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7859,7 +8015,8 @@ def seed_rpg_systems():
                 "name": "Foreboding",
                 "description": "Gives the target a supernatural sense of impending danger.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7867,7 +8024,8 @@ def seed_rpg_systems():
                 "name": "Genetic Optimization",
                 "description": "Temporarily enhances the target's natural genetic potential.",
                 "level": 2,
-                "school": "Category: Health / Type: Physical",
+                "school": "Health",
+                "type": "Physical",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7875,7 +8033,8 @@ def seed_rpg_systems():
                 "name": "Hush",
                 "description": "Creates an area of magical silence, dampening all sounds.",
                 "level": 3,
-                "school": "Category: Illusion / Type: Mana",
+                "school": "Illusion",
+                "type": "Mana",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7883,7 +8042,8 @@ def seed_rpg_systems():
                 "name": "Intrusion Countermeasures",
                 "description": "Creates magical defenses against technological and magical intrusion attempts.",
                 "level": 3,
-                "school": "Category: Manipulation / Type: Mana",
+                "school": "Manipulation",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7891,7 +8051,8 @@ def seed_rpg_systems():
                 "name": "Mana Spike",
                 "description": "Releases a concentrated burst of mana, damaging magical constructs and spirits.",
                 "level": 3,
-                "school": "Category: Combat / Type: Mana",
+                "school": "Combat",
+                "type": "Mana",
                 "range": "Line of Sight",
                 "duration": "Instant"
             },
@@ -7899,7 +8060,8 @@ def seed_rpg_systems():
                 "name": "Neural Dampening",
                 "description": "Reduces the target's ability to feel pain.",
                 "level": 3,
-                "school": "Category: Health / Type: Mana",
+                "school": "Health",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             },
@@ -7907,7 +8069,8 @@ def seed_rpg_systems():
                 "name": "Rewind",
                 "description": "Allows the caster to view recent events in an area in reverse.",
                 "level": 2,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Area",
                 "duration": "Sustained"
             },
@@ -7915,13 +8078,853 @@ def seed_rpg_systems():
                 "name": "Spatial Comprehension",
                 "description": "Enhances the target's understanding and perception of three-dimensional space.",
                 "level": 3,
-                "school": "Category: Detection / Type: Mana",
+                "school": "Detection",
+                "type": "Mana",
                 "range": "Touch",
                 "duration": "Sustained"
             }
         ],
         "Star Wars: Edge of the Empire": [
-            {"name": "Force Push", "description": "You push objects or creatures using the Force.", "level": 1, "school": "Telekinesis", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "S"}
+            {
+                "name": "Sense",
+                "description": "The Force user can feel the Force flowing through themselves and the world around them, gaining insight and information.",
+                "level": 1,
+                "school": "Universal",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "None",
+                "force_power_tree": {
+                    "base_power": "Sense the Force in immediate area",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase range of sense", "xp_cost": 10},
+                        {"name": "Strength", "effect": "Sense Force potential in others", "xp_cost": 15},
+                        {"name": "Duration", "effect": "Commit Force die to sense constantly", "xp_cost": 20},
+                        {"name": "Power", "effect": "Sense emotions and hints of the future", "xp_cost": 25}
+                    ]
+                },
+                "strain_cost": 1,
+                "conflict_risk": 0
+            },
+            {
+                "name": "Influence",
+                "description": "The Force user can guide and direct the thoughts and actions of the weak-minded.",
+                "level": 1,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Verbal",
+                "force_power_tree": {
+                    "base_power": "Influence a target's emotional state",
+                    "upgrades": [
+                        {"name": "Control", "effect": "Influence a target's actions", "xp_cost": 15},
+                        {"name": "Strength", "effect": "Influence multiple targets", "xp_cost": 20},
+                        {"name": "Magnitude", "effect": "Increase range of influence", "xp_cost": 10},
+                        {"name": "Mastery", "effect": "Dominate a target's mind", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Move",
+                "description": "The Force user can manipulate physical objects through the power of the Force.",
+                "level": 1,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Move small objects",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase range and size of objects", "xp_cost": 10},
+                        {"name": "Strength", "effect": "Increase weight of movable objects", "xp_cost": 15},
+                        {"name": "Control", "effect": "Perform fine manipulation", "xp_cost": 20},
+                        {"name": "Mastery", "effect": "Hurl objects with great force", "xp_cost": 25}
+                    ]
+                },
+                "strain_cost": 1,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Enhance",
+                "description": "The Force user can channel the Force to enhance their physical and mental attributes.",
+                "level": 1,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "None",
+                "force_power_tree": {
+                    "base_power": "Enhance a single characteristic",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Enhance multiple characteristics", "xp_cost": 15},
+                        {"name": "Duration", "effect": "Commit Force die for ongoing enhancement", "xp_cost": 20},
+                        {"name": "Control", "effect": "Enhance specific skills", "xp_cost": 10},
+                        {"name": "Mastery", "effect": "Superhuman feats", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 1,
+                "conflict_risk": 0
+            },
+            {
+                "name": "Heal/Harm",
+                "description": "The Force user can manipulate the life energy of others, either to mend wounds or inflict damage.",
+                "level": 2,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Touch",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Heal minor wounds or inflict minor damage",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase amount healed/harmed", "xp_cost": 15},
+                        {"name": "Range", "effect": "Heal/harm at a distance", "xp_cost": 20},
+                        {"name": "Control", "effect": "Cure critical injuries or diseases", "xp_cost": 25},
+                        {"name": "Mastery", "effect": "Revive the recently deceased", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Foresee",
+                "description": "The Force user can catch glimpses of the future or gain insight into present events.",
+                "level": 2,
+                "school": "Sense",
+                "casting_time": "Action",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "None",
+                "force_power_tree": {
+                    "base_power": "Catch brief glimpses of the future",
+                    "upgrades": [
+                        {"name": "Duration", "effect": "Extend the vision's reach into the future", "xp_cost": 15},
+                        {"name": "Strength", "effect": "Gain more detailed visions", "xp_cost": 20},
+                        {"name": "Range", "effect": "Foresee events at greater distances", "xp_cost": 10},
+                        {"name": "Mastery", "effect": "Alter the foreseen future", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Protect/Unleash",
+                "description": "The Force user can create barriers of Force energy or unleash it in destructive bursts.",
+                "level": 2,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a personal force field or unleash a small burst of energy",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase size of barrier or blast", "xp_cost": 15},
+                        {"name": "Strength", "effect": "Enhance protective/damaging capabilities", "xp_cost": 20},
+                        {"name": "Range", "effect": "Protect/attack at greater distances", "xp_cost": 10},
+                        {"name": "Control", "effect": "Selectively allow things through barrier", "xp_cost": 25}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Bind",
+                "description": "The Force user can create bonds or restraints of Force energy.",
+                "level": 3,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create Force bonds to restrain a target",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Create stronger, harder to break bonds", "xp_cost": 20},
+                        {"name": "Range", "effect": "Bind targets at greater distances", "xp_cost": 15},
+                        {"name": "Control", "effect": "Bind specific body parts or objects", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Bind multiple targets simultaneously", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Seek",
+                "description": "The Force user can search for specific people, objects, or information through the Force.",
+                "level": 2,
+                "school": "Sense",
+                "casting_time": "Action",
+                "range": "Long",
+                "duration": "Concentration",
+                "components": "None",
+                "force_power_tree": {
+                    "base_power": "Sense the general direction of a known person or object",
+                    "upgrades": [
+                        {"name": "Range", "effect": "Increase the distance at which targets can be sensed", "xp_cost": 15},
+                        {"name": "Power", "effect": "Gain more detailed information about the target", "xp_cost": 20},
+                        {"name": "Control", "effect": "Pierce through Force concealment", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Seek multiple targets simultaneously", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Misdirect",
+                "description": "The Force user can create illusions or manipulate perceptions.",
+                "level": 3,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create minor visual illusions",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Create more convincing, multi-sensory illusions", "xp_cost": 20},
+                        {"name": "Range", "effect": "Create illusions at greater distances", "xp_cost": 15},
+                        {"name": "Control", "effect": "Manipulate existing perceptions", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Affect multiple targets with illusions", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Ebb/Flow",
+                "description": "The Force user can manipulate the Force to enhance or diminish the abilities of others.",
+                "level": 3,
+                "school": "Universal",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Temporarily boost or hinder a single characteristic of a target",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Affect multiple characteristics", "xp_cost": 20},
+                        {"name": "Strength", "effect": "Increase the degree of enhancement or hindrance", "xp_cost": 25},
+                        {"name": "Range", "effect": "Affect targets at greater distances", "xp_cost": 15},
+                        {"name": "Control", "effect": "Affect specific skills instead of characteristics", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Alter Environment",
+                "description": "The Force user can manipulate the physical environment around them.",
+                "level": 2,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Make minor alterations to the immediate environment",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Affect a larger area", "xp_cost": 15},
+                        {"name": "Control", "effect": "Make more significant environmental changes", "xp_cost": 25},
+                        {"name": "Range", "effect": "Alter environment at greater distances", "xp_cost": 20},
+                        {"name": "Duration", "effect": "Sustain environmental changes for longer periods", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Battle Meditation",
+                "description": "The Force user can influence the morale and coordination of allies in battle.",
+                "level": 3,
+                "school": "Sense",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Boost the morale of a small group of allies",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Affect a larger number of allies", "xp_cost": 25},
+                        {"name": "Strength", "effect": "Provide greater combat bonuses", "xp_cost": 30},
+                        {"name": "Control", "effect": "Coordinate complex battle strategies", "xp_cost": 35},
+                        {"name": "Range", "effect": "Influence battles over greater distances", "xp_cost": 20}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Cloak",
+                "description": "The Force user can conceal their presence in the Force.",
+                "level": 3,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Mask Force presence from basic detection",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Improve concealment against stronger Force users", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Extend cloaking effect to nearby allies", "xp_cost": 30},
+                        {"name": "Duration", "effect": "Maintain cloak for extended periods", "xp_cost": 20},
+                        {"name": "Control", "effect": "Selectively reveal presence to specific individuals", "xp_cost": 35}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Empathy",
+                "description": "The Force user can sense and influence the emotions of others.",
+                "level": 2,
+                "school": "Sense",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Sense the surface emotions of a single target",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Sense emotions of multiple targets", "xp_cost": 20},
+                        {"name": "Strength", "effect": "Delve into deeper emotions and memories", "xp_cost": 25},
+                        {"name": "Range", "effect": "Sense emotions at greater distances", "xp_cost": 15},
+                        {"name": "Control", "effect": "Subtly influence emotional states", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Ghost",
+                "description": "The Force user can project their consciousness beyond their physical body, appearing as a spectral form.",
+                "level": 5,
+                "school": "Universal",
+                "casting_time": "1 hour",
+                "range": "Planetary",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Project a visible but intangible form of oneself",
+                    "upgrades": [
+                        {"name": "Duration", "effect": "Extend the time one can remain as a Force ghost", "xp_cost": 30},
+                        {"name": "Strength", "effect": "Gain ability to interact with physical world", "xp_cost": 35},
+                        {"name": "Range", "effect": "Project across greater distances, even to other planets", "xp_cost": 40},
+                        {"name": "Control", "effect": "Maintain consciousness after physical death", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 0
+            },
+            {
+                "name": "Fold Space",
+                "description": "The Force user can create a temporary wormhole, instantly transporting themselves or objects across space.",
+                "level": 4,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Touch",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a small wormhole to transport an object",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase size of wormhole to transport larger objects or beings", "xp_cost": 30},
+                        {"name": "Range", "effect": "Create wormholes over greater distances", "xp_cost": 35},
+                        {"name": "Control", "effect": "Precisely control the exit point of the wormhole", "xp_cost": 40},
+                        {"name": "Mastery", "effect": "Create stable, longer-lasting wormholes", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Force Storm",
+                "description": "The Force user can create a massive storm of Force energy, causing widespread destruction.",
+                "level": 5,
+                "school": "Alter",
+                "casting_time": "1 minute",
+                "range": "Long",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a small localized Force storm",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase the size and power of the storm", "xp_cost": 35},
+                        {"name": "Control", "effect": "Direct the storm's movement and effects", "xp_cost": 40},
+                        {"name": "Duration", "effect": "Sustain the storm for longer periods", "xp_cost": 30},
+                        {"name": "Mastery", "effect": "Create storms capable of destroying capital ships", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 5
+            },
+            {
+                "name": "Transfer Essence",
+                "description": "The Force user can transfer their consciousness into another body or object.",
+                "level": 5,
+                "school": "Universal",
+                "casting_time": "1 hour",
+                "range": "Touch",
+                "duration": "Permanent",
+                "components": "Verbal, Somatic, Material (rare artifacts)",
+                "force_power_tree": {
+                    "base_power": "Transfer consciousness to a prepared vessel",
+                    "upgrades": [
+                        {"name": "Range", "effect": "Perform transfer from a distance", "xp_cost": 40},
+                        {"name": "Control", "effect": "Transfer into unwilling hosts", "xp_cost": 45},
+                        {"name": "Magnitude", "effect": "Transfer multiple consciousnesses simultaneously", "xp_cost": 50},
+                        {"name": "Mastery", "effect": "Create multiple active copies of one's consciousness", "xp_cost": 55}
+                    ]
+                },
+                "strain_cost": 10,
+                "conflict_risk": 5
+            },
+            {
+                "name": "Force Harmony",
+                "description": "The Force user can create a powerful synergy between Force users, amplifying their collective abilities.",
+                "level": 4,
+                "school": "Universal",
+                "casting_time": "1 minute",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Link the Force abilities of a small group",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Include more individuals in the harmony", "xp_cost": 30},
+                        {"name": "Strength", "effect": "Increase the power amplification of the harmony", "xp_cost": 35},
+                        {"name": "Range", "effect": "Maintain harmony over greater distances", "xp_cost": 25},
+                        {"name": "Control", "effect": "Selectively amplify specific Force abilities", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Light",
+                "description": "The Force user channels the light side to create purifying energy that is particularly effective against dark side entities.",
+                "level": 4,
+                "school": "Universal",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Instant",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a burst of light side energy",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase the area affected by Force Light", "xp_cost": 30},
+                        {"name": "Strength", "effect": "Enhance the purifying effect against dark side corruption", "xp_cost": 35},
+                        {"name": "Control", "effect": "Shape the light to create barriers or weapons", "xp_cost": 40},
+                        {"name": "Mastery", "effect": "Permanently purify locations tainted by the dark side", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 0
+            },
+            {
+                "name": "Force Suppression",
+                "description": "The Force user can temporarily suppress the Force abilities of others.",
+                "level": 3,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Suppress minor Force abilities of a single target",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Suppress more powerful Force abilities", "xp_cost": 30},
+                        {"name": "Range", "effect": "Suppress Force abilities at greater distances", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Suppress abilities of multiple targets", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain suppression for longer periods", "xp_cost": 30}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Breach",
+                "description": "The Force user can break through Force-based defenses and illusions.",
+                "level": 3,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Instant",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Break through basic Force barriers or illusions",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Pierce stronger Force defenses", "xp_cost": 30},
+                        {"name": "Range", "effect": "Breach Force effects at greater distances", "xp_cost": 25},
+                        {"name": "Control", "effect": "Selectively breach specific Force effects", "xp_cost": 35},
+                        {"name": "Magnitude", "effect": "Breach multiple Force effects simultaneously", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Repulse",
+                "description": "The Force user releases a powerful omnidirectional blast of Force energy.",
+                "level": 3,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a short-range Force blast",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase the range and area of effect", "xp_cost": 25},
+                        {"name": "Strength", "effect": "Increase the power of the blast", "xp_cost": 30},
+                        {"name": "Control", "effect": "Shape the blast to avoid allies", "xp_cost": 35},
+                        {"name": "Mastery", "effect": "Create sustained Force Repulse field", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Comprehension",
+                "description": "The Force user can rapidly understand and learn new information or skills.",
+                "level": 2,
+                "school": "Sense",
+                "casting_time": "10 minutes",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Gain basic understanding of a new concept or skill",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Comprehend more complex information", "xp_cost": 25},
+                        {"name": "Duration", "effect": "Retain comprehended information for longer", "xp_cost": 30},
+                        {"name": "Magnitude", "effect": "Comprehend multiple subjects simultaneously", "xp_cost": 35},
+                        {"name": "Mastery", "effect": "Instantly master complex skills temporarily", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Stealth",
+                "description": "The Force user can mask their presence in both the physical and Force realms.",
+                "level": 3,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Conceal Force presence and dampen physical signs",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Improve concealment against stronger Force users", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Extend stealth effect to nearby allies", "xp_cost": 30},
+                        {"name": "Duration", "effect": "Maintain stealth for extended periods", "xp_cost": 20},
+                        {"name": "Mastery", "effect": "Completely vanish from Force perception", "xp_cost": 35}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Psychometry",
+                "description": "The Force user can sense impressions and traces of information about the past by touching objects.",
+                "level": 2,
+                "school": "Sense",
+                "casting_time": "Action",
+                "range": "Touch",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Sense recent, strong impressions from an object",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Perceive older or fainter impressions", "xp_cost": 20},
+                        {"name": "Control", "effect": "Focus on specific types of information", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Read impressions from larger areas", "xp_cost": 30},
+                        {"name": "Mastery", "effect": "Experience vivid visions of past events", "xp_cost": 35}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Absorb",
+                "description": "The Force user can absorb and neutralize energy, including blaster bolts and Force lightning.",
+                "level": 4,
+                "school": "Alter",
+                "casting_time": "Reaction",
+                "range": "Self",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Absorb minor energy attacks",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Absorb more powerful energy attacks", "xp_cost": 30},
+                        {"name": "Magnitude", "effect": "Absorb attacks aimed at nearby allies", "xp_cost": 35},
+                        {"name": "Control", "effect": "Redirect absorbed energy as an attack", "xp_cost": 40},
+                        {"name": "Mastery", "effect": "Absorb and neutralize Force powers", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Beast Control",
+                "description": "The Force user can influence and control the minds of animals and creatures.",
+                "level": 2,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Influence the behavior of a single, simple-minded creature",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Control more intelligent or resistant creatures", "xp_cost": 25},
+                        {"name": "Magnitude", "effect": "Control multiple creatures simultaneously", "xp_cost": 30},
+                        {"name": "Range", "effect": "Influence creatures at greater distances", "xp_cost": 20},
+                        {"name": "Mastery", "effect": "Permanently bond with and control a creature", "xp_cost": 35}
+                    ]
+                },
+                "strain_cost": 2,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Body",
+                "description": "The Force user can push their body beyond normal physical limits, enhancing strength, speed, and endurance.",
+                "level": 3,
+                "school": "Control",
+                "casting_time": "Action",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Enhance physical attributes slightly beyond normal limits",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Push physical abilities to superhuman levels", "xp_cost": 30},
+                        {"name": "Duration", "effect": "Maintain enhancements for extended periods", "xp_cost": 25},
+                        {"name": "Control", "effect": "Selectively enhance specific attributes or abilities", "xp_cost": 35},
+                        {"name": "Mastery", "effect": "Achieve temporary physical invulnerability", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Ionize",
+                "description": "The Force user can disrupt electronic systems and droids using the Force.",
+                "level": 3,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Short",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Temporarily disable a single electronic device or droid",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Affect multiple devices or a larger area", "xp_cost": 25},
+                        {"name": "Strength", "effect": "Cause permanent damage to electronics", "xp_cost": 30},
+                        {"name": "Range", "effect": "Ionize targets at greater distances", "xp_cost": 20},
+                        {"name": "Control", "effect": "Selectively disable specific systems", "xp_cost": 35}
+                    ]
+                },
+                "strain_cost": 3,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Immerse",
+                "description": "The Force user can submerge themselves deeply in the Force, gaining heightened awareness and abilities.",
+                "level": 4,
+                "school": "Universal",
+                "casting_time": "1 minute",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Gain enhanced sensory awareness and Force sensitivity",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Dramatically increase Force power while immersed", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain immersion for extended periods", "xp_cost": 30},
+                        {"name": "Control", "effect": "Perform complex Force techniques while immersed", "xp_cost": 40},
+                        {"name": "Mastery", "effect": "Achieve a state of oneness with the Force", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Force Flash",
+                "description": "The Force user can travel instantaneously between two points by briefly entering the Force realm.",
+                "level": 5,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Instant",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Instantly teleport to a visible location",
+                    "upgrades": [
+                        {"name": "Range", "effect": "Increase the distance of the teleportation", "xp_cost": 35},
+                        {"name": "Control", "effect": "Teleport with pinpoint accuracy", "xp_cost": 40},
+                        {"name": "Magnitude", "effect": "Bring additional beings or objects along", "xp_cost": 45},
+                        {"name": "Mastery", "effect": "Teleport to unseen, known locations", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 6,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Cipher",
+                "description": "The Force user can encode or decode information within the fabric of the Force itself.",
+                "level": 3,
+                "school": "Alter",
+                "casting_time": "10 minutes",
+                "range": "Touch",
+                "duration": "Permanent",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Encode or decode a small amount of information in the Force",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase the amount of information that can be stored", "xp_cost": 25},
+                        {"name": "Strength", "effect": "Create more complex and secure Force ciphers", "xp_cost": 30},
+                        {"name": "Control", "effect": "Embed Force ciphers in physical objects", "xp_cost": 35},
+                        {"name": "Mastery", "effect": "Create self-updating Force records", "xp_cost": 40}
+                    ]
+                },
+                "strain_cost": 4,
+                "conflict_risk": 1
+            },
+            {
+                "name": "Force Nullify",
+                "description": "The Force user can create areas where the Force cannot be used or sensed.",
+                "level": 4,
+                "school": "Control",
+                "casting_time": "1 minute",
+                "range": "Short",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a small area where minor Force abilities fail",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Increase the size of the nullified area", "xp_cost": 30},
+                        {"name": "Strength", "effect": "Nullify more powerful Force abilities", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain the nullification for extended periods", "xp_cost": 25},
+                        {"name": "Mastery", "effect": "Create permanent Force-null zones", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Force Nexus Attunement",
+                "description": "The Force user can attune themselves to Force nexuses, drawing upon their power.",
+                "level": 5,
+                "school": "Universal",
+                "casting_time": "1 hour",
+                "range": "Self",
+                "duration": "1 day",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Attune to a Force nexus, gaining enhanced Force abilities while near it",
+                    "upgrades": [
+                        {"name": "Range", "effect": "Maintain connection to nexus from greater distances", "xp_cost": 40},
+                        {"name": "Strength", "effect": "Draw more power from the nexus", "xp_cost": 45},
+                        {"name": "Duration", "effect": "Extend the attunement period", "xp_cost": 35},
+                        {"name": "Mastery", "effect": "Carry a portion of the nexus's power with you", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 6,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Force Conduit",
+                "description": "The Force user becomes a living conduit for the Force, channeling its raw power.",
+                "level": 4,
+                "school": "Universal",
+                "casting_time": "1 minute",
+                "range": "Self",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Channel the Force to enhance all Force abilities",
+                    "upgrades": [
+                        {"name": "Strength", "effect": "Increase the power of channeled abilities", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain the conduit state longer", "xp_cost": 30},
+                        {"name": "Control", "effect": "Selectively enhance specific Force powers", "xp_cost": 40},
+                        {"name": "Mastery", "effect": "Share channeled power with other Force users", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 4
+            },
+            {
+                "name": "Force Weave",
+                "description": "The Force user can manipulate the very fabric of the Force, creating complex patterns and effects.",
+                "level": 5,
+                "school": "Alter",
+                "casting_time": "1 minute",
+                "range": "Medium",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Create simple Force constructs or patterns",
+                    "upgrades": [
+                        {"name": "Complexity", "effect": "Create more intricate and powerful Force weaves", "xp_cost": 40},
+                        {"name": "Magnitude", "effect": "Increase the size and scope of the weave", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain weaves for extended periods", "xp_cost": 30},
+                        {"name": "Mastery", "effect": "Create semi-permanent Force structures", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 6,
+                "conflict_risk": 3
+            },
+            {
+                "name": "Force Echo",
+                "description": "The Force user can project echoes of themselves through the Force, creating multiple instances of their presence.",
+                "level": 4,
+                "school": "Alter",
+                "casting_time": "Action",
+                "range": "Medium",
+                "duration": "Concentration",
+                "components": "Somatic",
+                "force_power_tree": {
+                    "base_power": "Create a single Force echo of yourself",
+                    "upgrades": [
+                        {"name": "Magnitude", "effect": "Create multiple Force echoes", "xp_cost": 35},
+                        {"name": "Fidelity", "effect": "Increase the realism and capability of echoes", "xp_cost": 40},
+                        {"name": "Range", "effect": "Project echoes at greater distances", "xp_cost": 30},
+                        {"name": "Mastery", "effect": "Grant echoes limited independent action", "xp_cost": 45}
+                    ]
+                },
+                "strain_cost": 5,
+                "conflict_risk": 2
+            },
+            {
+                "name": "Force Synthesis",
+                "description": "The Force user can temporarily merge the properties of physical objects or even living beings.",
+                "level": 5,
+                "school": "Alter",
+                "casting_time": "1 minute",
+                "range": "Touch",
+                "duration": "Concentration",
+                "components": "Verbal, Somatic",
+                "force_power_tree": {
+                    "base_power": "Merge two small, simple objects",
+                    "upgrades": [
+                        {"name": "Complexity", "effect": "Synthesize more complex or disparate objects", "xp_cost": 40},
+                        {"name": "Magnitude", "effect": "Merge larger or multiple objects", "xp_cost": 35},
+                        {"name": "Duration", "effect": "Maintain synthesis for longer periods", "xp_cost": 30},
+                        {"name": "Mastery", "effect": "Temporarily synthesize living beings", "xp_cost": 50}
+                    ]
+                },
+                "strain_cost": 6,
+                "conflict_risk": 4
+            }
         ],
         "Mothership RPG": [
             {"name": "EMP Pulse", "description": "A pulse that disables nearby electronic devices.", "level": 1, "school": "Tech", "casting_time": "1 action", "range": "10 feet", "duration": "Instantaneous", "components": "S"}
@@ -9828,8 +10831,16 @@ def seed_rpg_systems():
                     range=spell_data.get("range"),
                     duration=spell_data.get("duration"),
                     components=spell_data.get("components"),
+                    type=spell_data.get("type"),
+                    strain_cost=spell_data.get("strain_cost"),
+                    conflict_risk=spell_data.get('conflict_risk'),
+                    
                     rpg_system_id=system.id
                 )
+
+                if "force_power_tree" in spell_data:
+                    new_spell.force_power_tree = spell_data["force_power_tree"]
+
                 db.session.add(new_spell)
             db.session.commit()
 
