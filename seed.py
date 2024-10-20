@@ -6088,6 +6088,7 @@ def seed_rpg_systems():
             {
                 "name": "Acidic Spray",
                 "description": "Creates a spray of corrosive acid that can damage targets.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "Variable Magic points",
                 "duration": "Instantaneous"
@@ -6095,6 +6096,7 @@ def seed_rpg_systems():
             {
                 "name": "Alter Weather",
                 "description": "Allows the caster to influence local weather patterns.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "10+ Magic points",
                 "duration": "1D6 hours"
@@ -6102,6 +6104,7 @@ def seed_rpg_systems():
             {
                 "name": "Apportion Ka",
                 "description": "Transfers life force between individuals.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "Variable Magic points",
                 "duration": "Instantaneous"
@@ -6109,6 +6112,7 @@ def seed_rpg_systems():
             {
                 "name": "Augur",
                 "description": "Grants visions of possible futures.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "5 Magic points, 1D6 Sanity points",
                 "duration": "Visions last 1D6 rounds"
@@ -6116,6 +6120,7 @@ def seed_rpg_systems():
             {
                 "name": "Awareness",
                 "description": "Heightens the caster's senses supernaturally.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "3 Magic points",
                 "duration": "1 hour"
@@ -6123,6 +6128,7 @@ def seed_rpg_systems():
             {
                 "name": "Azure Blaze",
                 "description": "Creates a bolt of blue fire that can ignite flammable objects.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "4 Magic points",
                 "duration": "Instantaneous"
@@ -6130,6 +6136,7 @@ def seed_rpg_systems():
             {
                 "name": "Bless Blade",
                 "description": "Enhances a blade with magical properties.",
+                "level": 0,
                 "casting_time": "10 minutes",
                 "cost": "5 Magic points",
                 "duration": "24 hours"
@@ -6137,6 +6144,7 @@ def seed_rpg_systems():
             {
                 "name": "Call/Dismiss Azathoth",
                 "description": "Attempts to summon or dismiss the Daemon Sultan. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Variable"
@@ -6144,6 +6152,7 @@ def seed_rpg_systems():
             {
                 "name": "Call/Dismiss Cthulhu",
                 "description": "Attempts to summon or dismiss Great Cthulhu. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Variable"
@@ -6151,6 +6160,7 @@ def seed_rpg_systems():
             {
                 "name": "Call/Dismiss Hastur",
                 "description": "Attempts to summon or dismiss Hastur. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Variable"
@@ -6158,6 +6168,7 @@ def seed_rpg_systems():
             {
                 "name": "Call/Dismiss Yog-Sothoth",
                 "description": "Attempts to summon or dismiss Yog-Sothoth. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Variable"
@@ -6165,6 +6176,7 @@ def seed_rpg_systems():
             {
                 "name": "Cause/Cure Blindness",
                 "description": "Inflicts or cures blindness on a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "8 Magic points",
                 "duration": "Permanent until cured"
@@ -6172,6 +6184,7 @@ def seed_rpg_systems():
             {
                 "name": "Cloud Memory",
                 "description": "Erases or alters recent memories of a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "5 Magic points, 3 Sanity points",
                 "duration": "Permanent"
@@ -6179,6 +6192,7 @@ def seed_rpg_systems():
             {
                 "name": "Conjure Glass of Mortlan",
                 "description": "Creates a magical scrying device.",
+                "level": 0,
                 "casting_time": "1 day",
                 "cost": "15 Magic points, 1D6 Sanity points",
                 "duration": "Permanent"
@@ -6186,6 +6200,7 @@ def seed_rpg_systems():
             {
                 "name": "Contact Deity",
                 "description": "Establishes mental contact with a deity or Great Old One.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "1D10 Magic points, 1D10 Sanity points",
                 "duration": "Brief"
@@ -6193,6 +6208,7 @@ def seed_rpg_systems():
             {
                 "name": "Contact Ghoul",
                 "description": "Summons a ghoul to the caster's presence.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "7 Magic points",
                 "duration": "Until dismissed"
@@ -6200,6 +6216,7 @@ def seed_rpg_systems():
             {
                 "name": "Create Barricade of Spirits",
                 "description": "Forms a barrier of spectral energy.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "Variable Magic points",
                 "duration": "1 hour"
@@ -6207,6 +6224,7 @@ def seed_rpg_systems():
             {
                 "name": "Create Mist of R'lyeh",
                 "description": "Conjures a mist that disorients those who enter it.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "8 Magic points",
                 "duration": "1D6 hours"
@@ -6214,6 +6232,7 @@ def seed_rpg_systems():
             {
                 "name": "Create Scorn of Ahriman",
                 "description": "Crafts a powerful magical amulet.",
+                "level": 0,
                 "casting_time": "1 week",
                 "cost": "20 Magic points, 1D10 Sanity points",
                 "duration": "Permanent"
@@ -6221,6 +6240,7 @@ def seed_rpg_systems():
             {
                 "name": "Curse of the Putrid Husk",
                 "description": "Causes a target's body to rapidly decay.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "10 Magic points, 1D6 Sanity points",
                 "duration": "Instantaneous"
@@ -6228,6 +6248,7 @@ def seed_rpg_systems():
             {
                 "name": "Deflect Harm",
                 "description": "Creates a shield against physical and magical attacks.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "Variable Magic points",
                 "duration": "1D6 rounds"
@@ -6235,6 +6256,7 @@ def seed_rpg_systems():
             {
                 "name": "Dominate",
                 "description": "Allows control over a target's actions.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "1 Magic point per round, 1D6 Sanity points",
                 "duration": "Concentration"
@@ -6242,6 +6264,7 @@ def seed_rpg_systems():
             {
                 "name": "Dread Curse of Azathoth",
                 "description": "Inflicts a terrible curse on a target.",
+                "level": 0,
                 "casting_time": "1 day",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Permanent"
@@ -6249,6 +6272,7 @@ def seed_rpg_systems():
             {
                 "name": "Elder Sign",
                 "description": "Creates a protective symbol against cosmic entities.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "Variable Magic points (minimum 10)",
                 "duration": "Permanent until destroyed"
@@ -6256,6 +6280,7 @@ def seed_rpg_systems():
             {
                 "name": "Elemental Conjuration",
                 "description": "Summons an elemental being.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "15 Magic points",
                 "duration": "Until dismissed"
@@ -6263,6 +6288,7 @@ def seed_rpg_systems():
             {
                 "name": "Enchant Knife",
                 "description": "Imbues a blade with magical properties.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "5 Magic points, 1D4 Sanity points",
                 "duration": "Until next sunrise"
@@ -6270,6 +6296,7 @@ def seed_rpg_systems():
             {
                 "name": "Enslave",
                 "description": "Binds a summoned creature to the caster's will.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "Variable Magic points, 1D10 Sanity points",
                 "duration": "1 year and 1 day"
@@ -6277,6 +6304,7 @@ def seed_rpg_systems():
             {
                 "name": "Evil Eye",
                 "description": "Curses a target with bad luck.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "5 Magic points, 2 Sanity points",
                 "duration": "1 week"
@@ -6284,6 +6312,7 @@ def seed_rpg_systems():
             {
                 "name": "Exhaust",
                 "description": "Drains the energy from a target.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "6 Magic points",
                 "duration": "Instantaneous"
@@ -6291,6 +6320,7 @@ def seed_rpg_systems():
             {
                 "name": "Fist of Yog-Sothoth",
                 "description": "Creates an invisible force to strike targets.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "Variable Magic points",
                 "duration": "Instantaneous"
@@ -6298,6 +6328,7 @@ def seed_rpg_systems():
             {
                 "name": "Flesh Ward",
                 "description": "Toughens the caster's skin against damage.",
+                "level": 0,
                 "casting_time": "5 rounds",
                 "cost": "3 Magic points",
                 "duration": "24 hours"
@@ -6305,6 +6336,7 @@ def seed_rpg_systems():
             {
                 "name": "Gate",
                 "description": "Opens a portal to another dimension or location.",
+                "level": 0,
                 "casting_time": "1D10 rounds",
                 "cost": "40 Magic points, 1D100 Sanity points",
                 "duration": "Variable"
@@ -6312,6 +6344,7 @@ def seed_rpg_systems():
             {
                 "name": "Gather Memories",
                 "description": "Extracts memories from a corpse or location.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "12 Magic points, 1D6 Sanity points",
                 "duration": "Instantaneous"
@@ -6319,6 +6352,7 @@ def seed_rpg_systems():
             {
                 "name": "Grasp of Cthulhu",
                 "description": "Summons tentacles to grapple and crush targets.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "10 Magic points, 1D6 Sanity points",
                 "duration": "1D6 rounds"
@@ -6326,6 +6360,7 @@ def seed_rpg_systems():
             {
                 "name": "Heal",
                 "description": "Restores health to a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "Variable Magic points",
                 "duration": "Instantaneous"
@@ -6333,6 +6368,7 @@ def seed_rpg_systems():
             {
                 "name": "Implant Fear",
                 "description": "Instills overwhelming fear in a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "8 Magic points, 1D4 Sanity points",
                 "duration": "1D6 hours"
@@ -6340,6 +6376,7 @@ def seed_rpg_systems():
             {
                 "name": "Imprisonment",
                 "description": "Traps a being in a magical prison.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "20 Magic points, 1D10 Sanity points",
                 "duration": "Until released"
@@ -6347,6 +6384,7 @@ def seed_rpg_systems():
             {
                 "name": "Invoke Deity",
                 "description": "Calls upon a deity for aid. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Brief"
@@ -6354,6 +6392,7 @@ def seed_rpg_systems():
             {
                 "name": "Invoke Yog-Sothoth",
                 "description": "Attempts to gain knowledge from Yog-Sothoth. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Brief"
@@ -6361,6 +6400,7 @@ def seed_rpg_systems():
             {
                 "name": "Mindblast",
                 "description": "Assaults a target's mind, causing confusion and pain.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "8 Magic points, 1D4 Sanity points",
                 "duration": "Instantaneous"
@@ -6368,6 +6408,7 @@ def seed_rpg_systems():
             {
                 "name": "Possess",
                 "description": "Allows the caster to take control of another's body.",
+                "level": 0,
                 "casting_time": "1D6 rounds",
                 "cost": "15 Magic points, 1D10 Sanity points",
                 "duration": "1 hour"
@@ -6375,6 +6416,7 @@ def seed_rpg_systems():
             {
                 "name": "Power Drain",
                 "description": "Drains magical energy from a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "5 Magic points",
                 "duration": "Instantaneous"
@@ -6382,6 +6424,7 @@ def seed_rpg_systems():
             {
                 "name": "Primal Scream",
                 "description": "Emits a psychically charged scream that can stun or harm.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "7 Magic points, 1D4 Sanity points",
                 "duration": "Instantaneous"
@@ -6389,6 +6432,7 @@ def seed_rpg_systems():
             {
                 "name": "Resurrection",
                 "description": "Brings a dead person back to life. Extremely dangerous.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "All Magic points, 1D100 Sanity points",
                 "duration": "Permanent"
@@ -6396,6 +6440,7 @@ def seed_rpg_systems():
             {
                 "name": "Return Greeting",
                 "description": "Teleports the caster to a predetermined location.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "10 Magic points",
                 "duration": "Instantaneous"
@@ -6403,6 +6448,7 @@ def seed_rpg_systems():
             {
                 "name": "Revivify",
                 "description": "Brings a recently dead person back to life.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "15 Magic points, 1D10 Sanity points",
                 "duration": "Permanent"
@@ -6410,6 +6456,7 @@ def seed_rpg_systems():
             {
                 "name": "Roi's Revolver",
                 "description": "Expels a target from the immediate vicinity.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "20 Magic points",
                 "duration": "Instantaneous"
@@ -6417,6 +6464,7 @@ def seed_rpg_systems():
             {
                 "name": "Sea Change",
                 "description": "Transforms a human into a Deep One hybrid.",
+                "level": 0,
                 "casting_time": "1 day",
                 "cost": "30 Magic points, 1D20 Sanity points",
                 "duration": "Permanent"
@@ -6424,6 +6472,7 @@ def seed_rpg_systems():
             {
                 "name": "Send Dream",
                 "description": "Implants a dream or message in a sleeping target's mind.",
+                "level": 0,
                 "casting_time": "10 minutes",
                 "cost": "5 Magic points",
                 "duration": "One night's sleep"
@@ -6431,6 +6480,7 @@ def seed_rpg_systems():
             {
                 "name": "Shrivelling",
                 "description": "Causes a target's flesh to wither and die.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "Variable Magic points (minimum 8)",
                 "duration": "Instantaneous"
@@ -6438,6 +6488,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Byakhee",
                 "description": "Summons a Byakhee, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "10 Magic points, 1D6 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6445,6 +6496,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Fire Vampire",
                 "description": "Summons a Fire Vampire, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "10 Magic points, 1D6 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6452,6 +6504,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Flying Polyp",
                 "description": "Summons a Flying Polyp, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "15 Magic points, 1D10 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6459,6 +6512,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Hunting Horror",
                 "description": "Summons a Hunting Horror, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "12 Magic points, 1D8 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6466,6 +6520,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Nightgaunt",
                 "description": "Summons a Nightgaunt, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "11 Magic points, 1D6 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6473,6 +6528,7 @@ def seed_rpg_systems():
             {
                 "name": "Summon/Bind Star Vampire",
                 "description": "Summons a Star Vampire, which the caster can attempt to bind.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "14 Magic points, 1D8 Sanity points",
                 "duration": "Until dismissed or slain"
@@ -6480,6 +6536,7 @@ def seed_rpg_systems():
             {
                 "name": "Time Gate",
                 "description": "Opens a portal to the past or future.",
+                "level": 0,
                 "casting_time": "1D6 hours",
                 "cost": "30 Magic points, 1D20 Sanity points",
                 "duration": "Variable"
@@ -6487,6 +6544,7 @@ def seed_rpg_systems():
             {
                 "name": "Vanish",
                 "description": "Makes the caster invisible.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "8 Magic points",
                 "duration": "1D6 rounds"
@@ -6494,6 +6552,7 @@ def seed_rpg_systems():
             {
                 "name": "Voice of Ra",
                 "description": "Allows the caster to speak with great authority and persuasiveness.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "6 Magic points",
                 "duration": "1D6 rounds"
@@ -6501,6 +6560,7 @@ def seed_rpg_systems():
             {
                 "name": "Voorish Sign",
                 "description": "A gesture that weakens dimensional barriers, aiding other spells.",
+                "level": 0,
                 "casting_time": "Instantaneous",
                 "cost": "1 Magic point",
                 "duration": "Instantaneous"
@@ -6508,6 +6568,7 @@ def seed_rpg_systems():
             {
                 "name": "Warding",
                 "description": "Creates a barrier against supernatural entities.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "Variable Magic points",
                 "duration": "1 day"
@@ -6515,6 +6576,7 @@ def seed_rpg_systems():
             {
                 "name": "Withering",
                 "description": "Causes a target's limb to wither and become useless.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "8 Magic points, 1D4 Sanity points",
                 "duration": "Permanent until cured"
@@ -6522,6 +6584,7 @@ def seed_rpg_systems():
             {
                 "name": "Wrack",
                 "description": "Inflicts severe pain on a target.",
+                "level": 0,
                 "casting_time": "1 round",
                 "cost": "6 Magic points, 1D4 Sanity points",
                 "duration": "1D6 rounds"
@@ -6529,13 +6592,1333 @@ def seed_rpg_systems():
             {
                 "name": "Zingaya",
                 "description": "A voodoo-like curse that causes harm to a target through a simulacrum.",
+                "level": 0,
                 "casting_time": "1 hour",
                 "cost": "10 Magic points, 1D6 Sanity points",
                 "duration": "Until the simulacrum is destroyed"
             }
         ],
         "Shadowrun": [
-            {"name": "Stun Bolt", "description": "A non-lethal magical attack that causes mental strain.", "level": 1, "school": "Combat", "casting_time": "1 action", "range": "Line of Sight", "duration": "Instantaneous", "components": "S"}
+            {
+                "name": "Acid Stream",
+                "description": "Creates a corrosive stream of acid that damages the target.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Analyze Device",
+                "description": "Allows the caster to understand the purpose and operation of a device.",
+                "level": 3,
+                "school": "Category: Detection / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Armor",
+                "description": "Creates a field of magical protection around the target.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Clairaudience",
+                "description": "Allows the caster to hear sounds from a distant location.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Clairvoyance",
+                "description": "Allows the caster to see a distant location.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Combat Sense",
+                "description": "Enhances the target's combat awareness and reflexes.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Confusion",
+                "description": "Causes mental disorientation in the target.",
+                "level": 2,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Control Thoughts",
+                "description": "Allows the caster to control the target's actions.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Enemies",
+                "description": "Alerts the caster to the presence of hostile individuals.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Individual",
+                "description": "Allows the caster to locate a specific individual.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Life",
+                "description": "Detects living beings in the spell's area of effect.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Magic",
+                "description": "Reveals the presence of magic in the spell's area of effect.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Object",
+                "description": "Allows the caster to locate a specific type of object.",
+                "level": 3,
+                "school": "Category: Detection / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Flamethrower",
+                "description": "Creates a stream of flame that damages the target.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Heal",
+                "description": "Heals physical damage on the target.",
+                "level": 4,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Improved Invisibility",
+                "description": "Renders the target invisible to normal vision and technological sensors.",
+                "level": 1,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Influence",
+                "description": "Allows the caster to implant a suggestion in the target's mind.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Levitate",
+                "description": "Allows the caster to lift and move objects or persons without touching them.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Light",
+                "description": "Creates a mobile point of light.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mana Barrier",
+                "description": "Creates an invisible barrier that blocks magical effects.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mask",
+                "description": "Alters the perceived appearance of the target.",
+                "level": 2,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mind Probe",
+                "description": "Allows the caster to read the thoughts and memories of the target.",
+                "level": 1,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Phantasm",
+                "description": "Creates a realistic illusion that affects all senses.",
+                "level": 1,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Physical Barrier",
+                "description": "Creates a visible, physical wall of magical energy.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Power Bolt",
+                "description": "Fires a bolt of magical energy at a target.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Silence",
+                "description": "Creates an area where no sound can be produced or heard.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Stunball",
+                "description": "Creates an area effect stunning attack.",
+                "level": 3,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Stun Bolt",
+                "description": "Fires a bolt of magical energy that stuns rather than damages.",
+                "level": 3,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Trid Phantasm",
+                "description": "Creates a realistic three-dimensional illusion.",
+                "level": 1,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Vehicle Mask",
+                "description": "Alters the perceived appearance of a vehicle.",
+                "level": 2,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Armor",
+                "description": "Creates a protective field around the target's aura in astral space.",
+                "level": 2,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Ball Lightning",
+                "description": "Creates a ball of electrical energy that can be directed at targets.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Control Actions",
+                "description": "Allows the caster to puppeteer the target's physical movements.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Demolish",
+                "description": "Causes significant structural damage to buildings or vehicles.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Toxic Wave",
+                "description": "Creates a wave of corrosive acid that damages everything in its path.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Mana Bind",
+                "description": "Restrains a target with bands of magical energy, preventing movement.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mob Mind",
+                "description": "Influences the emotions and actions of a group of people.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Petrify",
+                "description": "Turns the target into stone temporarily.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Poltergeist",
+                "description": "Allows the caster to telekinetically move multiple small objects.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Radiation Beam",
+                "description": "Fires a beam of harmful radiation at the target.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Reshape",
+                "description": "Allows the caster to mold and shape physical materials.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Slay",
+                "description": "A powerful spell that can instantly kill a living target.",
+                "level": 1,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Sterilize",
+                "description": "Creates a sphere of purified, sterile space.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Turn to Goo",
+                "description": "Transforms the target into a gelatinous state temporarily.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Wreck",
+                "description": "Causes malfunctions and damage to a vehicle or mechanical device.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Alchemical Bomb",
+                "description": "Creates a magical explosive that can be thrown or planted.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Special"
+            },
+            {
+                "name": "Animate",
+                "description": "Brings an inanimate object to life, allowing it to move and follow simple commands.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Window",
+                "description": "Creates a window into the astral plane that non-awakened individuals can see through.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Cataclysm",
+                "description": "Causes widespread destruction in a large area, affecting structures and terrain.",
+                "level": 1,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Clean",
+                "description": "Instantly cleans an area or object, removing dirt, grime, and even some toxins.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch (Area)",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Counterspelling",
+                "description": "Allows the caster to disrupt or negate another spell as it's being cast.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Special",
+                "duration": "Instant"
+            },
+            {
+                "name": "Fashion",
+                "description": "Allows the caster to create or alter clothing and accessories.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Foretell",
+                "description": "Grants the caster a brief glimpse of potential future events.",
+                "level": 1,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Self",
+                "duration": "Instant"
+            },
+            {
+                "name": "Gecko Crawl",
+                "description": "Allows the target to climb walls and ceilings like a gecko.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Gravity Manipulation",
+                "description": "Alters the gravity in a targeted area, making it stronger, weaker, or redirected.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Hibernate",
+                "description": "Puts the target into a state of suspended animation.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mana Sphere",
+                "description": "Creates a mobile sphere of mana that can be used to cast spells at a distance.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Nutrition",
+                "description": "Provides the target with necessary nutrients, eliminating the need for food and water temporarily.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Shift",
+                "description": "Allows the caster to teleport a short distance.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Self",
+                "duration": "Instant"
+            },
+            {
+                "name": "Spirit Barrier",
+                "description": "Creates a barrier that blocks spirits and astral forms.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Agony",
+                "description": "Causes intense pain in the target without causing physical damage.",
+                "level": 2,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Antidote",
+                "description": "Neutralizes toxins and poisons in the target's system.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Astral Cloak",
+                "description": "Masks the target's astral signature, making them harder to detect in astral space.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Blast",
+                "description": "Creates an explosion of pure magical energy at the target location.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Calm Animal",
+                "description": "Soothes and calms an agitated animal.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Chaotic World",
+                "description": "Creates an illusion of a chaotic, ever-changing environment around the target.",
+                "level": 2,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Control Fire",
+                "description": "Allows the caster to manipulate existing fire, controlling its size and direction.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detect Enemies, Extended",
+                "description": "An improved version of Detect Enemies with a larger area of effect.",
+                "level": 1,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight (Extended Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Enhance Aim",
+                "description": "Improves the target's accuracy with ranged weapons.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Fashion",
+                "description": "Alters the appearance and style of clothing and accessories.",
+                "level": 4,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Fling",
+                "description": "Allows the caster to telekinetically throw objects or people.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Hardened Armor",
+                "description": "Creates an extremely durable magical armor around the target.",
+                "level": 1,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Ignite",
+                "description": "Causes a target object to burst into flames.",
+                "level": 4,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Laser",
+                "description": "Creates a focused beam of light that can cut through objects.",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Lock",
+                "description": "Magically seals a door, window, or container.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Alter Memory",
+                "description": "Allows the caster to modify or erase specific memories of the target.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Analyze Truth",
+                "description": "Helps the caster determine if a target is telling the truth.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Projection",
+                "description": "Allows the caster to project their consciousness into astral space.",
+                "level": 1,
+                "school": "Category: Health / Type: Mana",
+                "range": "Self",
+                "duration": "Special"
+            },
+            {
+                "name": "Catfall",
+                "description": "Reduces falling damage for the target.",
+                "level": 4,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Combat Sense",
+                "description": "Enhances the target's awareness and reflexes in combat situations.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Control Water",
+                "description": "Allows the caster to manipulate water, controlling its flow and shape.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Deflection",
+                "description": "Creates a field that deflects incoming projectiles.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Detox",
+                "description": "Removes toxins and alcohol from the target's system.",
+                "level": 4,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Elemental Wall",
+                "description": "Creates a wall of a chosen elemental force (fire, water, earth, or air).",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Enchant",
+                "description": "Temporarily imbues an object with magical properties.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Increase Reflexes",
+                "description": "Magically enhances the target's reflexes and speed.",
+                "level": 1,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mana Static",
+                "description": "Creates an area of magical interference, making spellcasting more difficult.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mob Mood",
+                "description": "Influences the emotional state of a group of people.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Penetrating Spell",
+                "description": "Enhances another spell to bypass magical defenses more easily.",
+                "level": 1,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Self",
+                "duration": "Instant"
+            },
+            {
+                "name": "Reinforce",
+                "description": "Temporarily increases the structural integrity of an object or building.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Aesthetic Enhancement",
+                "description": "Temporarily improves the target's physical appearance.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Beacon",
+                "description": "Creates a bright beacon visible in astral space.",
+                "level": 4,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Blur",
+                "description": "Makes the target's outline blurry, making them harder to hit.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Cleanse",
+                "description": "Removes contaminants and impurities from food and water.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Clean Air",
+                "description": "Purifies air in an area, removing toxins and pollutants.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Convincing Lie",
+                "description": "Enhances the caster's ability to lie convincingly.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Self",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Crop Growth",
+                "description": "Accelerates the growth of plants and crops.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch (Area)",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Deathtouch",
+                "description": "Delivers a potentially lethal shock to a living target.",
+                "level": 1,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Deflect Attention",
+                "description": "Makes the target less noticeable to others.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Enhance Strength",
+                "description": "Temporarily increases the target's physical strength.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Extinguish Fire",
+                "description": "Instantly puts out fires in the affected area.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Fallout",
+                "description": "Creates a small area of radioactive contamination.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Freeze",
+                "description": "Rapidly lowers the temperature of a target, potentially freezing it.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Glue",
+                "description": "Creates a strong adhesive substance that can bind objects or creatures.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Hibernate",
+                "description": "Puts the target into a state of suspended animation.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Aerodynamic",
+                "description": "Reduces air resistance around a target, improving speed and maneuverability.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Alter Temperature",
+                "description": "Allows the caster to raise or lower the temperature in a small area.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Interference",
+                "description": "Creates static in astral space, making astral perception and projection more difficult.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Borrow Sense",
+                "description": "Allows the caster to temporarily use one of the target's senses.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Calm Pack",
+                "description": "Soothes and calms a group of animals.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Camouflage",
+                "description": "Makes the target blend in with their surroundings.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Canonize",
+                "description": "Enhances the target's charisma and perceived importance.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Crank",
+                "description": "Temporarily boosts the target's reaction time and physical capabilities.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Dehydrate",
+                "description": "Rapidly removes moisture from the target.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Dig",
+                "description": "Creates a tunnel or hole in earth or stone.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Energize",
+                "description": "Temporarily eliminates the need for sleep for the target.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Enhance Speed",
+                "description": "Increases the target's movement speed.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Firewall",
+                "description": "Creates a barrier that blocks fire and heat.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Gravity Manipulation",
+                "description": "Allows the caster to increase or decrease gravity in a small area.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Stealth",
+                "description": "Makes the target more difficult to detect through technological means.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Armor-Piercing Spell",
+                "description": "Enhances another combat spell to better penetrate magical and physical defenses.",
+                "level": 1,
+                "school": "Category: Combat / Type: Special",
+                "range": "Special",
+                "duration": "Instant"
+            },
+            {
+                "name": "Astral Message",
+                "description": "Allows the caster to send a short message through astral space to a known recipient.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Special",
+                "duration": "Instant"
+            },
+            {
+                "name": "Awaken",
+                "description": "Instantly wakes up a sleeping or unconscious target.",
+                "level": 4,
+                "school": "Category: Health / Type: Mana",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Balance",
+                "description": "Improves the target's balance and coordination.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Bind",
+                "description": "Creates magical restraints around a target.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Bullet Shield",
+                "description": "Creates a field that slows down incoming projectiles.",
+                "level": 2,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Categorize",
+                "description": "Allows the caster to quickly sort and organize physical or digital information.",
+                "level": 4,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Cellular Repair",
+                "description": "Accelerates natural healing processes in the target.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Charged Barrier",
+                "description": "Creates an electrified barrier that shocks those who touch it.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Clarity",
+                "description": "Clears the target's mind, improving mental acuity and resistance to mental manipulation.",
+                "level": 2,
+                "school": "Category: Health / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Dazzle",
+                "description": "Creates a bright flash of light that can disorient or blind targets.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Instant"
+            },
+            {
+                "name": "Decrypt",
+                "description": "Assists in breaking codes or decrypting encrypted data.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Density Alteration",
+                "description": "Temporarily changes the density of an object or being.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Disrupt Focus",
+                "description": "Interferes with a target's ability to concentrate or maintain focus.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Elasticity",
+                "description": "Grants the target's body increased flexibility and elasticity.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Empathic Healing",
+                "description": "Allows the caster to take on another's injuries, healing the target but harming the caster.",
+                "level": 3,
+                "school": "Category: Health / Type: Mana",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Enhance Cybernetics",
+                "description": "Temporarily improves the functionality of cyberware or bioware.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Essence Drain",
+                "description": "Drains a portion of the target's life force, weakening them and strengthening the caster.",
+                "level": 1,
+                "school": "Category: Health / Type: Mana",
+                "range": "Touch",
+                "duration": "Instant"
+            },
+            {
+                "name": "Fabricate",
+                "description": "Creates a small, simple object out of raw magical energy.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Faraday Cage",
+                "description": "Creates a field that blocks electromagnetic signals.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Forced Defense",
+                "description": "Compels the target to defend themselves, even against their will.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Gravity Well",
+                "description": "Creates a localized area of intense gravitational pull.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Line of Sight (Area)",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Hibernate",
+                "description": "Puts the target into a state of suspended animation.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Interference",
+                "description": "Creates magical static that disrupts technological devices.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mana Bubble",
+                "description": "Creates a small area where mana flows more freely, enhancing magical effects.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Metabolic Control",
+                "description": "Allows the caster to control their own or another's metabolic processes.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mimic",
+                "description": "Allows the caster to perfectly imitate the voice of another person.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Self",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Nullify Toxin",
+                "description": "Neutralizes toxins and poisons in the target's system.",
+                "level": 3,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Permanent"
+            },
+            {
+                "name": "Orb of Light",
+                "description": "Creates a floating sphere of light that follows the caster.",
+                "level": 4,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Self",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Planar Step",
+                "description": "Allows the caster to briefly step into the astral plane to avoid attacks.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Self",
+                "duration": "Instant"
+            },
+            {
+                "name": "Alter Ballistics",
+                "description": "Modifies the trajectory of projectiles in an area.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Astral Encryption",
+                "description": "Encrypts the caster's astral signature, making it harder to track or identify.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Self",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Bioelectric Dampening",
+                "description": "Reduces the target's bioelectric signature, making them harder to detect by certain sensors.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Codebreaker",
+                "description": "Enhances the caster's ability to break codes and encryption.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Self",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Electromagnetic Pulse",
+                "description": "Creates a localized EMP effect, disabling electronic devices.",
+                "level": 2,
+                "school": "Category: Manipulation / Type: Physical",
+                "range": "Area",
+                "duration": "Instant"
+            },
+            {
+                "name": "Elemental Strike",
+                "description": "Imbues a melee attack with elemental energy (fire, ice, electricity, etc.).",
+                "level": 3,
+                "school": "Category: Combat / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Enhance Reflexes",
+                "description": "Drastically improves the target's reaction time and coordination.",
+                "level": 1,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Foreboding",
+                "description": "Gives the target a supernatural sense of impending danger.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Genetic Optimization",
+                "description": "Temporarily enhances the target's natural genetic potential.",
+                "level": 2,
+                "school": "Category: Health / Type: Physical",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Hush",
+                "description": "Creates an area of magical silence, dampening all sounds.",
+                "level": 3,
+                "school": "Category: Illusion / Type: Mana",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Intrusion Countermeasures",
+                "description": "Creates magical defenses against technological and magical intrusion attempts.",
+                "level": 3,
+                "school": "Category: Manipulation / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Mana Spike",
+                "description": "Releases a concentrated burst of mana, damaging magical constructs and spirits.",
+                "level": 3,
+                "school": "Category: Combat / Type: Mana",
+                "range": "Line of Sight",
+                "duration": "Instant"
+            },
+            {
+                "name": "Neural Dampening",
+                "description": "Reduces the target's ability to feel pain.",
+                "level": 3,
+                "school": "Category: Health / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Rewind",
+                "description": "Allows the caster to view recent events in an area in reverse.",
+                "level": 2,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Area",
+                "duration": "Sustained"
+            },
+            {
+                "name": "Spatial Comprehension",
+                "description": "Enhances the target's understanding and perception of three-dimensional space.",
+                "level": 3,
+                "school": "Category: Detection / Type: Mana",
+                "range": "Touch",
+                "duration": "Sustained"
+            }
         ],
         "Star Wars: Edge of the Empire": [
             {"name": "Force Push", "description": "You push objects or creatures using the Force.", "level": 1, "school": "Telekinesis", "casting_time": "1 action", "range": "30 feet", "duration": "Instantaneous", "components": "S"}
@@ -8440,11 +9823,11 @@ def seed_rpg_systems():
                     name=spell_data["name"],
                     description=spell_data["description"],
                     level=spell_data["level"],
-                    school=spell_data["school"],
-                    casting_time=spell_data["casting_time"],
-                    range=spell_data["range"],
-                    duration=spell_data["duration"],
-                    components=spell_data["components"],
+                    school=spell_data.get("school"),
+                    casting_time=spell_data.get("casting_time"),
+                    range=spell_data.get("range"),
+                    duration=spell_data.get("duration"),
+                    components=spell_data.get("components"),
                     rpg_system_id=system.id
                 )
                 db.session.add(new_spell)

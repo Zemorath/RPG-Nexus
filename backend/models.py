@@ -707,6 +707,14 @@ class Spell(db.Model, SerializerMixin):
     components = db.Column(db.String(100), nullable=True)  # Verbal, Somatic, Material
     rpg_system_id = db.Column(db.Integer, db.ForeignKey('rpg_system.id'), nullable=False)
 
+    # For Shadowrun
+    type = db.Column(db.Text, nullable=True)
+
+    # Force Powers for Star Wars
+    force_power_tree = db.Column(db.Text, nullable=True)  # JSON representation of the power tree
+    strain_cost = db.Column(db.Integer, nullable=True)  # Base strain cost to use the power
+    conflict_risk = db.Column(db.Integer, nullable=True)
+
     # Relationships
     classes = db.relationship('ClassSpell', back_populates='spell', lazy=True, cascade="all, delete-orphan")
     rpg_system = db.relationship('RPGSystem', back_populates='spells', lazy=True)
@@ -722,6 +730,10 @@ class Spell(db.Model, SerializerMixin):
             'range': self.range,
             'duration': self.duration,
             'components': self.components,
+            'type': self.type,
+            'force_power_tree': self.force_power_tree,
+            'strain_cost': self.strain_cost,
+            'conflict_risk': self.conflict_risk,
             'rpg_system': {
                 'id': self.rpg_system.id,
                 'name': self.rpg_system.name
