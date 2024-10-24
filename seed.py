@@ -4714,6 +4714,337 @@ def seed_rpg_systems():
                 "components": "V, S"
             },
             {
+                "name": "Dancing Lights",
+                "description": "You create up to four lights that resemble lanterns or torches, or four glowing spheres of light, or one faintly glowing, vaguely humanoid shape. The dancing lights must stay within a 10-foot-radius area in relation to each other but otherwise move as you desire.",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 minute (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Disrupt Undead",
+                "description": "You direct a ray of positive energy. You must make a ranged touch attack to hit, and if the ray hits an undead creature, it deals 1d6 points of damage to it.",
+                "level": 0,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Know Direction",
+                "description": "When you cast this spell, you instantly know the direction of north from your current position. The spell is effective in any environment in which 'north' exists, but it may not work in extraplanar settings.",
+                "level": 0,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Lullaby",
+                "description": "Any creature within the area that fails a Will save becomes drowsy and inattentive, taking a –5 penalty on Perception checks and a –2 penalty on Will saves against sleep effects while the lullaby is in effect.",
+                "level": 0,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Concentration + 1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Ray of Frost",
+                "description": "A ray of freezing air and ice projects from your pointing finger. You must succeed on a ranged touch attack with the ray to deal damage to a target. The ray deals 1d3 points of cold damage.",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Spark",
+                "description": "You can make an unattended Fine flammable object catch on fire. This works as if you were using flint and steel except that you can use spark in any sort of weather and it takes much less time to actually ignite an object.",
+                "level": 0,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V or S"
+            },
+            {
+                "name": "Summon Instrument",
+                "description": "This spell summons one handheld musical instrument of your choice. This instrument appears in your hands or at your feet (your choice). The instrument is typical for its type. Only one instrument appears per casting, and it will play only for you.",
+                "level": 0,
+                "school": "Conjuration",
+                "casting_time": "1 round",
+                "range": "0 ft.",
+                "duration": "1 minute/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Touch of Fatigue",
+                "description": "You channel negative energy through your touch that fatigues the target. You must succeed on a touch attack to strike a target, and the subject becomes fatigued for the spell's duration.",
+                "level": 0,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 round/level",
+                "components": "V, S, M (a drop of sweat)"
+            },
+            {
+                "name": "Virtue",
+                "description": "The subject gains 1 temporary hit point for the duration of the spell.",
+                "level": 0,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute",
+                "components": "V, S, DF"
+            },
+
+            {
+                "name": "Abundant Ammunition",
+                "description": "This spell creates copies of ammunition fired from a projectile weapon. When used on a loaded projectile weapon, the ammunition fired creates a duplicate that also fires at the same target. This counts as one attack.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute/level",
+                "components": "V, S, M (a single piece of ammunition)"
+            },
+            {
+                "name": "Air Bubble",
+                "description": "Creates a small pocket of breathable air around the target's head or a small air bubble in water. This does not provide the ability to speak normally while underwater.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute/level",
+                "components": "V, S, M (a small glass bead)"
+            },
+            {
+                "name": "Alter Winds",
+                "description": "You can alter the strength and direction of the winds within the area of effect. You can make the winds blow in a certain direction or manner, increase its strength, or decrease its strength.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "1 hour/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Ant Haul",
+                "description": "The target's carrying capacity triples. This does not affect the creature's actual Strength in any way, just the amount of material it can carry.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "2 hours/level",
+                "components": "V, S, M (a small rope)"
+            },
+            {
+                "name": "Aspect of the Falcon",
+                "description": "You take on an aspect of a falcon. Your eyes become wide and raptor-like, and you gain a +3 competence bonus on Perception checks, a +1 competence bonus on ranged attacks, and the ability to ignore the first range increment penalty when making ranged attacks.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 minute/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Beguiling Gift",
+                "description": "You offer an object to an adjacent creature who must make a Will save or be compelled to accept your gift and immediately put it to use, dropping whatever it was holding if necessary. The creature may still recognize the item as dangerous, and will not automatically use an item it knows to be harmful.",
+                "level": 1,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "5 ft.",
+                "duration": "1 round",
+                "components": "V, S, M (the object to be offered)"
+            },
+            {
+                "name": "Burst Bonds",
+                "description": "With a burst of strength, you break the bonds that hold you. You gain a +20 enhancement bonus on a single Strength check attempted to break bindings, break free of grapples, or escape from manacles. This bonus applies to your combat maneuver check when attempting to break free from a grapple.",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Dancing Lantern",
+                "description": "You can animate a lantern to follow you and provide light. The lantern sheds light as a normal lantern, hovers 3 feet above the ground, and moves with you, remaining within 5 feet of you at all times.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 hour/level (D)",
+                "components": "V, S, F (a lantern)"
+            },
+            {
+                "name": "Ear-Piercing Scream",
+                "description": "You unleash a powerful scream, inaudible to all but a single target. The target is dazed for 1 round and takes 1d6 points of sonic damage per two caster levels (maximum 5d6).",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Floating Disk",
+                "description": "You create a slightly concave, circular plane of force that follows you about and carries loads for you. The disk is 3 feet in diameter and 1 inch deep at its center. It can hold 100 pounds of weight per caster level.",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 hour/level",
+                "components": "V, S, M (a drop of mercury)"
+            },
+            {
+                "name": "Force Hook Charge",
+                "description": "You create a hook of force that you can use to make a charge attack. When you cast this spell, you choose a point of origin for the hook within medium range. As part of casting this spell, you can move up to twice your speed in a straight line to a space adjacent to the hook's origin.",
+                "level": 1,
+                "school": "Force",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Frostbite",
+                "description": "Your touch causes a creature's blood to freeze. The target takes 1d6 points of nonlethal cold damage + 1 point per level, and is fatigued. A successful Fortitude save negates the fatigue.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Hero's Defiance",
+                "description": "This spell cures 1d8 points of damage + 1 point per caster level (maximum +5). Unlike other cure spells, hero's defiance can be cast even if you've used your last spell slot of that level, but if you do so, you cannot cast any spells for 1 round.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Hold Portal",
+                "description": "This spell magically holds shut a door, gate, window, or shutter of wood, metal, or stone. The magic affects the portal just as if it were securely closed and normally locked.",
+                "level": 1,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 min./level (D)",
+                "components": "V"
+            },
+            {
+                "name": "Instant Armor",
+                "description": "You instantly wrap your body in a suit of armor made from force. This armor grants you an armor bonus of +4. It has no armor check penalty, arcane spell failure chance, or speed reduction. Since instant armor is made of force, incorporeal creatures can't bypass it the way they do normal armor.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 min./level (D)",
+                "components": "V, S, F (a masterwork suit of armor)"
+            },
+            {
+                "name": "Bless Water",
+                "description": "This transmutation imbues a flask (1 pint) of water with positive energy, turning it into holy water. Holy water damages undead creatures and evil outsiders as though it were acid.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 minute",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, M (5 pounds of powdered silver worth 25 gp)"
+            },
+            {
+                "name": "Summon Minor Ally",
+                "description": "This spell functions as summon nature's ally I, except you can summon 1d3 Tiny or smaller animals, such as bats, lizards, monkeys, rats, ravens, toads, or weasels. The summoned animals must all be the same type of creature.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 round",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Vanish",
+                "description": "This spell functions like invisibility, except the duration is only a few rounds. The subject vanishes from sight, even from darkvision. If the creature attacks or casts a spell, this spell ends just as invisibility does.",
+                "level": 1,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 round/level (up to 5 rounds) (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Wrath",
+                "description": "You fill a single target with divine fury. The target gains a +2 morale bonus on melee attack rolls, melee weapon damage rolls, and saving throws against fear effects. It gains 5 temporary hit points per caster level (maximum 5).",
+                "level": 1,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute",
+                "components": "V, S"
+            },
+            {
+                "name": "Lock Gaze",
+                "description": "You compel the target to constantly meet your gaze for the duration of the spell. The target can attempt to break eye contact as a move action by succeeding at a Will save, but it must succeed at a second Will save during the same round or immediately reestablish eye contact.",
+                "level": 2,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Magic Aura",
+                "description": "You alter an item's aura so that it registers to detect spells as though it were non-magical, or as a magic item of a kind you specify, or as the subject of a spell you specify.",
+                "level": 1,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 day/level (D)",
+                "components": "V, S, F (a small square of silk)"
+            },
+            {
+                "name": "Restore Virtue",
+                "description": "You restore the target's lost honor and dignity, granting them a +4 sacred bonus on saving throws against charm and compulsion effects for the duration of the spell.",
+                "level": 1,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Sacrifice",
+                "description": "You transfer some of your life force to heal another creature. You take 1d4 points of damage and the target regains a number of hit points equal to double the damage you take. This damage cannot be reduced in any way.",
+                "level": 1,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Shillelagh",
+                "description": "Your wooden weapon transforms into a weapon with greater power. The weapon gains a +1 enhancement bonus on attack and damage rolls. A quarterstaff gains this enhancement for both ends. The spell can affect any club, quarterstaff, or other wooden weapon.",
+                "level": 1,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 min./level",
+                "components": "V, S, DF"
+            },
+            {
                 "name": "Alarm",
                 "description": "Alarm creates a subtle ward on an area you select. When a creature enters the warded area, the alarm alerts you.",
                 "level": 1,
@@ -4944,6 +5275,196 @@ def seed_rpg_systems():
                 "components": "V"
             },
             {
+                "name": "Animal Aspect",
+                "description": "You gain some of the beneficial qualities of an animal. Choose one of the following animals to gain its qualities: ape (+2 climb), bear (+2 CMD), bull (+2 CMB), falcon (+2 sight-based Perception), frog (+2 Acrobatics), monkey (+2 Acrobatics), owl (+2 stealth), or stag (+2 speed).",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 minute/level (D)",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Arcane Lock",
+                "description": "An arcane lock spell cast upon a door, chest, or portal magically locks it. You can freely pass your own arcane lock without affecting it. While arcane lock is active, the DC to break open the door or lock increases by 10.",
+                "level": 2,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Permanent",
+                "components": "V, S, M (gold dust worth 25 gp)"
+            },
+            {
+                "name": "Aspect of the Bear",
+                "description": "You gain a +2 enhancement bonus to natural armor, a +2 enhancement bonus to Constitution, and you are treated as one size category larger when determining your CMB and CMD for grapple and overrun combat maneuvers.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 minute/level (D)",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Bear's Endurance",
+                "description": "The affected creature gains greater vitality and stamina. The spell grants the subject a +4 enhancement bonus to Constitution, which adds the usual benefits to hit points, Fortitude saves, Constitution checks, and so forth.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute/level",
+                "components": "V, S, M/DF (a few hairs, or a pinch of dung, from a bear)"
+            },
+            {
+                "name": "Chill Metal",
+                "description": "Chill metal makes metal extremely cold. An unattended, nonmagical metal item gets no saving throw. A metal creature takes 2d4 points of cold damage and must make a Fortitude save or be slowed for 1 round.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "7 rounds",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Defensive Shock",
+                "description": "You surround yourself with an electrical field. Any creature that makes a successful melee attack against you takes 1d6 points of electricity damage. This damage increases by 1d6 for every four caster levels you possess (maximum 5d6).",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Daze Monster",
+                "description": "This spell functions like daze, but it can affect any one living creature of any type. Creatures of 7 or more HD are not affected.",
+                "level": 2,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round",
+                "components": "V, S, M (a pinch of wool or similar substance)"
+            },
+            {
+                "name": "Elemental Touch",
+                "description": "Your hands become charged with elemental energy (acid, cold, electricity, or fire, chosen when you cast the spell). A successful melee touch attack deals 1d6 points of damage of the chosen energy type per two caster levels (maximum 5d6).",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M (element sample)"
+            },
+            {
+                "name": "Fire Breath",
+                "description": "Your breath becomes a cone of flame. The cone deals 1d8 points of fire damage per two caster levels (maximum 5d8). A successful Reflex save halves this damage.",
+                "level": 2,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "15 ft. cone",
+                "duration": "1 round/level or until discharged; see text",
+                "components": "V, S, M (a red dragon's scale)"
+            },
+            {
+                "name": "Fox's Cunning",
+                "description": "The target becomes smarter. The spell grants a +4 enhancement bonus to Intelligence, adding the usual benefits to Intelligence-based skill checks and other uses of the Intelligence modifier.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 minute/level",
+                "components": "V, S, M/DF (a few hairs, or a pinch of dung, from a fox)"
+            },
+            {
+                "name": "Glide",
+                "description": "You take no damage from falls (as if from feather fall) and can move up to 5 feet in any horizontal direction for every 1 foot you fall, at a speed of 60 feet per round.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 minute/level (D)",
+                "components": "V, S, M (a leaf)"
+            },
+            {
+                "name": "Iron Wind",
+                "description": "You transform a collection of metal objects into a swirling mass of aerial projectiles. These projectiles automatically strike all targets within range, dealing 1d6 points of damage per two caster levels (maximum 5d6).",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S, M (iron filings)"
+            },
+            {
+                "name": "Locate Object",
+                "description": "You sense the direction of a well-known or clearly visualized object. You can search for general items, in which case you locate the nearest of its kind if more than one is within range.",
+                "level": 2,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "Long (400 ft. + 40 ft./level)",
+                "duration": "1 min./level",
+                "components": "V, S, F/DF (a forked twig)"
+            },
+            {
+                "name": "Magic Mouth",
+                "description": "This spell creates a mouth that appears on an object and speaks once when a specified event occurs. The message, which must be twenty-five or fewer words long, can be in any language known by you.",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Permanent until discharged",
+                "components": "V, S, M (a small bit of honeycomb and jade dust worth 10 gp)"
+            },
+            {
+                "name": "Phantom Trap",
+                "description": "This spell makes a lock or other small mechanism seem to be trapped to anyone who can detect traps. You place the spell upon any small mechanism or device, such as a lock, hinge, hasp, cork, cap, or ratchet.",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "Permanent (D)",
+                "components": "V, S, M (special dust worth 50 gp)"
+            },
+            {
+                "name": "Pox Pustules",
+                "description": "The target's skin breaks out in painful, itchy pustules that burst if the creature moves too much. The target takes a -2 penalty to Dexterity and a -2 penalty on attack rolls. Every time it moves, it takes 1 point of damage.",
+                "level": 2,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 minute/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Scarecrow",
+                "description": "You create a supernatural scarecrow made of animated straw that radiates fear. Creatures must succeed at a Will save or become shaken while within 60 feet of the scarecrow.",
+                "level": 2,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 hour/level",
+                "components": "V, S, M (a handful of straw)"
+            },
+            {
+                "name": "Stone Call",
+                "description": "A rain of dirt and stone falls in a cylindrical area, dealing 2d6 points of bludgeoning damage to creatures in the area and reducing speed by half. The ground in the area becomes difficult terrain.",
+                "level": 2,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Whispering Wind",
+                "description": "You send a message or sound on the wind to a designated spot. The whispering wind travels to a specific location within range that is familiar to you, provided that it can find a way to the location.",
+                "level": 2,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "1 mile/level",
+                "duration": "No more than 1 hour/level or until discharged (destination is reached)",
+                "components": "V, S"
+            },
+            {
                 "name": "Bull's Strength",
                 "description": "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier.",
                 "level": 2,
@@ -5114,6 +5635,116 @@ def seed_rpg_systems():
                 "components": "V, S, F/DF (a small horn or a glass eye)"
             },
             {
+                "name": "Arc of Lightning",
+                "description": "You create an arc of lightning that jumps between two creatures or objects. The arc deals 1d6 points of electricity damage per caster level (maximum 10d6) to all creatures in its path. Any creature struck can attempt a Reflex save for half damage.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "120 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a small piece of fur and an amber, crystal, or glass rod)"
+            },
+            {
+                "name": "Blood Biography",
+                "description": "You learn the answers to questions about a creature whose blood you have contacted. You can cast this spell upon the blood of the dead or living. You learn the answers to the following four questions: Who are you? (name, race, and occupation/role), How was the blood shed? (cause of wound/death), When was the blood shed? (date and time), and Where was the blood shed?",
+                "level": 3,
+                "school": "Divination",
+                "casting_time": "1 minute",
+                "range": "Touch",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a scrap of parchment)"
+            },
+            {
+                "name": "Force Hook Charge",
+                "description": "You create a hook of force that pulls you to a designated point, allowing you to make a charge attack against a foe at the end of your movement. You can move up to double your speed in a straight line, and this movement does not provoke attacks of opportunity.",
+                "level": 3,
+                "school": "Force",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Force Punch",
+                "description": "You create a blast of focused force that strikes a single target, dealing 1d4 points of force damage per caster level (maximum 10d4). The force punch can also bull rush the target, using your caster level as the CMB for the bull rush attempt.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Grove of Respite",
+                "description": "You create a comfortable natural sanctuary in an area of natural terrain. The spell creates a 20-foot-radius grove of lush grass and mature trees, providing shade and basic shelter. The grove provides natural healing benefits, doubling natural healing rates for those who rest within it.",
+                "level": 3,
+                "school": "Conjuration",
+                "casting_time": "10 minutes",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level (D)",
+                "components": "V, S, M (a seed and a drop of water)"
+            },
+            {
+                "name": "Helping Hand",
+                "description": "You create a ghostly hand that can be sent to find a creature within range. The hand then beckons to that creature and leads it back to you if the creature is willing to follow. The hand cannot engage in combat or cause damage.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "5 miles",
+                "duration": "1 hour/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Nature's Exile",
+                "description": "The target becomes persona non grata in the eyes of nature. Animals' starting attitude toward the target is shifted two steps toward hostile, and they gain a +2 bonus on attack and damage rolls against the target. The target takes a -10 penalty on Survival checks.",
+                "level": 3,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Pain Strike",
+                "description": "You inflict wracking pains on your target, dealing 1d6 points of nonlethal damage per round and imposing a -2 penalty on attack rolls, skill checks, and ability checks. A successful Fortitude save halves the damage and negates the penalty.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Screech",
+                "description": "You emit a piercing shriek that deafens and stuns creatures in its area. Creatures within the area must make a Fortitude save or be stunned for 1 round and deafened for 1d4 rounds. On a successful save, they are instead deafened for 1 round.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "30 ft.",
+                "duration": "Instantaneous",
+                "components": "V"
+            },
+            {
+                "name": "Seek Thoughts",
+                "description": "You detect the surface thoughts of creatures in the area. You can focus on one creature in range and read its surface thoughts, or you can read all surface thoughts that pass through the area. The amount of information revealed depends on how long you study a particular area or subject.",
+                "level": 3,
+                "school": "Divination",
+                "casting_time": "1 standard action",
+                "range": "60 ft.",
+                "duration": "1 min./level",
+                "components": "V, S, M (a copper piece)"
+            },
+            {
+                "name": "Tiny Hut",
+                "description": "You create an unmoving, opaque sphere of force around yourself that shields you and your companions from view and protects you from the elements. The sphere has a comfortable temperature and provides protection against wind, rain, snow, dust, and sandstorms.",
+                "level": 3,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "20 ft.",
+                "duration": "2 hours/level (D)",
+                "components": "V, S, M (a small crystal bead)"
+            },
+            {
                 "name": "Dispel Magic",
                 "description": "You can use dispel magic to end one ongoing spell that has been cast on a creature or object, to temporarily suppress the magical abilities of a magic item, or to counter another spellcaster's spell.",
                 "level": 3,
@@ -5281,6 +5912,96 @@ def seed_rpg_systems():
                 "casting_time": "1 standard action",
                 "range": "Close (25 ft. + 5 ft./2 levels)",
                 "duration": "1 day/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Arboreal Hammer",
+                "description": "You create a Large wooden hammer that attacks creatures in the area. The hammer attacks with your base attack bonus and deals 2d6 + your Wisdom modifier in damage. It strikes as a magic weapon and can make one attack per round. The hammer gains a +1 enhancement bonus for every 4 caster levels.",
+                "level": 4,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Aspect of the Stag",
+                "description": "You take on the aspects of a mighty stag, gaining a +2 enhancement bonus to Dexterity, a +2 dodge bonus to AC against attacks of opportunity, and an enhancement bonus to your base speed of +20 feet. You also gain low-light vision and woodland stride.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 minute/level",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "Crushing Despair",
+                "description": "An invisible cone of despair causes great sadness in the subjects. Each affected creature takes a –2 penalty on attack rolls, saving throws, ability checks, skill checks, and weapon damage rolls. A successful Will save reduces this duration to 1 round.",
+                "level": 4,
+                "school": "Enchantment",
+                "casting_time": "1 standard action",
+                "range": "30 ft.",
+                "duration": "1 min./level",
+                "components": "V, S, M (a vial of tears)"
+            },
+            {
+                "name": "Dragon's Breath",
+                "description": "You breathe a powerful blast of energy of a type chosen when you cast this spell (acid, cold, electricity, or fire). The breath weapon deals 1d6 points of energy damage per caster level (maximum 12d6). A successful Reflex save halves the damage.",
+                "level": 4,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "30 ft. or 60 ft.",
+                "duration": "Instantaneous",
+                "components": "V, S, M (a dragon's scale of the appropriate color)"
+            },
+            {
+                "name": "Fire Trap, Greater",
+                "description": "This spell functions like fire trap, except that when triggered, the trap deals 1d8 points of fire damage + 1 point per caster level (maximum +20). A successful Reflex save halves the damage.",
+                "level": 4,
+                "school": "Abjuration",
+                "casting_time": "10 minutes",
+                "range": "Touch",
+                "duration": "Permanent until discharged (D)",
+                "components": "V, S, M (gold dust worth 400 gp)"
+            },
+            {
+                "name": "Firefall",
+                "description": "You cause a shower of fire to rain down in the area. Any creature that starts its turn in the area takes 5d6 points of fire damage. The fire ignites flammable objects and deals 5d6 points of fire damage to objects in the area each round.",
+                "level": 4,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S, M (a bit of phosphorus)"
+            },
+            {
+                "name": "Fur Armor, Greater",
+                "description": "This spell functions like fur armor, but provides better protection. The subject gains a +4 armor bonus to AC and a +4 circumstance bonus on Survival checks in cold weather. The armor has no armor check penalty, arcane spell failure chance, or maximum Dexterity bonus.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "1 hour/level",
+                "components": "V, S, M (a scrap of fur)"
+            },
+            {
+                "name": "Ride the Waves",
+                "description": "You can swim with great speed and skill. You gain a swim speed equal to your land speed, the ability to breathe water, and a +8 competence bonus on Swim checks. You can also walk on liquid surfaces as if using water walk.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 hour/level",
+                "components": "V, S, M (a piece of cork)"
+            },
+            {
+                "name": "Thorn Body",
+                "description": "Your body sprouts thorns that harm those who strike you. Any creature striking you with a melee attack takes 1d6 + 1 point per caster level (maximum +15) points of piercing damage. Creatures using natural weapons or unarmed strikes take double damage.",
+                "level": 4,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Personal",
+                "duration": "1 round/level",
                 "components": "V, S"
             },
             {
@@ -5464,6 +6185,46 @@ def seed_rpg_systems():
                 "components": "V, S"
             },
             {
+                "name": "Curse of Magic Negation",
+                "description": "You curse a creature with anti-magical effects. The target gains spell resistance equal to 10 + your caster level, but this spell resistance cannot be lowered or disabled. Additionally, any spell the creature casts has a 20% chance of failure. A successful Will save negates the effect.",
+                "level": 5,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level",
+                "components": "V, S"
+            },
+            {
+                "name": "Life Bubble",
+                "description": "You surround the target with a constant flow of clean air and protect them from environmental effects. Targets can breathe normally in any environment and are protected from poison gas, vapors, and similar atmospheric effects. They also gain protection from extreme temperatures (between -50° and 140° F).",
+                "level": 5,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level",
+                "components": "V, S, M/DF (a tiny glass bubble)"
+            },
+            {
+                "name": "Plague Storm",
+                "description": "You create a storm of disease, inflicting all creatures in the area with a chosen disease. The disease is contracted immediately with no onset time. A successful Fortitude save negates the effect. The DC to remove the disease is equal to this spell's save DC.",
+                "level": 5,
+                "school": "Necromancy",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "Instantaneous",
+                "components": "V, S"
+            },
+            {
+                "name": "Rampart",
+                "description": "You create a 5-foot-thick earthen rampart up to 5 feet long per level. The rampart is 5 feet tall per two caster levels and provides cover to anyone behind it. The rampart must be created on solid ground, but can be dismissed as a standard action.",
+                "level": 5,
+                "school": "Conjuration",
+                "casting_time": "1 round",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 hour/level (D)",
+                "components": "V, S, M (a handful of earth)"
+            },
+            {
                 "name": "Dream",
                 "description": "You, or a messenger touched by you, sends a phantasmal message to others in the form of a dream. At the beginning of the spell, you must name the recipient or identify him or her by some title that leaves no doubt as to identity.",
                 "level": 5,
@@ -5564,14 +6325,44 @@ def seed_rpg_systems():
                 "components": "V, S, M/DF (a small block of granite)"
             },
             {
-            "name": "Antimagic Field",
-            "description": "An invisible barrier surrounds you and moves with you. The space within this barrier is impervious to most magical effects, including spells, spell-like abilities, and supernatural abilities.",
-            "level": 6,
-            "school": "Abjuration",
-            "casting_time": "1 standard action",
-            "range": "10 ft.",
-            "duration": "10 min./level (D)",
-            "components": "V, S, M/DF (a pinch of powdered iron or iron filings)"
+                "name": "Antimagic Field",
+                "description": "An invisible barrier surrounds you and moves with you. The space within this barrier is impervious to most magical effects, including spells, spell-like abilities, and supernatural abilities.",
+                "level": 6,
+                "school": "Abjuration",
+                "casting_time": "1 standard action",
+                "range": "10 ft.",
+                "duration": "10 min./level (D)",
+                "components": "V, S, M/DF (a pinch of powdered iron or iron filings)"
+            },
+            {
+                "name": "Fire Seeds",
+                "description": "You turn acorns into explosive seeds or holly berries into bombs. Acorn grenades detonate in a 10-foot radius for 1d6 points of fire damage per caster level (maximum 15d6). Holly berry bombs can be thrown as splash weapons, dealing 1d8 points of fire damage plus additional splash damage in a 5-foot radius.",
+                "level": 6,
+                "school": "Conjuration",
+                "casting_time": "1 standard action",
+                "range": "Touch",
+                "duration": "10 min./level or until used",
+                "components": "V, S, M (acorns or holly berries)"
+            },
+            {
+                "name": "Sirocco",
+                "description": "You create a blast of furnace-hot wind that deals 4d6 fire damage to all creatures in the area. Flying creatures are blown back 2d6 × 10 feet and take 2d6 nonlethal damage. A successful Fortitude save halves the fire damage and negates the nonlethal damage.",
+                "level": 6,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Medium (100 ft. + 10 ft./level)",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
+            },
+            {
+                "name": "Symphonic Nightmare",
+                "description": "You create a cacophonous symphony that torments the target. The target takes 3d6 sonic damage per round and must make a Will save each round or be confused for that round. A successful save negates the confusion but not the damage.",
+                "level": 6,
+                "school": "Illusion",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "1 round/level (D)",
+                "components": "V, S"
             },
             {
                 "name": "Chain Lightning",
@@ -5714,6 +6505,36 @@ def seed_rpg_systems():
                 "components": "V, S"
             },
             {
+                "name": "Resonating Word",
+                "description": "You speak a word that resonates with destructive force through a single target. The target takes 10d6 sonic damage immediately, 1d6 Constitution damage, and is staggered for 1 round. One round later, it takes 5d6 sonic damage and is stunned for 1 round. In the final round, it takes 5d6 sonic damage and is confused for 1 round.",
+                "level": 7,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "3 rounds",
+                "components": "V"
+            },
+            {
+                "name": "Statue",
+                "description": "You turn yourself or a willing creature to stone. The subject gains hardness 8 and can see, hear, and breathe normally, but cannot move or take any physical actions. The subject can dismiss the spell as a free action. While in statue form, the subject is immune to blindness, critical hits, ability score damage, deafness, disease, drowning, poison, stunning, and all spells that affect physiology or respiration.",
+                "level": 7,
+                "school": "Transmutation",
+                "casting_time": "1 round",
+                "range": "Touch",
+                "duration": "1 hour/level (D)",
+                "components": "V, S, M (lime, sand, and a drop of water stirred by an iron spike)"
+            },
+            {
+                "name": "Sunbeam",
+                "description": "You create dazzling beams of intense light each round. Each creature in the beam is blinded and takes 4d6 points of damage. Undead creatures take 1d6 points of damage per caster level (maximum 20d6), and instead of being blinded, they are staggered for 1d4 rounds. A successful Reflex save negates the blinding effect and reduces the damage by half.",
+                "level": 7,
+                "school": "Evocation",
+                "casting_time": "1 standard action",
+                "range": "60 ft. line",
+                "duration": "1 round/level or until all beams are exhausted",
+                "components": "V, S, DF"
+            },
+            {
                 "name": "Delayed Blast Fireball",
                 "description": "This spell functions like fireball, except that it is more powerful and can detonate up to 5 rounds after the spell is cast. The burst of flame deals 1d6 points of fire damage per caster level (maximum 20d6).",
                 "level": 7,
@@ -5824,14 +6645,14 @@ def seed_rpg_systems():
                 "components": "V, S, M/DF (a lodestone and iron filings)"
             },
             {
-            "name": "Antipathy",
-            "description": "You cause an object or location to emanate magical vibrations that repel either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you.",
-            "level": 8,
-            "school": "Enchantment",
-            "casting_time": "1 hour",
-            "range": "Close (25 ft. + 5 ft./2 levels)",
-            "duration": "2 hours/level (D)",
-            "components": "V, S, M/DF (a lump of alum soaked in vinegar)"
+                "name": "Antipathy",
+                "description": "You cause an object or location to emanate magical vibrations that repel either a specific kind of intelligent creature or creatures of a particular alignment, as defined by you.",
+                "level": 8,
+                "school": "Enchantment",
+                "casting_time": "1 hour",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "2 hours/level (D)",
+                "components": "V, S, M/DF (a lump of alum soaked in vinegar)"
             },
             {
                 "name": "Clone",
@@ -5972,6 +6793,26 @@ def seed_rpg_systems():
                 "range": "Close (25 ft. + 5 ft./2 levels)",
                 "duration": "1 day/level",
                 "components": "V, S"
+            },
+            {
+                "name": "Regenerate, Mass",
+                "description": "This spell functions like regenerate, but affects multiple creatures. Each target regains 4d8 points of damage + 1 point per caster level (maximum +35), and all nonlethal damage. Also regenerates missing body parts and broken bones. Affects up to one creature per level, no two of which can be more than 30 feet apart.",
+                "level": 9,
+                "school": "Conjuration",
+                "casting_time": "3 full rounds",
+                "range": "Close (25 ft. + 5 ft./2 levels)",
+                "duration": "Instantaneous",
+                "components": "V, S, DF"
+            },
+            {
+                "name": "World Wave",
+                "description": "You create a massive wave of earth that you can ride and direct. The wave is 20 feet long per caster level and 20 feet high. Creatures caught in the wave's path take 10d6 points of damage (Reflex half) and may be knocked prone. You can ride the wave without harm and direct its movement as a move action. The wave moves at a speed of 100 feet per round.",
+                "level": 9,
+                "school": "Transmutation",
+                "casting_time": "1 standard action",
+                "range": "See text",
+                "duration": "1 round/level (D)",
+                "components": "V, S, DF"
             },
             {
                 "name": "Energy Drain",
