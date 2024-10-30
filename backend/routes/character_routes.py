@@ -534,6 +534,49 @@ class CharacterInventory(Resource):
             inventory_data.append(item_data)
 
         return jsonify(inventory_data)
+    
+class PurchaseForcePowerNode(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        spell_id = data.get('spell_id')  # ID of the spell (Force power)
+        node_name = data.get('node_name')  # Name of the node within the force_power_tree
+        xp_cost = data.get('xp_cost')
+
+        character = Character.query.get_or_404(character_id)
+
+        # Check if character has enough XP
+        if character.experience_points < xp_cost:
+            return {"message": "Insufficient XP"}, 400
+
+        # Deduct XP and add the node to the character’s purchased nodes
+        character.experience_points -= xp_cost
+        
+        # Store the purchased node in the character’s data
+        # Assuming `system_data` JSON structure with a `purchased_nodes` field
+        purchased_nodes = character.system_data.get('purchased_nodes', {})
+        purchased_nodes.setdefault(spell_id, []).append(node_name)
+        character.system_data['purchased_nodes'] = purchased_nodes
+        
+        db.session.commit()
+        return {"message": "Node purchased successfully", "remaining_xp": character.experience_points}
+
+class UpdateCharacterLevel(Resource):
+    def post(self):
+        data = request.get_json()
+        character_id = data.get('character_id')
+        new_level = data.get('level')
+
+        character = Character.query.get_or_404(character_id)
+        character.level = new_level
+
+        # Set XP based on level (e.g., level * 100 as base XP)
+        character.experience_points = new_level * 100
+        
+        db.session.commit()
+        return {"message": "Character level updated successfully", "experience_points": character.experience_points}
+
+
 
 
 
@@ -563,6 +606,7 @@ character_api.add_resource(UpdateCharacterBackground, '/characters/update-backgr
 character_api.add_resource(CharacterCalculation, '/characters/calculate/<int:character_id>')
 character_api.add_resource(GenerateAbilityScores, '/characters/generate-ability-scores/<int:rpg_system_id>/<string:method>')
 character_api.add_resource(CharacterInventory, '/characters/<int:character_id>/inventory')
-
+character_api.add_resource(PurchaseForcePowerNode, '/characters/purchase-force-node')
+character_api.add_resource(UpdateCharacterLevel, '/characters/update-level')
 
 

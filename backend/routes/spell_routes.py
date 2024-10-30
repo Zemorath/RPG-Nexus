@@ -49,8 +49,15 @@ class UpdateCharacterSpells(Resource):
         db.session.commit()
 
         return {"message": "Spells updated successfully"}
+    
+class ForcePowerTrees(Resource):
+    def get(self):
+        # Fetch only spells that have a force_power_tree
+        force_trees = Spell.query.filter(Spell.force_power_tree.isnot(None)).all()
+        return jsonify([spell.to_dict() for spell in force_trees])
 
 # Spell Routes
 spell_api.add_resource(SpellsByClassAndLevel, '/spells/class/<int:class_id>/level/<int:level>')
 spell_api.add_resource(AllSpells, '/spells/all')
 spell_api.add_resource(UpdateCharacterSpells, '/characters/update-spells')
+spell_api.add_resource(ForcePowerTrees, '/force-trees')
