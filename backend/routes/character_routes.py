@@ -361,35 +361,6 @@ class UpdateCharacterClassProgression(Resource):
         db.session.commit()
 
         return {"message": "Class progression updated successfully"}, 200
-
-class UpdateCharacterLevel(Resource):
-    def post(self):
-        data = request.get_json()
-        character_id = data.get('character_id')
-        new_level = data.get('level')
-
-        # Find the character by ID
-        character = Character.query.get_or_404(character_id)
-
-        if not character.class_id:
-            return {"message": "Character does not have a class assigned"}, 400
-
-        # Update the character's level
-        character.level = new_level
-
-        # Find the corresponding class progression for the character's class and new level
-        class_progression = ClassProgression.query.filter_by(class_id=character.class_id, level=new_level).first()
-
-        if not class_progression:
-            return {"message": "Class progression not found for this level"}, 404
-
-        # Update the character's class progression
-        character.class_progression_id = class_progression.id
-
-        # Commit the changes
-        db.session.commit()
-
-        return {"message": "Character level and progression updated successfully", "character": character.to_dict()}, 200
     
 class ClassProgressionResource(Resource):
     def get(self, class_id, level):
@@ -566,15 +537,27 @@ class UpdateCharacterLevel(Resource):
         data = request.get_json()
         character_id = data.get('character_id')
         new_level = data.get('level')
+        new_xp = data.get('experience_points')
 
+        # Fetch the character by ID
         character = Character.query.get_or_404(character_id)
+
+        # Update character level
         character.level = new_level
 
-        # Set XP based on level (e.g., level * 100 as base XP)
-        character.experience_points = new_level * 100
+        # Update experience points if provided
+        if new_xp is not None:
+            character.experience_points = new_xp
         
+        # Commit the changes
         db.session.commit()
-        return {"message": "Character level updated successfully", "experience_points": character.experience_points}
+
+        return {
+            "message": "Character level and experience points updated successfully",
+            "experience_points": character.experience_points,
+            "level": character.level
+        }, 200
+
 
 
 

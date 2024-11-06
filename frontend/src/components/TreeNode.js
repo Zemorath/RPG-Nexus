@@ -5,7 +5,7 @@ const TreeNode = ({ node, xp, setXp, locked, isCore }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleSelect = () => {
-    if (xp >= node.xp_cost) {
+    if (!locked && xp >= node.xp_cost) {
       setXp(xp - node.xp_cost);
       setIsSelected(!isSelected);
     }
@@ -15,7 +15,7 @@ const TreeNode = ({ node, xp, setXp, locked, isCore }) => {
     <div
       className={`p-4 rounded-lg shadow-lg transition duration-300 ${
         isCore ? 'border-2 border-dashed border-blue-500' : 'border'
-      } ${isSelected ? 'bg-accent text-background' : 'bg-secondary'}`}
+      } ${locked ? 'bg-gray-400 text-gray-700' : isSelected ? 'bg-accent text-background' : 'bg-secondary'}`}
     >
       <div className="flex justify-between items-center mb-2">
         <span className="font-bold text-lg">{node.name}</span>
