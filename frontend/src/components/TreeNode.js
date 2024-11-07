@@ -1,24 +1,39 @@
-// src/TreeNode.js
 import React, { useState } from 'react';
 
-const TreeNode = ({ node, xp, setXp, locked, isCore }) => {
+const TreeNode = ({ node, xp, setXp, locked, isCore, onInsufficientXp, unlockedTiers, onNodePurchase }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleSelect = () => {
-    if (!locked && xp >= node.xp_cost) {
-      setXp(xp - node.xp_cost);
-      setIsSelected(!isSelected);
+    if (isSelected) {
+      setXp(xp + node.xp_cost);
+      setIsSelected(false);
+    } else {
+      if (xp >= node.xp_cost && unlockedTiers.includes(node.tier - 1)) {
+        setXp(xp - node.xp_cost);
+        setIsSelected(true);
+        onNodePurchase(node.id); // Track the purchased node by its ID
+      } else {
+        onInsufficientXp(`You need to unlock previous tiers to access "${node.name}". Requires ${node.xp_cost} XP.`);
+      }
     }
   };
 
+  // Tier-based border styling
+  const tierClass = {
+    1: 'border-green-500',
+    2: 'border-blue-500',
+    3: 'border-purple-500',
+    4: 'border-red-500',
+  }[node.tier] || 'border-gray-400';
+
   return (
     <div
-      className={`p-4 rounded-lg shadow-lg transition duration-300 ${
-        isCore ? 'border-2 border-dashed border-blue-500' : 'border'
-      } ${locked ? 'bg-gray-400 text-gray-700' : isSelected ? 'bg-accent text-background' : 'bg-secondary'}`}
+      className={`p-4 rounded-lg shadow-lg border-2 transition duration-300 ${tierClass} ${
+        isCore ? 'border-dashed' : 'border-solid'
+      } ${isSelected ? 'bg-accent text-background' : 'bg-secondary'}`}
     >
       <div className="flex justify-between items-center mb-2">
-        <span className="font-bold text-lg">{node.name}</span>
+        <span className="font-bold text-lg">{node.name} (Tier {node.tier})</span>
         {locked ? (
           <span className="text-red-600">🔒</span>
         ) : (
