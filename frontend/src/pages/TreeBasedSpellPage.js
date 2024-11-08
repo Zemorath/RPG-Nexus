@@ -40,16 +40,17 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
     const sortedNodes = nodes.slice().sort((a, b) => a.xp_cost - b.xp_cost);
     let currentTier = 1;
     let tierThreshold = 10; // Adjust based on actual data
-
+  
     sortedNodes.forEach((node, index) => {
       node.tier = currentTier;
       if (index > 0 && node.xp_cost > sortedNodes[index - 1].xp_cost + tierThreshold) {
         currentTier++;
       }
     });
-
+  
     return sortedNodes;
   };
+  
 
   const handleLevelChange = (event) => {
     const newLevel = parseInt(event.target.value);
@@ -191,14 +192,14 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
                 node={node}
                 xp={xp}
                 setXp={setXp}
-                locked={!purchasedTrees[selectedTree.id]}
-                unlockedTiers={Object.keys(purchasedTrees[selectedTree.id] || {}).map(Number)}
+                locked={!purchasedTrees[selectedTree.id]} // Unlock only if the tree is purchased
+                unlockedTiers={Object.keys(purchasedTrees[selectedTree.id] || {})} // Correct unlockedTiers calculation
                 onInsufficientXp={() => {
                   setModalMessage(`Not enough XP to unlock ${node.name}. Requires ${node.xp_cost} XP.`);
                   setShowModal(true);
                 }}
                 isCore={node.isCore || false}
-                onNodePurchase={handleNodePurchase} // Track node purchase
+                onNodePurchase={handleNodePurchase}
               />
             ))}
           </div>

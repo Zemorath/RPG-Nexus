@@ -582,9 +582,8 @@ class UpdateCharacterTreesAndNodes(Resource):
         return {"message": "Trees and nodes updated successfully"}, 200
     
 class PurchaseForceTree(Resource):
-    def post(self):
+    def post(self, character_id):
         data = request.get_json()
-        character_id = data.get('character_id')
         tree_id = str(data.get('tree_id'))  # Store as string for easier JSON handling
         xp_cost = data.get('xp_cost')
 

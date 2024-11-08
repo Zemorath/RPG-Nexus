@@ -8,10 +8,13 @@ const TreeNode = ({ node, xp, setXp, locked, isCore, onInsufficientXp, unlockedT
       setXp(xp + node.xp_cost);
       setIsSelected(false);
     } else {
-      if (xp >= node.xp_cost && unlockedTiers.includes(node.tier - 1)) {
+      // Check if node is unlockable
+      const canUnlock = xp >= node.xp_cost && (!locked || unlockedTiers.includes(node.tier.toString()));
+      
+      if (canUnlock) {
         setXp(xp - node.xp_cost);
         setIsSelected(true);
-        onNodePurchase(node.id); // Track the purchased node by its ID
+        onNodePurchase(node.id);
       } else {
         onInsufficientXp(`You need to unlock previous tiers to access "${node.name}". Requires ${node.xp_cost} XP.`);
       }
