@@ -1,4 +1,7 @@
 # RPG-Nexus
+## Working on <br />
+I am currently working on the Star Wars RPG. The skill system is now finished and will be creating the PDF for it and Pathfinder here soon. <br />
+Once that is finished I will be moving on to Call of Cthulhu and Shadowrun. Making sure that the database is filled is what is taking the longest.
 
 ## Populated Races from selected system<br />
 ![image](https://github.com/user-attachments/assets/369565a9-4bee-4411-ad8c-f696bd594180)
