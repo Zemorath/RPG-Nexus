@@ -559,27 +559,41 @@ class UpdateCharacterLevel(Resource):
         }, 200
 
 
+
 class UpdateCharacterTreesAndNodes(Resource):
     def post(self):
         data = request.get_json()
         character_id = data.get('character_id')
-        purchased_tree_id = data.get('tree_id')
-        purchased_node_ids = data.get('node_ids')
+        purchased_tree_id = str(data.get('tree_id'))
+        purchased_node_names = data.get('node_names')  # Node names instead of IDs
+        level = data.get('level')
+        xp = data.get('experience_points')
 
         # Find the character
         character = Character.query.get_or_404(character_id)
-        
-        # Ensure the tree and node IDs are valid
-        if not purchased_tree_id or not isinstance(purchased_node_ids, list):
-            return {"message": "Invalid or missing tree/node IDs"}, 400
 
-        # Save the purchased tree and nodes to character's system_data
+        # Update the character's level and XP directly on the model
+        character.level = level
+        character.experience_points = xp
+
+        # Initialize or update system_data for storing purchased trees and nodes
         character.system_data = character.system_data or {}
-        character.system_data.setdefault('purchased_trees', {})[purchased_tree_id] = purchased_node_ids
+        
+        # Set up 'purchased_force_powers' and avoid duplicates
+        purchased_trees = character.system_data.setdefault('purchased_force_powers', {})
+        
+        # If the tree exists, get the current nodes, otherwise set an empty list
+        current_nodes = set(purchased_trees.get(purchased_tree_id, []))
+        # Add any new nodes, avoiding duplicates
+        current_nodes.update(purchased_node_names)
+        # Update the tree in system_data
+        purchased_trees[purchased_tree_id] = list(current_nodes)
 
         db.session.commit()
 
-        return {"message": "Trees and nodes updated successfully"}, 200
+        print(current_nodes)
+
+        return {"message": "Trees, nodes, level, and XP updated successfully"}, 200
     
 class PurchaseForceTree(Resource):
     def post(self, character_id):

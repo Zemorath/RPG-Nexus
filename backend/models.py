@@ -86,6 +86,7 @@ class Character(db.Model, SerializerMixin):
     saving_throws = db.Column(db.JSON, nullable=True)
     proficiency_bonus = db.Column(db.Integer, nullable=True) 
     initiative = db.Column(db.Integer, nullable=True)
+    test=db.Column(db.String(10), nullable=True)
 
 
     # Relationships to other tables

@@ -4,14 +4,14 @@ import TreeNode from '../components/TreeNode';
 import { useNavigate } from 'react-router-dom';
 
 const TreeBasedSpellPage = ({ systemId, characterId }) => {
-  const TREE_COST = 10; // Hardcoded cost to unlock the base tree
+  const TREE_COST = 10;
   const [xp, setXp] = useState(null);
   const [customXp, setCustomXp] = useState("");
   const [characterLevel, setCharacterLevel] = useState(1);
   const [availableTrees, setAvailableTrees] = useState([]);
   const [selectedTree, setSelectedTree] = useState(null);
   const [purchasedTrees, setPurchasedTrees] = useState({});
-  const [purchasedNodes, setPurchasedNodes] = useState([]);
+  const [purchasedNodes, setPurchasedNodes] = useState([]);  // Node names for selected nodes
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
@@ -27,7 +27,15 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
         setAvailableTrees(treesResponse.data);
 
         const systemData = response.data.system_data || {};
-        setPurchasedTrees(systemData.purchased_trees || {});
+        const savedTrees = systemData.purchased_force_powers || {};
+
+        setPurchasedTrees(savedTrees);
+        setPurchasedNodes(
+          Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
+            acc[treeId] = nodes;
+            return acc;
+          }, {})
+        );
       } catch (error) {
         console.error('Error fetching character data or trees:', error);
       }
@@ -39,22 +47,20 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
   const assignTiersToNodes = (nodes) => {
     const sortedNodes = nodes.slice().sort((a, b) => a.xp_cost - b.xp_cost);
     let currentTier = 1;
-    let tierThreshold = 10; // Adjust based on actual data
-  
+    let tierThreshold = 10;
+
     sortedNodes.forEach((node, index) => {
       node.tier = currentTier;
       if (index > 0 && node.xp_cost > sortedNodes[index - 1].xp_cost + tierThreshold) {
         currentTier++;
       }
     });
-  
+
     return sortedNodes;
   };
-  
 
   const handleLevelChange = (event) => {
-    const newLevel = parseInt(event.target.value);
-    setCharacterLevel(newLevel);
+    setCharacterLevel(parseInt(event.target.value));
   };
 
   const handleXpChange = (event) => {
@@ -76,8 +82,8 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
   };
 
   const handleTreeChange = (event) => {
-    const treeId = parseInt(event.target.value);
-    const tree = availableTrees.find(tree => tree.id === treeId);
+    const treeId = event.target.value;
+    const tree = availableTrees.find(tree => tree.id === parseInt(treeId));
     setSelectedTree(tree || null);
   };
 
@@ -85,7 +91,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
     if (xp >= TREE_COST) {
       setXp(xp - TREE_COST);
       setPurchasedTrees(prev => ({ ...prev, [treeId]: [] }));
-  
+
       axios.post(`http://127.0.0.1:5555/api/characters/${characterId}/purchase-tree`, {
         tree_id: treeId,
         xp_cost: TREE_COST,
@@ -96,20 +102,28 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
     }
   };
 
-  const handleNodePurchase = (nodeId) => {
-    setPurchasedNodes(prevNodes => [...prevNodes, nodeId]);
+  const handleNodePurchase = (nodeName) => {
+    setPurchasedNodes(prevNodes => {
+      const nodesForTree = prevNodes[selectedTree.id] || [];
+      if (!nodesForTree.includes(nodeName)) {
+        return { ...prevNodes, [selectedTree.id]: [...nodesForTree, nodeName] };
+      }
+      return prevNodes;
+    });
   };
 
   const submitPurchasedData = async () => {
     try {
-      await axios.post(`http://127.0.0.1:5555/api/characters/update-trees-nodes`, {
+      await axios.post(`http://127.0.0.1:5555/api/characters/update-nodes`, {
         character_id: characterId,
         tree_id: selectedTree.id,
-        node_ids: purchasedNodes,
+        node_names: purchasedNodes[selectedTree.id] || [],
+        level: characterLevel,
+        experience_points: xp,
       });
-      console.log('Purchased trees and nodes saved successfully');
+      console.log('Purchased trees, nodes, level, and XP saved successfully');
     } catch (error) {
-      console.error('Error saving purchased trees and nodes:', error);
+      console.error('Error saving purchased trees, nodes, level, and XP:', error);
     }
   };
 
@@ -192,14 +206,15 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
                 node={node}
                 xp={xp}
                 setXp={setXp}
-                locked={!purchasedTrees[selectedTree.id]} // Unlock only if the tree is purchased
-                unlockedTiers={Object.keys(purchasedTrees[selectedTree.id] || {})} // Correct unlockedTiers calculation
+                locked={!purchasedTrees[selectedTree.id]}
+                unlockedTiers={Object.keys(purchasedTrees[selectedTree.id] || {})}
                 onInsufficientXp={() => {
                   setModalMessage(`Not enough XP to unlock ${node.name}. Requires ${node.xp_cost} XP.`);
                   setShowModal(true);
                 }}
                 isCore={node.isCore || false}
-                onNodePurchase={handleNodePurchase}
+                onNodePurchase={() => handleNodePurchase(node.name)}
+                isSelected={purchasedNodes[selectedTree.id]?.includes(node.name)}
               />
             ))}
           </div>
