@@ -11,7 +11,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
   const [availableTrees, setAvailableTrees] = useState([]);
   const [selectedTree, setSelectedTree] = useState(null);
   const [purchasedTrees, setPurchasedTrees] = useState({});
-  const [purchasedNodes, setPurchasedNodes] = useState([]);  // Node names for selected nodes
+  const [purchasedNodes, setPurchasedNodes] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
@@ -30,12 +30,13 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
         const savedTrees = systemData.purchased_force_powers || {};
 
         setPurchasedTrees(savedTrees);
-        setPurchasedNodes(
-          Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
-            acc[treeId] = nodes;
-            return acc;
-          }, {})
-        );
+
+        // Initialize purchasedNodes based on saved systemData
+        const nodes = Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
+          acc[treeId] = nodes;
+          return acc;
+        }, {});
+        setPurchasedNodes(nodes);
       } catch (error) {
         console.error('Error fetching character data or trees:', error);
       }
@@ -105,12 +106,27 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
   const handleNodePurchase = (nodeName) => {
     setPurchasedNodes(prevNodes => {
       const nodesForTree = prevNodes[selectedTree.id] || [];
-      if (!nodesForTree.includes(nodeName)) {
-        return { ...prevNodes, [selectedTree.id]: [...nodesForTree, nodeName] };
+      let updatedNodes;
+      if (nodesForTree.includes(nodeName)) {
+        // Node is already selected, so unselect it
+        updatedNodes = nodesForTree.filter(node => node !== nodeName);
+      } else {
+        // Node is not selected, so select it
+        updatedNodes = [...nodesForTree, nodeName];
       }
-      return prevNodes;
+      return { ...prevNodes, [selectedTree.id]: updatedNodes };
     });
   };
+
+  useEffect(() => {
+    if (selectedTree && purchasedNodes[selectedTree.id]) {
+      // Automatically select nodes that were previously purchased
+      const treeNodes = assignTiersToNodes(selectedTree.force_power_tree.upgrades);
+      treeNodes.forEach(node => {
+        node.isSelected = purchasedNodes[selectedTree.id].includes(node.name);
+      });
+    }
+  }, [selectedTree, purchasedNodes]);
 
   const submitPurchasedData = async () => {
     try {

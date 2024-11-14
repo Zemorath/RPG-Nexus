@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from backend.models import db, Character, Feat, CharacterFeat, Spell, ClassProgression, Alignment, Background, RPGSystem, Item
 from backend.utils.calculation_service import CalculationService
 from backend.utils.ability_score_service import AbilityScoreService
+from sqlalchemy.orm.attributes import flag_modified
 
 character_bp = Blueprint('character', __name__, url_prefix='/api')
 character_api = Api(character_bp)
@@ -565,33 +566,47 @@ class UpdateCharacterTreesAndNodes(Resource):
         data = request.get_json()
         character_id = data.get('character_id')
         purchased_tree_id = str(data.get('tree_id'))
-        purchased_node_names = data.get('node_names')  # Node names instead of IDs
+        purchased_node_names = data.get('node_names')
         level = data.get('level')
         xp = data.get('experience_points')
 
         # Find the character
         character = Character.query.get_or_404(character_id)
 
-        # Update the character's level and XP directly on the model
+        # Update character's level and XP directly on the model
         character.level = level
         character.experience_points = xp
 
         # Initialize or update system_data for storing purchased trees and nodes
-        character.system_data = character.system_data or {}
+        system_data = character.system_data or {}
         
-        # Set up 'purchased_force_powers' and avoid duplicates
-        purchased_trees = character.system_data.setdefault('purchased_force_powers', {})
-        
-        # If the tree exists, get the current nodes, otherwise set an empty list
-        current_nodes = set(purchased_trees.get(purchased_tree_id, []))
-        # Add any new nodes, avoiding duplicates
-        current_nodes.update(purchased_node_names)
-        # Update the tree in system_data
-        purchased_trees[purchased_tree_id] = list(current_nodes)
+        # Debug print for current system_data
+        print(f"Initial system_data: {system_data}")
 
+        # Ensure 'purchased_force_powers' exists
+        purchased_trees = system_data.setdefault('purchased_force_powers', {})
+
+        # Check if the specific tree already exists in purchased_force_powers
+        if purchased_tree_id in purchased_trees:
+            # If tree exists, add new nodes without duplicates
+            current_nodes = set(purchased_trees[purchased_tree_id])
+            print(f"Current nodes before update: {current_nodes}")
+            current_nodes.update(purchased_node_names)
+            purchased_trees[purchased_tree_id] = list(current_nodes)
+            print("test")
+        else:
+            # If tree does not exist, initialize with the purchased nodes
+            purchased_trees[purchased_tree_id] = purchased_node_names
+
+        # Explicitly re-assign system_data to ensure the change is detected
+        character.system_data = system_data
+        flag_modified(character, "system_data")
+        db.session.add(character)
         db.session.commit()
 
-        print(current_nodes)
+        # Debug print to verify updated system_data
+        print(f"Updated system_data after adding nodes: {character.system_data}")
+        print("Database commit successful")
 
         return {"message": "Trees, nodes, level, and XP updated successfully"}, 200
     
@@ -601,24 +616,24 @@ class PurchaseForceTree(Resource):
         tree_id = str(data.get('tree_id'))  # Store as string for easier JSON handling
         xp_cost = data.get('xp_cost')
 
+        # Fetch character and check if they have enough XP
         character = Character.query.get_or_404(character_id)
-
-        # Check if character has enough XP
         if character.experience_points < xp_cost:
             return {"message": "Insufficient XP"}, 400
 
-        # Deduct XP and add the tree to system_data's purchased trees
+        # Deduct XP
         character.experience_points -= xp_cost
         system_data = character.system_data or {}
+
+        # Use "purchased_force_powers" for consistency with UpdateCharacterTreesAndNodes
+        if "purchased_force_powers" not in system_data:
+            system_data["purchased_force_powers"] = {}
+
+        # Check if the tree already exists; if so, preserve existing nodes
+        if tree_id not in system_data["purchased_force_powers"]:
+            system_data["purchased_force_powers"][tree_id] = []
         
-        # Ensure the "purchased_trees" key exists
-        if "purchased_trees" not in system_data:
-            system_data["purchased_trees"] = {}
-
-        # Add the tree to purchased_trees without any nodes selected yet
-        if tree_id not in system_data["purchased_trees"]:
-            system_data["purchased_trees"][tree_id] = []
-
+        # Update the character's system_data with consistent structure
         character.system_data = system_data
         db.session.commit()
 
