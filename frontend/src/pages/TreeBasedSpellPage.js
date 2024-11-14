@@ -16,6 +16,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
 
+  // Fetch character and tree data on mount
   useEffect(() => {
     const fetchCharacterData = async () => {
       try {
@@ -31,7 +32,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
 
         setPurchasedTrees(savedTrees);
 
-        // Initialize purchasedNodes based on saved systemData
+        // Initialize purchasedNodes with saved data for pre-selection
         const nodes = Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
           acc[treeId] = nodes;
           return acc;
@@ -103,27 +104,26 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
     }
   };
 
+  // Add/remove nodes from `purchasedNodes` and persist changes
   const handleNodePurchase = (nodeName) => {
     setPurchasedNodes(prevNodes => {
       const nodesForTree = prevNodes[selectedTree.id] || [];
       let updatedNodes;
       if (nodesForTree.includes(nodeName)) {
-        // Node is already selected, so unselect it
-        updatedNodes = nodesForTree.filter(node => node !== nodeName);
+        updatedNodes = nodesForTree.filter(node => node !== nodeName);  // Remove node if already selected
       } else {
-        // Node is not selected, so select it
-        updatedNodes = [...nodesForTree, nodeName];
+        updatedNodes = [...nodesForTree, nodeName];  // Add node if not selected
       }
       return { ...prevNodes, [selectedTree.id]: updatedNodes };
     });
   };
 
+  // Effect to pre-select nodes based on `purchasedNodes`
   useEffect(() => {
     if (selectedTree && purchasedNodes[selectedTree.id]) {
-      // Automatically select nodes that were previously purchased
       const treeNodes = assignTiersToNodes(selectedTree.force_power_tree.upgrades);
       treeNodes.forEach(node => {
-        node.isSelected = purchasedNodes[selectedTree.id].includes(node.name);
+        node.isSelected = purchasedNodes[selectedTree.id]?.includes(node.name);
       });
     }
   }, [selectedTree, purchasedNodes]);
@@ -218,7 +218,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {assignTiersToNodes(selectedTree.force_power_tree.upgrades).map((node, index) => (
               <TreeNode
-                key={index}
+                key={`${selectedTree.id}-${node.name}`}  // unique key per tree and node
                 node={node}
                 xp={xp}
                 setXp={setXp}
