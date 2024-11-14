@@ -104,36 +104,27 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
     }
   };
 
-  // Add/remove nodes from `purchasedNodes` and persist changes
-  const handleNodePurchase = (nodeName) => {
+  const handleNodePurchase = (nodeName, isSelected) => {
     setPurchasedNodes(prevNodes => {
       const nodesForTree = prevNodes[selectedTree.id] || [];
-      let updatedNodes;
-      if (nodesForTree.includes(nodeName)) {
-        updatedNodes = nodesForTree.filter(node => node !== nodeName);  // Remove node if already selected
-      } else {
-        updatedNodes = [...nodesForTree, nodeName];  // Add node if not selected
-      }
-      return { ...prevNodes, [selectedTree.id]: updatedNodes };
+      const updatedNodes = isSelected
+        ? [...nodesForTree, nodeName] // Add node if selected
+        : nodesForTree.filter(node => node !== nodeName); // Remove node if deselected
+      const newNodes = { ...prevNodes, [selectedTree.id]: updatedNodes };
+
+      // Call submitPurchasedData to persist the change in the backend
+      submitPurchasedData(selectedTree.id, newNodes[selectedTree.id]);
+
+      return newNodes;
     });
   };
 
-  // Effect to pre-select nodes based on `purchasedNodes`
-  useEffect(() => {
-    if (selectedTree && purchasedNodes[selectedTree.id]) {
-      const treeNodes = assignTiersToNodes(selectedTree.force_power_tree.upgrades);
-      treeNodes.forEach(node => {
-        node.isSelected = purchasedNodes[selectedTree.id]?.includes(node.name);
-      });
-    }
-  }, [selectedTree, purchasedNodes]);
-
-  const submitPurchasedData = async () => {
+  const submitPurchasedData = async (treeId, nodeNames) => {
     try {
       await axios.post(`http://127.0.0.1:5555/api/characters/update-nodes`, {
         character_id: characterId,
-        tree_id: selectedTree.id,
-        node_names: purchasedNodes[selectedTree.id] || [],
+        tree_id: treeId,
+        node_names: nodeNames,
         level: characterLevel,
         experience_points: xp,
       });
@@ -216,7 +207,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
 
         {selectedTree ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {assignTiersToNodes(selectedTree.force_power_tree.upgrades).map((node, index) => (
+            {assignTiersToNodes(selectedTree.force_power_tree.upgrades).map((node) => (
               <TreeNode
                 key={`${selectedTree.id}-${node.name}`}  // unique key per tree and node
                 node={node}
@@ -229,7 +220,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
                   setShowModal(true);
                 }}
                 isCore={node.isCore || false}
-                onNodePurchase={() => handleNodePurchase(node.name)}
+                onNodePurchase={(nodeId, isSelected) => handleNodePurchase(nodeId, isSelected)}
                 isSelected={purchasedNodes[selectedTree.id]?.includes(node.name)}
               />
             ))}
@@ -239,7 +230,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
         )}
 
         <button
-          onClick={submitPurchasedData}
+          onClick={() => submitPurchasedData(selectedTree?.id, purchasedNodes[selectedTree?.id])}
           className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300 mt-4"
         >
           Save Purchased Trees and Nodes

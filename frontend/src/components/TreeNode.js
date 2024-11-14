@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const TreeNode = ({ node, xp, setXp, locked, isCore, onInsufficientXp, unlockedTiers, onNodePurchase }) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const TreeNode = ({ node, xp, setXp, locked, isCore, onInsufficientXp, unlockedTiers, onNodePurchase, isSelected }) => {
   const handleSelect = () => {
     if (isSelected) {
       setXp(xp + node.xp_cost);
-      setIsSelected(false);
+      onNodePurchase(node.name, false); // false indicates deselection
     } else {
-      // Check if node is unlockable
       const canUnlock = xp >= node.xp_cost && (!locked || unlockedTiers.includes(node.tier.toString()));
       
       if (canUnlock) {
         setXp(xp - node.xp_cost);
-        setIsSelected(true);
-        onNodePurchase(node.id);
+        onNodePurchase(node.name, true); // true indicates selection
       } else {
         onInsufficientXp(`You need to unlock previous tiers to access "${node.name}". Requires ${node.xp_cost} XP.`);
       }
     }
   };
 
-  // Tier-based border styling
   const tierClass = {
     1: 'border-green-500',
     2: 'border-blue-500',
