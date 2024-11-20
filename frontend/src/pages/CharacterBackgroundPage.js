@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { DnD5eConfig } from '../components/config/dnd_5e';
+import { EdgeOfTheEmpireConfig } from '../components/config/edge_of_the_empire';
+
+const RPGConfigs = {
+  dnd_5e: DnD5eConfig,
+  edge_of_the_empire: EdgeOfTheEmpireConfig,
+};
 
 const CharacterBackgroundPage = () => {
   const { systemId, characterId } = useParams();
+  const config = RPGConfigs[systemId] || DnD5eConfig; // Default to D&D if system not found
   const [alignments, setAlignments] = useState([]);
   const [backgrounds, setBackgrounds] = useState([]);
   const [characterData, setCharacterData] = useState({
     name: '',
     alignment: '',
     background: '',
-    description: {
-      hair: '',
-      skin: '',
-      eyes: '',
-      height: '',
-      weight: '',
-      age: '',
-      gender: ''
-    },
+    description: config.physicalFeatures.fields.reduce(
+      (acc, field) => ({ ...acc, [field]: '' }),
+      {}
+    ),
     traits: [],
-    ideals: [],
-    bonds: [],
-    flaws: [],
+    obligations: config.defaultValues?.obligations || [], // Safe fallback for obligations
+    motivations: config.defaultValues?.motivations || [], // Safe fallback for motivations
     organizations: [],
     allies: [],
     enemies: [],
@@ -34,43 +36,37 @@ const CharacterBackgroundPage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Fetch alignment and background data, as well as character's existing data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch alignment and background data
         const [alignmentResponse, backgroundResponse, characterResponse] = await Promise.all([
           axios.get(`http://127.0.0.1:5555/api/alignments/system/${systemId}`),
           axios.get(`http://127.0.0.1:5555/api/backgrounds/system/${systemId}`),
-          axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`)
+          axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`),
         ]);
 
-        setAlignments(alignmentResponse.data);
-        setBackgrounds(backgroundResponse.data);
+        setAlignments(alignmentResponse.data); // Now used in dropdown
+        setBackgrounds(backgroundResponse.data); // Now used in dropdown
 
-        // Populate the form fields with the character's existing data
         const character = characterResponse.data;
         setCharacterData({
           name: character.name || '',
           alignment: character.alignment?.name || '',
           background: character.background?.name || '',
-          description: {
-            hair: character.physical_features?.hair || '',
-            skin: character.physical_features?.skin || '',
-            eyes: character.physical_features?.eyes || '',
-            height: character.physical_features?.height || '',
-            weight: character.physical_features?.weight || '',
-            age: character.physical_features?.age || '',
-            gender: character.physical_features?.gender || ''
-          },
+          description: config.physicalFeatures.fields.reduce(
+            (acc, field) => ({
+              ...acc,
+              [field]: character.physical_features?.[field] || '',
+            }),
+            {}
+          ),
           traits: character.physical_features?.traits || [],
-          ideals: character.physical_features?.ideals || [],
-          bonds: character.physical_features?.bonds || [],
-          flaws: character.physical_features?.flaws || [],
+          obligations: character.physical_features?.obligations || config.defaultValues?.obligations || [],
+          motivations: character.physical_features?.motivations || config.defaultValues?.motivations || [],
           organizations: character.physical_features?.organizations || [],
           allies: character.physical_features?.allies || [],
           enemies: character.physical_features?.enemies || [],
-          other: character.physical_features?.other || []
+          other: character.physical_features?.other || [],
         });
 
         setLoading(false);
@@ -81,7 +77,7 @@ const CharacterBackgroundPage = () => {
     };
 
     fetchData();
-  }, [systemId, characterId]);
+  }, [systemId, characterId, config]);
 
   const handleInputChange = (e, field, subfield) => {
     if (subfield) {
@@ -89,29 +85,27 @@ const CharacterBackgroundPage = () => {
         ...prev,
         [field]: {
           ...prev[field],
-          [subfield]: e.target.value
-        }
+          [subfield]: e.target.value,
+        },
       }));
     } else {
-      setCharacterData({
-        ...characterData,
-        [field]: e.target.value
-      });
+      setCharacterData((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
     }
   };
 
-  // Handle opening the modal to add traits, ideals, etc.
   const handleAdd = (category) => {
     setModalCategory(category);
     setModalContent('');
     document.getElementById('modal').style.display = 'block'; // Show modal
   };
 
-  // Handle accepting the modal input and adding to the corresponding list
   const handleAccept = () => {
     setCharacterData((prev) => ({
       ...prev,
-      [modalCategory]: [...prev[modalCategory], modalContent]
+      [modalCategory]: [...prev[modalCategory], modalContent],
     }));
     document.getElementById('modal').style.display = 'none'; // Hide modal
   };
@@ -120,10 +114,9 @@ const CharacterBackgroundPage = () => {
     try {
       await axios.post(`http://127.0.0.1:5555/api/characters/update-background`, {
         character_id: characterId,
-        ...characterData
+        ...characterData,
       });
 
-      // Navigate to the next step (equipment selection)
       navigate(`/character/create/equipment/${systemId}/${characterId}`);
     } catch (error) {
       console.error('Error updating character background:', error);
@@ -140,13 +133,11 @@ const CharacterBackgroundPage = () => {
         <div className="flex justify-between mb-8">
           <button
             className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300"
-            onClick={() => navigate(`/character/create/spells/${systemId}/${characterId}`)} // Navigate back
+            onClick={() => navigate(`/character/create/spells/${systemId}/${characterId}`)}
           >
             ← Back
           </button>
           <h1 className="text-4xl font-bold text-center text-accent mx-auto">Character Background</h1>
-          {/* Next Button */}
-        
           <button
             className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
             onClick={handleNextButton}
@@ -155,11 +146,10 @@ const CharacterBackgroundPage = () => {
           </button>
         </div>
 
-        {/* Name Field */}
         <label className="block mb-2 text-lg w-1/2 mx-auto">
           Name:
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={characterData.name}
             onChange={(e) => handleInputChange(e, 'name')}
             className="input-field w-full bg-secondary text-text rounded px-4 py-2 mt-1"
@@ -167,44 +157,45 @@ const CharacterBackgroundPage = () => {
           />
         </label>
 
-        {/* Alignment Dropdown */}
         <label className="block mb-2 text-lg w-1/2 mx-auto">
           Alignment:
-          <select 
+          <select
             value={characterData.alignment}
             onChange={(e) => handleInputChange(e, 'alignment')}
             className="input-field w-full bg-secondary text-text rounded px-4 py-2 mt-1"
           >
             <option value="">Select Alignment</option>
-            {alignments.map(alignment => (
-              <option key={alignment.id} value={alignment.name}>{alignment.name}</option>
+            {alignments.map((alignment) => (
+              <option key={alignment.id} value={alignment.name}>
+                {alignment.name}
+              </option>
             ))}
           </select>
         </label>
 
-        {/* Background Dropdown */}
         <label className="block mb-2 text-lg w-1/2 mx-auto">
           Background:
-          <select 
+          <select
             value={characterData.background}
             onChange={(e) => handleInputChange(e, 'background')}
             className="input-field w-full bg-secondary text-text rounded px-4 py-2 mt-1"
           >
             <option value="">Select Background</option>
-            {backgrounds.map(bg => (
-              <option key={bg.id} value={bg.name}>{bg.name}</option>
+            {backgrounds.map((bg) => (
+              <option key={bg.id} value={bg.name}>
+                {bg.name}
+              </option>
             ))}
           </select>
         </label>
 
-        {/* Description Fields */}
         <h3 className="text-xl font-bold mt-6 text-center">Description</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 w-3/4 mx-auto">
-          {['hair', 'skin', 'eyes', 'height', 'weight', 'age', 'gender'].map((feature) => (
+          {config.physicalFeatures.fields.map((feature) => (
             <label key={feature} className="block mb-2 text-lg">
               {feature.charAt(0).toUpperCase() + feature.slice(1)}:
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={characterData.description[feature]}
                 onChange={(e) => handleInputChange(e, 'description', feature)}
                 className="input-field w-full bg-secondary text-text rounded px-4 py-2 mt-1"
@@ -214,33 +205,25 @@ const CharacterBackgroundPage = () => {
           ))}
         </div>
 
-        {/* Addable Traits/Features */}
         <h3 className="text-xl font-bold mt-4 text-center">Traits and Features</h3>
         <div className="flex flex-wrap justify-center">
-          {[
-            { label: 'Traits', key: 'traits' },
-            { label: 'Ideals', key: 'ideals' },
-            { label: 'Bonds', key: 'bonds' },
-            { label: 'Flaws', key: 'flaws' },
-            { label: 'Organizations', key: 'organizations' },
-            { label: 'Allies', key: 'allies' },
-            { label: 'Enemies', key: 'enemies' },
-            { label: 'Other', key: 'other' },
-          ].map((category) => (
+          {config.categories.map((category) => (
             <div key={category.key} className="mb-4 w-1/2 sm:w-1/4 p-2">
               <div className="bg-secondary p-4 rounded-lg shadow-lg text-center">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold">{category.label}</span>
-                  <button 
-                    className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300 ml-4" 
+                  <button
+                    className="bg-accent text-background py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300 ml-4"
                     onClick={() => handleAdd(category.key)}
                   >
                     Add
                   </button>
                 </div>
                 <ul className="list-disc pl-4 mt-2 text-sm">
-                  {characterData[category.key].map((item, index) => (
-                    <li key={index} className="bg-accent text-background p-2 rounded mb-1">{item}</li>
+                  {characterData[category.key]?.map((item, index) => (
+                    <li key={index} className="bg-accent text-background p-2 rounded mb-1">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -248,7 +231,6 @@ const CharacterBackgroundPage = () => {
           ))}
         </div>
 
-        {/* Modal for adding traits */}
         <div id="modal" className="fixed inset-0 z-50 hidden flex-items-center justify-center bg-black bg-opacity-50">
           <div className="bg-secondary p-8 rounded-lg shadow-lg max-w-xl w-full relative">
             <button
@@ -265,13 +247,13 @@ const CharacterBackgroundPage = () => {
               placeholder={`Enter ${modalCategory}`}
             />
             <div className="mt-4">
-              <button 
-                className="bg-accent text-background py-2 px-4 rounded mr-2 hover:bg-text hover:text-background transition duration-300" 
+              <button
+                className="bg-accent text-background py-2 px-4 rounded mr-2 hover:bg-text hover:text-background transition duration-300"
                 onClick={handleAccept}
               >
                 Accept
               </button>
-              <button 
+              <button
                 className="bg-red-600 text-white py-2 px-4 rounded"
                 onClick={() => (document.getElementById('modal').style.display = 'none')}
               >

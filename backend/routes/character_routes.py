@@ -441,9 +441,8 @@ class UpdateCharacterBackground(Resource):
             "age": data.get("description", {}).get("age"),
             "gender": data.get("description", {}).get("gender"),
             "traits": data.get("traits", []),
-            "ideals": data.get("ideals", []),
-            "bonds": data.get("bonds", []),
-            "flaws": data.get("flaws", []),
+            "obligations": data.get("obligations", []),
+            "motivations": data.get("motivations", []),
             "organizations": data.get("organizations", []),
             "allies": data.get("allies", []),
             "enemies": data.get("enemies", []),
@@ -454,6 +453,7 @@ class UpdateCharacterBackground(Resource):
         db.session.commit()
 
         return {"message": "Character background updated successfully"}, 200
+
     
 class CharacterCalculation(Resource):
     def get(self, character_id):
@@ -670,7 +670,6 @@ character_api.add_resource(GenerateAbilityScores, '/characters/generate-ability-
 character_api.add_resource(CharacterInventory, '/characters/<int:character_id>/inventory')
 character_api.add_resource(PurchaseForcePowerNode, '/characters/purchase-force-node')
 character_api.add_resource(UpdateCharacterLevel, '/characters/update-level')
-character_api.add_resource(UpdateCharacterTreesAndNodes, '/characters/update-nodes')
-character_api.add_resource(PurchaseForceTree, '/characters/<int:character_id>/purchase-tree')
+
 
 

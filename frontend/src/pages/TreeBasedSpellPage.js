@@ -147,7 +147,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
             ← Back
           </button>
           <button
-            onClick={() => navigate(`/character/create/next-step/${systemId}/${characterId}`)}
+            onClick={() => navigate(`/character/create/background/${systemId}/${characterId}`)}
             className="bg-accent text-background py-2 px-6 rounded hover:bg-text hover:text-background transition duration-300"
           >
             Next →
