@@ -16039,6 +16039,1002 @@ def seed_rpg_systems():
                 },
                 "system_specific_data": None
             }
+        ],
+        "Pathfinder": [
+            {
+                "name": "Acolyte",
+                "description": "You spent your formative years serving a deity, learning sacred rites and the mysteries of the divine.",
+                "proficiencies": {
+                    "skills": ["Religion"],
+                    "lore": ["Temple Lore"]
+                },
+                "ability_score_increases": {
+                    "Wisdom": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Student of the Canon"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Holy symbol",
+                    "Religious text",
+                    "Vestments",
+                    "10 silver pieces"
+                ],
+                "languages": ["Celestial", "One other language of your choice"],
+                "background_features": {
+                    "name": "Divine Initiate",
+                    "description": "You are trained in the Religion skill and Temple Lore. You gain the Student of the Canon skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Craftsman",
+                "description": "You have honed your skills in a particular craft, creating goods that are both practical and beautiful.",
+                "proficiencies": {
+                    "skills": ["Crafting"],
+                    "lore": ["Guild Lore"]
+                },
+                "ability_score_increases": {
+                    "Intelligence": 1,
+                    "Dexterity": 1
+                },
+                "granted_feats": ["Specialty Crafting"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Artisan’s tools",
+                    "50 silver pieces worth of raw materials",
+                    "10 silver pieces"
+                ],
+                "languages": ["Dwarven", "One other language of your choice"],
+                "background_features": {
+                    "name": "Guild Artisan",
+                    "description": "You are trained in the Crafting skill and Guild Lore. You gain the Specialty Crafting skill feat for a specific type of craft."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Merchant",
+                "description": "You spent years working in commerce, learning the ins and outs of trade and negotiation.",
+                "proficiencies": {
+                    "skills": ["Diplomacy"],
+                    "lore": ["Mercantile Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Bargain Hunter"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Ledgers",
+                    "Set of scales",
+                    "20 silver pieces",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Trade Savvy",
+                    "description": "You are trained in the Diplomacy skill and Mercantile Lore. You gain the Bargain Hunter skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Outlander",
+                "description": "You hail from the wilderness, learning how to survive and thrive in untamed lands.",
+                "proficiencies": {
+                    "skills": ["Survival"],
+                    "lore": ["Wilderness Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Forager"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Hunting trap",
+                    "Traveler’s clothing",
+                    "Rations for a week",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "Sylvan"],
+                "background_features": {
+                    "name": "Wilderness Training",
+                    "description": "You are trained in the Survival skill and Wilderness Lore. You gain the Forager skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Scholar",
+                "description": "Your curiosity and intellect drove you to spend years poring over books, learning the secrets of the world.",
+                "proficiencies": {
+                    "skills": ["Arcana"],
+                    "lore": ["Academia Lore"]
+                },
+                "ability_score_increases": {
+                    "Intelligence": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Assured Identification"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Scholarly text",
+                    "Quill and ink",
+                    "Case of parchment",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Academic Training",
+                    "description": "You are trained in the Arcana skill and Academia Lore. You gain the Assured Identification skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Entertainer",
+                "description": "You have performed in front of crowds, thrilling them with your skill and charisma. Whether a musician, dancer, or stage actor, you know how to captivate an audience.",
+                "proficiencies": {
+                    "skills": ["Performance"],
+                    "lore": ["Theater Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Dexterity": 1
+                },
+                "granted_feats": ["Fascinating Performance"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Musical instrument or performance prop",
+                    "Fine clothes",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Star Performer",
+                    "description": "You are trained in the Performance skill and Theater Lore. You gain the Fascinating Performance skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Gladiator",
+                "description": "You are a skilled combatant who has entertained crowds by fighting in arenas. Your experience in public duels has made you adept at combat and winning over onlookers.",
+                "proficiencies": {
+                    "skills": ["Intimidation"],
+                    "lore": ["Gladiatorial Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Impressive Display"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Arena weapon (club, spear, or shortsword)",
+                    "Light armor",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Arena Combatant",
+                    "description": "You are trained in the Intimidation skill and Gladiatorial Lore. You gain the Impressive Display skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Sailor",
+                "description": "You have spent years working on ships, learning how to handle the rigors of the open seas. Whether a merchant or a privateer, you are no stranger to hard work and danger.",
+                "proficiencies": {
+                    "skills": ["Athletics"],
+                    "lore": ["Sailing Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Underwater Marauder"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Sailor's uniform",
+                    "Navigational tools",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "Aquan"],
+                "background_features": {
+                    "name": "Seafarer",
+                    "description": "You are trained in the Athletics skill and Sailing Lore. You gain the Underwater Marauder skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Street Urchin",
+                "description": "You grew up in the alleys and on the rooftops of a bustling city, surviving by wit and quick reflexes. You know how to navigate the chaos of urban life.",
+                "proficiencies": {
+                    "skills": ["Thievery"],
+                    "lore": ["City Lore"]
+                },
+                "ability_score_increases": {
+                    "Dexterity": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Pickpocket"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Small knife",
+                    "Worn-out clothes",
+                    "5 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Urban Survivalist",
+                    "description": "You are trained in the Thievery skill and City Lore. You gain the Pickpocket skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Soldier",
+                "description": "You were trained in the art of warfare, learning how to fight as part of an organized unit. You are accustomed to discipline and hardship.",
+                "proficiencies": {
+                    "skills": ["Warfare Lore"],
+                    "lore": ["Military Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Shield Block"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Shield",
+                    "Military uniform",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Combat Trained",
+                    "description": "You are trained in Warfare Lore and Military Lore. You gain the Shield Block skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Animal Whisperer",
+                "description": "You have a knack for understanding animals and calming them, whether as a trainer, rancher, or naturalist.",
+                "proficiencies": {
+                    "skills": ["Nature"],
+                    "lore": ["Animal Lore"]
+                },
+                "ability_score_increases": {
+                    "Wisdom": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Train Animal"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Whistle",
+                    "Simple feed",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Animal Affinity",
+                    "description": "You are trained in the Nature skill and Animal Lore. You gain the Train Animal skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Artisan",
+                "description": "You have studied a craft and take pride in creating objects of utility or beauty.",
+                "proficiencies": {
+                    "skills": ["Crafting"],
+                    "lore": ["Artisan Lore"]
+                },
+                "ability_score_increases": {
+                    "Intelligence": 1,
+                    "Strength": 1
+                },
+                "granted_feats": ["Specialty Crafting"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Crafting tools",
+                    "50 silver pieces worth of raw materials",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Craftsmanship",
+                    "description": "You are trained in the Crafting skill and Artisan Lore. You gain the Specialty Crafting skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Artist",
+                "description": "Your passion for creativity drives you to produce visual or auditory masterpieces, whether paintings, sculptures, or music.",
+                "proficiencies": {
+                    "skills": ["Performance"],
+                    "lore": ["Art Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Dexterity": 1
+                },
+                "granted_feats": ["Fascinating Performance"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Art supplies or musical instrument",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Creative Flair",
+                    "description": "You are trained in the Performance skill and Art Lore. You gain the Fascinating Performance skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Barkeep",
+                "description": "As the keeper of an inn or tavern, you’ve heard countless tales and know how to deal with rowdy patrons.",
+                "proficiencies": {
+                    "skills": ["Diplomacy"],
+                    "lore": ["Alcohol Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Hobnobber"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Tankard",
+                    "Towel",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Hospitality Expert",
+                    "description": "You are trained in the Diplomacy skill and Alcohol Lore. You gain the Hobnobber skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Bounty Hunter",
+                "description": "You excel at tracking down individuals, whether for justice, vengeance, or profit.",
+                "proficiencies": {
+                    "skills": ["Survival"],
+                    "lore": ["Bounty Hunter Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Experienced Tracker"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Rope",
+                    "Manacles",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Tracker",
+                    "description": "You are trained in the Survival skill and Bounty Hunter Lore. You gain the Experienced Tracker skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Charlatan",
+                "description": "You make a living by convincing others of falsehoods, selling fake remedies, or impersonating others.",
+                "proficiencies": {
+                    "skills": ["Deception"],
+                    "lore": ["Underworld Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Dexterity": 1
+                },
+                "granted_feats": ["Lie to Me"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Disguise kit",
+                    "False credentials",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Con Artist",
+                    "description": "You are trained in the Deception skill and Underworld Lore. You gain the Lie to Me skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Criminal",
+                "description": "You are no stranger to the underworld, having made your living through theft, smuggling, or other illicit activities.",
+                "proficiencies": {
+                    "skills": ["Stealth"],
+                    "lore": ["Underworld Lore"]
+                },
+                "ability_score_increases": {
+                    "Dexterity": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Pickpocket"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Lockpicks",
+                    "Dark clothing",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Underworld Connections",
+                    "description": "You are trained in the Stealth skill and Underworld Lore. You gain the Pickpocket skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Farmhand",
+                "description": "You grew up performing manual labor on a farm, developing a strong physique and a deep connection to the land.",
+                "proficiencies": {
+                    "skills": ["Athletics"],
+                    "lore": ["Farming Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Hefty Hauler"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Pitchfork or shovel",
+                    "Work clothes",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Hard Labor",
+                    "description": "You are trained in the Athletics skill and Farming Lore. You gain the Hefty Hauler skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Field Medic",
+                "description": "You’ve spent time treating the sick and wounded, gaining knowledge of how to save lives in critical moments.",
+                "proficiencies": {
+                    "skills": ["Medicine"],
+                    "lore": ["Anatomy Lore"]
+                },
+                "ability_score_increases": {
+                    "Wisdom": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Battle Medicine"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Healer’s tools",
+                    "Bandages",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Medical Expertise",
+                    "description": "You are trained in the Medicine skill and Anatomy Lore. You gain the Battle Medicine skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Fortune Teller",
+                "description": "You’ve honed your ability to interpret signs and predict events, captivating audiences with your foresight.",
+                "proficiencies": {
+                    "skills": ["Occultism"],
+                    "lore": ["Fortune-Telling Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Oddity Identification"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Tarot cards or crystal ball",
+                    "Flowing robes",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Divinatory Insight",
+                    "description": "You are trained in the Occultism skill and Fortune-Telling Lore. You gain the Oddity Identification skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Guard",
+                "description": "You’ve trained in maintaining order and protecting those under your care, often serving in a city watch or as a personal protector.",
+                "proficiencies": {
+                    "skills": ["Intimidation"],
+                    "lore": ["Legal Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Quick Coercion"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Spear",
+                    "Shield",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Protector's Discipline",
+                    "description": "You are trained in the Intimidation skill and Legal Lore. You gain the Quick Coercion skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Herbalist",
+                "description": "You’ve studied the properties of plants and their uses in healing or harmful remedies.",
+                "proficiencies": {
+                    "skills": ["Nature"],
+                    "lore": ["Herbalism Lore"]
+                },
+                "ability_score_increases": {
+                    "Wisdom": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Natural Medicine"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Herbalist’s kit",
+                    "Dried herbs",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Herbal Expertise",
+                    "description": "You are trained in the Nature skill and Herbalism Lore. You gain the Natural Medicine skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Hunter",
+                "description": "You’ve spent time stalking prey in the wilderness, honing your skills with ranged weapons and tracking.",
+                "proficiencies": {
+                    "skills": ["Survival"],
+                    "lore": ["Hunting Lore"]
+                },
+                "ability_score_increases": {
+                    "Dexterity": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Survey Wildlife"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Bow and 20 arrows",
+                    "Hunting trap",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Wilderness Tracker",
+                    "description": "You are trained in the Survival skill and Hunting Lore. You gain the Survey Wildlife skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Laborer",
+                "description": "Your years of manual labor have given you great physical strength and endurance.",
+                "proficiencies": {
+                    "skills": ["Athletics"],
+                    "lore": ["Labor Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Hefty Hauler"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Work gloves",
+                    "Toolkit",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Strengthened Body",
+                    "description": "You are trained in the Athletics skill and Labor Lore. You gain the Hefty Hauler skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Miner",
+                "description": "You’ve toiled in the depths of the earth, unearthing precious metals and gems.",
+                "proficiencies": {
+                    "skills": ["Survival"],
+                    "lore": ["Mining Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Hardy Traveler"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Mining pick",
+                    "Lantern",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common", "Dwarven"],
+                "background_features": {
+                    "name": "Underground Expertise",
+                    "description": "You are trained in the Survival skill and Mining Lore. You gain the Hardy Traveler skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Noble",
+                "description": "Born to wealth and privilege, you have been groomed to navigate high society and command respect.",
+                "proficiencies": {
+                    "skills": ["Diplomacy"],
+                    "lore": ["Nobility Lore"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Intelligence": 1
+                },
+                "granted_feats": ["Courtly Graces"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Fine clothing",
+                    "Signet ring",
+                    "15 silver pieces"
+                ],
+                "languages": ["Common", "One other language of your choice"],
+                "background_features": {
+                    "name": "Social Grace",
+                    "description": "You are trained in the Diplomacy skill and Nobility Lore. You gain the Courtly Graces skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Scout",
+                "description": "You are adept at reconnaissance and navigating difficult terrain, excelling in gathering information on the move.",
+                "proficiencies": {
+                    "skills": ["Survival"],
+                    "lore": ["Scouting Lore"]
+                },
+                "ability_score_increases": {
+                    "Dexterity": 1,
+                    "Wisdom": 1
+                },
+                "granted_feats": ["Terrain Stalker"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Map and compass",
+                    "Cloak",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Reconnaissance Expert",
+                    "description": "You are trained in the Survival skill and Scouting Lore. You gain the Terrain Stalker skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Tinker",
+                "description": "You’ve spent years repairing and creating useful tools and gadgets, using both ingenuity and dexterity.",
+                "proficiencies": {
+                    "skills": ["Crafting"],
+                    "lore": ["Engineering Lore"]
+                },
+                "ability_score_increases": {
+                    "Intelligence": 1,
+                    "Dexterity": 1
+                },
+                "granted_feats": ["Specialty Crafting"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Tinker’s tools",
+                    "Scrap materials",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Innovator",
+                    "description": "You are trained in the Crafting skill and Engineering Lore. You gain the Specialty Crafting skill feat."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Warrior",
+                "description": "You have dedicated your life to the mastery of martial combat, training to become a formidable fighter.",
+                "proficiencies": {
+                    "skills": ["Athletics"],
+                    "lore": ["Warfare Lore"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Constitution": 1
+                },
+                "granted_feats": ["Shield Block"],
+                "choosable_feats": None,
+                "equipment": [
+                    "Weapon of choice",
+                    "Shield",
+                    "10 silver pieces"
+                ],
+                "languages": ["Common"],
+                "background_features": {
+                    "name": "Martial Prowess",
+                    "description": "You are trained in the Athletics skill and Warfare Lore. You gain the Shield Block skill feat."
+                },
+                "system_specific_data": None
+            }
+        ],
+        "Star Wars: Edge of the Empire": [
+            {
+                "name": "Bounty Hunter",
+                "description": "You are a skilled tracker and fighter, known for pursuing individuals across the galaxy for a reward. Whether you work for the Hutts, a bounty hunter guild, or operate independently, you thrive in high-stakes pursuits.",
+                "proficiencies": {
+                    "skills": ["Perception", "Survival"],
+                    "tools": ["Blaster proficiency", "Tracking devices"]
+                },
+                "ability_score_increases": {
+                    "Agility": 1,
+                    "Cunning": 1
+                },
+                "granted_feats": ["Quick Draw"],
+                "choosable_feats": ["Deadly Accuracy"],
+                "equipment": [
+                    "Blaster pistol",
+                    "Tracking fob",
+                    "Utility belt",
+                    "Comlink",
+                    "500 credits"
+                ],
+                "languages": ["Basic", "One other language of your choice"],
+                "background_features": {
+                    "name": "Relentless Pursuit",
+                    "description": "You have an extensive network of contacts in the underworld and law enforcement who can provide information about your quarry. This grants you advantage on checks related to locating individuals."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Smuggler",
+                "description": "You make your living moving illegal or restricted goods across the galaxy. Whether working with the Rebel Alliance, criminal syndicates, or simply for profit, you are adept at avoiding trouble with the authorities.",
+                "proficiencies": {
+                    "skills": ["Deception", "Piloting (Space)"],
+                    "tools": ["Astrogation charts", "Modified freighter tools"]
+                },
+                "ability_score_increases": {
+                    "Cunning": 1,
+                    "Presence": 1
+                },
+                "granted_feats": ["Sleight of Hand"],
+                "choosable_feats": ["Astrogation Expert"],
+                "equipment": [
+                    "Blaster pistol",
+                    "Fake identification card",
+                    "Data pad",
+                    "500 credits",
+                    "Cargo container with hidden compartment"
+                ],
+                "languages": ["Basic", "Huttese"],
+                "background_features": {
+                    "name": "Under the Radar",
+                    "description": "You have an uncanny ability to evade patrols and scanners. Gain advantage on checks to avoid detection during space travel."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Rebel Operative",
+                "description": "You are a member of the Rebel Alliance, working to undermine the Galactic Empire. Whether as a soldier, spy, or engineer, you risk everything for freedom and justice.",
+                "proficiencies": {
+                    "skills": ["Athletics", "Mechanics"],
+                    "tools": ["Explosives", "Communications equipment"]
+                },
+                "ability_score_increases": {
+                    "Brawn": 1,
+                    "Intellect": 1
+                },
+                "granted_feats": ["Leadership"],
+                "choosable_feats": ["Demolition Expert"],
+                "equipment": [
+                    "Blaster carbine",
+                    "Explosives kit",
+                    "Rebel insignia",
+                    "Comlink",
+                    "200 credits"
+                ],
+                "languages": ["Basic", "Binary (Droidspeak)"],
+                "background_features": {
+                    "name": "Alliance Support",
+                    "description": "You can call upon Rebel Alliance resources for limited aid. This includes transport, intelligence, or basic supplies when operating in friendly territory."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Colonist",
+                "description": "You are a civilian from one of the many colonized worlds in the galaxy. Whether as a doctor, scientist, or entrepreneur, you possess specialized knowledge that sets you apart.",
+                "proficiencies": {
+                    "skills": ["Medicine", "Knowledge (Outer Rim)"],
+                    "tools": ["Medical kit", "Diagnostic scanner"]
+                },
+                "ability_score_increases": {
+                    "Intellect": 2
+                },
+                "granted_feats": ["Improvised Healer"],
+                "choosable_feats": ["Field Medic"],
+                "equipment": [
+                    "Datapad",
+                    "Portable laboratory",
+                    "Medical supplies",
+                    "300 credits"
+                ],
+                "languages": ["Basic", "One other language of your choice"],
+                "background_features": {
+                    "name": "Specialized Knowledge",
+                    "description": "Your expertise in a particular field grants you advantage on skill checks related to that subject."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Explorer",
+                "description": "You are driven to discover the galaxy's uncharted regions. Whether searching for lost civilizations or resource-rich worlds, you thrive in the unknown.",
+                "proficiencies": {
+                    "skills": ["Survival", "Piloting (Planetary)"],
+                    "tools": ["Mapping equipment", "Survey drones"]
+                },
+                "ability_score_increases": {
+                    "Cunning": 1,
+                    "Brawn": 1
+                },
+                "granted_feats": ["Pathfinder"],
+                "choosable_feats": ["Cartographer"],
+                "equipment": [
+                    "Survey equipment",
+                    "Blaster pistol",
+                    "Explorer's pack",
+                    "Comlink",
+                    "400 credits"
+                ],
+                "languages": ["Basic", "One rare language of your choice"],
+                "background_features": {
+                    "name": "Trailblazer",
+                    "description": "You can guide your allies through difficult terrain with ease. Allies gain advantage on survival checks when following your lead."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Technician",
+                "description": "Technicians are highly skilled individuals who specialize in crafting, maintaining, and improving technology, from starships and droids to slicing computer systems. Often underestimated, their knowledge and ingenuity can turn the tide in any situation.",
+                "proficiencies": {
+                    "skills": ["Mechanics", "Computers"],
+                    "tools": ["Toolkit", "Slicing tools"]
+                },
+                "ability_score_increases": {
+                    "Intellect": 2
+                },
+                "granted_feats": ["Tinkerer"],
+                "choosable_feats": ["Slicer"],
+                "equipment": [
+                    "Tool kit",
+                    "Portable computer terminal",
+                    "Comlink",
+                    "Datapad with schematics",
+                    "300 credits"
+                ],
+                "languages": ["Basic", "Binary (Droidspeak)"],
+                "background_features": {
+                    "name": "Technical Expertise",
+                    "description": "You have an intuitive understanding of technology. You gain advantage on skill checks related to repairing or modifying mechanical devices."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Hired Gun",
+                "description": "A professional soldier or enforcer who specializes in combat for hire. Whether working for a criminal syndicate, a corporate interest, or as an independent mercenary, your skillset ensures you are a force to be reckoned with.",
+                "proficiencies": {
+                    "skills": ["Athletics", "Ranged (Heavy)"],
+                    "tools": ["Combat training", "Explosives handling"]
+                },
+                "ability_score_increases": {
+                    "Brawn": 2
+                },
+                "granted_feats": ["Toughness"],
+                "choosable_feats": ["Deadly Accuracy"],
+                "equipment": [
+                    "Blaster rifle",
+                    "Fragmentation grenade",
+                    "Combat knife",
+                    "Armor (light)",
+                    "400 credits"
+                ],
+                "languages": ["Basic"],
+                "background_features": {
+                    "name": "Combat Veteran",
+                    "description": "Your extensive experience in battle gives you advantage on initiative rolls and checks related to combat tactics."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Ace",
+                "description": "Aces are the best pilots and vehicle operators in the galaxy, excelling in both high-speed maneuvers and combat. Whether piloting a starfighter or a speeder bike, you are unmatched in your ability to navigate treacherous situations.",
+                "proficiencies": {
+                    "skills": ["Piloting (Space)", "Piloting (Planetary)"],
+                    "tools": ["Navigation charts", "Starship systems"]
+                },
+                "ability_score_increases": {
+                    "Agility": 2
+                },
+                "granted_feats": ["Quick Reflexes"],
+                "choosable_feats": ["Starship Ace"],
+                "equipment": [
+                    "Flight suit",
+                    "Helmet with targeting visor",
+                    "Blaster pistol",
+                    "Comlink",
+                    "Astromech droid (optional, subject to GM approval)",
+                    "500 credits"
+                ],
+                "languages": ["Basic", "One other language of your choice"],
+                "background_features": {
+                    "name": "Ace Pilot",
+                    "description": "You are an expert in piloting vehicles. Gain advantage on checks related to maneuvering starships or vehicles, especially in high-pressure situations."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Diplomat",
+                "description": "Diplomats are masters of negotiation, political maneuvering, and fostering alliances. Whether working for the Rebel Alliance or an independent faction, you are skilled at resolving conflicts and influencing decisions.",
+                "proficiencies": {
+                    "skills": ["Negotiation", "Knowledge (Core Worlds)"],
+                    "tools": ["Etiquette training", "Formal attire"]
+                },
+                "ability_score_increases": {
+                    "Presence": 2
+                },
+                "granted_feats": ["Silver Tongue"],
+                "choosable_feats": ["Inspirational Leader"],
+                "equipment": [
+                    "Formal attire",
+                    "Comlink",
+                    "Data pad with diplomatic credentials",
+                    "Recording device",
+                    "500 credits"
+                ],
+                "languages": ["Basic", "One other language of your choice"],
+                "background_features": {
+                    "name": "Diplomatic Immunity",
+                    "description": "Your diplomatic status allows you to gain safe passage in neutral or hostile territories. You gain advantage on checks to avoid trouble when displaying credentials."
+                },
+                "system_specific_data": None
+            },
+            {
+                "name": "Force-Sensitive Exile",
+                "description": "As a Force-sensitive individual, you have discovered or rediscovered your connection to the Force. Hunted by the Empire, you hide your abilities while trying to understand and control them.",
+                "proficiencies": {
+                    "skills": ["Discipline", "Perception"],
+                    "tools": ["None"]
+                },
+                "ability_score_increases": {
+                    "Willpower": 1,
+                    "Cunning": 1
+                },
+                "granted_feats": ["Force Awareness"],
+                "choosable_feats": ["Force Control"],
+                "equipment": [
+                    "Concealed lightsaber or training blade (optional, subject to GM approval)",
+                    "Simple robes",
+                    "Holocron (optional, subject to GM approval)",
+                    "300 credits"
+                ],
+                "languages": ["Basic"],
+                "background_features": {
+                    "name": "Connection to the Force",
+                    "description": "Your connection to the Force grants you insight into the world around you. You gain advantage on checks related to sensing danger or detecting others' emotions."
+                },
+                "system_specific_data": None
+            },
         ]
     }
 
@@ -16107,7 +17103,138 @@ def seed_rpg_systems():
                 "ethical_axis": "Chaotic",
                 "system_specific_data": None
             }
+        ],
+        "Pathfinder": [
+            {
+                "name": "Lawful Good",
+                "description": "Lawful good characters act with compassion and honor, combining a commitment to helping others with a respect for law and tradition.",
+                "moral_axis": "Good",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "Neutral Good",
+                "description": "Neutral good characters act altruistically, striving to do the best they can to help others without any particular regard for law or chaos.",
+                "moral_axis": "Good",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Good",
+                "description": "Chaotic good characters follow their conscience, striving to make the world better while valuing freedom over order.",
+                "moral_axis": "Good",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            },
+            {
+                "name": "Lawful Neutral",
+                "description": "Lawful neutral characters value structure and order, adhering strictly to laws, traditions, or a personal code.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "True Neutral",
+                "description": "True neutral characters prefer to maintain balance and avoid extreme actions, neither wholly good nor wholly evil, lawful nor chaotic.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Neutral",
+                "description": "Chaotic neutral characters follow their whims, valuing freedom and individuality, often acting unpredictably without moral or ethical considerations.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            },
+            {
+                "name": "Lawful Evil",
+                "description": "Lawful evil characters use law, tradition, or a personal code to further their own goals, often at the expense of others.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Lawful",
+                "system_specific_data": None
+            },
+            {
+                "name": "Neutral Evil",
+                "description": "Neutral evil characters are selfish and ruthless, doing whatever they can to advance their own interests regardless of laws or chaos.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Neutral",
+                "system_specific_data": None
+            },
+            {
+                "name": "Chaotic Evil",
+                "description": "Chaotic evil characters act purely out of self-interest and cruelty, thriving in the destruction and suffering of others.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": None
+            }
+        ],
+        "Star Wars: Edge of the Empire": [
+            {
+                "name": "Light Side",
+                "description": "Characters aligned with the Light Side value compassion, selflessness, and the pursuit of justice and peace. They act in ways that promote harmony and protect life.",
+                "moral_axis": "Good",
+                "ethical_axis": "Lawful",
+                "system_specific_data": {
+                    "associated_mechanics": "Morality (high Light Side score)"
+                }
+            },
+            {
+                "name": "Gray",
+                "description": "Gray characters tread the line between the Light and Dark sides, balancing their actions and motivations. They make choices situationally, without fully committing to either side.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Neutral",
+                "system_specific_data": {
+                    "associated_mechanics": "Balanced Morality"
+                }
+            },
+            {
+                "name": "Dark Side",
+                "description": "Characters aligned with the Dark Side are driven by selfishness, hatred, and the pursuit of power, often at the expense of others and the greater good.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Morality (high Dark Side score)"
+                }
+            },
+            {
+                "name": "Lawful Scoundrel",
+                "description": "Lawful scoundrels adhere to personal codes or the rules of an organization, such as a bounty hunter guild or crime syndicate. They are pragmatic yet reliable in their methods.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Lawful",
+                "system_specific_data": {
+                    "associated_mechanics": "Obligation-based actions"
+                }
+            },
+            {
+                "name": "Chaotic Opportunist",
+                "description": "Chaotic opportunists act on impulse and prioritize their own gain above all else. They thrive on unpredictability and exploit opportunities wherever they arise.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Obligation and Duty impact actions"
+                }
+            },
+            {
+                "name": "Rebel Patriot",
+                "description": "Rebel patriots fight for freedom and justice, believing in the overthrow of oppressive systems like the Galactic Empire. They value the collective good over personal ambition.",
+                "moral_axis": "Good",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Duty alignment"
+                }
+            },
+            {
+                "name": "Imperial Loyalist",
+                "description": "Imperial loyalists believe in the structure and order imposed by the Empire, prioritizing stability over freedom. They value loyalty and discipline.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Lawful",
+                "system_specific_data": {
+                    "associated_mechanics": "Duty alignment"
+                }
+            }
         ]
+
     }
 
 

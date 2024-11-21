@@ -56,35 +56,35 @@ class ForcePowerTrees(Resource):
         force_trees = Spell.query.filter(Spell.force_power_tree.isnot(None)).all()
         return jsonify([spell.to_dict() for spell in force_trees])
     
-class PurchaseForceTree(Resource):
-    def post(self):
-        data = request.get_json()
-        character_id = data.get('character_id')
-        tree_id = str(data.get('tree_id'))  # Store as string for easier JSON handling
-        xp_cost = data.get('xp_cost')
+# class PurchaseForceTree(Resource):
+#     def post(self):
+#         data = request.get_json()
+#         character_id = data.get('character_id')
+#         tree_id = str(data.get('tree_id'))  # Store as string for easier JSON handling
+#         xp_cost = data.get('xp_cost')
 
-        character = Character.query.get_or_404(character_id)
+#         character = Character.query.get_or_404(character_id)
 
-        # Check if character has enough XP
-        if character.experience_points < xp_cost:
-            return {"message": "Insufficient XP"}, 400
+#         # Check if character has enough XP
+#         if character.experience_points < xp_cost:
+#             return {"message": "Insufficient XP"}, 400
 
-        # Deduct XP and add the tree to system_data's purchased trees
-        character.experience_points -= xp_cost
-        system_data = character.system_data or {}
+#         # Deduct XP and add the tree to system_data's purchased trees
+#         character.experience_points -= xp_cost
+#         system_data = character.system_data or {}
         
-        # Ensure the "purchased_trees" key exists
-        if "purchased_trees" not in system_data:
-            system_data["purchased_trees"] = {}
+#         # Ensure the "purchased_trees" key exists
+#         if "purchased_trees" not in system_data:
+#             system_data["purchased_trees"] = {}
 
-        # Add the tree to purchased_trees without any nodes selected yet
-        if tree_id not in system_data["purchased_trees"]:
-            system_data["purchased_trees"][tree_id] = []
+#         # Add the tree to purchased_trees without any nodes selected yet
+#         if tree_id not in system_data["purchased_trees"]:
+#             system_data["purchased_trees"][tree_id] = []
 
-        character.system_data = system_data
-        db.session.commit()
+#         character.system_data = system_data
+#         db.session.commit()
 
-        return {"message": "Tree purchased successfully", "remaining_xp": character.experience_points}
+#         return {"message": "Tree purchased successfully", "remaining_xp": character.experience_points}
 
 
 
@@ -93,5 +93,5 @@ spell_api.add_resource(SpellsByClassAndLevel, '/spells/class/<int:class_id>/leve
 spell_api.add_resource(AllSpells, '/spells/all')
 spell_api.add_resource(UpdateCharacterSpells, '/characters/update-spells')
 spell_api.add_resource(ForcePowerTrees, '/force-trees')
-spell_api.add_resource(PurchaseForceTree, '/characters/<int:character_id>/purchase-tree')
+# spell_api.add_resource(PurchaseForceTree, '/characters/<int:character_id>/purchase-tree')
 
