@@ -25,41 +25,51 @@ const SelectSpellsPage = () => {
         const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
         const characterLevel = characterResponse.data.level || 1;
         const characterClassId = characterResponse.data.class.id;
-
+  
         setSelectedLevel(characterLevel);
-
-        // Fetch class progression for the character level
-        const progressionResponse = await axios.get(`http://127.0.0.1:5555/api/class_progression/${characterClassId}/level/${characterLevel}`);
-        const progression = progressionResponse.data;
-        setMaxSpells(progression.available_spell.spells);
-        setMaxCantrips(progression.available_spell.cantrips);
-
-        const maxAvailableSpellLevel = progression.available_spell_level || 1;
-
-        // Fetch spells up to level 9 and filter based on available spell levels
-        const spellsResponse = await axios.get(`http://127.0.0.1:5555/spells/class/${characterClassId}/level/9`);
-        const allSpells = spellsResponse.data;
-
-        const filteredSpellsByAvailableLevels = allSpells.filter(spell => spell.level <= maxAvailableSpellLevel);
-        setSpells(allSpells);
-        setFilteredSpells(filteredSpellsByAvailableLevels);
-
-        const uniqueSpellLevels = [...new Set(filteredSpellsByAvailableLevels.map(spell => spell.level))];
-        setAvailableSpellLevels(uniqueSpellLevels);
-
-        // Pre-select spells stored in system_data under "selected_spells"
-        const selectedSpellIds = characterResponse.data.system_data?.selected_spells || [];
-        setSelectedSpells(selectedSpellIds); // Set the selected spells based on system_data
-
-        setLoading(false);
+  
+        // Check if the class has progression
+        try {
+          const progressionResponse = await axios.get(`http://127.0.0.1:5555/api/class_progression/${characterClassId}/level/${characterLevel}`);
+          const progression = progressionResponse.data;
+  
+          setMaxSpells(progression.available_spell.spells);
+          setMaxCantrips(progression.available_spell.cantrips);
+  
+          const maxAvailableSpellLevel = progression.available_spell_level || 1;
+  
+          // Fetch spells up to level 9 and filter based on available spell levels
+          const spellsResponse = await axios.get(`http://127.0.0.1:5555/spells/class/${characterClassId}/level/9`);
+          const allSpells = spellsResponse.data;
+  
+          const filteredSpellsByAvailableLevels = allSpells.filter(spell => spell.level <= maxAvailableSpellLevel);
+          setSpells(allSpells);
+          setFilteredSpells(filteredSpellsByAvailableLevels);
+  
+          const uniqueSpellLevels = [...new Set(filteredSpellsByAvailableLevels.map(spell => spell.level))];
+          setAvailableSpellLevels(uniqueSpellLevels);
+  
+          // Pre-select spells stored in system_data under "selected_spells"
+          const selectedSpellIds = characterResponse.data.system_data?.selected_spells || [];
+          setSelectedSpells(selectedSpellIds); // Set the selected spells based on system_data
+  
+          setLoading(false);
+        } catch (progressionError) {
+          if (progressionError.response && progressionError.response.status === 404) {
+            // No progression found; navigate to background page
+            navigate(`/character/create/background/${systemId}/${characterId}`);
+          } else {
+            console.error('Error fetching class progression:', progressionError);
+          }
+        }
       } catch (error) {
         console.error('Error fetching character data and spells:', error);
         setLoading(false);
       }
     };
-
+  
     fetchCharacterData();
-  }, [characterId]);
+  }, [characterId, navigate, systemId]);
 
   // Handle spell selection/unselection
   const handleSpellSelect = (spell) => {
