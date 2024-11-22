@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { DnD5eConfig } from '../components/config/dnd_5e';
-import { EdgeOfTheEmpireConfig } from '../components/config/edge_of_the_empire';
-
-const RPGConfigs = {
-  dnd_5e: DnD5eConfig,
-  edge_of_the_empire: EdgeOfTheEmpireConfig,
-};
+import RPGConfigs from '../components/config';
 
 const CharacterBackgroundPage = () => {
   const { systemId, characterId } = useParams();
-  const config = RPGConfigs[systemId] || DnD5eConfig; // Default to D&D if system not found
+  const config = RPGConfigs[systemId] || RPGConfigs[1]; // Default to D&D if system not found
+  // console.log(systemId)
   const [alignments, setAlignments] = useState([]);
   const [backgrounds, setBackgrounds] = useState([]);
   const [characterData, setCharacterData] = useState({
@@ -22,13 +17,7 @@ const CharacterBackgroundPage = () => {
       (acc, field) => ({ ...acc, [field]: '' }),
       {}
     ),
-    traits: [],
-    obligations: config.defaultValues?.obligations || [], // Safe fallback for obligations
-    motivations: config.defaultValues?.motivations || [], // Safe fallback for motivations
-    organizations: [],
-    allies: [],
-    enemies: [],
-    other: [],
+    ...config.categories.reduce((acc, category) => ({ ...acc, [category.key]: [] }), {}),
   });
 
   const [modalContent, setModalContent] = useState('');
@@ -37,6 +26,9 @@ const CharacterBackgroundPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // console.log("Using Configuration for:", config.systemName);
+    // console.log("Physical Features:", config.physicalFeatures.fields);
+    // console.log("Categories:", config.categories);
     const fetchData = async () => {
       try {
         const [alignmentResponse, backgroundResponse, characterResponse] = await Promise.all([
@@ -45,11 +37,12 @@ const CharacterBackgroundPage = () => {
           axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`),
         ]);
 
-        setAlignments(alignmentResponse.data); // Now used in dropdown
-        setBackgrounds(backgroundResponse.data); // Now used in dropdown
+        setAlignments(alignmentResponse.data);
+        setBackgrounds(backgroundResponse.data);
 
         const character = characterResponse.data;
-        setCharacterData({
+        setCharacterData((prevData) => ({
+          ...prevData,
           name: character.name || '',
           alignment: character.alignment?.name || '',
           background: character.background?.name || '',
@@ -60,14 +53,11 @@ const CharacterBackgroundPage = () => {
             }),
             {}
           ),
-          traits: character.physical_features?.traits || [],
-          obligations: character.physical_features?.obligations || config.defaultValues?.obligations || [],
-          motivations: character.physical_features?.motivations || config.defaultValues?.motivations || [],
-          organizations: character.physical_features?.organizations || [],
-          allies: character.physical_features?.allies || [],
-          enemies: character.physical_features?.enemies || [],
-          other: character.physical_features?.other || [],
-        });
+          ...config.categories.reduce((acc, category) => ({
+            ...acc,
+            [category.key]: character.physical_features?.[category.key] || [],
+          }), {}),
+        }));
 
         setLoading(false);
       } catch (error) {
