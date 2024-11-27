@@ -17035,6 +17035,414 @@ def seed_rpg_systems():
                 },
                 "system_specific_data": None
             },
+        ],
+        "Call of Cthulhu": [
+            {
+                "name": "Antiquarian",
+                "description": "You specialize in the collection and study of antiques, artifacts, and rare books. You have a deep knowledge of history and a network of contacts in academic and collector circles.",
+                "proficiencies": {
+                    "skills": ["Appraise", "History", "Library Use", "Spot Hidden", "Other Language (Choose one)", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Magnifying glass",
+                    "Notebook",
+                    "Collection of antiques or rare books"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Historical Expertise",
+                    "description": "You gain an edge in identifying the origins and significance of historical artifacts and documents."
+                },
+                "system_specific_data": {
+                    "income_range": "10–40% Credit Rating"
+                }
+            },
+            {
+                "name": "Detective",
+                "description": "You are skilled in solving crimes and uncovering hidden truths. Whether a private investigator or a law enforcement officer, you know how to find clues and piece together evidence.",
+                "proficiencies": {
+                    "skills": ["Law", "Spot Hidden", "Psychology", "Persuade", "Library Use", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook",
+                    "Badge or credentials (if law enforcement)",
+                    "Revolver or standard firearm"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Investigative Skills",
+                    "description": "You gain advantage when following leads or interrogating suspects."
+                },
+                "system_specific_data": {
+                    "income_range": "20–60% Credit Rating"
+                }
+            },
+            {
+                "name": "Doctor of Medicine",
+                "description": "You are a trained medical professional, skilled in diagnosing and treating physical ailments. Your knowledge of anatomy and health is invaluable.",
+                "proficiencies": {
+                    "skills": ["First Aid", "Medicine", "Biology", "Psychology", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Medical bag",
+                    "Set of surgical tools",
+                    "Reference book on medicine"
+                ],
+                "languages": ["English", "Latin (optional for medical terms)"],
+                "background_features": {
+                    "name": "Medical Expertise",
+                    "description": "You gain proficiency in diagnosing and treating injuries or illnesses."
+                },
+                "system_specific_data": {
+                    "income_range": "30–80% Credit Rating"
+                }
+            },
+            {
+                "name": "Professor",
+                "description": "You are an academic, teaching and researching in your field of expertise. Your knowledge is broad, and your ability to inspire others makes you a valuable ally.",
+                "proficiencies": {
+                    "skills": ["Library Use", "Own Language", "History", "Anthropology", "Archaeology", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Textbooks",
+                    "Notes on lectures",
+                    "Academic robes"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Academic Network",
+                    "description": "You can access university libraries and call upon academic colleagues for assistance."
+                },
+                "system_specific_data": {
+                    "income_range": "20–70% Credit Rating"
+                }
+            },
+            {
+                "name": "Journalist",
+                "description": "You are adept at gathering information and reporting it to the public. Whether working for a newspaper or as a freelancer, you know how to find and tell a compelling story.",
+                "proficiencies": {
+                    "skills": ["Library Use", "Fast Talk", "Spot Hidden", "Photography", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook",
+                    "Camera",
+                    "Press credentials"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Scoop Finder",
+                    "description": "You excel at uncovering leads and gaining the trust of informants."
+                },
+                "system_specific_data": {
+                    "income_range": "10–40% Credit Rating"
+                }
+            },
+            {
+                "name": "Dilettante",
+                "description": "As a person of wealth and privilege, you have the freedom to pursue hobbies and adventures. You are well-connected and enjoy the finer things in life.",
+                "proficiencies": {
+                    "skills": ["Credit Rating", "Art/Craft (Choose one)", "History", "Other Language (Choose one)", "Library Use"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Elegant wardrobe",
+                    "Personal collection of antiques or art",
+                    "Social contacts in high society"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Socialite's Charm",
+                    "description": "You gain proficiency in social interactions with the wealthy or influential."
+                },
+                "system_specific_data": {
+                    "income_range": "50–99% Credit Rating"
+                }
+            },
+            {
+                "name": "Explorer",
+                "description": "You are a daring adventurer, traveling to distant and often dangerous locations. You thrive in the wilderness and in the unknown.",
+                "proficiencies": {
+                    "skills": ["Survival", "Climb", "Swim", "Navigate", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Compass",
+                    "Rope",
+                    "Adventurer's gear"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Explorer’s Instinct",
+                    "description": "You gain an edge in navigating unfamiliar terrain and identifying hazards."
+                },
+                "system_specific_data": {
+                    "income_range": "10–50% Credit Rating"
+                }
+            },
+            {
+                "name": "Author",
+                "description": "You are a writer, expressing ideas through novels, short stories, or investigative journalism. Your ability to craft compelling narratives is unmatched.",
+                "proficiencies": {
+                    "skills": ["Library Use", "Own Language", "History", "Psychology", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook",
+                    "Writing tools",
+                    "Published works"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Wordsmith",
+                    "description": "You gain proficiency in written communication and can influence others through your works."
+                },
+                "system_specific_data": {
+                    "income_range": "10–30% Credit Rating"
+                }
+            },
+            {
+                "name": "Archaeologist",
+                "description": "You study ancient cultures through excavation and analysis of artifacts, often working in remote and challenging environments.",
+                "proficiencies": {
+                    "skills": ["Appraise", "Archaeology", "History", "Library Use", "Other Language (Choose one)", "Spot Hidden", "Navigate", "Science (Choose one)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook",
+                    "Excavation tools",
+                    "Reference books"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Field Expertise",
+                    "description": "You excel at identifying and preserving artifacts and navigating difficult terrains."
+                },
+                "system_specific_data": {
+                    "income_range": "10–50% Credit Rating"
+                }
+            },
+            {
+                "name": "Artist",
+                "description": "You create visual, auditory, or performance-based works to express ideas or emotions. Your creativity makes you adaptable and resourceful.",
+                "proficiencies": {
+                    "skills": ["Art (Choose one)", "History", "Psychology", "Spot Hidden", "Own Language", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Art supplies or performance equipment",
+                    "Portfolio of past works"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Creative Intuition",
+                    "description": "You gain insight into cultural or artistic patterns and meanings."
+                },
+                "system_specific_data": {
+                    "income_range": "10–40% Credit Rating"
+                }
+            },
+            {
+                "name": "Soldier",
+                "description": "You are trained military personnel with experience in combat, survival, and tactical operations.",
+                "proficiencies": {
+                    "skills": ["Firearms", "Survival", "Dodge", "Fighting (Choose one)", "Climb", "Mechanical Repair", "First Aid"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Military uniform",
+                    "Standard firearm",
+                    "Combat knife"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Combat Training",
+                    "description": "You are skilled in combat and survival techniques."
+                },
+                "system_specific_data": {
+                    "income_range": "10–50% Credit Rating"
+                }
+            },
+            {
+                "name": "Engineer",
+                "description": "You design, build, and maintain structures or mechanical systems, often applying your expertise to solve technical challenges.",
+                "proficiencies": {
+                    "skills": ["Mechanical Repair", "Science (Physics or Engineering)", "Navigate", "Spot Hidden", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Toolbox",
+                    "Blueprints or technical plans"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Technical Expertise",
+                    "description": "You gain proficiency in diagnosing and solving mechanical problems."
+                },
+                "system_specific_data": {
+                    "income_range": "20–60% Credit Rating"
+                }
+            },
+            {
+                "name": "Lawyer",
+                "description": "You are trained in legal knowledge and negotiation, often representing others in court or providing legal advice.",
+                "proficiencies": {
+                    "skills": ["Law", "Library Use", "Persuade", "Psychology", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Legal texts",
+                    "Writing tools"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Legal Expertise",
+                    "description": "You gain proficiency in interpreting laws and using them to your advantage."
+                },
+                "system_specific_data": {
+                    "income_range": "20–80% Credit Rating"
+                }
+            },
+            {
+                "name": "Clergy",
+                "description": "You serve as a spiritual guide and leader, offering counsel and performing sacred rites.",
+                "proficiencies": {
+                    "skills": ["Psychology", "History", "Other Language (Latin or Greek)", "Persuade", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Holy book",
+                    "Ceremonial robes"
+                ],
+                "languages": ["English", "Latin (or other sacred language)"],
+                "background_features": {
+                    "name": "Spiritual Guidance",
+                    "description": "You provide counsel and gain the trust of those in need of support."
+                },
+                "system_specific_data": {
+                    "income_range": "10–40% Credit Rating"
+                }
+            },
+            {
+                "name": "Nurse",
+                "description": "You assist in medical care, providing support to doctors and tending to patients in need.",
+                "proficiencies": {
+                    "skills": ["First Aid", "Medicine", "Psychology", "Listen", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Medical supplies",
+                    "Nursing uniform"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Caregiver",
+                    "description": "You excel in assisting and calming patients during medical emergencies."
+                },
+                "system_specific_data": {
+                    "income_range": "10–30% Credit Rating"
+                }
+            },
+            {
+                "name": "Pilot",
+                "description": "You are skilled in operating aircraft, whether commercial or military, with a talent for navigation and quick reflexes.",
+                "proficiencies": {
+                    "skills": ["Pilot", "Navigate", "Mechanical Repair", "Spot Hidden", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Flight jacket",
+                    "Navigation tools"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Aviation Expertise",
+                    "description": "You gain proficiency in flying aircraft and reading flight paths."
+                },
+                "system_specific_data": {
+                    "income_range": "20–60% Credit Rating"
+                }
+            },
+            {
+                "name": "Scientist",
+                "description": "You are an academic or professional dedicated to the pursuit of knowledge in a particular field of science.",
+                "proficiencies": {
+                    "skills": ["Science (Choose one)", "Library Use", "Other Language (Choose one)", "Psychology", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Laboratory tools",
+                    "Research notes"
+                ],
+                "languages": ["English", "One other language of your choice"],
+                "background_features": {
+                    "name": "Scientific Expertise",
+                    "description": "You excel at conducting research and solving scientific problems."
+                },
+                "system_specific_data": {
+                    "income_range": "20–70% Credit Rating"
+                }
+            },
+            {
+                "name": "Tradesperson",
+                "description": "You are skilled in a particular craft or trade, such as carpentry, blacksmithing, or mechanics.",
+                "proficiencies": {
+                    "skills": ["Mechanical Repair", "Appraise", "Craft (Choose one)", "Spot Hidden", "Credit Rating"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Toolset for trade",
+                    "Work gloves"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Skilled Artisan",
+                    "description": "You excel at creating and maintaining functional tools and objects."
+                },
+                "system_specific_data": {
+                    "income_range": "10–40% Credit Rating"
+                }
+            }
         ]
     }
 
