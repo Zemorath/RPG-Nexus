@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../components/auth/auth'; // Update this import path as needed
-
+import { useAuth } from '../components/auth/auth';
 const SelectRacePage = () => {
   const [races, setRaces] = useState([]);
   const [loading, setLoading] = useState(true);
