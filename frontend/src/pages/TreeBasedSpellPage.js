@@ -30,14 +30,15 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
         const systemData = response.data.system_data || {};
         const savedTrees = systemData.purchased_force_powers || {};
 
-        setPurchasedTrees(savedTrees);
-
         // Initialize purchasedNodes with saved data for pre-selection
-        const nodes = Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
-          acc[treeId] = nodes;
+        const cleanedTrees = Object.entries(savedTrees).reduce((acc, [treeId, nodes]) => {
+          acc[treeId] = nodes || [];
           return acc;
         }, {});
-        setPurchasedNodes(nodes);
+
+        setPurchasedTrees(cleanedTrees);
+
+        setPurchasedNodes(cleanedTrees);
       } catch (error) {
         console.error('Error fetching character data or trees:', error);
       }
@@ -190,7 +191,7 @@ const TreeBasedSpellPage = ({ systemId, characterId }) => {
             <option value="" disabled>Choose ability tree</option>
             {availableTrees.map(tree => (
               <option key={tree.id} value={tree.id}>
-                {tree.name} {!purchasedTrees[tree.id] && "🔒"}
+                {tree.name} {!purchasedTrees[tree.id] ? "🔒" : ""}
               </option>
             ))}
           </select>

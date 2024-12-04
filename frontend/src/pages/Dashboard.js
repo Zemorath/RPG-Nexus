@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../components/auth/auth'; // Update this import path as needed
+import { useAuth } from '../components/auth/auth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 

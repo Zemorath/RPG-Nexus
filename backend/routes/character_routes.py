@@ -589,14 +589,14 @@ class UpdateCharacterTreesAndNodes(Resource):
         # Check if the specific tree already exists in purchased_force_powers
         if purchased_tree_id in purchased_trees:
             # If tree exists, add new nodes without duplicates
-            current_nodes = set(purchased_trees[purchased_tree_id])
+            current_nodes = set(purchased_trees[purchased_tree_id] or [])
             print(f"Current nodes before update: {current_nodes}")
             current_nodes.update(purchased_node_names)
             purchased_trees[purchased_tree_id] = list(current_nodes)
             print("test")
         else:
             # If tree does not exist, initialize with the purchased nodes
-            purchased_trees[purchased_tree_id] = purchased_node_names
+            purchased_trees[purchased_tree_id] = purchased_node_names or []
 
         # Explicitly re-assign system_data to ensure the change is detected
         character.system_data = system_data
@@ -670,6 +670,7 @@ character_api.add_resource(GenerateAbilityScores, '/characters/generate-ability-
 character_api.add_resource(CharacterInventory, '/characters/<int:character_id>/inventory')
 character_api.add_resource(PurchaseForcePowerNode, '/characters/purchase-force-node')
 character_api.add_resource(UpdateCharacterLevel, '/characters/update-level')
+character_api.add_resource(UpdateCharacterTreesAndNodes, '/characters/update-nodes')
 
 
 
