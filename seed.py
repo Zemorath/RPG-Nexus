@@ -13266,7 +13266,7 @@ def seed_rpg_systems():
             ],
             
             "Cleric": [
-                # Level 0 (Orisons)
+                # Level 0 (cantrips)
                 "Bleed",
                 "Create Water",
                 "Detect Magic",
@@ -13531,7 +13531,7 @@ def seed_rpg_systems():
             ],
 
             "Druid": [
-                # Level 0 (Orisons)
+                # Level 0 (cantrips)
                 "Create Water",
                 "Detect Magic",
                 "Detect Poison",
@@ -14292,7 +14292,7 @@ def seed_rpg_systems():
             ],
 
             "Oracle": [
-                # Level 0 (Orisons)
+                # Level 0 (cantrips)
                 "Bleed",
                 "Create Water",
                 "Detect Magic",
@@ -14963,7 +14963,7 @@ def seed_rpg_systems():
             ],
 
             "Inquisitor": [
-                # Level 0 (Orisons)
+                # Level 0 (cantrips)
                 "Acid Splash",
                 "Brand",
                 "Create Water",
@@ -15449,26 +15449,26 @@ def seed_rpg_systems():
         },
         "Pathfinder": {
             "Oracle": {
-                1: {"orisons": 3, "spells": 1, "available_spell_level": 1},
-                2: {"orisons": 4, "spells": 2, "available_spell_level": 1},
-                3: {"orisons": 4, "spells": 2, "available_spell_level": 2},
-                4: {"orisons": 4, "spells": 3, "available_spell_level": 2},
-                5: {"orisons": 4, "spells": 3, "available_spell_level": 3},
-                6: {"orisons": 4, "spells": 4, "available_spell_level": 3},
-                7: {"orisons": 4, "spells": 4, "available_spell_level": 4},
-                8: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                9: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                10: {"orisons": 4, "spells": 6, "available_spell_level": 5},
-                11: {"orisons": 4, "spells": 6, "available_spell_level": 6},
-                12: {"orisons": 4, "spells": 7, "available_spell_level": 6},
-                13: {"orisons": 4, "spells": 7, "available_spell_level": 7},
-                14: {"orisons": 4, "spells": 8, "available_spell_level": 7},
-                15: {"orisons": 4, "spells": 8, "available_spell_level": 8},
-                16: {"orisons": 4, "spells": 9, "available_spell_level": 8},
-                17: {"orisons": 4, "spells": 9, "available_spell_level": 9},
-                18: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                19: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                20: {"orisons": 4, "spells": 11, "available_spell_level": 9}
+                1: {"cantrips": 3, "spells": 1, "available_spell_level": 1},
+                2: {"cantrips": 4, "spells": 2, "available_spell_level": 1},
+                3: {"cantrips": 4, "spells": 2, "available_spell_level": 2},
+                4: {"cantrips": 4, "spells": 3, "available_spell_level": 2},
+                5: {"cantrips": 4, "spells": 3, "available_spell_level": 3},
+                6: {"cantrips": 4, "spells": 4, "available_spell_level": 3},
+                7: {"cantrips": 4, "spells": 4, "available_spell_level": 4},
+                8: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                9: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                10: {"cantrips": 4, "spells": 6, "available_spell_level": 5},
+                11: {"cantrips": 4, "spells": 6, "available_spell_level": 6},
+                12: {"cantrips": 4, "spells": 7, "available_spell_level": 6},
+                13: {"cantrips": 4, "spells": 7, "available_spell_level": 7},
+                14: {"cantrips": 4, "spells": 8, "available_spell_level": 7},
+                15: {"cantrips": 4, "spells": 8, "available_spell_level": 8},
+                16: {"cantrips": 4, "spells": 9, "available_spell_level": 8},
+                17: {"cantrips": 4, "spells": 9, "available_spell_level": 9},
+                18: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                19: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                20: {"cantrips": 4, "spells": 11, "available_spell_level": 9}
             },
             
             "Witch": {
@@ -15518,26 +15518,26 @@ def seed_rpg_systems():
             },
 
             "Inquisitor": {
-                1: {"orisons": 3, "spells": 1, "available_spell_level": 1},
-                2: {"orisons": 4, "spells": 2, "available_spell_level": 1},
-                3: {"orisons": 4, "spells": 3, "available_spell_level": 1},
-                4: {"orisons": 4, "spells": 3, "available_spell_level": 2},
-                5: {"orisons": 4, "spells": 4, "available_spell_level": 2},
-                6: {"orisons": 4, "spells": 4, "available_spell_level": 2},
-                7: {"orisons": 4, "spells": 4, "available_spell_level": 3},
-                8: {"orisons": 4, "spells": 4, "available_spell_level": 3},
-                9: {"orisons": 4, "spells": 5, "available_spell_level": 3},
-                10: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                11: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                12: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                13: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                14: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                15: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                16: {"orisons": 4, "spells": 5, "available_spell_level": 6},
-                17: {"orisons": 4, "spells": 5, "available_spell_level": 6},
-                18: {"orisons": 4, "spells": 5, "available_spell_level": 6},
-                19: {"orisons": 4, "spells": 5, "available_spell_level": 6},
-                20: {"orisons": 4, "spells": 5, "available_spell_level": 6}
+                1: {"cantrips": 3, "spells": 1, "available_spell_level": 1},
+                2: {"cantrips": 4, "spells": 2, "available_spell_level": 1},
+                3: {"cantrips": 4, "spells": 3, "available_spell_level": 1},
+                4: {"cantrips": 4, "spells": 3, "available_spell_level": 2},
+                5: {"cantrips": 4, "spells": 4, "available_spell_level": 2},
+                6: {"cantrips": 4, "spells": 4, "available_spell_level": 2},
+                7: {"cantrips": 4, "spells": 4, "available_spell_level": 3},
+                8: {"cantrips": 4, "spells": 4, "available_spell_level": 3},
+                9: {"cantrips": 4, "spells": 5, "available_spell_level": 3},
+                10: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                11: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                12: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                13: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                14: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                15: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                16: {"cantrips": 4, "spells": 5, "available_spell_level": 6},
+                17: {"cantrips": 4, "spells": 5, "available_spell_level": 6},
+                18: {"cantrips": 4, "spells": 5, "available_spell_level": 6},
+                19: {"cantrips": 4, "spells": 5, "available_spell_level": 6},
+                20: {"cantrips": 4, "spells": 5, "available_spell_level": 6}
             },
 
             "Ranger": {
@@ -15610,49 +15610,49 @@ def seed_rpg_systems():
             },
 
             "Cleric": {
-                1: {"orisons": 3, "spells": 1, "available_spell_level": 1},
-                2: {"orisons": 4, "spells": 2, "available_spell_level": 1},
-                3: {"orisons": 4, "spells": 2, "available_spell_level": 2},
-                4: {"orisons": 4, "spells": 3, "available_spell_level": 2},
-                5: {"orisons": 4, "spells": 3, "available_spell_level": 3},
-                6: {"orisons": 4, "spells": 4, "available_spell_level": 3},
-                7: {"orisons": 4, "spells": 4, "available_spell_level": 4},
-                8: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                9: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                10: {"orisons": 4, "spells": 6, "available_spell_level": 5},
-                11: {"orisons": 4, "spells": 6, "available_spell_level": 6},
-                12: {"orisons": 4, "spells": 7, "available_spell_level": 6},
-                13: {"orisons": 4, "spells": 7, "available_spell_level": 7},
-                14: {"orisons": 4, "spells": 8, "available_spell_level": 7},
-                15: {"orisons": 4, "spells": 8, "available_spell_level": 8},
-                16: {"orisons": 4, "spells": 9, "available_spell_level": 8},
-                17: {"orisons": 4, "spells": 9, "available_spell_level": 9},
-                18: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                19: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                20: {"orisons": 4, "spells": 11, "available_spell_level": 9}
+                1: {"cantrips": 3, "spells": 1, "available_spell_level": 1},
+                2: {"cantrips": 4, "spells": 2, "available_spell_level": 1},
+                3: {"cantrips": 4, "spells": 2, "available_spell_level": 2},
+                4: {"cantrips": 4, "spells": 3, "available_spell_level": 2},
+                5: {"cantrips": 4, "spells": 3, "available_spell_level": 3},
+                6: {"cantrips": 4, "spells": 4, "available_spell_level": 3},
+                7: {"cantrips": 4, "spells": 4, "available_spell_level": 4},
+                8: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                9: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                10: {"cantrips": 4, "spells": 6, "available_spell_level": 5},
+                11: {"cantrips": 4, "spells": 6, "available_spell_level": 6},
+                12: {"cantrips": 4, "spells": 7, "available_spell_level": 6},
+                13: {"cantrips": 4, "spells": 7, "available_spell_level": 7},
+                14: {"cantrips": 4, "spells": 8, "available_spell_level": 7},
+                15: {"cantrips": 4, "spells": 8, "available_spell_level": 8},
+                16: {"cantrips": 4, "spells": 9, "available_spell_level": 8},
+                17: {"cantrips": 4, "spells": 9, "available_spell_level": 9},
+                18: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                19: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                20: {"cantrips": 4, "spells": 11, "available_spell_level": 9}
             },
 
             "Druid": {
-                1: {"orisons": 3, "spells": 1, "available_spell_level": 1},
-                2: {"orisons": 4, "spells": 2, "available_spell_level": 1},
-                3: {"orisons": 4, "spells": 2, "available_spell_level": 2},
-                4: {"orisons": 4, "spells": 3, "available_spell_level": 2},
-                5: {"orisons": 4, "spells": 3, "available_spell_level": 3},
-                6: {"orisons": 4, "spells": 4, "available_spell_level": 3},
-                7: {"orisons": 4, "spells": 4, "available_spell_level": 4},
-                8: {"orisons": 4, "spells": 5, "available_spell_level": 4},
-                9: {"orisons": 4, "spells": 5, "available_spell_level": 5},
-                10: {"orisons": 4, "spells": 6, "available_spell_level": 5},
-                11: {"orisons": 4, "spells": 6, "available_spell_level": 6},
-                12: {"orisons": 4, "spells": 7, "available_spell_level": 6},
-                13: {"orisons": 4, "spells": 7, "available_spell_level": 7},
-                14: {"orisons": 4, "spells": 8, "available_spell_level": 7},
-                15: {"orisons": 4, "spells": 8, "available_spell_level": 8},
-                16: {"orisons": 4, "spells": 9, "available_spell_level": 8},
-                17: {"orisons": 4, "spells": 9, "available_spell_level": 9},
-                18: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                19: {"orisons": 4, "spells": 10, "available_spell_level": 9},
-                20: {"orisons": 4, "spells": 11, "available_spell_level": 9}
+                1: {"cantrips": 3, "spells": 1, "available_spell_level": 1},
+                2: {"cantrips": 4, "spells": 2, "available_spell_level": 1},
+                3: {"cantrips": 4, "spells": 2, "available_spell_level": 2},
+                4: {"cantrips": 4, "spells": 3, "available_spell_level": 2},
+                5: {"cantrips": 4, "spells": 3, "available_spell_level": 3},
+                6: {"cantrips": 4, "spells": 4, "available_spell_level": 3},
+                7: {"cantrips": 4, "spells": 4, "available_spell_level": 4},
+                8: {"cantrips": 4, "spells": 5, "available_spell_level": 4},
+                9: {"cantrips": 4, "spells": 5, "available_spell_level": 5},
+                10: {"cantrips": 4, "spells": 6, "available_spell_level": 5},
+                11: {"cantrips": 4, "spells": 6, "available_spell_level": 6},
+                12: {"cantrips": 4, "spells": 7, "available_spell_level": 6},
+                13: {"cantrips": 4, "spells": 7, "available_spell_level": 7},
+                14: {"cantrips": 4, "spells": 8, "available_spell_level": 7},
+                15: {"cantrips": 4, "spells": 8, "available_spell_level": 8},
+                16: {"cantrips": 4, "spells": 9, "available_spell_level": 8},
+                17: {"cantrips": 4, "spells": 9, "available_spell_level": 9},
+                18: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                19: {"cantrips": 4, "spells": 10, "available_spell_level": 9},
+                20: {"cantrips": 4, "spells": 11, "available_spell_level": 9}
             },
             "Sorcerer": {
                 1: {"cantrips": 4, "spells": 2, "available_spell_level": 1},
