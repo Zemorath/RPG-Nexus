@@ -56,6 +56,8 @@ class CharacterDetail(Resource):
         if 'inventory' in data:
             character.inventory = data['inventory']
 
+        print(character.level)
+
         character.name = data.get('name', character.name)
         character.level = data.get('level', character.level)
         character.health = data.get('health', character.health)

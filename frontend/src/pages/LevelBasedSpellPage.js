@@ -151,6 +151,10 @@ const SelectSpellsPage = () => {
     setSelectedLevel(newLevel);
 
     try {
+      await axios.put(`http://127.0.0.1:5555/api/characters/${characterId}`, {
+        level: newLevel, // Pass the updated level
+      });
+      
       const characterResponse = await axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`);
       const characterClassId = characterResponse.data.class.id;
 
@@ -169,10 +173,15 @@ const SelectSpellsPage = () => {
 
       const uniqueSpellLevels = [...new Set(filteredSpellsByAvailableLevels.map(spell => spell.level))];
       setAvailableSpellLevels(uniqueSpellLevels);
+
+      
     } catch (error) {
       console.error('Error fetching spells or class progression:', error);
     }
   };
+
+
+  console.log(selectedLevel)
 
   if (loading) {
     return <div>Loading spells...</div>;
