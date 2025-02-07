@@ -847,7 +847,7 @@ def seed_rpg_systems():
             {"name": "The Blackrazor", "description": "A sentient sword that devours souls and grows stronger with each soul consumed.", "weight": 4, "rarity": "Artifact", "cost": 750000, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"},
             {"name": "The Axe of the Dwarvish Lords", "description": "A powerful weapon and symbol of authority among dwarves. Grants powers to shape stone and command dwarves.", "weight": 6, "rarity": "Artifact", "cost": 600000, "damage_type": "Slashing", "material": "Metal", "slot_type": "Weapon"}
         ],
-        "Pathfinder 2nd Edition": [
+        "Pathfinder": [
             # Simple Weapons
             {"name": "Club", "description": "A simple wooden club.", "weight": 1, "rarity": "Common", "cost": 0, "damage_type": "Bludgeoning", "material": "Wood", "slot_type": "Weapon"},
             {"name": "Dagger", "description": "A small blade used for close combat or throwing.", "weight": 0.5, "rarity": "Common", "cost": 2, "damage_type": "Piercing/Slashing", "material": "Metal", "slot_type": "Weapon"},
