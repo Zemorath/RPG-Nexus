@@ -960,6 +960,13 @@ def seed_rpg_systems():
             {"name": "Amulet of the Planes", "description": "Allows the wearer to shift between planes of existence.", "weight": 0.1, "rarity": "Legendary", "cost": 0, "effect": "Teleport to other planes of existence", "slot_type": "Neck"},
             {"name": "Amulet of Perfect Health", "description": "Grants immunity to diseases and poison, and restores hit points.", "weight": 0.1, "rarity": "Legendary", "cost": 0, "effect": "Immunity to disease, poison, and full restoration of hit points once per day", "slot_type": "Neck"}
         ],
+        "Star Wars: Edge of the Empire": [
+
+            # Simple Items for Star Wars Edge of the Empire
+            {"name": "Blaster Pistol", "description": "A standard issue blaster pistol used by many across the galaxy.", "weight": 1.2, "rarity": "Common", "cost": 500, "damage_type": "Energy", "durability": 100, "enchantment_level": 0, "material": "Durasteel", "slot_type": "Hand", "type": "Weapon", "rpg_system_id": 3},
+            {"name": "Comlink", "description": "A handheld communication device used for short-range communication.", "weight": 0.2, "rarity": "Common", "cost": 100, "damage_type": None, "durability": 50, "enchantment_level": 0, "material": "Plastic", "slot_type": "Pocket", "type": "Gear", "rpg_system_id": 3},
+            {"name": "Medpac", "description": "A small kit containing medical supplies for treating injuries.", "weight": 0.5, "rarity": "Common", "cost": 200, "damage_type": None, "durability": 30, "enchantment_level": 0, "material": "Plastic", "slot_type": "Pocket", "type": "Gear", "rpg_system_id": 3}
+        ]
     }
 
     monsters = {
