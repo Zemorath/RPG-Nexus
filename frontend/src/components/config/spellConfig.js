@@ -18,7 +18,7 @@ const spellConfig = {
     4: {
       name: "Shadowrun",
       type: "special",
-      spellPage: "SpecialAbilityPage",
+      spellPage: "ShadowrunSpellPage",
     },
     5: {
       name: "Star Wars: Edge of the Empire",
