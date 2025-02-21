@@ -1,6 +1,7 @@
 from flask import request, jsonify, Blueprint
 from flask_restful import Resource, Api
 from backend.models import db, Spell, Character, Class, ClassSpell, RPGSystem
+from sqlalchemy.orm.attributes import flag_modified
 
 spell_bp = Blueprint('spell', __name__)
 spell_api = Api(spell_bp)
@@ -32,10 +33,22 @@ class UpdateCharacterSpells(Resource):
         data = request.get_json()
         character_id = data.get('character_id')
         spell_ids = data.get('spell_ids')
+        remaining_karma = data.get("remaining_karma")
 
         character = Character.query.get_or_404(character_id)
+
+        old_spells = character.system_data.get("selected_spells", [])
+        print(f"Old spell list: {old_spells}")
+        print(f"New spell list to save: {spell_ids}")
+
         character.system_data['selected_spells'] = spell_ids
+        flag_modified(character, "system_data")
+
+        if remaining_karma is not None:
+            character.experience_points = remaining_karma
+            print(f"Updated Karma: {character.experience_points}")
         db.session.commit()
+        print("Data committed successfully.")
 
         return {"message": "Spells updated successfully"}
     

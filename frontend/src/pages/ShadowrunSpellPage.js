@@ -80,11 +80,17 @@ const ShadowrunSpellPage = () => {
 
   // Save Selected Spells
   const handleSubmitSpells = async () => {
+    console.log("Submitting spells:", selectedSpells);
+    console.log("Submitting remaining Karma:", karma);
+
     try {
-      await axios.post(`http://127.0.0.1:5555/api/characters/update-spells`, {
+      const response = await axios.post(`http://127.0.0.1:5555/characters/update-spells`, {
         character_id: characterId,
         spell_ids: selectedSpells,
+        remaining_karma: karma,
       });
+
+      console.log("Response from backend:", response.data)
       navigate(`/character/create/background/${systemId}/${characterId}`);
     } catch (error) {
       console.error("Error saving selected spells:", error);
