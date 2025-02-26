@@ -17589,7 +17589,456 @@ def seed_rpg_systems():
                 "system_specific_data": {
                     "income_range": "10–40% Credit Rating"
                 }
-            }
+            },
+        ],
+        "Shadowrun": [
+            {
+                "name": "Street Samurai",
+                "description": "You’re a cybered-up warrior living by a code of honor in the shadows. Once a soldier, bodyguard, or enforcer, you now sell your skills to the highest bidder, blending cutting-edge tech with martial prowess.",
+                "proficiencies": {
+                    "skills": ["Blades", "Firearms", "Athletics", "Perception", "Etiquette (Street)"]
+                },
+                "ability_score_increases": {
+                    "Body": 1,
+                    "Agility": 1
+                },
+                "granted_feats": ["Cyberware Compatibility"],
+                "choosable_feats": ["Quick Draw", "Toughness"],
+                "equipment": [
+                    "Katana",
+                    "Ares Predator V (pistol)",
+                    "Armored Jacket",
+                    "Commlink (Rating 3)",
+                    "Smartlink implant"
+                ],
+                "languages": ["English", "One other language of your choice (e.g., Japanese for a traditionalist)"],
+                "background_features": {
+                    "name": "Code of Honor",
+                    "description": "You adhere to a personal code (e.g., never harm innocents, always keep your word), gaining +2 dice on Social tests when your honor is recognized, but suffer penalties if you break it."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "essence_cost": "2-3 (due to cyberware like Wired Reflexes and Smartlink)"
+                }
+            },
+            {
+                "name": "Rigger",
+                "description": "You live for machines—drones, vehicles, and gadgets are your lifeblood. Whether an ex-military driver or a street mechanic, you command tech like an extension of yourself.",
+                "proficiencies": {
+                    "skills": ["Pilot Ground Craft", "Pilot Aircraft", "Gunnery", "Electronic Warfare", "Mechanic"]
+                },
+                "ability_score_increases": {
+                    "Reaction": 1,
+                    "Logic": 1
+                },
+                "granted_feats": ["Control Rig Compatibility"],
+                "choosable_feats": ["Gearhead", "Juryrigger"],
+                "equipment": [
+                    "Control Rig (Rating 1)",
+                    "MCT Fly-Spy (drone)",
+                    "Suzuki Mirage (motorcycle)",
+                    "Commlink (Rating 4)",
+                    "Tool Kit (Automotive)"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Machine Bond",
+                    "description": "You gain +2 dice on tests to repair or modify vehicles and drones due to your intuitive connection."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "essence_cost": "1-2 (due to Control Rig)"
+                }
+            },
+            {
+                "name": "Decker",
+                "description": "A master hacker, you navigate the Matrix to steal data, sabotage systems, and support your team from the digital shadows. You likely grew up in a tech-savvy underworld or as a disillusioned corp programmer.",
+                "proficiencies": {
+                    "skills": ["Hacking", "Electronic Warfare", "Computer", "Hardware", "Perception"]
+                },
+                "ability_score_increases": {
+                    "Logic": 2
+                },
+                "granted_feats": ["Matrix Savvy"],
+                "choosable_feats": ["Overclocker", "Baby Monitor"],
+                "equipment": [
+                    "Cyberdeck (Sony CIY-720 or similar)",
+                    "Programs (e.g., Stealth, Hammer)",
+                    "Commlink (Rating 4)",
+                    "Datajack",
+                    "Trodes (backup)"
+                ],
+                "languages": ["English", "One Matrix slang or programming language (e.g., L33t Speak)"],
+                "background_features": {
+                    "name": "Digital Ghost",
+                    "description": "You gain +2 dice to avoid Matrix traceability when hacking, thanks to your knack for covering tracks."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Low",
+                    "essence_cost": "0.1-1 (due to Datajack and minor 'ware)"
+                }
+            },
+            {
+                "name": "Mage (Hermetic)",
+                "description": "A scholarly magician, you wield magic through logic and study, perhaps trained at a university or self-taught from stolen grimoires. The astral plane is your battlefield.",
+                "proficiencies": {
+                    "skills": ["Spellcasting", "Summoning", "Assensing", "Arcana", "Perception"]
+                },
+                "ability_score_increases": {
+                    "Logic": 1,
+                    "Willpower": 1
+                },
+                "granted_feats": ["Magic Talent (Hermetic Tradition)"],
+                "choosable_feats": ["Focused Concentration", "Astral Chameleon"],
+                "equipment": [
+                    "Mage’s Fetish (e.g., arcane tome)",
+                    "Lodge Materials (Rating 3)",
+                    "Commlink (Rating 3)",
+                    "Reagents (10 drams)",
+                    "Lined Coat"
+                ],
+                "languages": ["English", "One ancient language (e.g., Latin)"],
+                "background_features": {
+                    "name": "Astral Scholar",
+                    "description": "You gain +2 dice on Arcana tests to identify magical phenomena or lore."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Middle",
+                    "magic_rating": "3-6"
+                }
+            },
+            {
+                "name": "Face",
+                "description": "A smooth-talking negotiator, you thrive in social circles—maybe an ex-corp exec, con artist, or underworld fixer. You get the team in and out of trouble with words alone.",
+                "proficiencies": {
+                    "skills": ["Con", "Etiquette", "Negotiation", "Perception", "Intimidation"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 2
+                },
+                "granted_feats": ["Social Adept"],
+                "choosable_feats": ["First Impression", "Too Pretty to Hit"],
+                "equipment": [
+                    "Fine Clothing",
+                    "Commlink (Rating 5)",
+                    "Fake SIN (Rating 3)",
+                    "Colt America L36 (light pistol)",
+                    "Concealed Holster"
+                ],
+                "languages": ["English", "One additional language (e.g., Japanese, Spanish)"],
+                "background_features": {
+                    "name": "Silver Tongue",
+                    "description": "You gain +2 dice on Social tests when persuading or deceiving someone unfamiliar with you."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "4D6 × 100¥",
+                    "lifestyle": "Middle",
+                    "contacts": "2 (Rating 3 Connection/Loyalty 2)"
+                }
+            },
+            {
+                "name": "Adept",
+                "description": "You channel magic into your body, enhancing your physical or mental abilities beyond human limits. Perhaps a martial artist, athlete, or thief, your powers are honed through discipline or instinct.",
+                "proficiencies": {
+                    "skills": ["Unarmed Combat", "Athletics", "Stealth", "Perception", "Close Combat"]
+                },
+                "ability_score_increases": {
+                    "Agility": 1,
+                    "Willpower": 1
+                },
+                "granted_feats": ["Magic Talent (Physical Adept)"],
+                "choosable_feats": ["Improved Reflexes", "Killing Hands"],
+                "equipment": [
+                    "Combat Knife",
+                    "Armored Vest",
+                    "Commlink (Rating 3)",
+                    "Climbing Gear",
+                    "Reagents (5 drams)"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Enhanced Instincts",
+                    "description": "Your magical connection grants +2 dice on Initiative tests or Perception checks when danger is near."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Low",
+                    "magic_rating": "3-6"
+                }
+            },
+            {
+                "name": "Technomancer",
+                "description": "You’re a living interface with the Matrix, born with the ability to manipulate technology without hardware. Shunned or hunted, you’ve survived as an outcast or underground rebel.",
+                "proficiencies": {
+                    "skills": ["Hacking", "Software", "Electronic Warfare", "Tasking", "Perception"]
+                },
+                "ability_score_increases": {
+                    "Logic": 1,
+                    "Resonance": 1
+                },
+                "granted_feats": ["Technomancer Resonance"],
+                "choosable_feats": ["Echo: Resonance Spike", "Echo: Mind Over Machine"],
+                "equipment": [
+                    "Commlink (Rating 3, heavily modified)",
+                    "AR Gloves",
+                    "Trodes",
+                    "Fake SIN (Rating 2)",
+                    "Backpack"
+                ],
+                "languages": ["English", "One Matrix slang (e.g., L33t Speak)"],
+                "background_features": {
+                    "name": "Living Code",
+                    "description": "You gain +2 dice on tests to compile or control sprites in the Matrix."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Low",
+                    "resonance_rating": "3-6"
+                }
+            },
+            {
+                "name": "Shaman",
+                "description": "A spiritual magician guided by a totem or mentor spirit, you draw power from nature and the astral plane. You might be a tribal outcast or an urban mystic, balancing the old ways with the new world.",
+                "proficiencies": {
+                    "skills": ["Spellcasting", "Summoning", "Assensing", "Survival", "Etiquette (Tribal)"]
+                },
+                "ability_score_increases": {
+                    "Charisma": 1,
+                    "Willpower": 1
+                },
+                "granted_feats": ["Magic Talent (Shamanic Tradition)"],
+                "choosable_feats": ["Spirit Affinity", "Masking"],
+                "equipment": [
+                    "Shamanic Fetish (e.g., totem carving)",
+                    "Lodge Materials (Rating 3)",
+                    "Commlink (Rating 3)",
+                    "Reagents (10 drams)",
+                    "Urban Sneaksuit"
+                ],
+                "languages": ["English", "One tribal language (e.g., Sioux, Navajo)"],
+                "background_features": {
+                    "name": "Spirit Whisperer",
+                    "description": "You gain +2 dice on Summoning tests when calling spirits aligned with your totem."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Low",
+                    "magic_rating": "3-6"
+                }
+            },
+            {
+                "name": "Street Doc",
+                "description": "You’re a back-alley medic patching up runners with makeshift tools and scavenged tech. Maybe an ex-corp surgeon or a self-taught fixer, you keep the team alive—for a price.",
+                "proficiencies": {
+                    "skills": ["First Aid", "Medicine", "Biotech", "Negotiation", "Perception"]
+                },
+                "ability_score_increases": {
+                    "Logic": 1,
+                    "Intuition": 1
+                },
+                "granted_feats": ["Field Medic"],
+                "choosable_feats": ["Cybertech Savvy", "Improvised Healing"],
+                "equipment": [
+                    "Medkit (Rating 3)",
+                    "Commlink (Rating 4)",
+                    "Surgical Tools",
+                    "Armored Vest",
+                    "Fake SIN (Rating 3)"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Patch-Up Pro",
+                    "description": "You gain +2 dice on First Aid or Medicine tests when treating physical damage."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Middle",
+                    "contacts": "1 (Rating 3 Connection/Loyalty 2, e.g., black market supplier)"
+                }
+            },
+            {
+                "name": "Smuggler",
+                "description": "You move goods—legal or not—across borders and through the shadows. An ex-trucker, pilot, or courier, you know the routes and the people who keep the underworld supplied.",
+                "proficiencies": {
+                    "skills": ["Pilot Ground Craft", "Stealth", "Negotiation", "Perception", "Etiquette (Street)"]
+                },
+                "ability_score_increases": {
+                    "Reaction": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Smuggler’s Luck"],
+                "choosable_feats": ["Vehicle Empathy", "Cool Resolve"],
+                "equipment": [
+                    "Ford Americar (sedan) or similar vehicle",
+                    "Hidden Compartment (Rating 2)",
+                    "Commlink (Rating 4)",
+                    "Jammer (Rating 3)",
+                    "Crowbar"
+                ],
+                "languages": ["English", "One smuggling-related language (e.g., Spanish, Chinese)"],
+                "background_features": {
+                    "name": "Border Runner",
+                    "description": "You gain +2 dice on tests to avoid detection by authorities when smuggling goods."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "contacts": "1 (Rating 3 Connection/Loyalty 2, e.g., fixer or customs official)"
+                }
+            },
+            {
+                "name": "Bounty Hunter",
+                "description": "You track down targets for cred, whether for corps, syndicates, or lone fixers. An ex-cop, lone wolf, or hired gun, you live by your wits and your weapons in the urban jungle.",
+                "proficiencies": {
+                    "skills": ["Tracking", "Firearms", "Intimidation", "Perception", "Athletics"]
+                },
+                "ability_score_increases": {
+                    "Intuition": 1,
+                    "Strength": 1
+                },
+                "granted_feats": ["Hunter’s Instinct"],
+                "choosable_feats": ["Combat Sense", "Hard Targets"],
+                "equipment": [
+                    "Ruger Super Warhawk (revolver)",
+                    "Armored Jacket",
+                    "Commlink (Rating 4)",
+                    "Restraints (plastic, 10 pairs)",
+                    "Micro-Camera"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Prey’s Scent",
+                    "description": "You gain +2 dice on Tracking or Perception tests when pursuing a specific target you’ve been hired to find."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "contacts": "1 (Rating 3 Connection/Loyalty 2, e.g., bail bondsman or fixer)"
+                }
+            },
+            {
+                "name": "Corporate Drone (Ex-Corp)",
+                "description": "You once lived the sanitized life of a megacorp wage-slave—analyst, programmer, or junior exec—until you burned out, got fired, or went rogue. Now you use your insider knowledge in the shadows.",
+                "proficiencies": {
+                    "skills": ["Computer", "Etiquette (Corporate)", "Negotiation", "Perception", "Data Processing"]
+                },
+                "ability_score_increases": {
+                    "Logic": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Corporate Insider"],
+                "choosable_feats": ["Analytical Mind", "Trustworthy"],
+                "equipment": [
+                    "Commlink (Rating 5)",
+                    "Business Suit (armored)",
+                    "Fake SIN (Rating 3)",
+                    "Datajack",
+                    "500¥ in certified credsticks"
+                ],
+                "languages": ["English", "One corporate language (e.g., Japanese for Renraku, German for S-K)"],
+                "background_features": {
+                    "name": "Corp Secrets",
+                    "description": "You gain +2 dice on Etiquette or Data Processing tests when dealing with megacorp systems or personnel."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "4D6 × 100¥",
+                    "lifestyle": "Middle",
+                    "essence_cost": "0.1-1 (due to Datajack or minor 'ware)"
+                }
+            },
+            {
+                "name": "Ganger",
+                "description": "You grew up in a street gang, fighting for territory and cred in the sprawl’s underbelly. Loyalty to your crew—or betrayal—defines your past, and now you’re running the shadows.",
+                "proficiencies": {
+                    "skills": ["Clubs", "Intimidation", "Etiquette (Street)", "Athletics", "Stealth"]
+                },
+                "ability_score_increases": {
+                    "Strength": 1,
+                    "Charisma": 1
+                },
+                "granted_feats": ["Gang Cred"],
+                "choosable_feats": ["Brawler", "Street Smarts"],
+                "equipment": [
+                    "Baseball Bat",
+                    "Leather Jacket (armored)",
+                    "Commlink (Rating 2)",
+                    "Motorcycle (Yamaha Growler)",
+                    "Gang Colors/Tags"
+                ],
+                "languages": ["English", "Cityspeak (local slang)"],
+                "background_features": {
+                    "name": "Street Rep",
+                    "description": "You gain +2 dice on Etiquette (Street) tests when dealing with gangers or underworld figures who recognize your past."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "2D6 × 100¥",
+                    "lifestyle": "Squatter",
+                    "contacts": "1 (Rating 2 Connection/Loyalty 3, e.g., old gang member)"
+                }
+            },
+            {
+                "name": "Investigator",
+                "description": "A private eye or ex-detective, you dig up dirt and solve cases in the shadows—sometimes for corps, sometimes against them. Your keen mind and contacts keep you one step ahead.",
+                "proficiencies": {
+                    "skills": ["Perception", "Investigation", "Etiquette", "Stealth", "Computer"]
+                },
+                "ability_score_increases": {
+                    "Intuition": 2
+                },
+                "granted_feats": ["Keen Observer"],
+                "choosable_feats": ["Photographic Memory", "Gut Instinct"],
+                "equipment": [
+                    "Colt America L36 (light pistol)",
+                    "Lined Coat",
+                    "Commlink (Rating 4)",
+                    "Bug Scanner (Rating 3)",
+                    "Camera (Rating 3)"
+                ],
+                "languages": ["English"],
+                "background_features": {
+                    "name": "Eye for Detail",
+                    "description": "You gain +2 dice on Investigation or Perception tests when searching for clues or hidden items."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "contacts": "1 (Rating 3 Connection/Loyalty 2, e.g., street informant or Lone Star cop)"
+                }
+            },
+            {
+                "name": "Mercenary",
+                "description": "A soldier-for-hire, you’ve fought in corp wars, insurgencies, or shadow ops across the globe. Now you bring your combat skills to the streets, loyal only to the next paycheck.",
+                "proficiencies": {
+                    "skills": ["Firearms", "Heavy Weapons", "Athletics", "Survival", "Intimidation"]
+                },
+                "ability_score_increases": {
+                    "Body": 1,
+                    "Reaction": 1
+                },
+                "granted_feats": ["Combat Training"],
+                "choosable_feats": ["Toughness", "Sharpshooter"],
+                "equipment": [
+                    "AK-97 (assault rifle)",
+                    "Armored Jacket",
+                    "Commlink (Rating 3)",
+                    "Ammo (50 rounds regular)",
+                    "Survival Kit"
+                ],
+                "languages": ["English", "One military language (e.g., Russian, Arabic)"],
+                "background_features": {
+                    "name": "Battle Hardened",
+                    "description": "You gain +2 dice on tests to resist fear or physical stress in combat situations."
+                },
+                "system_specific_data": {
+                    "starting_nuyen": "3D6 × 100¥",
+                    "lifestyle": "Low",
+                    "essence_cost": "1-2 (optional cyberware like Cybereyes or Muscle Toner)"
+                }
+            },
         ]
     }
 
@@ -17788,8 +18237,81 @@ def seed_rpg_systems():
                     "associated_mechanics": "Duty alignment"
                 }
             }
-        ]
-
+        ],
+        "Shadowrun": [
+            {
+                "name": "Codebound Idealist",
+                "description": "You adhere to a personal code of honor, striving to do right in a corrupt world—whether that’s protecting the weak, keeping your word, or fighting injustice. Your principles guide you, even when the shadows tempt you to compromise.",
+                "moral_axis": "Good",
+                "ethical_axis": "Lawful",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on Social tests when your code is respected; take a -1 die penalty if you break it willingly."
+                }
+            },
+            {
+                "name": "Pragmatic Survivor",
+                "description": "Survival is your priority in the sprawl. You’ll help others if it doesn’t cost you too much, but you’re not above cutting corners or making hard calls to stay alive and ahead.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Neutral",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on tests to assess risks or escape danger, reflecting your practical instincts."
+                }
+            },
+            {
+                "name": "Ruthless Opportunist",
+                "description": "The world’s a meat grinder, and you’re here to profit. You’ll double-cross, exploit, or eliminate anyone if the payoff’s good enough—loyalty is just a tool to be sold.",
+                "moral_axis": "Evil",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on Negotiation or Con tests when exploiting someone’s weakness; risk gaining Notoriety if your actions are exposed."
+                }
+            },
+            {
+                "name": "Corporate Loyalist",
+                "description": "You serve the megacorps—willingly or not—believing in their structure, power, or just the steady paycheck. You follow orders and uphold their agendas, even if it means getting dirty.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Lawful",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on Etiquette (Corporate) tests; may earn a -1 die penalty on Street-level Social tests due to corp stigma."
+                }
+            },
+            {
+                "name": "Anarchist Rebel",
+                "description": "You reject authority—corps, governments, syndicates—and fight to tear it all down. Chaos is your weapon, and freedom (yours or others’) is your cause, no matter the cost.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on tests to sabotage or disrupt organizations; may attract extra heat from law enforcement (+1 Public Awareness)."
+                }
+            },
+            {
+                "name": "Street Moralist",
+                "description": "You’ve got a soft spot for the little guy— SINless, gangers, or sprawl-dwellers—and try to make the streets a bit less brutal. You’re not a saint, but you draw lines others cross without blinking.",
+                "moral_axis": "Good",
+                "ethical_axis": "Neutral",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on Etiquette (Street) tests when aiding the downtrodden; may lose cred with ruthless employers."
+                }
+            },
+            {
+                "name": "Amoral Mercenary",
+                "description": "Cred talks, morality walks. You’ll take any job—wetwork, sabotage, protection—as long as the nuyen’s good. No cause, no creed, just cold professionalism.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Neutral",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on Negotiation tests for job contracts; unaffected by moral qualms but may struggle with idealistic allies."
+                }
+            },
+            {
+                "name": "Techno-Fatalist",
+                "description": "You see the Matrix, magic, and the world’s chaos as an inevitable spiral—whether toward doom or transcendence, you’re along for the ride. You act with detached curiosity or grim acceptance.",
+                "moral_axis": "Neutral",
+                "ethical_axis": "Chaotic",
+                "system_specific_data": {
+                    "associated_mechanics": "Gain +1 die on tests involving the Matrix or astral plane when exploring unknown phenomena; may unnerve others (-1 die on teamwork tests)."
+                }
+            },
+        ],
     }
 
 
