@@ -67,6 +67,15 @@ class ShadowrunSpells(Resource):
 
         shadowrun_spells = Spell.query.filter(Spell.rpg_system_id == shadowrun_system.id).all()
         return jsonify([spell.to_dict() for spell in shadowrun_spells])
+    
+class CallOfCthulhuSpells(Resource):
+    def get(self):
+        coc_system = RPGSystem.query.filter_by(name="Call of Cthulhu").first()
+        if not coc_system:
+            return jsonify({"error": "Call of Cthulhu system not found"}), 404
+
+        coc_spells = Spell.query.filter(Spell.rpg_system_id == coc_system.id).all()
+        return jsonify([spell.to_dict() for spell in coc_spells])
 
 
 # Spell Routes
@@ -75,4 +84,5 @@ spell_api.add_resource(AllSpells, '/spells/all')
 spell_api.add_resource(UpdateCharacterSpells, '/characters/update-spells')
 spell_api.add_resource(ForcePowerTrees, '/force-trees')
 spell_api.add_resource(ShadowrunSpells, '/spells/shadowrun')
+spell_api.add_resource(CallOfCthulhuSpells, '/spells/callofcthulhu')
 
