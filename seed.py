@@ -23033,6 +23033,742 @@ def seed_rpg_systems():
                     "essence_cost": "1-2 (optional cyberware like Cybereyes or Muscle Toner)"
                 }
             },
+        ],
+        "Call of Cthulhu": [
+            {
+                "name": "Antiquarian",
+                "description": "You are a collector and student of old things—books, artifacts, and forgotten lore. Your life revolves around dusty shops and obscure libraries, chasing the secrets of the past.",
+                "proficiencies": {
+                    "skills": ["Appraise", "History", "Library Use", "Spot Hidden"],
+                    "languages": ["One language of your choice (e.g., Latin, Greek)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Antique collection (e.g., rare book or relic)",
+                    "Notebook and pen",
+                    "Magnifying glass",
+                    "Set of fine clothes",
+                    "Wallet with $20"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Lore of the Past",
+                    "description": "You can identify obscure historical items or texts with a successful roll, and you have contacts among other collectors or scholars who might assist with rare knowledge."
+                },
+                "system_specific_data": {
+                    "credit_rating": "30-70",
+                    "suggested_skills": ["Art/Craft (Any)", "Charm", "History", "Language (Other)", "Library Use", "Appraise", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Detective",
+                "description": "You’re a hard-boiled investigator, either private or on the force, skilled at uncovering secrets and navigating the seedy underbelly of society.",
+                "proficiencies": {
+                    "skills": ["Law", "Listen", "Psychology", "Spot Hidden"],
+                    "tools": ["Handcuffs"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Revolver",
+                    "Notebook and pencil",
+                    "Badge or PI license",
+                    "Set of worn clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Streetwise",
+                    "description": "You have a network of informants in the criminal underworld who can provide rumors or leads, though their reliability varies."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-50",
+                    "suggested_skills": ["Disguise", "Fighting (Brawl)", "Firearms (Handgun)", "Law", "Listen", "Psychology", "Spot Hidden", "Stealth"],
+                    "skill_points": "EDU × 2 + INT × 2"
+                }
+            },
+            {
+                "name": "Doctor of Medicine",
+                "description": "You’re a trained physician, adept at healing the body and perhaps glimpsing the horrors that afflict the mind.",
+                "proficiencies": {
+                    "skills": ["First Aid", "Medicine", "Science (Biology)", "Spot Hidden"],
+                    "languages": ["Latin"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Medical bag",
+                    "Stethoscope",
+                    "Notebook and pen",
+                    "Set of professional clothes",
+                    "Wallet with $50"
+                ],
+                "languages": ["Latin"],
+                "background_features": {
+                    "name": "Healer’s Touch",
+                    "description": "You can restore 1d3 hit points with a successful First Aid roll or stabilize a dying character more effectively than others."
+                },
+                "system_specific_data": {
+                    "credit_rating": "30-80",
+                    "suggested_skills": ["Charm", "First Aid", "Language (Latin)", "Medicine", "Psychology", "Science (Biology)", "Science (Chemistry)", "Spot Hidden"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Journalist",
+                "description": "You chase stories for newspapers or magazines, digging into the truth no matter where it leads—even into darkness.",
+                "proficiencies": {
+                    "skills": ["History", "Library Use", "Persuade", "Psychology"],
+                    "tools": ["Typewriter"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook and pencil",
+                    "Press pass",
+                    "Camera",
+                    "Set of casual clothes",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Scoop",
+                    "description": "You can gather rumors or local information quickly by tapping into your network of sources, provided you have time to investigate."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Art/Craft (Photography)", "Charm", "Fast Talk", "History", "Library Use", "Persuade", "Psychology", "Stealth"],
+                    "skill_points": "EDU × 2 + APP × 2"
+                }
+            },
+            {
+                "name": "Professor",
+                "description": "You’re an academic, teaching and researching at a university, with a mind sharpened by study but perhaps untested by the real world.",
+                "proficiencies": {
+                    "skills": ["History", "Library Use", "Science (Any)", "Spot Hidden"],
+                    "languages": ["One language of your choice"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Stack of books",
+                    "Notebook and pen",
+                    "Academic credentials",
+                    "Set of tweed clothes",
+                    "Wallet with $30"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Scholarly Authority",
+                    "description": "You can gain access to university libraries or archives with a successful Charm or Persuade roll, and colleagues may assist with research."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-70",
+                    "suggested_skills": ["History", "Language (Other)", "Library Use", "Persuade", "Science (Any)", "Science (Any)", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Antiquarian",
+                "description": "You are a collector and student of old things—books, artifacts, and forgotten lore. Your life revolves around dusty shops and obscure libraries, chasing the secrets of the past.",
+                "proficiencies": {
+                    "skills": ["Appraise", "History", "Library Use", "Spot Hidden"],
+                    "languages": ["One language of your choice (e.g., Latin, Greek)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Antique collection (e.g., rare book or relic)",
+                    "Notebook and pen",
+                    "Magnifying glass",
+                    "Set of fine clothes",
+                    "Wallet with $20"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Lore of the Past",
+                    "description": "You can identify obscure historical items or texts with a successful roll, and you have contacts among other collectors or scholars who might assist with rare knowledge."
+                },
+                "system_specific_data": {
+                    "credit_rating": "30-70",
+                    "suggested_skills": ["Art/Craft (Any)", "Charm", "History", "Language (Other)", "Library Use", "Appraise", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Author",
+                "description": "You write novels, essays, or stories, drawing inspiration from life—or perhaps darker sources. Your work might hint at truths others fear to face.",
+                "proficiencies": {
+                    "skills": ["Art/Craft (Writing)", "History", "Library Use", "Persuade"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Typewriter",
+                    "Stack of manuscripts",
+                    "Notebook and pen",
+                    "Set of casual clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Literary Insight",
+                    "description": "You can use your writing skills to influence others or uncover hidden meanings in texts with a successful roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-50",
+                    "suggested_skills": ["Art/Craft (Writing)", "History", "Library Use", "Occult", "Persuade", "Psychology", "Language (Own)", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Clergy",
+                "description": "You serve a religious institution, offering spiritual guidance—or grappling with doubts as the Mythos looms.",
+                "proficiencies": {
+                    "skills": ["Library Use", "Listen", "Persuade", "Psychology"],
+                    "languages": ["Latin"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Holy symbol",
+                    "Religious texts",
+                    "Notebook and pen",
+                    "Set of clerical robes",
+                    "Wallet with $10"
+                ],
+                "languages": ["Latin"],
+                "background_features": {
+                    "name": "Sanctuary",
+                    "description": "You can seek aid or shelter from your religious community, though they may expect service in return."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-60",
+                    "suggested_skills": ["Charm", "History", "Library Use", "Listen", "Persuade", "Psychology", "Language (Latin)", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Criminal",
+                "description": "You live outside the law, skilled in theft, smuggling, or worse. The underworld is your home, and danger your trade.",
+                "proficiencies": {
+                    "skills": ["Fighting (Brawl)", "Stealth", "Spot Hidden", "Psychology"],
+                    "tools": ["Lockpicks"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Knife",
+                    "Lockpicks",
+                    "Set of dark clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Underworld Ties",
+                    "description": "You have contacts in the criminal world who can provide illicit goods or information, at a price."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Charm", "Fast Talk", "Fighting (Brawl)", "Firearms (Handgun)", "Psychology", "Spot Hidden", "Stealth", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + STR × 2"
+                }
+            },
+            {
+                "name": "Detective",
+                "description": "You’re a private eye or police detective, uncovering secrets and chasing leads through grit and cunning.",
+                "proficiencies": {
+                    "skills": ["Law", "Listen", "Psychology", "Spot Hidden"],
+                    "tools": ["Handcuffs"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Revolver",
+                    "Notebook and pencil",
+                    "Badge or PI license",
+                    "Set of worn clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Streetwise",
+                    "description": "You have a network of informants who can provide rumors or leads, though their reliability varies."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-50",
+                    "suggested_skills": ["Disguise", "Fighting (Brawl)", "Firearms (Handgun)", "Law", "Listen", "Psychology", "Spot Hidden", "Stealth"],
+                    "skill_points": "EDU × 2 + INT × 2"
+                }
+            },
+            {
+                "name": "Dilettante",
+                "description": "You’re a wealthy idler, living off inheritance or investments, free to pursue whims—or stumble into horrors.",
+                "proficiencies": {
+                    "skills": ["Charm", "Credit Rating", "Language (Other)", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Fine clothing",
+                    "Luxury item (e.g., watch)",
+                    "Wallet with $100",
+                    "Personal vehicle (optional)"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "High Society",
+                    "description": "You can gain entry to elite circles or secure favors from the wealthy with a successful Credit Rating roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "50-90",
+                    "suggested_skills": ["Art/Craft (Any)", "Charm", "Credit Rating", "Language (Other)", "Persuade", "Psychology", "Ride", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + APP × 2"
+                }
+            },
+            {
+                "name": "Doctor of Medicine",
+                "description": "You’re a trained physician, adept at healing the body and perhaps glimpsing the horrors that afflict the mind.",
+                "proficiencies": {
+                    "skills": ["First Aid", "Medicine", "Science (Biology)", "Spot Hidden"],
+                    "languages": ["Latin"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Medical bag",
+                    "Stethoscope",
+                    "Notebook and pen",
+                    "Set of professional clothes",
+                    "Wallet with $50"
+                ],
+                "languages": ["Latin"],
+                "background_features": {
+                    "name": "Healer’s Touch",
+                    "description": "You can restore 1d3 hit points with a successful First Aid roll or stabilize a dying character more effectively."
+                },
+                "system_specific_data": {
+                    "credit_rating": "30-80",
+                    "suggested_skills": ["Charm", "First Aid", "Language (Latin)", "Medicine", "Psychology", "Science (Biology)", "Science (Chemistry)", "Spot Hidden"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Driver",
+                "description": "You make a living behind the wheel—taxi driver, chauffeur, or deliveryman—knowing the roads like the back of your hand.",
+                "proficiencies": {
+                    "skills": ["Drive Auto", "Mechanical Repair", "Navigate", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Tool kit",
+                    "Map",
+                    "Set of work clothes",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Road Knowledge",
+                    "description": "You can find shortcuts or recall obscure routes with a successful Navigate roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-30",
+                    "suggested_skills": ["Charm", "Drive Auto", "Electrical Repair", "Fast Talk", "Mechanical Repair", "Navigate", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + DEX × 2"
+                }
+            },
+            {
+                "name": "Engineer",
+                "description": "You design or maintain machines, bridges, or buildings, blending practical skill with technical knowledge.",
+                "proficiencies": {
+                    "skills": ["Mechanical Repair", "Science (Engineering)", "Operate Heavy Machinery", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Tool kit",
+                    "Blueprints",
+                    "Notebook and pencil",
+                    "Set of work clothes",
+                    "Wallet with $20"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Technical Expertise",
+                    "description": "You can repair or jury-rig mechanical devices with a successful roll, even under pressure."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-60",
+                    "suggested_skills": ["Electrical Repair", "Library Use", "Mechanical Repair", "Operate Heavy Machinery", "Science (Engineering)", "Science (Mathematics)", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Entertainer",
+                "description": "You perform—actor, singer, or dancer—captivating audiences, though fame may draw unwanted attention.",
+                "proficiencies": {
+                    "skills": ["Art/Craft (Acting or Singing)", "Charm", "Disguise", "Persuade"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Costume or instrument",
+                    "Makeup kit",
+                    "Set of flashy clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Center Stage",
+                    "description": "You can distract or sway a crowd with a successful performance roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Art/Craft (Acting)", "Art/Craft (Singing)", "Charm", "Disguise", "Fast Talk", "Listen", "Persuade", "Psychology"],
+                    "skill_points": "EDU × 2 + APP × 2"
+                }
+            },
+            {
+                "name": "Farmer",
+                "description": "You work the land, growing crops or raising livestock, rooted in rural life and its quiet struggles.",
+                "proficiencies": {
+                    "skills": ["Natural World", "Operate Heavy Machinery", "Track", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Pitchfork or shovel",
+                    "Farmer’s almanac",
+                    "Set of rugged clothes",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Rural Instinct",
+                    "description": "You can predict weather or track animals with a successful Natural World roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-30",
+                    "suggested_skills": ["Animal Handling", "Drive Auto", "Fighting (Brawl)", "Natural World", "Operate Heavy Machinery", "Spot Hidden", "Track", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + STR × 2"
+                }
+            },
+            {
+                "name": "Hacker",
+                "description": "You’re a tech-savvy infiltrator, adept at breaking into systems—modern era only, rare in 1920s games.",
+                "proficiencies": {
+                    "skills": ["Computer Use", "Electrical Repair", "Library Use", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Laptop or portable device",
+                    "Hacking tools",
+                    "Set of casual clothes",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Digital Backdoor",
+                    "description": "You can access restricted information or systems with a successful Computer Use roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Charm", "Computer Use", "Electrical Repair", "Fast Talk", "Library Use", "Psychology", "Spot Hidden", "Stealth"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Journalist",
+                "description": "You chase stories for newspapers or magazines, digging into the truth no matter where it leads.",
+                "proficiencies": {
+                    "skills": ["History", "Library Use", "Persuade", "Psychology"],
+                    "tools": ["Typewriter"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook and pencil",
+                    "Press pass",
+                    "Camera",
+                    "Set of casual clothes",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Scoop",
+                    "description": "You can gather rumors or local information quickly by tapping into your network of sources."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Art/Craft (Photography)", "Charm", "Fast Talk", "History", "Library Use", "Persuade", "Psychology", "Stealth"],
+                    "skill_points": "EDU × 2 + APP × 2"
+                }
+            },
+            {
+                "name": "Lawyer",
+                "description": "You navigate the legal system, defending clients or prosecuting foes, with a sharp mind for detail.",
+                "proficiencies": {
+                    "skills": ["Law", "Library Use", "Persuade", "Psychology"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Briefcase",
+                    "Legal books",
+                    "Notebook and pen",
+                    "Set of fine clothes",
+                    "Wallet with $30"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Legal Leverage",
+                    "description": "You can influence officials or delay legal proceedings with a successful Law roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "30-70",
+                    "suggested_skills": ["Accounting", "Charm", "Fast Talk", "Law", "Library Use", "Persuade", "Psychology", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Librarian",
+                "description": "You curate knowledge, surrounded by books and records, adept at unearthing hidden facts.",
+                "proficiencies": {
+                    "skills": ["Accounting", "Library Use", "Spot Hidden", "Language (Other)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Library card catalog",
+                    "Notebook and pen",
+                    "Set of modest clothes",
+                    "Wallet with $15"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Research Mastery",
+                    "description": "You can find obscure information in libraries or archives with a successful Library Use roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Accounting", "Charm", "History", "Library Use", "Persuade", "Spot Hidden", "Language (Other)", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Military Officer",
+                "description": "You’ve led troops or served in command, trained in strategy and combat, hardened by duty.",
+                "proficiencies": {
+                    "skills": ["Fighting (Brawl)", "Firearms (Rifle)", "Navigate", "Survival"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Service pistol",
+                    "Uniform",
+                    "Notebook and pencil",
+                    "Wallet with $20"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Command Presence",
+                    "description": "You can rally allies or intimidate foes with a successful roll, drawing on your authority."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-50",
+                    "suggested_skills": ["Fighting (Brawl)", "Firearms (Rifle)", "Intimidate", "Navigate", "Persuade", "Stealth", "Survival", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + STR × 2"
+                }
+            },
+            {
+                "name": "Occultist",
+                "description": "You study the esoteric—magic, myths, and forbidden lore—seeking truths others shun.",
+                "proficiencies": {
+                    "skills": ["History", "Library Use", "Occult", "Spot Hidden"],
+                    "languages": ["One language of your choice (e.g., Latin)"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Occult tome",
+                    "Notebook and pen",
+                    "Candles or ritual items",
+                    "Set of eccentric clothes",
+                    "Wallet with $15"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Forbidden Knowledge",
+                    "description": "You can decipher occult symbols or rituals with a successful Occult roll, at potential Sanity cost."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-40",
+                    "suggested_skills": ["Charm", "History", "Library Use", "Occult", "Persuade", "Psychology", "Spot Hidden", "Language (Other)"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Pilot",
+                "description": "You fly planes, skilled in the air and on the ground, a daredevil or professional aviator.",
+                "proficiencies": {
+                    "skills": ["Navigate", "Pilot (Aircraft)", "Mechanical Repair", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Flight goggles",
+                    "Map",
+                    "Tool kit",
+                    "Set of flight clothes",
+                    "Wallet with $20"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Skyward Instinct",
+                    "description": "You can navigate or maintain aircraft with a successful roll, even in tough conditions."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-50",
+                    "suggested_skills": ["Electrical Repair", "Listen", "Mechanical Repair", "Navigate", "Pilot (Aircraft)", "Science (Meteorology)", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + DEX × 2"
+                }
+            },
+            {
+                "name": "Police Officer",
+                "description": "You’re a uniformed cop, patrolling streets and upholding the law, facing danger daily.",
+                "proficiencies": {
+                    "skills": ["Fighting (Brawl)", "Firearms (Handgun)", "Law", "Spot Hidden"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Service revolver",
+                    "Baton",
+                    "Badge",
+                    "Set of uniform",
+                    "Wallet with $15"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Badge of Authority",
+                    "description": "You can demand cooperation from civilians or access police records with a successful roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-40",
+                    "suggested_skills": ["Drive Auto", "Fighting (Brawl)", "Firearms (Handgun)", "First Aid", "Intimidate", "Law", "Psychology", "Spot Hidden"],
+                    "skill_points": "EDU × 2 + STR × 2"
+                }
+            },
+            {
+                "name": "Professor",
+                "description": "You’re an academic, teaching and researching at a university, with a mind sharpened by study.",
+                "proficiencies": {
+                    "skills": ["History", "Library Use", "Science (Any)", "Spot Hidden"],
+                    "languages": ["One language of your choice"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Stack of books",
+                    "Notebook and pen",
+                    "Academic credentials",
+                    "Set of tweed clothes",
+                    "Wallet with $30"
+                ],
+                "languages": ["One of your choice"],
+                "background_features": {
+                    "name": "Scholarly Authority",
+                    "description": "You can gain access to university libraries or archives with a successful Charm or Persuade roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "20-70",
+                    "suggested_skills": ["History", "Language (Other)", "Library Use", "Persuade", "Science (Any)", "Science (Any)", "Spot Hidden", "One other skill of choice"],
+                    "skill_points": "EDU × 4"
+                }
+            },
+            {
+                "name": "Reporter",
+                "description": "You’re a fast-talking news hound, chasing breaking stories with a nose for trouble.",
+                "proficiencies": {
+                    "skills": ["Fast Talk", "Listen", "Psychology", "Spot Hidden"],
+                    "tools": ["Camera"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Notebook and pencil",
+                    "Camera",
+                    "Press pass",
+                    "Set of casual clothes",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Breaking News",
+                    "description": "You can pick up gossip or leads from the streets with a successful Fast Talk roll."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-30",
+                    "suggested_skills": ["Art/Craft (Photography)", "Charm", "Fast Talk", "Listen", "Persuade", "Psychology", "Spot Hidden", "Stealth"],
+                    "skill_points": "EDU × 2 + APP × 2"
+                }
+            },
+            {
+                "name": "Soldier",
+                "description": "You’ve served in the trenches or on the front lines, trained to fight and survive.",
+                "proficiencies": {
+                    "skills": ["Fighting (Brawl)", "Firearms (Rifle)", "Stealth", "Survival"]
+                },
+                "ability_score_increases": None,
+                "granted_feats": None,
+                "choosable_feats": None,
+                "equipment": [
+                    "Rifle or pistol",
+                    "Knife",
+                    "Uniform or old gear",
+                    "Wallet with $10"
+                ],
+                "languages": [],
+                "background_features": {
+                    "name": "Battle-Hardened",
+                    "description": "You can resist fear or push through pain with a successful roll, drawing on your combat experience."
+                },
+                "system_specific_data": {
+                    "credit_rating": "10-30",
+                    "suggested_skills": ["Climb", "Fighting (Brawl)", "Firearms (Rifle)", "First Aid", "Stealth", "Spot Hidden", "Survival", "One other skill of choice"],
+                    "skill_points": "EDU × 2 + STR × 2"
+                }
+            }
         ]
     }
 
