@@ -31,16 +31,40 @@ const CharacterBackgroundPage = () => {
     // console.log("Categories:", config.categories);
     const fetchData = async () => {
       try {
-        const [alignmentResponse, backgroundResponse, characterResponse] = await Promise.all([
+        const results = await Promise.allSettled([
           axios.get(`http://127.0.0.1:5555/api/alignments/system/${systemId}`),
           axios.get(`http://127.0.0.1:5555/api/backgrounds/system/${systemId}`),
           axios.get(`http://127.0.0.1:5555/api/characters/${characterId}`),
         ]);
-
-        setAlignments(alignmentResponse.data);
-        setBackgrounds(backgroundResponse.data);
-
-        const character = characterResponse.data;
+    
+        // Extract results, defaulting to empty arrays/objects if rejected or empty
+        const [alignmentResult, backgroundResult, characterResult] = results;
+    
+        const alignments = alignmentResult.status === 'fulfilled' && alignmentResult.value.data.length > 0
+          ? alignmentResult.value.data
+          : [];
+        if (alignmentResult.status === 'rejected') {
+          console.warn(`No alignments available for system ${systemId}:`, alignmentResult.reason.message);
+        }
+    
+        const backgrounds = backgroundResult.status === 'fulfilled' && backgroundResult.value.data.length > 0
+          ? backgroundResult.value.data
+          : [];
+        if (backgroundResult.status === 'rejected') {
+          console.warn(`No backgrounds available for system ${systemId}:`, backgroundResult.reason.message);
+        }
+    
+        const character = characterResult.status === 'fulfilled' 
+          ? characterResult.value.data 
+          : {};
+        if (characterResult.status === 'rejected') {
+          console.error(`Failed to fetch character ${characterId}:`, characterResult.reason.message);
+        }
+    
+        // Set state with fetched or fallback data
+        setAlignments(alignments);
+        setBackgrounds(backgrounds);
+    
         setCharacterData((prevData) => ({
           ...prevData,
           name: character.name || '',
@@ -58,10 +82,10 @@ const CharacterBackgroundPage = () => {
             [category.key]: character.physical_features?.[category.key] || [],
           }), {}),
         }));
-
+    
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Unexpected error in fetchData:', error);
         setLoading(false);
       }
     };
