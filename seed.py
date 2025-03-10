@@ -6100,6 +6100,398 @@ def seed_rpg_systems():
                 "slot_type": "Head",
                 "type": "Augmentation Accessory"
             },
+        ],
+        "Mothership RPG": [
+            {
+                "name": "Boarding Axe",
+                "description": "A heavy, single-bladed axe designed for breaching ship hulls or enemies in close quarters.",
+                "weight": 4,
+                "rarity": "Common",
+                "cost": 150,
+                "damage_type": "Slashing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Combat Shotgun",
+                "description": "A rugged firearm built for shipboard combat, devastating at close range but less effective farther out.",
+                "weight": 8,
+                "rarity": "Common",
+                "cost": 1400,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Crowbar",
+                "description": "A sturdy metal bar, perfect for prying open doors or cracking skulls in a pinch.",
+                "weight": 3,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": "Bludgeoning",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Flamethrower",
+                "description": "A terrifying weapon that spews fire, ideal for clearing infestations but risky in tight spaces.",
+                "weight": 15,
+                "rarity": "Common",
+                "cost": 2000,
+                "damage_type": "Fire",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Foam Gun",
+                "description": "Fires a sticky, hardening foam to immobilize targets or seal breaches.",
+                "weight": 5,
+                "rarity": "Common",
+                "cost": 500,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Frag Grenade",
+                "description": "An explosive device that showers shrapnel, deadly in confined areas.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 250,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Laser Cutter",
+                "description": "A precision tool turned weapon, capable of slicing through metal or flesh.",
+                "weight": 3,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": "Energy",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Pulse Rifle",
+                "description": "A standard military firearm, reliable and deadly at range.",
+                "weight": 7,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Revolver",
+                "description": "A classic sidearm, simple and effective for personal defense.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 400,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Rigging Gun",
+                "description": "Fires grappling hooks or cables, useful for traversal or ensnaring foes.",
+                "weight": 6,
+                "rarity": "Common",
+                "cost": 750,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "SMG",
+                "description": "A submachine gun, compact and rapid-firing for close encounters.",
+                "weight": 5,
+                "rarity": "Common",
+                "cost": 750,
+                "damage_type": "Piercing",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Stun Baton",
+                "description": "A non-lethal weapon that delivers a powerful electric shock.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 200,
+                "damage_type": "Electric",
+                "material": "Steel",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Tranq Pistol",
+                "description": "A quiet pistol that fires sedative darts to subdue targets.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 300,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Weapon"
+            },
+            {
+                "name": "Standard Crew Attire",
+                "description": "Basic coveralls and leather jackets worn by all crew members.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Cloth",
+                "slot_type": "Armor"
+            },
+            {
+                "name": "Vaccsuit",
+                "description": "A basic suit for operating in space, offering minimal protection.",
+                "weight": 10,
+                "rarity": "Common",
+                "cost": 500,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Armor"
+            },
+            {
+                "name": "Standard Battle Dress",
+                "description": "Light plated armor, standard for marines or mercenaries.",
+                "weight": 15,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Armor"
+            },
+            {
+                "name": "Advanced Battle Dress",
+                "description": "Heavy combat armor with environmental protection and damage reduction.",
+                "weight": 25,
+                "rarity": "Common",
+                "cost": 5000,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Armor"
+            },
+            {
+                "name": "Ammo",
+                "description": "Ammunition for firearms, sold per magazine or container.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Analgesics",
+                "description": "Painkillers to dull wounds and stress, common in medkits.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Chemical",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Binoculars",
+                "description": "Magnifies distant objects, essential for scouting.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 100,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Bioscanner",
+                "description": "Detects lifeforms within 10 meters, even through walls.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 500,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Body Cam",
+                "description": "Records video and audio, useful for evidence or logs.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 200,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Cybernetic Diagnostic Scanner",
+                "description": "Analyzes and repairs cybernetic implants.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Drone",
+                "description": "A small remote-controlled flier for scouting or surveillance.",
+                "weight": 3,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "First Aid Kit",
+                "description": "Basic medical supplies for treating minor injuries.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 100,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Flashlight",
+                "description": "A handheld light source for dark environments.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 20,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Heads-Up Display",
+                "description": "A wearable visor displaying vital data overlays.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 500,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Infrared Goggles",
+                "description": "Allows vision in darkness via heat signatures.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 300,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Jump Pack",
+                "description": "A jetpack for short bursts of flight in low gravity.",
+                "weight": 10,
+                "rarity": "Common",
+                "cost": 1000,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Lockpick Set",
+                "description": "Tools for bypassing mechanical locks.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Long-Range Comms",
+                "description": "A device for communicating across vast distances.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 200,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "MRE",
+                "description": "Meal Ready-to-Eat, a preserved food ration for survival.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 10,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Medscanner",
+                "description": "Diagnoses injuries and illnesses with precision.",
+                "weight": 2,
+                "rarity": "Common",
+                "cost": 500,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Patch Kit",
+                "description": "Repairs breaches in vaccsuits or hulls quickly.",
+                "weight": 1,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Radiation Pills",
+                "description": "Reduces the effects of radiation exposure.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 100,
+                "damage_type": None,
+                "material": "Chemical",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Short-Range Comms",
+                "description": "A headset for nearby crew communication.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 50,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Smartlink Uplink",
+                "description": "Connects weapons to HUD for enhanced targeting.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 300,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Stimpak",
+                "description": "An injector delivering rapid healing chemicals.",
+                "weight": 0.5,
+                "rarity": "Common",
+                "cost": 200,
+                "damage_type": None,
+                "material": "Plastic",
+                "slot_type": "Gear"
+            },
+            {
+                "name": "Tool Kit",
+                "description": "A set of tools for mechanical repairs and tinkering.",
+                "weight": 5,
+                "rarity": "Common",
+                "cost": 100,
+                "damage_type": None,
+                "material": "Steel",
+                "slot_type": "Gear"
+            }
         ]
     }
 
