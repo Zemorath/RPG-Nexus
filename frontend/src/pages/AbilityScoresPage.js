@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import spellConfig from '../components/config/spellConfig';
 
 const AssignmentRow = ({ abilityScores, availableScores, onAssign }) => {
   return (
@@ -169,9 +170,20 @@ const AbilityScoresPage = () => {
     try {
       await axios.post(`http://127.0.0.1:5555/api/characters/update-ability-scores`, {
         character_id: characterId,
-        ability_scores: scores
+        ability_scores: scores,
       });
-      navigate(`/character/create/spells/${systemId}/${characterId}`);
+
+      // Get the spell page configuration for the current system
+      const systemConfig = spellConfig[systemId];
+      const nextPage = systemConfig.spellPage;
+
+      // Navigate based on whether a spell page exists
+      if (nextPage && nextPage !== "None" && nextPage !== null) {
+        navigate(`/character/create/spells/${systemId}/${characterId}`);
+      } else {
+        // Skip to the next logical page (e.g., background or inventory)
+        navigate(`/character/create/background/${systemId}/${characterId}`); // Or "/inventory" if that’s the next step
+      }
     } catch (error) {
       console.error('Error submitting scores:', error);
     }

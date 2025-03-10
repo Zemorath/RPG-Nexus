@@ -27,8 +27,8 @@ const spellConfig = {
     },
     6: {
       name: "Mothership RPG",
-      type: "percentile",
-      spellPage: "PercentileSpellPage",
+      type: "None",
+      spellPage: null,
     }
   };
   
