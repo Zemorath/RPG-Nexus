@@ -11,24 +11,28 @@ import CharacterCreationLandingPage from './pages/CharacterCreationLandingPage';
 import SelectClassPage from './pages/SelectClassPage';
 import ViewCharactersPage from './pages/ViewCharacters'
 import AbilityScoresPage from './pages/AbilityScoresPage'
-import SelectSkillsFeatsPage from './pages/SelectSkillsFeatsPage'
+// import SelectSkillsFeatsPage from './pages/SelectSkillsFeatsPage'
 import SelectSpellsPage from './pages/SelectSpellsPage';
 import CharacterBackgroundPage from './pages/CharacterBackgroundPage'
 import EquipmentSelectionPage from './pages/EquipmentSelectionPage';
 import CharacterSummaryPage from './pages/CharacterSummaryPage';
 import { AuthProvider, useAuth } from './components/auth/auth';
 import { ProtectedRoute, PublicRoute } from './components/Routes';
+import CharacterCreationLayout from './components/CharacterCreationLayout'
 
 function AppContent() {
   const { user, loading, logout } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>; // You can customize this with a loader component
+    return (
+      <div className="min-h-screen bg-background text-text flex items-center justify-center">
+        <div>Loading...</div>
+      </div>
+    );
   }
 
   return (
     <Router>
-      {user && <Navbar onLogout={logout} />} {/* Render the navbar only if authenticated */}
       <Routes>
         {/* Public Routes */}
         <Route element={<PublicRoute />}>
@@ -39,18 +43,22 @@ function AppContent() {
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/rpgsystems" element={<RPGSystemsPage />} />
-          <Route path="/character/create" element={<CharacterCreationLandingPage />} />
-          <Route path="/character/create/race/:systemId/:characterId?" element={<SelectRacePage />} />
-          <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
-          <Route path="/character/create/ability-scores/:systemId/:characterId" element={<AbilityScoresPage />} />
-          <Route path="/character/create/spells/:systemId/:characterId" element={<SelectSpellsPage />} />
-          <Route path="/character/create/skills/:systemId/:characterId" element={<SelectSkillsFeatsPage />} />
-          <Route path="/character/create/background/:systemId/:characterId" element={<CharacterBackgroundPage />} />
-          <Route path="/character/create/equipment/:systemId/:characterId" element={<EquipmentSelectionPage />} />
-          <Route path="/character/summary/:systemId/:characterId" element={<CharacterSummaryPage />} />
-          <Route path="/character/view" element={<ViewCharactersPage />} />
+        <Route path="/dashboard" element={<><Navbar onLogout={logout} /><Dashboard /></>} />
+          <Route path="/rpgsystems" element={<><Navbar onLogout={logout} /><RPGSystemsPage /></>} />
+          <Route path="/character/view" element={<><Navbar onLogout={logout} /><ViewCharactersPage /></>} />
+          <Route path="/character/create" element={<><Navbar onLogout={logout} /><CharacterCreationLandingPage /></>} />
+
+          {/* Character Creation Routes with Progress Tracker */}
+          <Route element={<CharacterCreationLayout onLogout={logout} />}>
+            <Route path="/character/create/race/:systemId/:characterId?" element={<SelectRacePage />} />
+            <Route path="/character/create/class/:systemId/:characterId" element={<SelectClassPage />} />
+            <Route path="/character/create/ability-scores/:systemId/:characterId" element={<AbilityScoresPage />} />
+            <Route path="/character/create/spells/:systemId/:characterId" element={<SelectSpellsPage />} />
+            {/* <Route path="/character/create/skills/:systemId/:characterId" element={<SelectSkillsFeatsPage />} /> */}
+            <Route path="/character/create/background/:systemId/:characterId" element={<CharacterBackgroundPage />} />
+            <Route path="/character/create/equipment/:systemId/:characterId" element={<EquipmentSelectionPage />} />
+            <Route path="/character/summary/:systemId/:characterId" element={<CharacterSummaryPage />} />
+          </Route>
           {/* Other protected routes can go here */}
         </Route>
       </Routes>

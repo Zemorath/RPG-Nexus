@@ -180,9 +180,6 @@ const SelectSpellsPage = () => {
     }
   };
 
-
-  console.log(selectedLevel)
-
   if (loading) {
     return <div>Loading spells...</div>;
   }
