@@ -3,12 +3,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1b1f38', // Dark Indigo
-        secondary: '#4a4a6a', // Muted Purple
-        accent: '#d4af37', // Gold
-        text: '#ffffff', // White for text
-        background: '#0f0f1a', // Almost black background
+        primary: '#1b1f38',
+        secondary: '#4a4a6a',
+        accent: '#d4af37',
+        text: '#e0e0e0',
+        background: '#0f0f1a',
       },
+      boxShadow: {
+        'glow': '0 0 10px #d4af37',
+      }
     },
   },
   plugins: [],

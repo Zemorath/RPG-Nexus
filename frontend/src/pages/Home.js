@@ -1,37 +1,52 @@
+// src/pages/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaShieldAlt, FaBook, FaRocket } from 'react-icons/fa';
 
-const Home = () => {
+const HomePage = () => {
+  console.log('Rendering updated HomePage')
   return (
-    <div className="bg-background text-text min-h-screen flex flex-col items-center justify-center">
-      <header className="text-center">
-        <h1 className="text-5xl font-bold text-accent">Welcome to RPG Nexus</h1>
-        <p className="text-secondary mt-4 text-xl">Your gateway to endless adventures</p>
-      </header>
-      <main className="mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Link to="/create-character" className="bg-primary p-6 rounded-lg shadow-lg hover:bg-secondary transition duration-300">
-            <h2 className="text-3xl font-semibold text-accent">Create Characters</h2>
-            <p className="mt-2 text-secondary">Craft unique characters with detailed stats and abilities.</p>
+    <div className="min-h-screen bg-background text-text">
+      <div className="bg-gradient-to-r from-primary to-secondary p-8 text-center">
+        <h1 className="text-accent text-5xl font-bold mb-4">Welcome to RPG Nexus</h1>
+        <p className="text-lg mb-6">Your ultimate tool for crafting legendary characters and epic adventures.</p>
+        <div className="flex justify-center gap-4">
+          <Link to="/signup">
+            <button className="interactive-button">Sign Up</button>
           </Link>
-          <Link to="/create-campaign" className="bg-primary p-6 rounded-lg shadow-lg hover:bg-secondary transition duration-300">
-            <h2 className="text-3xl font-semibold text-accent">Create Campaigns</h2>
-            <p className="mt-2 text-secondary">Create epic campaigns and collaborate with other players.</p>
-          </Link>
-          <Link to="/create-homebrew" className="bg-primary p-6 rounded-lg shadow-lg hover:bg-secondary transition duration-300">
-            <h2 className="text-3xl font-semibold text-accent">Design Homebrew Content</h2>
-            <p className="mt-2 text-secondary">Craft your own items, skills, and more.</p>
+          <Link to="/login">
+            <button className="interactive-button">Login</button>
           </Link>
         </div>
-        <div className="mt-8">
-          <Link to="/login" className="bg-accent text-background font-bold py-2 px-4 rounded hover:bg-text hover:text-background transition duration-300">
-            Login / Signup
-          </Link>
+      </div>
+      <div className="container mx-auto p-8">
+        <h2 className="text-accent text-3xl font-bold text-center mb-8">Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 hover:scale-105 transition duration-300">
+            <FaShieldAlt className="text-accent text-4xl mx-auto mb-4" />
+            <h3 className="text-accent text-xl font-bold mb-2">Create Characters</h3>
+            <p>Build unique heroes for any TTRPG system with ease.</p>
+          </div>
+          <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 hover:scale-105 transition duration-300">
+            <FaBook className="text-accent text-4xl mx-auto mb-4" />
+            <h3 className="text-accent text-xl font-bold mb-2">Manage Campaigns</h3>
+            <p>Organize your adventures and track your party’s journey.</p>
+          </div>
+          <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 hover:scale-105 transition duration-300">
+            <FaRocket className="text-accent text-4xl mx-auto mb-4" />
+            <h3 className="text-accent text-xl font-bold mb-2">Explore Systems</h3>
+            <p>Dive into a variety of RPG rulesets and homebrew options.</p>
+          </div>
         </div>
-      </main>
+      </div>
+      <div className="bg-primary p-4 text-center">
+        <p className="text-sm">
+          <Link to="/about" className="text-accent hover:underline">About</Link> |{' '}
+          <Link to="/contact" className="text-accent hover:underline">Contact</Link>
+        </p>
+      </div>
     </div>
   );
 };
 
-export default Home;
-
+export default HomePage;

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html, body, #root {
   background-color: #0f0f1a;
   margin: 0;
@@ -20,4 +19,9 @@ code {
     monospace;
 }
 
-
+.interactive-button {
+  @apply bg-accent text-background py-2 px-6 rounded-lg shadow-md transition-all duration-300;
+}
+.interactive-button:hover {
+  @apply bg-text text-background scale-105 shadow-glow;
+}
