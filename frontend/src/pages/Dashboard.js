@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../components/auth/auth';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaBook, FaClock } from 'react-icons/fa'; // Added icons for sections
+import { FaUser, FaBook, FaClock } from 'react-icons/fa';
 
 const Dashboard = () => {
   const [characters, setCharacters] = useState([]);
@@ -13,7 +13,6 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       if (!user) return;
-
       try {
         const response = await axios.get(`http://127.0.0.1:5555/api/characters/view`, {
           withCredentials: true,
@@ -21,23 +20,21 @@ const Dashboard = () => {
         setCharacters(response.data);
       } catch (error) {
         console.error('Error fetching characters:', error);
-        if (error.response && error.response.status === 401) {
+        if (error.response?.status === 401) {
           navigate('/login');
         }
       }
     };
-
     fetchCharacters();
   }, [user, navigate]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background text-text flex items-center justify-center">
-        <div className="text-2xl">Loading...</div>
+      <div className="min-h-screen bg-background text-accent flex items-center justify-center">
+        <div className="text-2xl font-bold">Loading...</div>
       </div>
     );
   }
-
   if (!user) {
     navigate('/login');
     return null;
@@ -46,14 +43,10 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background text-text">
       <div className="container mx-auto p-8">
-        {/* Header */}
         <div className="bg-gradient-to-r from-primary to-secondary p-4 rounded-t-lg text-center">
           <h1 className="text-accent text-4xl font-bold">Your Dashboard</h1>
         </div>
-
-        {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          {/* Character Overview Section */}
           <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 transition duration-300">
             <div className="flex items-center mb-4">
               <FaUser className="text-accent text-3xl mr-2" />
@@ -67,7 +60,7 @@ const Dashboard = () => {
                       <strong>{character.name}</strong> (Level {character.level}) - {character.rpg_system.name}
                     </span>
                     <button
-                      className="text-accent hover:text-text transition duration-300"
+                      className="text-accent hover:text-text font-semibold transition duration-300"
                       onClick={() => navigate(`/characters/${character.id}/details`)}
                     >
                       View
@@ -85,8 +78,6 @@ const Dashboard = () => {
               Create New Character
             </button>
           </div>
-
-          {/* Campaign Overview Section */}
           <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 transition duration-300">
             <div className="flex items-center mb-4">
               <FaBook className="text-accent text-3xl mr-2" />
@@ -100,15 +91,12 @@ const Dashboard = () => {
               Create New Campaign
             </button>
           </div>
-
-          {/* Recent Activities Section */}
           <div className="bg-secondary p-6 rounded-lg shadow-lg border border-accent/20 hover:shadow-accent/50 transition duration-300 md:col-span-2">
             <div className="flex items-center mb-4">
               <FaClock className="text-accent text-3xl mr-2" />
               <h2 className="text-accent text-2xl font-bold">Recent Activities</h2>
             </div>
-            <p>See what you’ve been up to recently with your characters and campaigns.</p>
-            {/* Placeholder for future content */}
+            <p>See what you've been up to recently with your characters and campaigns.</p>
           </div>
         </div>
       </div>
