@@ -17,7 +17,7 @@ const Dashboard = () => {
         const response = await axios.get(`http://127.0.0.1:5555/api/characters/view`, {
           withCredentials: true,
         });
-        setCharacters(response.data);
+        setCharacters(response.data.characters); // Adjusted to match ViewCharacters.js
       } catch (error) {
         console.error('Error fetching characters:', error);
         if (error.response?.status === 401) {
@@ -52,25 +52,25 @@ const Dashboard = () => {
               <FaUser className="text-accent text-3xl mr-2" />
               <h2 className="text-accent text-2xl font-bold">Characters</h2>
             </div>
-            {characters.length > 0 ? (
-              <ul className="space-y-2">
-                {characters.map(character => (
-                  <li key={character.id} className="flex justify-between items-center">
-                    <span>
-                      <strong>{character.name}</strong> (Level {character.level}) - {character.rpg_system.name}
-                    </span>
-                    <button
-                      className="text-accent hover:text-text font-semibold transition duration-300"
+            <div className="max-h-64 overflow-y-auto">
+              {characters.length > 0 ? (
+                <div className="space-y-2">
+                  {characters.map(character => (
+                    <div
+                      key={character.id}
+                      className="bg-primary p-3 rounded-md flex justify-between items-center hover:bg-primary/80 transition duration-200 cursor-pointer"
                       onClick={() => navigate(`/characters/${character.id}/details`)}
                     >
-                      View
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No characters found. Create your first character!</p>
-            )}
+                      <span className="text-text font-semibold">{character.name}</span>
+                      <span className="text-text">{character.race.name} / {character.class.name}</span>
+                      <span className="text-accent">Level {character.level}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No characters found. Create your first character!</p>
+              )}
+            </div>
             <button
               className="interactive-button mt-4 w-full"
               onClick={() => navigate('/character/create')}
@@ -96,7 +96,7 @@ const Dashboard = () => {
               <FaClock className="text-accent text-3xl mr-2" />
               <h2 className="text-accent text-2xl font-bold">Recent Activities</h2>
             </div>
-            <p>See what you've been up to recently with your characters and campaigns.</p>
+            <p>See what you’ve been up to recently with your characters and campaigns.</p>
           </div>
         </div>
       </div>
